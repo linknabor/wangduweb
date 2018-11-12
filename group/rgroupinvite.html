@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>特卖</title>
+    <link rel="stylesheet" href="../static/css/swiper.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/common.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/group/product.css?v=20151217">
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/group.js?v=20151217"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="rgroupinvite.js?v=20151217"></script>
+    <script src="../static/js/swiper.js"></script>
+ <style>
+.time-wrap{
+	text-align:center;widht:100%;height:48px;inline-height:48px
+}
+.time-text{
+	font-size:18px;color:#996c33;margin-left:5px;margin-right:5px;
+}
+.rgroup-info{
+	widht:100%;height:70px;
+}
+.three_div{
+	width:33%;
+	float: left;
+}
+.time-number{
+  font-size: 20px;
+  padding: 4px 6px;
+  color: white;
+  background: url(../static/images/img_time.png) no-repeat;
+  background-size: 100% 100%;
+}
+.fs16{
+    font-size: 16px;
+}
+
+	.rule_intro{
+	    position: fixed;
+	    top: 0;
+	    z-index: 10;
+		background:#f7f7f1;
+		width:100%;
+	}
+	.rule_item_noback,.rule_item,.rule_item_default,.rule_title{
+		height:60px;
+		line-height:60px;
+		width:20%;
+		float:left;
+		text-align:left;
+		font-size:14px;
+	}
+	.rule_item{
+		background:url(../static/images/img_arrow_selected.png);
+		background-size:10px 60px;
+		background-repeat:no-repeat;
+		background-position:left;
+	}
+	.rule_item_default{
+		background:url(../static/images/img_arrow_default.png);
+		background-size:10px 60px;
+		background-repeat:no-repeat;
+		background-position:left;
+	}
+	.rule_title{
+		background-color:#ffa030;
+		color:#fff;
+	}
+	
+	.rule_item_line{
+		height:18px;
+		padding-left:15px;
+		line-height:18px;
+		text-align:left;
+		font-size:14px;
+	}
+
+</style>
+</head>
+
+<body ms-controller="root">
+	<div style="width:100%;" ms-click="gotosgrouprulr">
+		<img alt="" src="../static/images/group/img_tuangou_yaoqing.png" style="width: 100%;"/>
+	</div>
+	<div class="divider"></div>
+	<!--<div class="group-item ov">
+		<img class="avatar fl" alt="" ms-src="{{rule.ownerImg}}">
+		<div class="group-info">
+			<div class="ov" style="font-size:14px">
+					{{rule.ownerName}}  &nbsp;&nbsp;发起的团购
+			</div>
+			<div class="ov bottom">
+				{{rule.ownerAddr}}
+			</div>
+		</div>
+	</div>-->
+	<div class="mt2 bb3">
+		<div  ms-visible="rule.leftSeconds >= 0">
+			<div class="time-wrap">
+			   <span class="time-text">剩余</span>
+			   <span  ms-visible="left.days!='00'"><span class="time-number">{{left.days}}</span>天</span>
+			   <span class="time-number">{{left.hours}}</span><span>时</span>
+			   <span class="time-number">{{left.minitus}}</span><span left.days=='0'>分</span>
+			   <span ><span class="time-number" >{{left.seconds}}</span>秒</span>
+			   <span class="time-text">结束</span>
+			</div>
+			<div class="mt1 fs15 mb25" style="text-align: center;">
+				<span ms-visible="rule.groupMinNum-rule.currentNum <= 0">
+					成功啦，还没加入的小伙伴抓紧啦！马上要发货咯！
+				</span>
+				<span ms-visible="rule.groupMinNum-rule.currentNum > 0">
+					还差<span class="highlight">{{rule.groupMinNum-rule.currentNum}}</span>份就可以成团发货啦
+				</span>
+			</div>
+		</div>
+		<div  ms-visible="rule.leftSeconds < 0">
+			<div class="mt1 fs15 mb25" style="text-align: center;">
+				<span ms-visible="rule.groupMinNum-rule.currentNum <= 0">
+					团购成功！错过的小伙伴可以逛逛其他商品
+				</span>
+				<span ms-visible="rule.groupMinNum-rule.currentNum > 0">
+					很遗憾，没达到目标人数哦，再去逛逛其他商品吧！
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="device">
+	    <div class="swiper-container">
+	        <div class="swiper-wrapper">
+	           <div class="swiper-slide" ms-repeat-picture="product.pictureList"> 
+		           	<img  ms-src="{{picture}}">
+	           </div>
+			</div>
+	    </div>
+	    <div class="pagination"></div>
+	</div>
+	<div class="product-info p15">
+		<div class="product-detail-name fs16">{{rule.name}}</div>
+		<div style="width: 100%;height:30px;">
+			<div class="highlight fs22 fl three_div">¥&nbsp;{{rule.price}}&nbsp;</div>
+			<div class="highlight fl fs14 three_div" style="padding-top:8px">{{rule.discount}}&nbsp;</div>
+			<div class="ori-price2 three_div"  style="padding-top:8px">运费&nbsp;&nbsp;<span class="highlight">¥{{rule.postageFee}}</span></div>
+		</div>
+		<div style="width: 100%;height:20px">
+			<div class="ori-price2 fl three_div">市场价<del>¥&nbsp;{{product.oriPrice}}</del></div>
+			<div class="ori-price2 fl three_div">目标份数<span class="highlight" >{{rule.groupMinNum}}</span>份</div>
+			<div class="ori-price2 three_div"  ms-visible="rule.freeShippingNum<999"><span class="highlight">{{rule.freeShippingNum}}</span>件包邮</div>
+		</div>
+		<div style="width:100%;height:1px">&nbsp;</div>
+	</div>
+	<div style="width:100%;height:80px">&nbsp;</div>
+	<div class="btn-fixed" ms-visible="!share_page">
+		<span  class="fl" 
+			style="height:40px;line-height:40px;width:36%;background-color:#444;text-align:center;font-size:20px;" ms-click="golist">
+			更多团购
+		</span>
+		<span  class="fl" 
+			style="height:40px;line-height:40px;width:64%;background-color:#ff8a00;text-align: center;font-size:20px;"  ms-click="goGroupProduct"   ms-class-useless="rule.leftSeconds < 0">
+			马上参团
+		</span>
+	</div>
+	<div ms-visible="share_page">
+		<div style="position: fixed;bottom:5px;left:5px;right:5px;text-align:center;background-color: #ff8600;height:40px;color:#ffffff;font-size: 16px;padding-top: 7px;">
+			点击右上方分享，邀请好友一起参与
+		</div>
+	</div>
+		
+<script>
+	function initSwipe(){
+		//头部展示图适应屏幕
+	    window.onload=function(){
+	        var a2=parseInt($('.swiper-slide img').css('width') );
+	        var a3=a2*0.46;
+	        $('.swiper-container').css({height:a3 + 'px'});
+	        $('.swiper-slide img').css({height:a3 + 'px'});
+			$('.hideloadingpage').hide();
+		}
+		//顶部图片滑动代码↓
+		var mySwiper = new Swiper('.swiper-container', {
+			speed : 750,
+			autoplay : 6000,
+			autoplayDisableOnInteraction : false,
+			autoplayStopOnLast : true,
+			pagination : '.pagination',
+			loop : true
+		});
+	}
+    
+</script>
+</body>
+</html>

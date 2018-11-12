@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <meta content="telephone=no" name="format-detection" />
+        <meta charset="UTF-8">
+        <title>物业缴费</title>
+        <link rel="stylesheet" href="../static/css/common.css">
+    	<link rel="stylesheet" href="../static/css/header.css">
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/avalon.js"></script>
+        <script src="../static/js/common_v3.js"></script>
+        <script src="property_index.js"></script>
+        <style type="text/css">
+        	body{
+        		box-sizing: border-box;
+        	}
+        	.sacn_code img{
+        		max-width: 100%;
+        	}
+        	.sc_frame{
+        		margin-top: 80px;
+        		overflow: hidden;
+        	}
+        	.sc_content{
+        		margin-left: 10%;
+        		width:60%;
+        		text-align: right;
+        		border:none;
+        		border-bottom: 1px solid #ddd;
+        		font-size: 1.7em;
+        		color:#ddd;
+        		padding:5px 5% 15px 0px;
+        	}
+        	.sc_img{
+        		float: left;
+        		width: 10%;
+        		margin-left: 20px;
+        	}
+        	.sub_btn{
+        		margin-top: 40px;
+        		width:100%;
+        	}
+        	.sub_btn a{
+        		display: inline-block;
+        		width:80%;
+        		margin-left: 10%;
+        		color:#fff;
+        		height:50px;
+        		text-align: center;
+        		line-height: 50px;
+        		font-size: 1.7em;
+        		background-color: #FF8A00;
+        		border-radius: 5px;
+        	}
+        	.sacn_icon{
+        		position: fixed;
+        		bottom: 70px;
+        		padding:0 10%;
+        	}
+        </style>
+	</head>
+	<body ms-controller="root">
+		<!--扫码图片-->
+		<div class="sacn_code">
+			<img src="../static/images/hexie_ewm.png" />
+		</div>
+		<!--扫码框-->
+		<div class="sc_frame">
+			<input class="fl sc_content" type="text" placeholder="输入对账单编号或扫码" style="color: #000;">
+			<p class="sc_img">
+				<img src="../static/images/sacn_code01.png" />
+			</p>
+		</div>
+		<div class="sub_btn">
+			<a href="#">提&nbsp;&nbsp;交</a>
+		</div>
+		<div class="sacn_icon">
+			<img src="../static/images/sacn_code02.png" />
+		</div>
+	</body>
+</html>

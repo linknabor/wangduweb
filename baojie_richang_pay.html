@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+	<head>		
+		<meta charset="UTF-8">
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>订单</title>
+        <link rel="stylesheet" href="static/css/common_v2.css">
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="static/js/avalon.js"></script>
+		<script src="static/js/jquery.js"></script>
+		<script src="static/js/common_v3.js"></script>
+		<script src="baojie_richang_pay.js?v=1"></script>
+        <script type="text/jscript" src="static/plugin/jquery.datetimepicker.js"></script>
+        <link rel="stylesheet" href="static/plugin/jquery.datetimepicker.css">
+		<style type="text/css">
+			body{
+				margin:0;
+				background-color: #f4f5f6;
+			}
+			.address{
+				margin-top: 15px;
+			}
+			.addr_area{
+				background: #F7F7F1;
+			}
+			.add_address{
+				display: inline-block;
+				font-size: 14px;
+				height: 30px;
+				line-height: 30px;
+				border-radius: 3px;
+				border: 1px solid #cfa972;
+				padding:4px 30px;
+				margin:20px 0;
+				color:#cfa972;
+				background-color:white;
+				text-decoration: none;
+			}
+			.contain{
+				background-color: #FFFFFF;
+				padding: 0 14px;
+			}
+			.item,.time,.order_time{
+				width: 100%;
+				padding: 14px 0;
+				border-bottom:1px solid #EEEEEE;
+				overflow: hidden;
+			}
+			.icon1{
+				width: 30px;
+				height: 30px;
+				float:right;
+				margin-top: 1px;
+			}
+			.icon2{
+				width: 30px;
+				height: 30px;
+				float:right;
+				margin-top: 1px;
+				margin-right: 6px;	
+			}
+			.icon3{
+				width: 26px;
+				height: 18px;
+				position: absolute;
+    			margin-top: 1px;
+			}
+			.icon4{
+				width: 10px;
+				height: 12px;
+				float: right;
+				margin-top: 3px;
+				padding: 1px 0;
+			}
+			.total{
+				padding: 14px 0;
+			}
+			.custom_notice{
+				display: block;
+    			background: url("static/img/baojie/btn_arrow_05_05.png") no-repeat;
+    			background-size: 10px 12px;
+    			background-position: right center;
+    			font-family: "微软雅黑";
+    			font-size: 14px;
+    			color: #666666;
+    			padding: 14px 0px;
+    			overflow: hidden;
+			}
+			.discount{
+				margin-top: 10px;
+				padding: 14px;
+				background-color: #FFFFFF;
+			}
+			.custom_menu{
+				margin-top: 10px;
+				padding: 0 14px;
+				background-color: #FFFFFF;
+			}
+			.total_pay{
+				width: 100%;
+				padding: 4px;
+				background-color: #FFFFFF;
+				position:fixed;
+				bottom: 0px;
+			}
+			.span1{
+				width: 50%;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				color: #666666;
+			}
+			.span1_1{
+				border: solid #FF8A00 1px;
+				font-family: "微软雅黑";
+    			font-size: 12px;
+    			color: #FF8A00;
+    			margin-left: 34px;
+    			line-height: 20px;
+			}
+			.span1_2{
+				float: right;
+				font-family: "微软雅黑";
+    			font-size: 14px;
+    			color: #666666;
+    			margin-right: 4px;
+			}
+			.span2{
+				width: 50%;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				color: #AAAAAA;
+				text-align: right;
+				float: right;
+			}
+			/*.span3{
+				float: right;
+				
+			}*/
+			.span4{
+				width: 50%;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				color: #FF8A00;
+				text-align: right;
+				float: right;
+			}
+			.date_pppp{
+				border: 1px;
+				color: #fccc;
+			}
+			.tip{
+				float: right;
+				margin-right: 10px;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				color: #666666;
+			}
+			.custom_notice_span{
+				float: right;
+				margin-right: 18px;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				color: #AAAAAA;
+				
+			}
+			.money{
+				
+				float: left;
+				margin: 14px 0px 14px 18px;
+				font-family: "微软雅黑";
+				font-size: 18px;
+				color: #ff8a00;
+				width: 40%;
+    			text-align: center;
+			}
+			.paybtn {
+				float: right;
+				/*width: 40%;*/
+				height: 40px;
+				line-height: 40px;
+				padding: 0 38px;
+				margin-right: 15px;
+				margin-top: 6px;
+				color: #fff!important;
+				font-family: "微软雅黑";
+				font-size: 18px;
+				text-align: center;
+				background-color: #ff8a00;
+				border-radius: 6px;
+				outline: none;
+				border: none;
+				text-decoration: none;
+			}
+			.custom-menu-link {
+			    font-size:16px;
+                color: #3b3937;
+                background: url("static/img/baojie/btn_arrow_05_05.png") no-repeat;
+    			background-size: 10px 12px;
+    			background-position: 97% center;
+            }
+            .custom-menu-link>a{
+                padding:15px;
+                margin-right: 15px;
+            }
+            .addr_location{
+                color: #888;
+                line-height: 20px;
+                margin-top: 6px;
+            }
+            .date_pppp{
+              position: fixed;
+              width: 0px;
+              height: 0px;
+              color: #fccc;
+              z-index: -1;
+              top: 200px;
+              left: 50px;
+              border: 0px;
+            }
+            .zzmb{z-index:100000; position: absolute; top:0; left:0; -moz-opacity:0.65; opacity:0.65; filter: alpha(opacity=65); background:#000; width:100%; height:100%;display:block}
+            
+		</style>
+	</head>
+	<body ms-controller="root">
+	
+		<div id="zzmb" class="zzmb" style="display:none;position:fixed;"></div>
+				
+	    <div id="dialog"></div>
+        <div ms-include-src="'common/widget.html'"></div>
+        <div ms-include-src="'common/addressv2.html'"></div>
+        
+        <div ms-include-src="'common/couponv2.html'"></div>
+	    <section ms-visible="page=='main'">
+    		<div class="address">
+    			<div class="addr_area" ms-click="choseAddress">
+    				<div style="background:url(static/img/baojie/icon_address_top_02.png) repeat-x;height:5px;background-size: 100% 5px;">&nbsp;</div>
+    				<div style="text-align:center;background-color: #f7f7f1;">
+    					<a href="#" class="add_address" ms-visible="!address.receiveName">选择收货地址</a>
+    				</div>
+    				<div class="custom-menu-link" ms-visible="address.receiveName">
+    					<a  href="#">
+    						<span>{{address.receiveName}}</span>
+    						<span style="margin-left:15px;">{{address.tel}}</span>
+    						<div class="addr_location">{{address.province}}{{address.city}}{{address.county}}{{address.xiaoquName}}{{address.detailAddress}}</div>
+    					</a>
+    				</div>
+    				<div style="background:url(static/img/baojie/icon_address_bottom_04.png) repeat-x;height:5px;background-size: 100% 5px;">&nbsp;</div>
+    			</div>	
+    		</div>
+    		<div class="contain">
+    			<div class="item">
+    				<span class="span1">项目：</span>
+    				<span class="span2">日常保洁</span>
+    			</div>
+    			<div class="time" style="line-height: 30px;">
+    				<span class="span1">时长：</span>
+    				<img ms-click="addhours" src="static/img/baojie/btn_plus_03.png" class="icon1" />
+    				<!--<span style="float: right; margin-right: 6px; padding-top: 2px;font-size: 14px;">{{hours}}</span>-->
+    				<span style="float: right; margin-right: 6px; font-size: 14px;">{{hours}}</span>
+    				<img  ms-click="subhours" src="static/img/baojie/btn_subtract_03.png" class="icon2"/>
+    			</div>
+    			<div class="total">
+    				<span class="span1">小计：</span>
+    				<span class="span4">￥<span style="padding-left: 4px;">{{amount}}</span></span>
+    			</div>
+    		</div>
+    		<div class="discount" ms-click="showCoupons">
+    			<span class="span1">使用优惠：</span>
+    			<img src="static/img/baojie/icon_youhuiquan_03.png" class="icon3" />
+    			<span class="span1_1">{{couponNum}}张可用</span>
+    			<img src="static/img/baojie/btn_arrow_05_05.png" class="icon4" />
+    			<span class="span1_2" ms-visible="coupon.amount">-{{coupon.amount}}元</span>
+    		</div>
+    		<div class="custom_menu">
+    			<div class="order_time"  id="timetaker">
+    				<span class="span1">预约时间：</span>
+    				<img src="static/img/baojie/btn_arrow_05_05.png" class="icon4" />
+    				<input class="date_pppp" id="datetimepicker2" ms-duplex="requireDate">
+                    <span class="tip" ms-visible="!requireDate">请选择时间</span>
+                    <span class="tip">{{requireDate}}</span>
+    			</div>
+    			<div class="custom_notice" ms-click="showMemo">备注
+    				<!--<span class="span1">备注：</span>-->
+    				<!--<img src="static/img/baojie/btn_arrow_05_05.png" class="icon4" />-->
+    				<span class="custom_notice_span">{{memo}}</span>
+    			</div>
+    		</div>
+    		<div class="total_pay">
+    			<div class="money"><span>合计：{{realAmount | currency}}</span></div>
+    			<span class="paybtn" ms-click="submit">立即支付</span>
+    		</div>
+		</section>
+	</body>
+</html>
+

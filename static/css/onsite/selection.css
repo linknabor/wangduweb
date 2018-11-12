@@ -1,0 +1,87 @@
+.info-wrap {
+	padding: 0 15px 15px;
+}
+.tab-selection {
+	height: 44px;
+	line-height: 44px;
+	border-bottom: 1px solid #d4cfc8;
+	font-size: 15px;
+	color: #a6937c;
+}
+.tab-selection.active {
+	color: #ff8a00;
+	border-bottom: 2px solid #ff8a00;
+}
+.price {
+	color: #ff8a00;
+	padding-top: 15px;
+}
+.desc-wrap {
+	border: 1px solid #d4cfc8;
+	color: #3b3937;
+	padding: 15px;
+}
+.desc-items {
+	margin-top: 12px;
+	margin-bottom: 0;
+	padding-left: 15px; 
+}
+.desc-items li {
+	padding-bottom: 6px;
+}
+
+.order-title {
+	color: #7e6b5a;
+	padding-left: 15px;
+}
+.block-menu {
+	border-top: 1px solid #d4cfc8;
+}
+.block-menu li {
+	border-bottom: 1px solid #d4cfc8;
+	padding: 15px;
+}
+.date-picker {
+	border: none;
+	outline: none;
+    text-align: right;
+    height: 35px;
+    margin-top: -10px;
+    background-color: #fffff8;
+}
+.date-picker-value {
+	position: absolute;
+	right: 15px;
+    top: 15px;
+	color: #4f4f4f;
+	font-size: 14px;
+	pointer-events: none;
+}
+.menu-link {
+	position: relative;
+	padding-right: 12px;
+	color: #bfbfbf!important;
+	font-size: 14px;
+	text-decoration: none;
+	background: url("../../images/onsite/icon_arrow.png") no-repeat;
+	background-size: 7px 12px;
+	background-position: right;
+}
+.icon-time {
+	background-image: url("../../images/onsite/icon_time.png");
+}
+.icon-times {
+	background-image: url("../../images/onsite/icon_times.png");
+}
+.icon-address {
+	background-image: url("../../images/onsite/icon_location.png");
+}
+.icon-car {
+	background-image: url("../../images/onsite/icon_fasuper_car.png");
+}
+.icon-requirement {
+	background-image: url("../../images/onsite/icon_another.png");
+}
+.value-color {
+	color: #3b3937;
+}

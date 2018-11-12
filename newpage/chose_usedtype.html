@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <meta content="telephone=no" name="format-detection" />
+        <meta charset="UTF-8">
+        <title>发布</title>
+        <link rel="stylesheet" type="text/css" href="../static/css_fornew/common_fornew.css"/>
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/avalon.js"></script>
+        <script src="../static/js/common_v3.js"></script>
+        <script src="chose_usedtype.js"></script>
+        <style type="text/css">
+        	body{
+        		background-color: #eee;
+        		color:#676e74;
+        		font-size: 1.3em;
+        	}
+        	.title_info{
+        		padding: 20px;
+        		color:#aaa;
+        		line-height: 20px;
+        	}
+        	.chose_type{
+        		padding:10px 20px;
+        	}
+        	.chose_type>input{
+        		width: 70%;
+        		color:#000;
+        		border:none;
+        		line-height: 30px;
+        	}
+        	.chose_type>a{
+				line-height: 30px;
+				padding: 0px 20px;
+				color:#fff;
+				background-color: #ff7e00;  
+				border-radius: 15px;      		
+        	}
+        	.chose_show{
+        		padding: 20px;
+        	}
+        	.cs_content{
+        		padding:10px 20px;
+        		background-color: #fff;
+        		border-radius:20px;
+        		margin-bottom: 15px;
+        		margin-right: 5%;
+        	}
+        	.cs_content_big{
+        		padding:10px 40px;
+        		background-color: #fff;
+        		border-radius:20px;
+        		margin-bottom: 15px;
+        	}
+        </style>
+	</head>
+	<body ms-controller="root">
+		<div class="title_info">
+			不用的闲置物品，可以跟邻居们进行交换或折价给有需要的邻居哦。友情提示：请尽量描述完整你的宝贝信息，以提高交易达成的成功率。
+		</div>
+		<div class="chose_type hidden" style="background-color: #fff;">
+			<input class="fl" type="text" placeholder="请选择下列项目或自选"/>
+			<a class="fr" href="#">确定</a>
+		</div>
+		<div class="chose_show hidden">
+			<span class="cs_content ib"  ms-repeat-list="model">{{list}}</span>
+		</div>
+	</body>
+</html>

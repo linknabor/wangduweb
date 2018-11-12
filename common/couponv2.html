@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>可用现金券</title>
+<!--    <script src="../static/js/zepto.min.js?v=4"></script>
+    <script src="../static/js/avalon.js"></script>
+    <script src="../static/js/common_v3.js"></script>-->
+    <style>
+    
+    .coupon_item{
+        padding:0px 15px 20px 15px;
+        height:80px;
+        margin-bottom: 15px;
+    }
+    .coupon_desc{
+        float:left;
+        width: 74%;
+        background:url("http://7xkdq7.com1.z0.glb.clouddn.com/image/coupon/bg_courtesy_card.png") no-repeat;
+        font-size: 20px;
+        background-size: 138% 100px;
+        background-position: 0px 0px;
+        height:100px;
+    }
+    .coupon_value{
+        float:right;
+        width:26%;
+        height:100px;
+        background:url("http://7xkdq7.com1.z0.glb.clouddn.com/image/coupon/bg_courtesy_card.png") no-repeat;
+        font-size: 20px;
+        background-size: 358% 100%;
+        background-position: 100% 0px;
+    }
+    .coupon_line_1{
+        width: 100%;
+        padding: 20px 20px 0 20px;
+    }
+    .coupon-name{
+        font-size: 20px;
+        color:#ff8a00;
+    }
+    .coupon-time{
+        border: 1px #b28850 solid;
+        color:#b28850;
+        border-radius: 20px;
+        padding: 0px 10px;
+        font-size: 12px;
+    }
+    .coupon-limit{
+        position: absolute;
+        font-size:11px;
+        color:#666666;
+        padding:10px 0 0px 20px;
+        width: 60%;
+    }
+    .coupon-amount{
+        color:white;
+        text-align: center;
+        padding: 20px 0 0 0;
+        font-size: 24px;
+    }
+    .coupon-dyq{
+        color:white;
+        text-align: center;
+        padding: 10px 0 0 0;
+        font-size: 13px;
+    }
+    .title-line{
+        margin:15px;
+        border-bottom: 1px solid #888888;
+        height: 35px;
+    }
+    .title_text{
+        float:left;
+        font-size:13px;
+        color:#666666;
+    }
+    .title_count{
+        float:right;
+        font-size:13px;
+        color:#666666;
+    }
+    .btn_area{
+        text-align: center;
+        width:100%;
+        position: fixed;
+        bottom: 10px;
+    }
+    .more_btn{
+        margin-left: 20px;
+        margin-right: 20px;
+        color: white;
+        background: #ff8a00;
+        padding: 8px 30px;
+        font-size: 14px;
+        border-radius: 6px;
+    }
+    .icon_se{
+        background:url('http://7xkdq7.com1.z0.glb.clouddn.com/image/coupon/icon_select.png') no-repeat;
+        background-size: 20px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        z-index: 110;
+        margin-left: -10px;
+        position:absolute;
+        margin-top: 38px;
+    }
+    .selected .icon_se{
+        background:url('http://7xkdq7.com1.z0.glb.clouddn.com/image/coupon/icon_selectted.png') no-repeat;
+        background-size: 20px;
+    }
+    
+    .outter_bg{
+        background:url("http://7xkdq7.com1.z0.glb.clouddn.com/image/coupon/bg_courtesy_card.png") no-repeat;
+        background-size: 100% 110px;
+        height:115px;
+    }
+    .coupon_item{
+        padding:0px 15px 30px 15px
+    }
+    .coupon_desc{
+        float:left;
+        width: 74%;
+        font-size: 20px;
+        height:120px;
+        background-size: 138% 110px;
+        background-position: 0px 0px;
+    }
+    .coupon_value{
+        float:right;
+        width:26%;
+        height:110px;
+        font-size: 20px;
+    }
+    .coupon_line_1{
+        width: 100%;
+        padding: 20px 20px 0 20px;
+    }
+    .coupon-name{
+        font-size: 20px;
+        color:#ff8a00;
+        display: block;
+    }
+    .coupon-limit{
+        position: absolute;
+        font-size:11px;
+        color:#666666;
+        padding:10px 0 10px 20px;
+        width: 60%;
+    }
+    </style>
+</head>
+
+<body>
+    <div ms-controller="coupon_root"  id="coupon_root" ms-visible="inuse">
+        <div class="title-line">
+            <div class="title_text">可用现金券</div>
+            <div class="title_count">共{{coupons.length}}个</div>
+        </div>
+        <div>
+            <div class="coupon_item" ms-repeat-coupon="coupons" ms-class-selected="$index==selectedIndex" ms-click="chooseCoupon($index)">
+                <div class="outter_bg">
+                    <i class="icon_se"></i>
+                    <div class="coupon_desc">
+                        <div class="coupon_line_1">
+                            <span class="coupon-name">{{coupon.title}}</span>
+                            <span class="coupon-time">{{coupon.leftDayDes}}</span>
+                        </div>
+                        <div class="coupon-limit">使用期限{{coupon.useStartDateStr}}至{{coupon.useEndDateStr}}</div>
+                    </div>
+                    <div class="coupon_value">
+                        <div class="coupon-amount">￥{{coupon.amount}}</div>
+                        <div class="coupon-dyq">现金券</div>
+                    </div>
+                </div>
+                <div>&nbsp;</div>
+            </div>
+            
+        </div>
+        <div style="height: 15px;width:100%">&nbsp;
+        </div>
+        <div class="btn_area" style="margin-bottom: 15px;">
+            <div class="more_btn" ms-click="confirm">确定</div>
+        </div>
+    </div>
+    <script>
+        
+        /**
+         * 1. 红包由外部设置setupCoupons(coupons),
+         * 2. 需实现红包选中回调couponCallback
+         * 3. 可使用filterCouponByAmount进行金额过滤
+         * 4. 可使用getCouponNum获取红包个数
+         */
+        var couponUtil={};
+        var coupon_root={};
+        couponUtil.couponCallback=function(coupon){/**默认啥也不做**/};
+        couponUtil.setupCoupons=function(coupons) {/**红包由外部设置**/
+            coupon_root.coupons= coupons;
+            coupon_root.allCoupons = coupons;
+        }
+        couponUtil.getCouponNum = function(){
+            return coupon_root.coupons.length;
+        }
+        couponUtil.filterCouponByAmount=function(amount) {
+            var c = [];
+            for(var i=0;i<coupon_root.allCoupons.length;i++){
+                if(couponUtil.canUse(coupon_root.allCoupons[i],amount)){
+                    c.push(coupon_root.allCoupons[i]);
+                }
+            }
+            coupon_root.coupons= c;
+        }
+        couponUtil.canUse=function(coupon,amount){
+            return coupon.usageCondition<=amount;
+        }
+        couponUtil.showCouponList=function(callback){
+            coupon_root.inuse=true;
+            couponUtil.couponCallback=callback;
+        }
+        couponUtil.initCoupons = function(){/**初始化红包页面**/
+            coupon_root = avalon.define({
+                $id: "coupon_root",
+                selectedIndex:-1,
+                inuse:false,
+                coupons:[
+                ],
+                allCoupons:[],
+                chooseCoupon:function(index){
+                    if(coupon_root.selectedIndex != index){
+                        coupon_root.selectedIndex = index;
+                    } else {
+                        coupon_root.selectedIndex = -1;
+                    }
+                    coupon_root.confirm();
+                },
+                confirm:function(){
+                    if(coupon_root.selectedIndex < 0 || coupon_root.selectedIndex>=coupon_root.coupons.length){
+                        couponUtil.couponCallback(null);
+                    } else {
+                        couponUtil.couponCallback(coupon_root.coupons[coupon_root.selectedIndex]);/*使用处需要实现该方法*/
+                    }
+                    coupon_root.inuse=false;
+                }
+            });
+            avalon.scan(document.getElementById('coupon_root'));
+        }
+        couponUtil.initCoupons();
+    </script>
+</body>
+</html>

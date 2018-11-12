@@ -1,0 +1,54 @@
+var o;
+avalon.ready(function(){
+	o = avalon.define({
+		$id:"root",
+		model:[
+			{
+				id:1,
+				headimg:"../static/images/coupon_share_icon.jpg",
+				username:"向某某",
+				time:"2016.03.30",
+				infotype:2,
+				title:"今晚打1老虎",
+				price:"￥1200",
+				imglist:["../static/images/coupon_share_icon.jpg","../static/images/coupon_share_icon.jpg","../static/images/coupon_share_icon.jpg"],
+				content:"这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，",
+				pinglun:125,
+				liulan:653,
+				dianzan:485,
+			},
+			{
+				id:1,
+				headimg:"../static/images/coupon_share_icon.jpg",
+				username:"徐某某",
+				time:"2016.03.01",
+				infotype:1,
+				title:"今晚打2老虎",
+				imglist:["../static/images/coupon_share_icon.jpg",],
+				content:"这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，",
+				pinglun:125,
+				liulan:653,
+				dianzan:485,
+			},
+			{
+				id:1,
+				headimg:"../static/images/coupon_share_icon.jpg",
+				username:"陈某某",
+				time:"2016.02.12",
+				infotype:3,
+				title:"今晚打3老虎",
+				price:"￥1200",
+				imglist:["../static/images/coupon_share_icon.jpg","../static/images/coupon_share_icon.jpg"],
+				content:"这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，",
+				pinglun:125,
+				liulan:653,
+				dianzan:485,
+			}
+		],
+		xianhua:"list",
+		ershou:"show",
+		linli:"list",
+	})
+	
+	avalon.scan(document.body)
+})

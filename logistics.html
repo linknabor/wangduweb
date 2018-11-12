@@ -1,0 +1,73 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>物流信息</title>
+<link href="static/css/header.css?v=20151217" rel="stylesheet" />
+<link href="static/css/common.css?v=20151217" rel="stylesheet" />
+<link rel="stylesheet" href="static/css/onsite/common.css?v=20151217">
+<link rel="stylesheet" href="static/css/onsite/selection.css?v=20151217">
+<script type="text/jscript" src="static/js/jquery.js?v=20151217"></script>
+<script type="text/jscript" src="static/js/avalon.js"></script>
+<script type="text/jscript" src="static/js/common_v3.js?v=20151217"></script>
+<script type="text/jscript" src="logistics.js?v=20151217"></script>
+
+ 	<style type="text/css">
+ 	     .avatar-wrap {
+            height: 42rem;
+            text-align: center;
+        }
+ 	</style>
+
+</head>
+<body  ms-controller="root">
+	<!-- load -->
+		<div class="load6" id="LoadingBar">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+		        
+		<div id="fade" class="black_overlay">
+		</div>
+		
+		<div id="phoneErro"></div>
+		
+		<div id="phoneAjax" class="hidden">
+			<img src="http://7xlem4.com2.z0.glb.qiniucdn.com/backed/images/load2.gif" style="width:40px;height40px;vertical-align: middle;">
+		</div>
+	<!-- load -->
+	
+<!--			<img class="fl order-picture" ms-src="{{smallpicture}}" />-->
+	<div class="order-item p15 divider fs14" ms-visible="logisticsinfo.hasInfo==0">订单正在处理中，暂时没有物流信息!</div>
+    <div ms-visible="logisticsinfo.hasInfo==1" ms-repeat-data="logisticsinfo">
+		<div class="order-item p15 divider">
+			<div class="ov pb10 fs14">物流公司：{{data.logisticsname}}</div>
+			<div class="ov pb10 fs14">快递单号：{{data.logisticsno}}</div>
+			<div class="ov pb10 fs14" ms-visible="data.signstatus ==0">物流状态：在途</div>
+			<div class="ov pb10 fs14" ms-visible="data.signstatus ==1">物流状态：揽件</div>
+			<div class="ov pb10 fs14" ms-visible="data.signstatus ==2">物流状态：疑难</div>
+			<div class="ov pb10 fs14" ms-visible="data.signstatus ==3">物流状态：签收</div>
+			<div class="ov pb10 fs14" ms-visible="data.signstatus ==4">物流状态：退签</div>
+			<div class="ov pb10 fs14" ms-visible="data.signstatus ==5">物流状态：派件</div>
+			<div class="ov pb10 fs14" ms-visible="data.signstatus ==6">物流状态：退回</div>
+			<div class="ov pb10 fs14" ms-visible="data.signstatus ==7">物流信息尚未同步到东湖e家园，请稍后再试试!</div>
+			<div class="ov pb10 fs14" ms-visible="data.signstatus ==8"></div>
+		</div>
+		<div class="desc-wrap fs13  divider">
+			<div class="fs15"ms-visible="data.signstatus<7">物流信息</div>
+			    <ul class="desc-items" ms-repeat-note="data.description_array">
+			        <li>{{note.time}}</li>
+					<li>{{note.context}}</li>
+				</ul>
+		</div>
+			
+	</div>
+</body>
+</html>
+</body>
+</html>

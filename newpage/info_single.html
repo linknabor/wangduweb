@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <meta content="telephone=no" name="format-detection" />
+        <meta charset="UTF-8">
+        <title>我的发布</title>
+        <link rel="stylesheet" type="text/css" href="../static/css_fornew/common_fornew.css"/>
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/avalon.js"></script>
+        <script src="../static/js/common_v3.js"></script>
+        <script src="info_single.js"></script>
+        <style type="text/css">
+        	body{
+        		background-color: #eee;
+        		color:#676e74;
+        	}
+        	.feed_info{
+        		margin-top: 10px;
+        		background-color: #fff;
+        		padding: 20px 0px 20px 20px;
+        	}
+        	.userinfo{
+        		line-height: 25px;
+        		padding:0px 20px 10px 0px;
+        		border-bottom: 1px solid #ddd;
+        		font-size: 1.3em;
+        	}
+        	.userinfo>img{
+        		width:50px;
+        		height:50px;
+        		border-radius: 50%;
+        		margin-right: 15px;
+        	}
+        	.delbtn{
+        		width:24px;
+        		height:24px;
+        		margin-top:13px;
+        	}
+        	.fc_title{
+        		font-size: 1.3em;
+        		padding: 10px 0px;
+        		position: relative;
+        	}
+        	.price{
+        		position: absolute;
+        		right: 0px;
+        		color:#ff7e00;
+        		font-size: 1.2em;
+        		background-color: #eee;
+        		line-height: 20px;
+        	}
+        	.fc_title_logo{
+        		width:55px;
+        		font-size: 0.7em;
+        		padding:2px 3px;
+        		color:#fff;
+        		background-color: #ff8a00;
+        		border-radius: 3px;
+        		margin-right: 5px;
+        	}
+        	.fc_img,.fc_content,.fc_btns{
+        		padding:0px 20px 15px 0px;
+        	}
+        	.fc_btns>span{
+        		margin-left: 10px;
+        	}
+        	.fc_btns>span>img{
+        		display: inline-block;
+        		height:15px;
+        		width:18px;
+        		vertical-align: middle;
+        	}
+        	.foot{
+        		background-color: #676e74;
+        	}
+        	.foot>span{
+        		margin-top:15px;
+        		height:20px;
+        		text-align: center;
+        		line-height: 20px;
+        		font-size: 1.3em;
+        	}
+        	.foot>span:first-child{
+        		border-right: 1px solid #fff;
+        	}
+        	.w33{
+        		float: left;
+        		width:33%;
+        	}
+        </style>
+	</head>
+	<body ms-controller="root">
+		<div class="feed_info w100 hidden">
+			<div class="userinfo hidden">
+				<img class="fl" ms-src="model.headimg" />
+				<p class="fl hidden"><span style="color: #000;">{{model.username}}</span><br /><span>{{model.time}}</span></p>
+				<p class="fr delbtn"><img src="../static/images/btn_trash.png" /></p>
+			</div>
+			<div class="feed_content hidden">
+				<div class="fc_title">
+					<span class="fc_title_logo ib" ms-visible="xianhua=='show'">鲜花晒图</span>
+					<span class="fc_title_logo ib" ms-visible="ershou=='show'">二手市场</span>
+					<span class="fc_title_logo ib" ms-visible="linli=='show'">邻里叽歪</span>
+					<span style="color:#000">【{{model.title}}】</span>
+					<span class="ib price">{{model.price}}</span>
+				</div>
+				<div class="fc_img hidden" ms-repeat-imgs="model.imglist" ms-class-w33="model.imglist.length>1">
+					<img ms-src={{imgs}} ms-click="bigimg($index)"/>
+				</div>
+				<div class="fc_content clear">
+					{{model.content}}
+				</div>
+				<div class="fc_btns tr" style="padding-bottom: 0px;">
+					<span class="ib"><img src="#" />{{model.pinglun}}个评论</span>
+					<span class="ib"><img src="#" />{{model.liulan}}次浏览</span>
+					<span class="ib"><img src="#" />{{model.dianzan}}次赞</span>
+				</div>
+			</div>
+			
+		</div>
+		<div class="feed_info w100 hidden" style="font-size: 0.8em;">
+			<div class="userinfo hidden" ms-repeat-reply="model.replylist" style="margin-bottom: 10px;">
+				<img class="fl" ms-src="reply.headimg" />
+				<p class="fl hidden"><span style="color: #000;">{{reply.username}}</span><br /><span>{{reply.xiaoquname}}</span></p>
+				<p class="fr" style="margin-top: 25px;">{{reply.time}}</p>
+				<div class="clear" style="padding-left: 65px;">
+					<span style="color: #FF7E00;" ms-visible="reply.hasreply==1">回复：@{{reply.replyname}}&nbsp;</span>{{reply.content}}
+				</div>
+			</div>
+		</div>	
+		<br />
+		<br />
+		<br />
+		<div class="foot">
+			<span class="fl w50">评论</span>
+			<span class="fl w50">点赞</span>
+		</div>
+	</body>
+</html>

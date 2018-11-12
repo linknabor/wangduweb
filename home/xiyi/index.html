@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    	<meta content="telephone=no" name="format-detection" />
+		<meta charset="UTF-8">
+		<title>洗衣</title>
+		<link rel="stylesheet" href="../../static/css/common_v2.css">
+    	<link rel="stylesheet" href="../../static/css/swiper.css">
+   		<script src="../../static/js/fastclick.min-1.0.6.js"></script>
+		<script src="../../static/js/jquery.js"></script>
+		<script src="../../static/js/avalon.js"></script>
+		<script src="../../static/js/common_v3.js"></script>
+		<script src="index.js"></script>
+		<style type="text/css">
+		[ms-controller]:{display: none;}
+			body{
+				box-sizing: border-box;
+			}
+			.adimg{
+				width:50%;
+			}
+			.adimg img{
+				max-width: 100%;
+			}
+			#cities{
+				position: absolute;
+				top:0px;
+				background-color: #fff;
+				width:100%;
+				height:100%;
+				font-size: 14px;
+			}
+			#cities ul{
+				overflow: hidden;
+				padding:0px 15px;
+				background-color: #fdfdfd;
+				border:1px solid #d7d7d7;
+			}
+			#cities p{
+				height:30px;
+				line-height: 30px;
+				padding:0px 15px;
+				background-color: #fff;
+			}
+			#cities li{
+				float: left;
+				height:36px;
+				line-height: 36px;
+				text-align: center;
+				width:18%;
+				border:1px solid #d7d7d7;
+				margin:2% 2% 2% 0;
+			}
+			#foot{
+				height:64px;
+				width:100%;
+				border:1px solid #dadde2;
+				position:fixed;
+				bottom:0px;
+				background-color: #fff;
+			}
+			.foot_bar li{
+				float: left;
+				width:33.3%;
+			}
+			.foot_bar li a{
+				display: inline-block;
+				width:100%;
+				font-size: 14px;
+				color:#3e4862;
+				text-align: center;
+				line-height:64px;
+			}
+			.foot_bar img{
+				width:30px;
+				vertical-align: middle;
+				margin-right: 10px;
+			}
+			.foot_bar .arrow{
+				margin-left:10px;
+			}
+			.mb70{
+				margin-bottom: 70px;
+			}
+		</style>
+	</head>
+	<body ms-controller="root">
+		<!--轮播动画模块-->
+		<div class="device" ms-visible="currentPage=='list'">
+		    <div class="swiper-container">
+		        <div class="swiper-wrapper">
+		           <div class="swiper-slide"  ms-repeat-banner="banners">
+			           <a ms-href="{{banner.bannerUrl}}">
+						    <img ms-src="{{banner.picture}}">
+			           </a>
+		           </div>
+				</div>
+		    </div>
+		    <div class="pagination"></div>
+		</div>
+		<!--主体跳转连接模块-->
+		<div ms-visible="currentPage=='list'">
+			<ul>
+				<li class="fl adimg" ms-repeat-type="washindex">
+					<img ms-src={{type.typeIcon}} ms-click="showXiyiItem(type.id)"/>
+				</li>
+			</ul>
+		</div>
+		<div class="mb70 clear">
+			&nbsp;
+		</div>
+		<!--城市列表-->
+		<div id="cities" ms-visible="currentPage=='show'">
+			<p>当前城市</p>
+			<ul>
+				<li>{{maincity.name}}</li>
+			</ul>
+			<p>全部城市</p>
+			<ul id="citylist">
+				<li ms-repeat-city="cities" ms-click="chosemain($index)">{{city.name}}</li>
+			</ul>
+		</div>
+		<!--底部功能栏模块-->
+		<div id="foot">
+			<ul class="foot_bar">
+				<!--<li><a href="#" ms-click="chosecity"><span id="city">{{maincity.name}}</span><img class="arrow" src="../../static/images/home/wash/wash_index_arrow.png" alt="" /></a></li>-->
+				<li><a href="../index.html"><span style="font-size:16px">首页</span></a></li>
+				<li><a href="introduce.html"><img src="../../static/images/home/wash/wash_index_serve.png"/><span>服务介绍</span></a></li>
+				<li><a href="../../xiyi_list.html"><img src="../../static/images/home/wash/wash_index_order.png"/><span>订单</span></a></li>
+			</ul>
+		</div>
+
+<script type="text/javascript" src="../../static/js/swiper.js"></script>
+<script type="text/javascript">
+function initSwiper(){
+    //头部展示图适应屏幕
+    window.onload=function(){
+        var a2=parseInt($('.swiper-slide img').css('width') );
+        var a3=a2*0.4;
+        $('.swiper-container').css({height:a3 + 'px'});
+        $('.swiper-slide img').css({height:a3 + 'px'});
+		$('.hideloadingpage').hide();
+
+		//顶部图片滑动代码↓
+	    var mySwiper = new Swiper('.swiper-container',{
+	        speed:750,
+	        autoplay:3000,	//
+	        autoplayDisableOnInteraction: false,
+	        autoplayStopOnLast:true,
+	        pagination: '.pagination',
+	        loop:true
+	    })
+    }
+}
+</script>
+	</body>
+</html>

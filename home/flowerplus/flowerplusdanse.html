@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="email=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+	<title>单色鲜花体验活动</title>
+    <link rel="stylesheet" href="../../static/css/header.css">
+	<link rel="stylesheet" href="../../static/css/onsite/common.css?v=20150822010144">
+	<link rel="stylesheet" href="../../static/css/daojia/common.css?v=20150822010144">
+    <link rel="stylesheet" href="../../static/css/common.css?v=20150822010144">
+	<link rel="stylesheet" href="../../static/css/onsite/selection.css">
+	<script src="../../static/js/jquery.js"></script>
+	<script src="../../static/js/avalon.js"></script>
+	<script type="text/jscript" src="../../static/plugin/jquery.datetimepicker.js"></script>
+	<link rel="stylesheet" href="../../static/plugin/jquery.datetimepicker.css">
+	<script type="text/jscript" src="../../static/js/common_v3.js"></script>
+	<script src="../../common/commonaddress.js"></script>
+	<script src="flowerplusdanse.js"></script>
+    <link rel="stylesheet" href="../../static/css/address.css?v=20150822010144">
+    <link rel="stylesheet" href="../../static/css/home/flowerplus.css?v=20150822010144">
+
+
+</head>
+<body ms-controller="root">
+<section ms-visible="control.currentPage=='main'" >
+	<img class="banner" src="../../static/images/home/flowerplus/flowerplusdanse.jpg">
+	<div class="info-wrap divider">
+		<div class="clearfix">
+			<label class="title fs15 fl">活动价格</label>
+			<input class="date_pppp"  id="datetimepicker2" ms-duplex="servicedate">
+		    <span class="fs15 price fr">￥19.9元</span>	
+		</div>
+		<div class="desc-wrap fs13">
+			<div class="fs15">本商品由鲜花宅配品牌FlowerPlus(花+)倾力特惠及配送</div>
+			<ul class="desc-items">
+				<li>单个品种，简洁环保包装，无任何装饰，回归生活本来</li>
+				<li>优选当季品种，源自中国7大鲜花产区，拥有很多普通花店不会有的品种；</li>
+			</ul>
+			<br />
+			<div class="fs15">用户须知：</div>
+			<ul class="desc-items">
+				<li>活动日期：2015年11月23日-11月30日，仅限200份</li>
+				<li>本次活动仅含一次鲜花配送，且非鲜花包月套餐</li>
+				<li>每个微信号只能购买一次；</li>
+				<li>鲜花统一发货时间为2015年12月5日（周六）或12月7日（周一）</li>
+			</ul>
+			<br />
+			<div class="fs15">活动支持的区域：江浙沪、成都、北京</div>
+		</div>
+	</div>
+	<label class="title fs13 order-title">预约需求</label>
+	<ul class="list block-menu">
+		<li ms-click="showModal">
+			<span class="fs14">配送周期</span>
+			<span class="fs15 fr">{{pinci}}</span>
+		</li>
+		<!--<li class="rel" id="timetaker">
+			<span class="fs14">首次配送时间</span>
+			<span class="date-picker-value" ms-visible="!servicedate">请选择时间</span>
+			<span class="date-picker-value" ms-class-value-color="!form.date.isEmpty">{{servicedate}}</span>
+		</li>-->
+	</ul>
+    <ul ms-click="addr.showAddress" class="list flower-address-ul">
+		       <li><span class="fs14 flower-address-li"  >配送地址</span></li>
+		       <li><a class="menu-link fr left10" ms-class-value-color="addressAdded" >{{o.addr.checkedAddress.city}}{{o.addr.checkedAddress.county}}{{o.addr.checkedAddress.xiaoquName}}{{o.addr.checkedAddress.detailAddress}}</a></li>
+   </ul>
+
+	<div class="divider"></div></div>
+	<div class="btn-home-fixed">
+		<span  class="fl" 
+			style="height:40px;line-height:40px;width:36%;background-color:#444;text-align:center;font-size:15px;" ms-click="golist">
+			更多服务
+		</span>
+		<span  class="fl" 
+			style="height:40px;line-height:40px;width:64%;background-color:#ff8a00;text-align: center;font-size:15px;"  ms-click="submit" ms-class-useless="submiting">
+			立即下单
+		</span>
+	</div>
+
+</section>
+	<!-- 地址编辑 -->
+<section  >
+<div ms-include-src="'../../common/commonaddress.html'"></div>
+</section>
+
+<div class="modal-mask" ms-visible="modalShown" >
+      <div class="modal" style="margin-top: 100px;">
+          <div class="ptb15 pincipicker" ms-repeat-item="pinciPicker" ms-class-lite-divider="!$last" ms-click="confirmPinci($index)">{{item.name}}</div>
+      </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>东湖e家园服务</title>
+    <link rel="stylesheet" href="../static/css/swiper.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    
+    <script type="text/jscript" src="../static/js/zepto.min.js"></script>
+	<script type="text/jscript" src="../static/js/fastclick.min-1.0.6.js"></script>
+	<script type="text/jscript" src="../static/js/avalon.js"></script>
+	<script type="text/jscript" src="../static/js/common_v3.js"></script>
+	<script type="text/jscript" src="myPublish.js"></script>
+	<link rel="stylesheet" href="../static/css/community/common.css">
+ <style>
+ 	
+	.category{
+ 		width: 100%;
+ 		background-color: #f7f7f1;
+ 		height: 90px;
+ 		overflow-x: hidden;
+ 	}
+ 	
+ 	.category a{
+ 	
+		text-decoration: none;
+		color: #333;
+		font-size: 14px;
+    }
+     
+    .category_img{
+     
+     	width: 30px;
+     	height: 30px;
+     	
+    }
+     
+    .category_main{
+     	
+     	width: 100%;
+     	margin: 0px 0px 0px 5%;
+     	overflow-x: hidden;
+     	
+    }
+    
+    .category_sub_main{
+    	    	
+    	margin: 15px 4% 15px 4%;
+    	text-align: center;
+    }
+     
+	.category_txt{
+        	
+		padding: 7px 0px 0px 0px;
+		font-size: 12px;
+		color: :#999;
+	}
+	
+	.thread_user_name{
+	
+		font-size: 14px;
+		margin-top: 10.5px;
+		color: #3b3937;
+		height: 21px;
+		line-height: 21x;
+		width: 45%;
+		float: left;
+	}
+	
+	.thread_user_addr{
+	
+		margin: 10.5px 0px 0px 0px;
+		color: #666; 
+		float: left;
+		font-size: 12px;
+		height: 21px;
+		line-height: 21x;
+		text-align: right;
+		width: 33%;
+	}
+	
+	.preview_img_layer{
+		
+		float: left;
+		width: 100%;
+		
+	}
+	
+	.preview_img{
+	
+		width: 92px;
+		height: 92px;
+	}
+	
+	.thread_head{
+		
+		height: 44px;
+		background-color: #f7f7f1;
+		width: 100%;
+	}
+	
+	.category_img{
+		
+		padding: 7px 0px 10px 4%;
+		float: left;
+	}
+	
+	.thread_category{
+		
+		padding: 12px 0px 10px 3%;
+		color: #3b3937;
+		font-size: 14px;
+		float: left;
+	}
+	
+	.img_delete{
+	
+		float: right;
+		padding-top: 10px;
+		margin-right: 6%;
+		
+	}
+	
+	.confirm{
+	
+		display:none; 
+		margin: 40% 13% 0 13%; 
+		width:75%; 
+		height:140px; 
+		background-color:#fff; 
+		position:fixed; 
+		z-index: 2147483647;
+		border-radius: 5px;
+	}
+	
+	.confirm_words{
+	
+		padding: 30px 0 30px 20%;
+		font-size: 14px;
+		color: #3b3937;
+	}
+	
+	.qd{
+		
+		padding-left:28%;
+		font-size: 14px;
+		color: #3b3937;
+		float: left;
+	}
+	
+	.qx{
+		
+		padding-left:20%;
+		font-size: 14px;
+		color: #3b3937;
+		float: left;
+	}
+	
+	.confirm a{
+	
+		text-decoration: none;
+		color: #3b3937;
+	}
+	
+	.unread{
+		
+		font-weight: bolder;
+	}
+	
+ </style>
+</head>
+
+<body  ms-controller="root">
+<input type="hidden" name="threadId" id="threadId" value="" />
+	<div id="zzmb" class="zzmb" style="display:none;position:fixed;" ms-click="hideImg"></div>
+	<div id="divconf" class="divconf" style="display:block;  position:fixed; z-index: 2147483647;" ms-click="hideImg"></div>
+	<div id="confirm" class="confirm" >
+		<div class="confirm_words">确定删除该条发布内容吗？</div>
+		<div align="center">
+			<div class="qd"><a href="#" ms-click="confirmDel">确定</a></div>
+			<div class="qx"><a href="#" ms-click="cancelDel">取消</a></div>
+		</div>
+	</div>
+	<div ms-visible="threads_count==0">
+		<img src="../static/images/community/bg_publish.jpg"/>
+	</div>
+	<div class="thread-item lite-divider pb15" style="padding-left: 0" ms-repeat-thread="threads" >
+		<div class="thread_head">
+			<div class="category_img" ><img class="fl" ms-src="../static/images/community/{{thread.categoryImgName}}.png" /></div>
+			<div class="thread_category">{{thread.categoryCnName}}</div>
+			<div  class="img_delete" ms-click="deleteThread(thread.threadId)"><img style="height: 25px; width: 25px;" src="../static/images/community/btn_delete.png"/></div>
+		</div>
+		<div class="p15">
+		<!-- 
+			<div class="ov pb15 fs14" style="color: #3b3937" ms-click="gotoDetail(thread.threadId)">{{thread.threadTitle}}</div>
+		 -->
+			<div class="ov pb15 fs13" style="color: #3b3937" ms-class="unread:thread.hasUnreadComment=='true'" ms-click="gotoDetail(thread.threadId)">{{thread.threadContent}}</div>
+			<div class="preview_img_layer" >
+				<div ms-repeat-previewurl="thread.previewLink">
+					<div class="ov pb15 fl" ms-click="viewSrcImg(thread.threadId, $index);" ><img class="preview_img" ms-src="{{previewurl}}" /></div>
+				</div>
+			</div>
+			<div class="fs13" style="color: #a6937c; line-height: 23px; width: 100%;">
+				<img style="width: 13px; height: 13px;" src="../static/images/community/icon_time_gray.png"/>&nbsp;{{thread.formattedDateTime}}
+				<div class="fr pr15" style="text-align: right;" ms-click="gotoDetail(thread.threadId)"><img style="width: 13px; height: 13px;" src="../static/images/community/icon_comment_gray.png"/>&nbsp;{{thread.commentsCount}}</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

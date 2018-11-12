@@ -1,0 +1,142 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+<title>我的东湖e家园</title>
+<link rel="stylesheet" href="../static/css/common.css?v=20151217">
+<link rel="stylesheet" href="../static/css/header.css?v=20151217">
+<script type="text/jscript" src="../static/js/zepto.min.js?v=20151217"></script>
+<script type="text/jscript" src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+<script type="text/jscript" src="../static/js/avalon.js"></script>
+<script type="text/jscript" src="../static/js/common_v3.js?v=20151217"></script>
+<script type="text/jscript" src="bindphone.js?v=20151217"></script>
+<style type="text/css">
+	.submit-btn {
+		height: 44px;
+		line-height: 44px;
+		background: #ff8a00;
+		text-align: center;
+	}
+	.btn-fixed {
+		  color: #fff;
+  left: 3%;
+  right: 3%;
+  bottom: 10px;
+	}
+        .top-tip {
+            height: 24px;
+            line-height: 24px;
+            color: #f23939;
+            background: #ffeed9;
+            text-align: center;
+        }
+        .hidden-input {
+            margin: 15px 0;
+            text-align: right;
+        }
+        .info-tip {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+        .btn-plain {
+            margin-top: 12px;
+        }
+        .btn {
+            margin-top: 225px;
+        }
+        .menu-link {
+		position: relative;
+		background-image: url("../static/images/group/icon_cancel.png");
+		background-size: 18px;
+		padding-top: 20px;
+		color: #3b3937;
+		margin: 0 15px;
+	}
+	
+	.menu-link-arrow {
+ 		background-position-y: 15px;
+ 		padding-right: 10px;
+ 		color: #3b3937;
+ 		display: block;
+ 		background: url("../static/images/group/icon_arrow.png") no-repeat;
+ 		background-size: 7px 12px;
+ 		background-position: right center;
+ 	}
+	
+	.xiaoqu {
+		margin-left: 25px;
+	}
+	.btn-eidt-mask {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		margin-top: -12px;
+		width: 24px;
+		height: 24px;
+	}
+	
+	.input-wrap {
+ 		overflow: hidden;
+ 		line-height: 45px;
+ 		padding-left: 10px;
+ 		padding-right: 10px;
+ 	}
+ 	.title {
+ 	    padding: 15px 0;
+ 	}
+ 	.tip {
+ 		margin-left: 15px;
+ 		font-size: 10px;
+ 	}
+    .useless {
+	  background-color: #D7D5D4;
+	}
+ 	</style>
+</head>
+<body ms-controller="root">
+	<div class="divider"></div>
+<!--<div style="width:100%;height:50px;text-align:center;font-size:30px;margin-top:20px">修改用户信息</div>-->
+        <div class="input-wrap lite-divider">
+            <span class="fl fs15">微信名</span>
+            <span class="fr fs14 value"  ms-text="user.nickname"></span>
+        </div>
+        
+        <div class="input-wrap lite-divider">
+            <span class="fl fs15">用户名</span>
+            <input placeholder="请输入用户名" class="fr fs14 hidden-input" ms-duplex-string="user.name"/>
+        </div>
+        
+        <div class="input-wrap lite-divider">
+            <span class="fl fs15">姓名</span>
+            <input placeholder="请输入真实姓名" class="fr fs14 hidden-input" ms-duplex-string="user.realName"/>
+        </div>
+        <div class="input-wrap lite-divider">
+            <span class="fl fs15">性别</span>
+            <span class="fr fs14 value placeholder" ms-visible="user.sex==''" ms-click="showModal">请选择性别</span>
+            <span class="fr fs14 value" style="width:40px"" ms-visible="user.sex!=''" ms-click="showModal" ms-text="getGender(user.sex)"></span>
+        </div>
+        
+    <div class="modal-mask" ms-visible="modalShown" ms-click="hideModal">
+        <div class="modal">
+            <div class="ptb15" ms-repeat-item="genderPicker" ms-class-checked-item="item.checked" ms-class-lite-divider="!$last" ms-click="selectGender($index)">{{item.name}}</div>
+        </div>
+    </div>
+        <div class="input-wrap lite-divider">
+	 		<span class="fl fs15">手机号</span>
+            <input placeholder="输入11位手机号" maxlength="11" class="fr fs14 hidden-input" ms-duplex-number="user.tel"/>
+        </div>
+        <div class="input-wrap lite-divider" ms-visible="oriPhone!=user.tel">
+            <input placeholder="输入验证码" class="fs14 hidden-input" ms-duplex-string="captcha"/>
+            <span class="fr btn-plain"  ms-class-useless="o.yzmstr!='获取验证码'&&o.yzmstr!='重新获取'" ms-click="getCaptcha">{{yzmstr}}</span>
+        </div>
+	<div class="btn-fixed">
+		<div class="submit-btn ov fs16" ms-click="save" >保存</div>
+	</div>
+</body>
+</html>

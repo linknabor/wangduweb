@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>地址</title>
+	<link rel="stylesheet" href="../static/css/common.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/common/address.css?v=20151217">
+	<script src="../static/js/fastclick.min-1.0.6.js"></script>
+	<script src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="../common/address.js?v=20151217"></script>
+		-->
+</head>
+<body>
+	<div ms-controller="address_root"  id="address_root">
+		<div ms-visible="addrPage=='list'" >
+			<div class="divider"></div>
+			<div class="plr15 arrow-margin menu-link mt1 fs14 address-wrap lite-divider" ms-click="check(item)" ms-repeat-item="addresses">
+				<i class="checkbox fl mt1" ms-class-checked="isChecked(item)"></i>
+				<div>
+					<span style="margin-left:20px">{{item.receiveName}}</span>
+					<span style="margin-left:15px">{{item.tel}}</span>
+					<span style="margin-left:15px" ms-visible="item.main">默认</span>
+				</div>
+				<div class="location" style="margin-left:35px" >{{item.province}}{{item.city}}{{item.county}}{{item.locationAddr}}({{item.xiaoquName}}){{item.detailAddress}}</div>
+			</div>
+			<div class="tc mt2"><a class="btn-plain" ms-click="toAddAddress">新增收货地址</a><br/></div>
+		</div>
+	
+		<div style="padding:0 15px"  ms-visible="addrPage=='form'">
+			<div class="input-wrap lite-divider">
+				<span class="fl fs15">联系人</span>
+				<input placeholder="请输入联系人姓名" class="fr fs14 hidden-input" ms-duplex-string="submitAddress.receiveName"/>
+			</div>
+			<div class="input-wrap lite-divider">
+				<span class="fl fs15">手机号</span>
+				<input type="tel" placeholder="请输入手机号码" class="fr fs14 hidden-input" ms-duplex-number="submitAddress.tel"/>
+			</div>
+			<div ms-click="showRegion" class="input-wrap lite-divider menu-link">
+				<span class="fl fs15" style="color: #3b3937">所在地区</span>
+				<span class="fr fs14"  style="color: #aeaeae" ms-visible="!distinct">请选择所在地区</span>
+				<span class="fr fs14" ms-visible="distinct">{{distinct}}</span>
+			</div>
+			<div ms-visible="selectRegion==true">
+				<div class="tc">
+					<div class="region fl" ms-class-check="currentRegionType==1" ms-click="backRegion(1)">选择省</div>
+					<div class="region fl" ms-class-check="currentRegionType==2" ms-click="backRegion(2)">市</div>
+					<div class="region fl" ms-class-check="currentRegionType==3">区县</div>
+				</div>
+				<div ms-css-height="regionAreaHeight(regions.length)" style="width:100%;clear:both;background-color: #e0dede;">
+					<div class="fs14 fl" ms-class-city="Math.floor(($index/4)%2)==0" ms-class-city2="Math.floor(($index/4)%2)==1" ms-repeat-region="regions"  ms-click="updateRegion(region)">{{region.name}}</div>
+				</div>
+				<div> &nbsp;</div>
+			</div>
+			<div style="clear: both;" ms-visible="selectRegion==false">
+				<div class="input-wrap lite-divider  menu-link"  ms-click="showLocation" >
+					<span class="fl fs15">小区或大厦</span>
+					<span class="fr fs14"  style="color: #aeaeae" ms-visible="submitAddress.xiaoquName==''">请输入小区或大厦</span>
+					<span class="fr fs14" ms-visible="submitAddress.xiaoquName">{{submitAddress.xiaoquName}}</span>
+				</div>
+				<div class="input-wrap lite-divider">
+					<span class="fl fs15">小区地址</span>
+					<input placeholder="例如：三林路128弄" class="fr fs14 hidden-input" ms-duplex-string="submitAddress.amapDetailAddr"/>
+				</div>
+				<div class="input-wrap lite-divider">
+					<span class="fl fs15">楼栋门牌号</span>
+					<input placeholder="例如：1号楼402室" class="fr fs14 hidden-input" ms-duplex-string="submitAddress.homeAddress"/>
+				</div>
+				<a href="#" class="btn" ms-click="addAddress">保存</a>
+			</div>
+		</div>	
+			
+		<!--	使用高德地图搜索-->
+		<div style="background-color: #fffff8" ms-visible="addrPage=='xiaoquForm'">
+			<div class="location-wrap">
+				<div class="location-input-wrap">
+					<input placeholder="请输入小区名称" class="location-input" ms-duplex-string="suggestLocation" />
+					<i class="location-btn-cancel" ms-click="cancelLocation" ms-visible="suggestion"></i>
+				</div>
+				<span class="location-btn-ensure" ms-click="submitLocation">确定</span>
+			</div>
+			<div class="location-empty-tip" ms-visible="!suggestions.length">
+				准确的小区、街道或大厦名称能加快送货速度
+			</div>
+			<div class="location-location" ms-click="chooseLocation(suggestion)" ms-repeat-suggestion="suggestions" ms-visible="suggestions.length">
+				<span style="position:relative;font-color:#cccccc">{{suggestion._name}} - {{suggestion._address}}</span>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>

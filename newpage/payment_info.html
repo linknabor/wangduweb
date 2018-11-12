@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <meta content="telephone=no" name="format-detection" />
+        <meta charset="UTF-8">
+        <title>缴费记录</title>
+        <link rel="stylesheet" type="text/css" href="../static/css_fornew/common_fornew.css"/>
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/avalon.js"></script>
+        <script src="../static/js/common_v3.js"></script>
+        <script src="payment_info.js"></script>
+        <style type="text/css">
+        	body{
+        		background-color: #eee;
+        		color:#676e74;
+        	}
+        	.userinfo{
+        		background-color: #fff;
+        		padding: 20px 20px 0px 20px;
+        		position: relative;
+        		font-size: 1.3em;
+        	}
+        	.userinfo li{
+        		float: left;
+        		width:80%;
+        	}
+        	.userinfo>ul{
+        		margin-bottom: 20px;
+        	}
+        	.userinfo>ul>li:first-child{
+        		width:15%;
+        	}
+        	.borderimg1{
+        		width:100%;
+        		height: 4px;
+        		background-image: url(../static/images/border_line_up.png);
+        		background-color: #fff;
+        		margin-top: 20px;
+        	}
+        	.borderimg2{
+        		width:100%;
+        		height: 4px;
+        		background-image: url(../static/images/border_line_down.png);
+        		background-color: #fff;
+        		margin-bottom: 20px;
+        	}
+        	.payinfo{
+        		background-color: #fff;
+        		padding-left: 20px;
+        		line-height: 40px;
+        	}
+        	.payinfo>p{
+        		border-bottom: 1px solid #ddd;
+        	}
+        	.order_list{
+        		margin: 20px 20px 0px 20px;
+        		background-color: #fff;
+        		line-height: 30px;
+        		border: 1px solid #ddd;
+        		border-radius: 6px;
+        	}
+        	.order_list>div{
+        		padding: 10px 20px;
+        	}
+        	.check_price{
+        		margin-top: 15px;
+        		font-size: 1.5em;
+        	}
+        </style>
+	</head>
+	<body ms-controller="root">
+		<p class="borderimg1"></p>
+		<div class="userinfo hidden">
+			<ul class="w100 hidden">
+				<li>小区：</li>
+				<li>{{model.xiaoquname}}</li>
+			</ul>
+			<ul class="w100 hidden">
+				<li>地址：</li>
+				<li>{{model.xiaoquadd}}</li>
+			</ul>
+		</div>
+		<p class="borderimg2"></p>
+		<div class="payinfo">
+			<p>支付时间：{{model.paytime}}</p>
+			<p>支付方式：{{model.paytype}}</p>
+			<p style="border-bottom: none;">支付总额：{{totals | currency}}</p>
+		</div>
+		<div class="order_list hidden" ms-repeat-list="model.orderlist">
+			<div class="hidden">
+				<div class="fl check_content">
+					{{list.name}} <br />账期：{{list.time}}
+				</div>
+				<span class="fr check_price">￥{{list.price}}</span>
+			</div>
+		</div>
+		<br />
+	</body>
+</html>

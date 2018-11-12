@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <meta content="telephone=no" name="format-detection" />
+        <meta charset="UTF-8">
+        <title>维修支付</title>
+        <link rel="stylesheet" href="../static/css/common.css">
+    	<link rel="stylesheet" href="../static/css/header.css">
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/avalon.js"></script>
+        <script src="../static/js/common_v3.js"></script>
+        <script src="homepage.js"></script>
+        <style type="text/css">
+        [ms-controller]:{display: none;}
+        	body{
+        		box-sizing: border-box;
+        		background-color: #EFEEEC;
+        		font-size: 1.2em;
+        	}
+        	.w50{
+        		width: 50%;
+        	}
+        	.w94{
+        		width:94%;
+        	}
+        	.service{
+        		padding: 2% 0% 2% 2%;
+        	}
+        	.service a{
+        		display: block;
+        		width:96%;
+        		margin-bottom: 2%;
+        	}
+        	.service img{
+        		border-radius: 5px;
+        	}
+        	.rimg img{
+        		margin-bottom: 5%;
+        	}
+        	.banner{
+        		overflow: hidden;
+        		width:100%;
+        		padding:0 3%;
+        	}
+        	.banner img{
+        		border-radius: 5px;
+        		width:100%;
+        	}
+        	.info{
+        		background-color: #fff;
+        		border-bottom: 1px solid #bbb;
+        	}
+        	.info_bar span{
+        		font-size:1.3em ;
+        		width:49.5%;
+        		height:60px;
+        		text-align: center;
+        		line-height: 60px;
+        		color:#000;
+        	}
+        	.select{
+        		color:#ff8b01 !important;
+        		border-bottom: 2px solid #ff8b02;
+        	}
+        	.info_content{
+        		padding: 20px 3%;
+        	}
+        	.info_content>div{
+        		margin-bottom: 20px;
+        	}
+        	.ic_title{
+        		overflow: hidden;
+        	}
+        	.ic_title a{
+        		width:80px;
+        		height:80px;
+        		border-radius: 50%;
+        		background-color: #e4393c;
+        		
+        	}
+        	.ic_title>div{
+        		padding-left:20px;
+        		font-size: 1.3em;
+        		height:80px;
+        		line-height: 40px;
+        	}
+        	.imgshow{
+        		margin:10px 0;
+        	}
+        	.ic_foot{
+        		margin-top: -5px;
+        		text-align: right;
+        		color: #bbb;
+        	}
+        	.ic_foot>span{
+        		display: inline-block;
+        		margin-left: 10px;
+        	}
+        	.ic_foot>span>b{
+        		display: inline-block;
+        		height:20px;
+        		width:20px;
+        		background-color: #e4393c;
+        	}
+        </style>
+	</head>
+	<body ms-controller="root">
+		<!--广告轮播模块-->
+		<div></div>
+		<!--服务功能模块-->
+		<div class="service">
+			<div class="fl w50">
+				<a href=""><img src="../static/images/homeservice1.png" /></a>
+				<a href=""><img src="../static/images/homeservice2.png" /></a>
+			</div>
+			<div class="fl w50 rimg">
+				<a href=""><img src="../static/images/homeservice3.png" /></a>
+				<a href=""><img src="../static/images/homeservice4.png" /></a>
+				<a href=""><img src="../static/images/homeservice5.png" /></a>
+			</div>
+		</div>
+		<!--中间广告模块-->
+		<div class="banner">
+			<a class="ib w94" href="#"><img src=""/></a>
+		</div>
+		<!--下方评论模块-->
+		<div class="info">
+			<div class="info_bar">
+				<span class="ib select btn1" ms-click="infoshow">社区资讯</span>
+				<span class="ib btn2" ms-click="noticeshow">社区公告</span>
+			</div>
+			<div class="info_content" ms-visible="infoPage=='show'" ms-repeat-info="model.infolist">
+				<div class="ic_title">
+					<a class="fl" href="#"><img ms-src={{info.headimg}} /></a>
+					<div class="fl">
+						<p>{{info.name}}</p>
+						<p style="color:#bbb">发布时间：{{info.time}}</p>
+					</div>
+				</div>
+				<div class="ic_img">
+					<p>{{info.title}}</p>
+					<div class="imgshow">
+						<img ms-src={{info.conImg}} />
+					</div>
+					<p style="color: #bbb;">
+						{{info.content}}
+					</p>
+				</div>
+				<div class="ic_foot">
+					<span><b></b>{{info.pinglun}}个评论</span>
+					<span><b></b>{{info.liulan}}次浏览</span>
+					<span><b></b>{{info.dianzan}}次赞</span>
+				</div>
+			</div>
+			<div class="info_content" ms-visible="noticePage=='show'" ms-repeat-noti="model.noticelist">
+				<div class="ic_title">
+					<a class="fl" href="#"><img ms-src={{noti.headimg}} /></a>
+					<div class="fl">
+						<p>{{noti.name}}</p>
+						<p style="color:#bbb">发布时间：{{noti.time}}</p>
+					</div>
+				</div>
+				<div class="ic_img">
+					<p>{{noti.title}}</p>
+					<div class="imgshow">
+						<img ms-src={{noti.conImg}} />
+					</div>
+					<p style="color: #bbb;">
+						{{noti.content}}
+					</p>
+				</div>
+				<div class="ic_foot">
+					<span><b></b>{{noti.pinglun}}个评论</span>
+					<span><b></b>{{noti.liulan}}次浏览</span>
+					<span><b></b>{{noti.dianzan}}次赞</span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

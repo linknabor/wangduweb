@@ -1,0 +1,126 @@
+		
+	.xiaoqu {
+		margin-left: 25px;
+	}
+	.btn-eidt-mask {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		margin-top: -12px;
+		width: 24px;
+		height: 24px;
+	}
+	
+	.input-wrap {
+ 		overflow: hidden;
+ 		line-height: 45px;
+ 	}
+ 	.tip {
+ 		margin-left: 15px;
+ 		font-size: 10px;
+ 	}
+ 	.btn-switch {
+ 		display: block;
+	    width: 60px;
+	    height: 20px;
+	    margin-top: 12px;
+ 		background: url("../../images/group/btn_close.png") no-repeat;
+		background-size: 60px 20px;
+		transition: background-image .5s ease-in-out;
+		-webkit-transition: background-image .5s ease-in-out;
+ 	}
+ 	.btn-switch.active {
+ 		background-image: url("../../images/group/btn_open.png");
+ 	}
+ 	
+ 	.area {
+		margin: 0 15px;
+		padding: 15px 0;
+		border-bottom: 1px solid #d4cfc8;
+	}
+	.area.active:after {
+		margin-left: 10px;
+		font-size: 12px;
+		color: #a6937c;
+	}
+	
+	.location_wrap {
+		position: relative;
+		padding: 0 15px;
+		height: 49px;
+		line-height: 49px;
+		border-bottom: 1px solid #d4cfc8;
+	}
+	.location_input-wrap {
+		position: relative;
+		width: 76%;
+		padding: 5px 0;
+	}
+	.location_input {
+		display: block;
+		height: 36px;
+		width: 90%;
+		outline: none;
+		border: 1px solid #d4cfc8;
+		border-radius: 4px;
+		padding: 0 10px;
+		vertical-align: middle;
+		font-size: 15px;
+	}
+	.location_btn-cancel {
+		position: absolute;
+		top: 5px;
+		right: 10px;
+		display: inline-block;
+		height: 36px;
+		width: 36px;
+		background: url("../static/images/group/icon_cancel.png") no-repeat;
+		background-size: 15px;
+		background-position: center;
+	}
+	.location_btn-ensure {
+		position: absolute;
+		display: block;
+		top: 0;
+		right: 15px;
+		color: #3b3937;
+		font-size: 15px;
+		width: 35px;
+	}
+	.location_location {
+		margin: 0 15px;
+		padding: 15px 0;
+		border-bottom: 1px solid #d4cfc8;
+	}
+	.region{
+		  font-size: 1.2rem;
+		  width: 32%;
+		  text-align: center;
+		  height: 2.5rem;
+		  line-height: 2.5rem;
+	}
+	.check{
+		color: #f60;
+		  border-right: 1px solid #ddd;
+		  border-left: 1px solid #ddd;
+		  border-top: 2px solid #f60;
+		  background: #fff;
+	}
+	.city{
+		 font-size: 1.4rem;
+		 color: #000;
+		 background-color: #FFF;
+		 width: 25%;
+		 height:40px;
+		 padding-top:10px;
+		 text-align: center;
+	}
+	.city2{
+		 font-size: 1.4rem;
+		 color: #000;
+		 background-color: #E0E0E0;
+		 width: 25%;
+		 height:40px;
+		 padding-top:10px;
+		 text-align: center;
+	}

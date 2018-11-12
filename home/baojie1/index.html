@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>保洁</title>
+		<link rel="stylesheet" href="../../static/css/swiper.css">
+		<script src="../../static/js/avalon.js"></script>
+		<script src="../../static/js/jquery.js"></script>
+        <script src="../../static/js/swiper.js"></script>
+        <script src="../../static/js/common_v3.js"></script>
+        <script src="index.js"></script>
+		<style type="text/css">
+			body{
+				margin:0;
+			}
+			.banner{
+                width: 100%;
+                margin: 0px auto;
+                position: relative;
+            }
+			.swiper-container{
+				width: 100%;
+				height: 100%;
+			}
+			.swiper-wrapper img{
+				width: 100%;
+				height: 100%;
+			}
+			.swiper-pagination{
+				position: absolute;
+    			left:48%;
+				bottom: 8px;
+			}
+			.pagination {
+                position: absolute;
+                left: 0;
+                text-align: center;
+                bottom: 10px;
+                z-index: 10;
+                width: 100%;
+            }
+            .swiper-pagination-bullet {
+                width: 6px;
+                height: 6px;
+                margin: 0 3px;
+                background: transparent;
+                border: 1px solid #fff;
+            }
+            .swiper-pagination-bullet-active {
+                background-color: #fff;
+            }
+			.contain{
+				box-sizing: border-box;
+				overflow: hidden;
+			}
+			.icon{
+				width: 50%;
+				box-sizing: border-box;
+				float:left;
+			}
+			.notice{
+				
+				position: fixed;
+    			width: 100%;
+    			height: 100%;
+    			top: 0;
+    			left: 0;
+    			background-color: rgba(0,0,0,0.3);
+   				z-index: 1;
+			}
+			.notice_text{
+				    text-align: center;
+    				margin-top: 50%;
+    				background-color: #EEEEEE;
+    				width: 60%;
+    				margin-left: 20%;
+    				border-radius: 6px 6px 0 0;
+    				font-family: "微软雅黑";
+    				font-size: 14px;
+    				line-height: 40px;
+			}
+			.notice_btn{
+				/*display: block;
+				background-color: #D7D7D7;
+				border-radius: 6px;*/
+				text-align: center;
+				background-color: #D7D7D7;
+    			width: 60%;
+    			margin-left: 20%;
+    			border-radius: 0 0 6px 6px;
+    			font-family: "微软雅黑";
+    			font-size: 14px;
+    			line-height: 40px;
+			}
+		</style>
+	</head>
+	<body ms-controller="root">
+		<div class="banner">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                   <div class="swiper-slide"  ms-repeat-banner="banners">
+                       <a ms-href="{{banner.bannerUrl}}">
+                            <img ms-src="{{banner.picture}}">
+                       </a>
+                   </div>
+                </div>
+            </div>
+            <div class="pagination"></div>
+    	</div>
+    	<div class="contain">
+    		<a href="richang.html"><img src="../../static/img/baojie/btn_richangbaojie_02.png" class="icon"/></a>
+			<img src="../../static/img/baojie/btn_shendubaojie_03.png" class="icon" ms-click="prompts"/>
+			<img src="../../static/img/baojie/btn_xinjubaojie_04.png" class="icon" ms-click="prompts"/>
+			<a href="../../baojie_order_list.html"><img src="../../static/img/baojie/btn_myorder_05.png" class="icon"/></a>
+		</div>
+		<div class="notice" ms-visible="prompt">
+			<div class="notice_text">
+				该服务暂未开通，敬请期待！
+			</div>
+			<div class="notice_btn" ms-click="prompth">我知道了</div>
+		</div>
+    	<script type="text/javascript">
+            var a2=parseInt($('.swiper-slide img').css('width') );
+            var a3=a2*0.4;
+            $('.swiper-container').css({height:a3 + 'px'});
+            $('.swiper-slide img').css({height:a3 + 'px'});
+			function initSwiper(){
+                //头部展示图适应屏幕
+                window.onload=function(){
+        
+                    //顶部图片滑动代码↓
+                    var mySwiper = new Swiper('.swiper-container',{
+                        speed:750,
+                        autoplay:3000,  //
+                        autoplayDisableOnInteraction: false,
+                        autoplayStopOnLast:true,
+                        pagination: '.pagination',
+                        loop:true
+                    })
+                }
+            }
+		</script>
+	</body>
+</html>

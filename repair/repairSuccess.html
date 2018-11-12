@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>维修成功</title>
+    <link rel="stylesheet" href="../static/css/header.css">
+    <script src="../static/js/zepto.min.js"></script>
+    <script src="../static/js/fastclick.min-1.0.6.js"></script>
+    <script src="../static/js/avalon.js"></script>
+    <script src="../static/js/common_v3.js"></script>
+    <script src="success.js"></script>
+    <style>
+        body{
+            background: #F9F9E9;
+            margin: 0;
+            height: auto;
+        }
+        .brand-tip-1 {
+            padding: 10% 0;
+            padding-left: 5%;
+            text-align: center;
+            font-size: 30px;
+            background: url("../static/images/group/icon_successful.png") no-repeat #f7f7f1;
+            background-position: 30% center;
+            background-size: 35px;
+            color: #FF8A00;
+        }
+        .brand-tip-2 {
+            text-align: center;
+            background:#f7f7f1;
+            margin-top: -5%;
+            font-size: 20px;
+            color: #FF8A00;
+            padding-bottom: 10%;
+        }
+        .payStatus {
+            width: 90%;
+            padding: 5% 5%;
+            text-align: center;
+        }
+        .content-top-bg{
+            padding: 10px 20px;
+            font-size: 20px;
+            color: #fff;
+            background: #999;
+            border-radius: 12px 12px 0 0;
+        }
+        .content-bottom-bg{
+            padding: 40px 20px;
+            font-size: 30px;
+            color: #ff8a00;
+            background: #fff;
+            border-radius:0 0 12px 12px;
+        }
+        .item {
+            overflow: hidden;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        label {
+            display: inline-block;
+            width: 60px;
+        }
+        label:after {
+            content: " :";
+        }
+        .btn {
+            display: block;
+            margin: 10px;
+            height: 44px;
+            line-height: 44px;
+            color: #fff!important;
+            font-size: 15px;
+            text-align: center;
+            background-color: #ff8a00;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            text-decoration: none;
+        }
+        .main_btn{
+            width: 80%;
+            height: 60px;
+            margin:0 auto;
+        }
+    </style>
+    </head>
+
+    <body ms-controller="root">
+    <div class="brand-tip-1">维修成功</div>
+    <div class="brand-tip-2">感谢您让居民生活变得更美好</div>
+
+    <div class="payStatus item">
+        <div class="content-bg">
+            <div class="content-top-bg">报修人还未支付维修费用</div>
+            <div class="content-bottom-bg">?&nbsp;?</div>
+        </div>
+    </div>
+
+    <div class="main_btn">
+        <a href="#" class="btn" ms-click="goback">我知道了</a>
+    </div>
+    </body>
+</html>

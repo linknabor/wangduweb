@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>社区集市</title>
+    <link rel="stylesheet" href="../static/css/swiper.css?v=20160229">
+    <link rel="stylesheet" href="../static/css/common.css?v=20160229">
+    <link rel="stylesheet" href="../static/css/header.css?v=20160229">
+    <link rel="stylesheet" href="../static/css/group/product.css?v=201602291">
+	<script src="../static/js/jquery.js?v=20160229"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20160229"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20160229"></script>
+	<script src="onsalesitem.js?v=201602291"></script>
+    <script src="../static/js/swiper.js"></script>
+ <style>
+ 	[ms-controller]{display:none} 
+ 	.onsale_nav{
+ 		height:65px;
+ 		margin: -4px 5px 0px 5px;
+ 		background-color: #ffdfb9;
+ 	}
+ 	.onsale_nav li{
+ 		float: left;
+ 		height:70%;
+ 		width:20%;
+		text-align: center;
+		background-color: #ffdfb9;
+ 	}
+ 	.onsale_nav li i{
+		  display: block;
+		  margin-bottom: 0px;
+		  height: 23px;
+		  margin:15px 0px 4px 0px
+ 	}
+ 	.onsale_nav a{
+ 		width: 98%;
+ 		color: #6F6E6B;
+        font-size: 12px;
+        margin:1px 0px 1px 1px;
+ 		background-color: #fff8ee;
+ 		padding-bottom: 8px;
+  	}
+  	.onsale_nav a.last{
+        margin:1px 1px 1px 1px;
+        width: 96%;
+  	}
+  	.onsale_nav a.choosed{
+		background-color: #eecea8;
+ 	}
+
+		
+	.onsale_nav_text{
+ 		height:40px;
+ 		background-color: #fff8ee;  
+		position: fixed;
+        width: 100%;
+        z-index: 99;
+        top: 0px;
+ 	}
+ 	.onsale_nav_text li{
+ 		float: left;
+ 		line-height:40px;
+        font-size: 14px;
+ 		width:20%;
+		text-align: center;
+	    border-bottom: 1px solid #fff8ee;
+	    color:#6F6E6B;
+ 	}
+  	.onsale_nav_text li.choosed{
+	  border-bottom: 1px solid #ff8a00;
+	  color:#ff8a00;
+ 	}
+
+ 	.nav_logo{
+		background-position: 50% 0;
+	    background-size: 25px;
+	    background-repeat: no-repeat;
+	}
+	.banner{
+ 		text-align: center;
+ 	}
+ 	   .product-l{
+	   	height:1px; 
+	   	background-color:#d3d3d3; 
+	   	bottom: -28px; 
+	   	position:relative; 
+	   	margin:0 10px;
+	   }
+   .product-d{
+   }
+   .product-d-d{
+   	position: relative; 
+   	text-align: center;
+   	width: 100%; 
+   	padding: 15px 0;
+   }
+   .product-d-d-s{
+   	background-color: white ; 
+   	padding: 0 10px;
+   }
+    .store-icon{
+   	height:15px ; 
+   	width: 15px; 
+   }
+ </style>
+</head>
+
+<body>
+	<!-- load -->
+		<div class="load6" id="LoadingBar">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+		        
+		<div id="fade" class="black_overlay">
+		</div>
+		
+		<div id="phoneErro"></div>
+		
+		<div id="phoneAjax" class="hidden">
+			<img src="http://7xlem4.com2.z0.glb.qiniucdn.com/backed/images/load2.gif" style="width:40px;height40px;vertical-align: middle;">
+		</div>
+	<!-- load -->
+
+	
+	<div  ms-controller="root" class="mb_6"  id="indexDiv">
+	 <div class="banner" ms-repeat-banner="banners" ms-if-loop="banner.onSaleType == currentType">
+		 <img ms-src="{{banner.picture}}">
+	</div>
+	 <div ms-repeat-banner="titles" ms-if-loop="banner.onSaleType == currentType">
+		 <div class="product-l"></div>
+	    <div class="product-d">
+	 	    <div class="product-d-d">
+	 	    	<span class="product-d-d-s">
+	 	    		<img ms-src="{{banner.picture}}" class="store-icon" />
+				    <span class="fs17" style="color: #FF8A00;">{{banner.brandName}}</span>
+	 	    	</span> 
+	 	    </div>
+	    </div>	
+	</div>
+	 		
+		
+		<div class="mlr5" style="margin-bottom:" >
+			<div style="width: 50%;float:left;" ms-repeat-product="temais" >
+				<a class="product-item" ms-class-pleft="$index%2==1" ms-class-pright="$index%2==0" ms-href="onsaledetail.html?ruleId={{product.ruleId}}&type={{currentType}}">
+					<div class="pic_container">
+						<div class="pic_dummy"></div>
+						<img alt="" class="product-image pic_content" ms-src="{{product.productPic}}"/>
+						<img ms-visible="product.tagUrl!=null&&product.tagUrl!=''" class="product-tag" ms-src="{{product.tagUrl}}"/>
+					</div>
+					<div class="product-name pl05">{{product.ruleName}}</div>
+					<div class="mt1 pl05">
+						<span class="highlight fs20">¥&nbsp;{{product.price}}&nbsp;</span>
+						<span class="ori-price"><del>¥&nbsp;{{product.oriPrice}}&nbsp;</del></span>
+						<span  class="product-discount">{{product.discount}}</span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div style="height:82px;clear:both">&nbsp;</div>
+	</div>
+    <footer class="footer">
+        <nav>
+            <ul>
+                <li><a href="../home/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_home"></i>服务</a></li>
+                <li><a href="../group/onsalesindex.html?v=20160229" class="nav-controller active"><i class="footer_logo footer_temai_selected"></i>集市</a></li>
+                <li><a href="../wuye/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_wuye"></i>社区</a></li>
+                <li><a href="../person/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_person"></i>我的</a></li>
+            </ul>
+        </nav>
+    </footer>
+</script>
+</body>
+</html>

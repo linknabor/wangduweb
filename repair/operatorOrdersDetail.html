@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>详情</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../static/js/jquery.js"></script>
+    <script src="../static/js/avalon.js"></script>
+    <script src="../static/js/common_v3.js"></script>
+    <script src="operatorOrdersDetail.js?v=20160224"></script>
+    <style type="text/css">
+        body{
+            background: #F9F9E9;
+            margin: 0;
+            height: auto;
+        }
+        .top-title{
+            color:#3b3937;
+            background: #F7F7F1;
+            margin: 15px auto;
+            border-top: 1px solid #d4cfc8;
+            border-bottom: 1px solid #d4cfc8;
+        }
+        .icon {
+            background-size: 13px;
+            width: 13px;
+            height: 13px;
+            margin-right: 5px;
+            vertical-align: bottom;
+        }
+        .comment {
+            margin-top: 5%;
+            line-height: 20px;
+        }
+        .icon-repair {
+            height: 60px;
+            width: 60px;
+            margin: 15px 15px;
+            padding: 3%;
+            border: 1px solid #31a8e6;
+            border-radius: 3px;
+            background: #fff;
+        }
+        .top-info {
+            padding: 10px 0;
+        }
+        .pl0{
+        	padding-left: 0px;
+        }
+        .item {
+            overflow: hidden;
+            font-size: 12px;
+            color: #666;
+        }
+        .status-font{
+            color: #FF8A00;
+            background: #eee;
+            padding: 5px 25px;
+            border-radius: 3px;
+        }
+        .photo_area{
+			font-size: 15px;
+			color: #7e6b5a;
+			padding-left: 10px;
+		}
+		.photo_wrap{
+		    width: 33%;
+		    text-align: center;
+    		display: inline-block;
+	    }
+		.photo{
+		    margin: 3px;
+		    width: 90%;
+		    outline: #F7F7F1 solid 1px;
+		}
+        .block-divider{
+            width: 100%;
+            height: 20px;
+            background: #F7F7F1;
+        }
+        .detail-title{
+            padding:15px 10px 10px 0px;
+            font-size: 15px;
+            color: #7e6b5a;
+        }
+        .value {
+         display: block;
+         color: #666;
+         width:100%;
+         line-height: 25px;
+         font-size: 15px;
+        }
+        .value2 {
+            display: block;
+            color:#3b3937;
+            width:100%;
+            line-height: 25px;
+            font-size: 15px;
+        }
+        .custom-menu-link {
+            display: block;
+            color: #3b3937;
+            line-height: 30px;
+            padding: 15px 0px;
+            overflow: hidden;
+        }
+        .btn {
+            display: block;
+            margin: 10px;
+            height: 44px;
+            line-height: 44px;
+            color: #fff!important;
+            font-size: 15px;
+            text-align: center;
+            background-color: #ff8a00;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body style="padding-bottom:50px" ms-controller="root">
+<div class="ov top-title pr15">
+    <img class="icon-repair fl" ms-src="{{typeImg}}"/>
+    <div class="ov ptb15">
+        <span class="fl fs15" style="color: #000">{{typeName}}</span>
+        <span class="fr fs12" style="color: #999;"><i class="icon time-icon"></i>{{item.time}}</span>
+    </div>
+    <div class="comment ov pb15">
+        <span class="fl fs15" style="font-size: 16px;color: #666">{{item.projectName}}</span>
+        <span class="fr fs12 status-font">{{item.statusStr}}</span>
+    </div>
+</div>
+
+<div style="background: white;">
+	<div class="photo_area" ms-visible="imgUrlList.length>0">
+	    <div ms-repeat-photo="imgUrlList" class="photo_wrap a_third_m20_height" ms-click="showPhoto($index)">
+	        <img ms-src="photo" class="photo a_third_m22_height"/>
+	    </div>
+	</div>
+	<div class="top-info" ms-visible="item.memo!=''">
+	    <div class="item" style="padding-left: 15px;">
+	        <span class="value" ms-html="item.memo"></span>
+	    </div>
+	</div>
+</div>
+
+<div style="background: white;padding: 0 15px;margin:15px 0">
+	<div class="lite-divider detail-title fs14">
+	    报修人信息
+	</div>
+	<div class="top-info">
+	    <div class="item lite-divider pl0" style="padding-bottom: 15px;">
+	        <p class="value2" style="font-size: 16px;">{{item.receiverName}}<span style="padding-left: 20px;">{{item.tel}}</span></p>
+	        <p class="value" style="padding-top: 5px;">{{item.address}}</p>
+	    </div>
+	    <div class="bottomLine" style="color:#3b3937">
+	        <span class="custom-menu-link lite-divider">
+	            <p class="value2">所在小区<span style="float: right;padding-right: 10px;">{{item.xiaoquName}}</span></p>
+	        </span>
+	        <span class="custom-menu-link">
+	            <p class="value2">预约上门时间<span style="float: right;padding-right: 10px;color: #ff8a00;">{{item.requireDateStr}}</span></p>
+	        </span>
+	    </div>
+	</div>
+</div>
+<div style="width: 100%;height: 15px;"></div>
+<div class="btn-fixed">
+    <a href="#" class="btn" ms-click="accept" ms-visible="item.opStatus==1">我要抢单</a>
+    <a href="#" class="btn" ms-click="finish" ms-visible="item.opStatus==2">我已完工</a>
+    <a href="#" class="btn" ms-click="deleteOrder" ms-visible="item.opStatus==3">删除</a>
+</div>
+</body>
+</html>

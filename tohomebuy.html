@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>购买页面</title>
+    <link rel="stylesheet" href="static/css/header.css?v=20151217">
+    <link rel="stylesheet" href="static/css/address.css?v=20151217">
+    <link rel="stylesheet" href="static/css/common.css?v=20151217">
+    <link rel="stylesheet" href="static/css/common/coupons.css?v=20151217"></link>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="static/js/zepto.min.js?v=20151217"></script>
+	<script src="static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+	<script src="static/js/avalon.js"></script>
+	<script src="static/js/common_v3.js?v=20151217"></script>
+	<script src="tohomebuy.js?v=201512191"></script>
+	<script src="common/commonaddress.js?v=20151217"></script>
+	<script src="common/coupons.js?v=20151217"></script>
+ <style>
+.title {
+  padding: 20px 15px;
+}
+.custom-menu-link {
+  padding-top: 15px;
+  padding-left: 15px;
+  color: #3b3937;
+  background-position-y: 15px;
+}
+.useless {
+	background-color: #D7D5D4;
+}
+.baoyou_desc{
+	padding:2px 13px;
+	border: 1px solid #ff8a00;
+	border-radius: 2px;
+	margin-left: 10px;
+	margin-top: -2px;
+	font-size:13px;
+	color:#ff8a00;
+}
+.right_menu{
+    padding-left: 15px;
+    padding-right: 15px;
+    display: block;
+    background: url("static/images/group/icon_arrow.png") no-repeat;
+    background-size: 7px 12px;
+    background-position: right center;
+}
+</style>
+</head>
+
+<body ms-controller="root">
+<section ms-visible="control.currentPage=='main'">
+	<div class="title divider p15" style="font-size:15px">
+		<span>支付金额</span>
+		<span class="fr">
+			<span class="highlight fs20" style="margin-right: 5px;">¥&nbsp;{{op.getAmount()}}</span>
+		</span>
+	</div>
+	<div class="line p15 divider fs15" style="height:20px" ms-click="op.showCoupons">
+		<span class="fl">现金券</span> 
+		<span class="fl baoyou_desc" >&nbsp;&nbsp;{{model.couponNum}}张可用</span>
+		<div class="fr right_menu">{{model.couponDesc}}  </div>
+	</div>
+	<div class="info-wrap divider">
+		<div class="section-title">服务地址</div>
+		<span class="menu-link custom-menu-link fs14" style="background: none;">{{model.address.city}}{{model.address.county}}{{model.address.xiaoquName}}{{model.address.detailAddress}}</a>
+	</div>
+	<div class="info-wrap divider">
+		<div class="section-title">联系人</div>
+		<span class="menu-link custom-menu-link fs14" style="background: none;">{{model.address.receiveName}}</a>
+	</div>
+	<div class="info-wrap divider">
+		<div class="section-title">手机号</div>
+		<span class="menu-link custom-menu-link fs14" style="background: none;">{{model.address.tel}}</a>
+	</div>
+	<div class="info-wrap divider">
+		<div class="section-title">服务时间</div>
+		<span class="menu-link custom-menu-link fs14" style="background: none;">{{model.expectedTime}}</a>
+	</div>
+
+	<div class="title">其他需求</div>
+	<div contenteditable class="content p15" ms-class-has-value="model.comment" ms-click="op.focus" ms-blur="op.storeMemo"></div>
+	<div style="height: 80px;position: relative;">&nbsp;</div>
+	<div class="btn-fixed">
+	<a href="#" class="btn" ms-click="op.pay" ms-class-useless="control.paying">立即微信支付</a>
+	</div>
+</section>
+<section ms-visible="control.currentPage=='coupons'">
+	<div ms-include-src="'common/coupons.html'"></div>
+</section>
+</body>
+</html>

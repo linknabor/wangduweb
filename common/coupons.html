@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+ <!--   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>可用现金券</title>
+	<link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    <link rel="stylesheet" href="../static/css/common/coupons.css">
+	<script src="../static/js/fastclick.min-1.0.6.js"></script>
+	<script src="../static/js/zepto.min.js?v=4"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js"></script>
+	<script src="coupons.js"></script>
+	-->
+	<style>
+	.outter_bg{
+		background:url("../static/img/bg_courtesy_card.png") no-repeat;
+		background-size: 100% 110px;
+		height:115px;
+	}
+	.coupon_item{
+		padding:0px 15px 30px 15px
+	}
+	.coupon_desc{
+		float:left;
+		width: 74%;
+	    font-size: 20px;
+	    height:120px;
+	    background-size: 138% 110px;
+    	background-position: 0px 0px;
+	}
+	.coupon_value{
+		float:right;
+		width:26%;
+	    height:110px;
+		font-size: 20px;
+	}
+	.coupon_line_1{
+		width: 100%;
+	  	padding: 20px 20px 0 20px;
+	}
+	.coupon-name{
+		font-size: 20px;
+		color:#ff8a00;
+		display: block;
+	}
+	.coupon-limit{
+		position: absolute;
+		font-size:11px;
+		color:#666666;
+		padding:10px 0 10px 20px;
+		width: 60%;
+	}
+	</style>
+</head>
+
+<body>
+	<div ms-controller="coupon_root"  id="coupon_root">
+		<div class="title-line">
+			<div class="title_text">可用现金券</div>
+			<div class="title_count">共{{coupons.length}}个</div>
+		</div>
+		<div>
+			<div class="coupon_item" ms-repeat-coupon="coupons" ms-class-selected="$index==selectedIndex" ms-click="chooseCoupon($index)">
+				<div class="outter_bg">
+					<i class="icon_se"></i>
+					<div class="coupon_desc">
+						<div class="coupon_line_1">
+							<span class="coupon-name">{{coupon.title}}</span>
+							<span class="coupon-time">{{coupon.leftDayDes}}</span>
+					    </div>
+						<div class="coupon-limit">使用期限{{coupon.useStartDateStr}}至{{coupon.useEndDateStr}}</div>
+					</div>
+					<div class="coupon_value">
+						<div class="coupon-amount">￥{{coupon.amount}}</div>
+						<div class="coupon-dyq">现金券</div>
+					</div>
+				</div>
+				<div>&nbsp;</div>
+			</div>
+			
+		</div>
+		<div style="height: 15px;width:100%">&nbsp;
+		</div>
+		<div class="btn_area" style="margin-bottom: 15px;">
+			<div class="more_btn" ms-click="confirm">确定</div>
+		</div>
+	</div>
+</body>
+</html>

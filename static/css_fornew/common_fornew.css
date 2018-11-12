@@ -1,0 +1,67 @@
+[ms-controller]{display:none}
+body{background-color: #eeeeee;font-family: "微软雅黑",arial;} 
+html{-webkit-text-size-adjust:none;font-size:62.5%;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,span,p,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0px;padding:0px;box-sizing:border-box;list-style:none;}
+a{text-decoration: none;}
+.foot{
+	position: fixed;
+	bottom: 0px;
+	width:100%;
+	height:50px;
+	line-height: 50px;
+	color:#fff;
+}
+.fl{float: left;}
+.fr{float: right;}
+.hidden{overflow: hidden;}
+.clear{clear: both;}
+.w50{width:50%;}
+.w100{width:100%;}
+.ib{display: inline-block;}
+.tc{text-align: center;}
+.tr{text-align: right;}
+img{width:100%;}
+/*模态确认框*/
+.model{
+	width:100%;
+	position: fixed;
+	top:0px;
+	z-index: 100;
+	background-color: rgba(0,0,0,0.5);
+	text-align: center;
+	color:#676e74;
+	font-size: 1.5em;
+}
+.model .model_content{
+	position: relative;
+	background-color:#fff;
+	height:120px;
+	width:70%;
+	margin:50% auto;
+	/*overflow: hidden;*/
+	border-radius: 6px;	
+}
+.model .model_content .model_title{
+	height:80px;
+	line-height: 80px;
+	border-bottom: 1px solid #eee;
+}
+.model_close{
+	display: inline-block;
+	height:30px;
+	width:30px;
+	border-radius: 50%;
+	position: absolute;
+	top:-15px;
+	right: -15px;
+}
+.model .model_yes{
+	border-right: 1px solid #eee;
+}
+.model .model_yes,.model .model_no{
+	float: left;
+	width:49%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}

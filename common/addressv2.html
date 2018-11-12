@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+<!--    <script src="../static/js/avalon.js"></script>
+    <script src="../static/js/zepto.min.js?v=20151217"></script>
+    <script src="../static/js/common_v3.js?v=20151217"></script>
+--></head>
+<body>
+    <style>
+    .addr_item{
+        overflow: hidden;
+        border-bottom:1px solid #cccccc;
+    }
+    .addr_info{
+        margin: 10px 0 10px 30px;
+    }
+    .addr_region_location{
+        margin: 10px 0 10px 30px;
+    }
+    .addr_info>span{
+        margin-right:15px;
+    }
+    .checkbox {
+        float:left;
+        margin-top:15px;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: url("http://7xkdq7.com1.z0.glb.clouddn.com/icon_unselect.png") no-repeat;
+        background-size: 16px;
+    }
+    .checkbox.checked {
+        background-image: url("http://7xkdq7.com1.z0.glb.clouddn.com/icon_selected.png");
+    }
+    .addr_btn_area{
+        text-align: center;
+        margin-top:20px;
+        overflow: hidden;
+    }
+    .addr_btn_plain{
+        padding: 10px 20px;
+        border:1px solid #777777;
+        border-radius: 4px;
+        display: inline-block;
+    }
+    
+    
+    .xiaoqu_area{
+        width: 100%;
+        height:100%;
+        position:fixed;
+    }
+    .xiaoqu_list{
+        width: 100%;
+        overflow: scroll;
+        position: fixed;
+        top:50px;
+        bottom: 80px;
+    }
+    .xiaoqu_item{
+        width: 80%;
+        margin-left: 10%;
+        border:1px #777777 solid;
+        text-align: center;
+        padding: 4px 0;
+        margin-top: 10px;
+    }
+    .xiaoqu_title{
+        font-size:18px;
+        padding: 6px;
+    }
+    .xiaoqu_btn,.addr_btn{
+        position: fixed;
+        color:white;
+        background: #FF7E00;
+        bottom: 4px;
+        width:93%;
+        margin-left: 2%;
+        text-align: center;
+        padding: 4px 0;
+        font-size:18px;
+        border-radius: 6px;
+    }
+    .xiaoqu_item.current{
+        border:1px #FF3E00 solid;
+    }
+    .addr_form{
+        padding:5px;
+    }
+    .addr_input{
+        line-height: 42px;
+        border-bottom: 1px solid #777777;
+    }
+    .addr_input>input{
+        border: none;
+        outline: none;
+        text-align: right;
+        float: right;
+        line-height: 36px;
+        width: 68%;
+        font-size:14px;
+        margin:0px;
+        padding:2px 10px 0px 0px;
+        height:36px;
+    }
+    .form_title{
+        font-size:16px;
+        color:black;
+    }
+    .formfr{
+        float:right;
+    }
+    .arrow{
+        float:right;
+        width:9px;
+        height:40px;
+        background: url("http://7xkdq7.com1.z0.glb.clouddn.com/icon_arrow.png") no-repeat;
+        background-size: 9px 17px;
+        background-position: right center;
+        margin-left: 4px;
+    }
+    .addr_btn{
+        position: relative;
+        margin-top:30px;
+    }
+    .default_item{
+        color:#FF7E00;
+        border:1px solid #FF7E00;
+        padding: 4px 8px;
+        border-radius: 2px;
+    }
+    .reion-info{
+        width:70%;
+        float: right;
+        overflow: hidden;
+        font-size:15px;
+    }
+    .reion-info>span{
+        width: 31%;
+        display: inline-block;
+        text-align: right;
+    }
+    </style>
+    <div ms-controller="adroot" id="adroot" ms-visible="inuse" style="padding:10px;font-size:14px;background: white;">
+        <div ms-visible="page=='list'" >
+            <div class="addr_item" ms-click="check(item)" ms-repeat-item="addresses">
+                <i class="checkbox" ms-class-checked="isChecked(item)"></i>
+                <div class="addr_info">
+                    <span>{{item.receiveName}}</span>
+                    <span>{{item.tel}}</span>
+                    <span ms-visible="item.main" class="default_item">默认</span>
+                </div>
+                <div class="addr_region_location">{{item.regionStr}}{{item.detailAddress}}</div>
+            </div>
+            <div class="addr_btn_area">
+                <a class="addr_btn_plain" ms-click="addNewAddr">新增收货地址</a>
+            </div>
+        </div>
+        <div class="addr_form" ms-visible="page=='form'">
+            
+            <div class="addr_input">
+                <span class="form_title">联系人</span>
+                <input placeholder="请输入联系人姓名" ms-duplex-string="checkedAddress.receiveName"/>
+            </div>
+            <div class="addr_input">
+                <span class="form_title">手机号</span>
+                <input type="tel" placeholder="请输入手机号码" ms-duplex-string="checkedAddress.tel"/>
+            </div>
+            <div class="addr_input">
+                <span class="form_title">所在地区</span>
+                <div class="reion-info">
+                    <span ms-click="toChoosePro">{{checkedAddress.province}}</span>
+                    <span ms-click="toChooseCity">{{checkedAddress.city}}</span>
+                    <span ms-click="toChooseCounty">{{checkedAddress.county}}</span>
+                </div>
+            </div>
+            <div class="addr_input" ms-click="toXiaoquList">
+                <span class="form_title">小区或大厦</span>
+                <i class="arrow"></i>
+                <span class="formfr">{{checkedAddress.xiaoquName}}</span>
+            </div>
+            <div class="addr_input">
+                <span class="form_title">小区地址</span>
+                <input placeholder="小区所在地址" ms-duplex-string="checkedAddress.amapDetailAddr"/>
+            </div>
+            <div class="addr_input">
+                <span class="form_title">楼栋门牌号</span>
+                <input placeholder="例如：1号楼402室" ms-duplex-string="checkedAddress.detailAddress"/>
+            </div>
+            <div class="addr_btn" ms-click="addAddress">保存</div>
+            <div class="addr_btn" ms-click="showpage('list')">返回列表</div>
+        </div>
+    </div>
+    <script>
+        var addrUtil = {};
+        var adroot;
+        var addrinited=false;
+        /** 查询地址 */
+        function queryAddressesWithCache() {
+            if(adroot.addresses.length>0){return;}
+            common.invokeApi("GET", "addresses", null, null, function(n) {
+                adroot.addresses = n.result;
+            }, function(n) {
+                alert("获取地址信息失败！");
+                adroot.addresses = [];
+            });
+        }
+        function queryRegion(type,pid,callback){
+            if(type==1&&adroot.provinces.length>0){
+                callback(adroot.provinces);
+                return;
+            }
+            common.invokeApi("GET", "regionsv2/"+type+"/"+pid, null, null, function(n) {
+                if(type==1) {
+                    adroot.provinces=n.result;
+                } else if(type == 2) {
+                    adroot.citys=n.result;
+                } else if(type == 3) {
+                    adroot.countys=n.result;
+                }
+                callback();
+            }, function(n) {
+                alert("获取区域信息失败！");
+            });
+        }
+        /** 保存地址 */
+        function saveAddress() {
+            var addr = {};
+            addr.receiveName=adroot.checkedAddress.receiveName;
+            addr.tel=adroot.checkedAddress.tel;
+            addr.countyId=adroot.county.countyId;
+            addr.xiaoquName=adroot.checkedAddress.xiaoquName;
+            addr.detailAddress=adroot.checkedAddress.detailAddress;
+            addr.amapDetailAddr=adroot.checkedAddress.amapDetailAddr;
+            addr.amapId=adroot.checkedAddress.amapId;
+            addr.countyId=adroot.county.value;
+            common.invokeApi("POST", "addAddress", addr, null, function(n) {
+                adroot.addresses.push(n.result);
+                adroot.checkedAddress=n.result;
+                adroot.page = "list";
+            }, function(n) {
+                alert(n.message==null?"地址保存失败，请重试！":n.message);
+            });
+        }
+        function resetCheckedAddr(){
+            adroot.checkedAddress={xiaoquName:"请选择小区",province:"选择省",
+                city:"选择市",county:"选择区县",countyId:0,amapId:0,xiaoquAddr:"",
+                amapDetailAddr:"",receiveName:"",
+                tel:"",detailAddress:"",id:0};
+        }
+        /** 添加地址[end] */
+        function initAddrPage(){
+            adroot = avalon.define({
+                $id: "adroot",
+                inuse:false,
+                page:"list",
+                
+                addresses:[],
+                provinces:[],
+                citys:[],
+                countys:[],
+                
+                province:{name:"选择省"},
+                city:{name:"选择市"},
+                county:{name:"选择区县"},
+                
+                xiaoqus:[],
+                checkedAddress:{xiaoquName:"请选择小区",province:"选择省",
+                city:"选择市",county:"选择区县",countyId:0,amapId:0,xiaoquAddr:"",
+                amapDetailAddr:"",receiveName:"",
+                tel:"",detailAddress:"",id:0},
+                checkedXiaoqu:{id:0},
+                
+                toChoosePro:function(){
+                    queryRegion(1,0,function(){
+                        widget.showOptions(adroot.provinces,adroot.province.value,function(idx){
+                            if(adroot.province.value!=adroot.provinces[idx].value) {
+                                adroot.province=adroot.provinces[idx];
+                                adroot.city={name:"选择市"};
+                                adroot.county={name:"选择区县"};
+                                
+                                adroot.refreshRegion();
+                                adroot.toChooseCity();
+                            }
+                        });
+                    });
+                },
+                refreshRegion:function(){
+                    adroot.checkedAddress.province=adroot.province.name;
+                    adroot.checkedAddress.city=adroot.city.name;
+                    adroot.checkedAddress.county=adroot.county.name;
+                },
+                toChooseCity:function(){
+                    
+                    queryRegion(2,adroot.province.value,function(){
+                        widget.showOptions(adroot.citys,adroot.city.value,function(idx){
+                            if(adroot.city.value!=adroot.citys[idx].value) {
+                                adroot.city=adroot.citys[idx];
+                                adroot.county={name:"选择区县"};
+                                adroot.refreshRegion();
+                                adroot.toChooseCounty();
+                            }
+                        });
+                    });
+                },
+                toChooseCounty:function(){
+                    queryRegion(3,adroot.city.value,function(){
+                        widget.showOptions(adroot.countys,adroot.county.value,function(idx){
+                            if(adroot.county.value!=adroot.countys[idx].value) {
+                                adroot.county=adroot.countys[idx];
+                                adroot.refreshRegion();
+                            }
+                        });
+                    });
+                },
+                showpage:function(page){
+                    adroot.page = page;
+                },
+                toXiaoquList:function() {
+                    if(!adroot.city||adroot.city.name=='选择市'){
+                        alert("请先选择区域！");
+                        return;
+                    }
+                    adroot.page="";
+                    widget.showXiaoqu(adroot.city.name,function(xiaoqu){
+                        adroot.checkedAddress.xiaoquName=xiaoqu.xiaoquName;
+                        adroot.checkedAddress.amapDetailAddr=xiaoqu.amapDetailAddr;
+                        adroot.checkedAddress.amapId=xiaoqu.amapId;
+                        adroot.page="form";
+                    })
+                },
+                check: function(address) {
+                    adroot.checkedAddress = address;
+                    adroot.inuse=false;
+                    checkedAddrCallback(address);
+                },
+                isChecked:function(address) {
+                    return adroot.checkedAddress&&adroot.checkedAddress.id == address.id;
+                },
+                addNewAddr:function(){
+                    resetCheckedAddr();
+                    adroot.showpage('form');
+                },
+                addAddress:function(){
+                    if(adroot.checkedAddress.province==""||adroot.checkedAddress.city==""||adroot.checkedAddress.county==""){
+                        alert("请选择地址！");
+                        return;
+                    }
+                    if(adroot.checkedAddress.amapDetailAddr==""||adroot.checkedAddress.receiveName==""
+                        ||adroot.checkedAddress.tel==""||adroot.checkedAddress.detailAddress==""){
+                        alert("请填写完整相关信息！");
+                        return;
+                    }
+                    if(!(/^1[3-9][0-9]\d{4,8}$/.test(adroot.checkedAddress.tel))) {
+                        alert("请填写正确的手机号！");
+                        return;
+                    }
+                    saveAddress();
+                }
+            });
+            avalon.scan(document.getElementById('adroot'));
+        }
+        function checkedAddrCallback(addr){}
+        addrUtil.chooseAddress = function(checkedAddrFunc) {
+            checkedAddrCallback = checkedAddrFunc;
+            if(!addrinited){
+                initAddrPage();
+                addrinited=true;
+            }
+            queryAddressesWithCache();
+            adroot.inuse=true;
+        }
+/*        avalon.ready(function(){
+            initAddrPage();
+            queryAddressesWithCache();
+            adroot.inuse=true;
+        })*/
+
+    </script>
+    </body>
+</html>

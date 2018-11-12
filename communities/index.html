@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>东湖e家园服务</title>
+    <link rel="stylesheet" href="../static/css/swiper.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    
+    <script src="../static/js/jquery.js"></script>
+    <script type="text/jscript" src="../static/js/zepto.min.js"></script>
+	<script type="text/jscript" src="../static/js/fastclick.min-1.0.6.js"></script>
+	<script type="text/jscript" src="../static/js/avalon.js"></script>
+	<script type="text/jscript" src="../static/js/common_v3.js"></script>
+	<script type="text/jscript" src="index.js?v=1122"></script>
+	<link rel="stylesheet" href="../static/css/community/common.css">
+ <style>
+ 	
+	.category{
+ 		background-color: #f7f7f1;
+ 		height: 90px;
+ 		overflow-x: hidden;
+ 	}
+ 	
+ 	.category a{
+ 	
+		text-decoration: none;
+		color: #333;
+		font-size: 14px;
+    }
+     
+    .category_img{
+     
+     	width: 50%;
+     	height: 30px;
+    }
+    
+    .category_img_hide{
+     
+     	width: 50%;
+     	height: 30px;
+     	display: none;
+    }
+     
+    .category_main{
+     	
+     	width: 96%;
+     	margin: 0px 0% 0px 4%;
+     	overflow-x: hidden;
+     	
+    }
+    
+    .category_sub_main{
+    	    	
+    	margin: 15px 0% 15px 7%;
+    	text-align: center;
+    	width: 22%
+    }
+    
+    .left_arr{
+    	    	
+    	margin: 15px 0% 15px 0%;
+    }
+    
+    
+    .category_sub_main_sec{
+    	    	
+    	margin: 15px 0% 15px 0%;
+    	text-align: center;
+    	width: 22%;
+    	display: none;
+    }
+    
+    .right_arr{
+    	    	
+    	margin: 15px 0% 15px 0%;
+    	display: none;
+    	
+    }
+     
+	.category_txt{
+        	
+		padding: 7px 0px 0px 0px;
+		font-size: 12px;
+		color: :#999;
+	}
+	
+	.thread_user_name{
+	
+		font-size: 14px;
+		margin-top: 10.5px;
+		color: #3b3937;
+		height: 21px;
+		line-height: 21x;
+		width: 45%;
+		float: left;
+	}
+	
+	.thread_user_addr{
+	
+		margin: 10.5px 0px 0px 0px;
+		color: #666; 
+		float: left;
+		font-size: 12px;
+		height: 21px;
+		line-height: 21x;
+		text-align: right;
+		width: 33%;
+	}
+	
+	.preview_img_layer{
+		
+		float: left;
+		width: 100%;
+		
+	}
+	
+	.sub_img_layer{
+	
+		float:left;
+		padding-bottom:15px;
+		width: 32%;
+		margin-right: 1%;
+	}
+	
+	.preview_img{
+	
+		width: 100%;
+		height: 94px;
+	}
+	
+	.comment a{
+ 	
+		text-decoration: none;
+		color: #a6937c;
+		font-size: 14px;
+    }
+	
+ </style>
+</head>
+
+<body  ms-controller="root" id="indexDiv">
+<input type="hidden" name="filtersect" id="filtersect" value="" />
+
+	<!-- load -->
+		<div class="load6" id="LoadingBar">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+		        
+		<div id="fade" class="black_overlay">
+		</div>
+		
+		<div id="phoneErro"></div>
+		
+	<!-- load -->
+
+	<div id="zzmb" class="zzmb" style="display:none;position:fixed;" ms-click="hideImg"></div>
+	<div id="divconf" class="divconf" style="display:block; position:fixed; z-index: 2147483647;" ms-click="hideImg"></div>
+	
+	<div class="category lite-divider">
+		<div class="category_main">
+		
+			<div class="category_sub_main fl">
+				<a href="index.html?category=2">
+					<img class="category_img" src="../static/images/community/img_repair_60x60.png" ms-visible="category!=2"/>
+					<img class="category_img_hide" src="../static/images/community/img_repair_60x60_selected.png" ms-visible="category==2"/>
+					<div class="category_txt">报修</div>
+				</a>
+			</div>
+			
+			<div class="category_sub_main fl">
+				<a href="index.html?category=0">
+					<img class="category_img" src="../static/images/community/img_education_60x60.png" ms-visible="category!=0"/>
+					<img class="category_img_hide" src="../static/images/community/img_education_60x60_selected.png" ms-visible="category==0"/>
+					<div class="category_txt">服务需求</div>
+				</a>
+			</div>
+			
+			<div class="category_sub_main fl">
+				<a href="index.html?category=1">
+					<img class="category_img" src="../static/images/community/img_chat_60x60.png" ms-visible="category!=1" />
+					<img class="category_img_hide" src="../static/images/community/img_chat_60x60_selected.png" ms-visible="category==1"/>
+					<div class="category_txt">意见建议</div>
+				</a>	
+			</div>
+		</div>
+	</div>
+	
+	<!-- 
+	<div class="category lite-divider">
+	
+		<div class="category_main">
+			<div class="category_sub_main fl">
+				<a href="index.html?category=1">
+					<img class="category_img" src="../static/images/community/img_outdoors_60x60.png"/>
+					<img class="category_img_hide" src="../static/images/community/img_outdoors_60x60_selected.png"/>
+					<div class="category_txt">户外活动</div>
+				</a>
+			</div>
+			<div class="category_sub_main fl">
+				<a href="index.html?category=2">
+					<img class="category_img" src="../static/images/community/img_dog_60x60.png"/>
+					<img class="category_img_hide" src="../static/images/community/img_dog_60x60_selected.png"/>
+					
+					<div class="category_txt">宠物宝贝</div>
+				</a>
+			</div>
+			<div class="category_sub_main fl">
+				<a href="index.html?category=3">
+					<img class="category_img" src="../static/images/community/img_cate_60x60.png"/>
+					<img class="category_img_hide" src="../static/images/community/img_cate_60x60_selected.png"/>
+					<div class="category_txt">吃货天地</div>
+				</a>
+			</div>
+			<div class="category_sub_main fl">
+				<a href="index.html?category=4">
+					<img class="category_img" src="../static/images/community/img_store_60x60.png"/>
+					<img class="category_img_hide" src="../static/images/community/img_store_60x60_selected.png"/>
+					
+					<div class="category_txt">二手市场</div>
+				</a>
+			</div>
+			<div ms-click="shiftMenu1" class="left_arr fl">
+				<img style="padding-top: 10px;" src="../static/images/community/left_arrow.png"/>
+			</div>
+			<div ms-click="shiftMenu2" class="right_arr fl">
+				<img style="padding-top: 10px;" src="../static/images/community/right_arrow.png"/>
+			</div>
+			<div class="category_sub_main_sec fl">
+				<a href="index.html?category=5">
+					<img class="category_img" src="../static/images/community/img_education_60x60.png"/>
+					<img class="category_img_hide" src="../static/images/community/img_education_60x60_selected.png"/>
+					<div class="category_txt">亲子教育</div>
+				</a>
+			</div>
+			<div class="category_sub_main_sec fl">
+				<a href="index.html?category=6">
+					<img class="category_img" src="../static/images/community/img_sports_60x60.png"/>
+					<img class="category_img_hide" src="../static/images/community/img_sports_60x60_selected.png"/>
+					<div class="category_txt">运动达人</div>
+				</a>
+			</div>
+			<div class="category_sub_main_sec fl">
+				<a href="index.html?category=7">
+					<img class="category_img" src="../static/images/community/img_chat_60x60.png"/>
+					<img class="category_img_hide" src="../static/images/community/img_chat_60x60_selected.png"/>
+					<div class="category_txt">社区杂谈</div>
+				</a>	
+			</div>
+			<div class="category_sub_main_sec fl">
+				<a href="index.html?category=8">
+					<img class="category_img" src="../static/images/community/img_beautifulgirl_60x60.png"/>
+					<img class="category_img_hide" src="../static/images/community/img_beautifulgirl_60x60_selected.png"/>
+					<div class="category_txt">都市丽人</div>
+				</a>
+			</div>
+		</div>
+	
+	</div>
+	 -->
+<!-- 
+	<div class="ov pb15 lite-divider" style="color: #3b3937">
+		<span style="color: #888">（共{{threads_count}}帖）</span>
+	</div>
+
+	<div class="avatar-wrap rel ov" ms-visible="threads_count == 0">
+       	<div class="filter-img avatar-wrap center-bg" ms-css-background-image="url('{{bg_img}}')"></div>
+   	</div>
+ -->
+ 	<div ms-visible="threads_count==0">
+		<img src="../static/images/community/bg_publish.jpg"/>
+	</div>
+	<div class="thread-item p15 lite-divider" style="border-bottom: 2px solid #d4cfc8;"  ms-repeat-thread="threads" >
+		<div class="ov" style="width: 100%;">
+			<div><img class="fl thread-picture" ms-src="{{thread.userHead}}" /></div>
+			<div class="thread_user_name">{{thread.userName}}</div>
+			<div class="thread_user_addr">{{thread.userSectName}}</div>
+		</div>
+		<!-- 
+			<div class="ov pb15 fs14" style="color: #3b3937" ms-click="gotoDetail(thread.threadId)">{{thread.threadTitle}}</div> 
+		-->
+		<div class="ov pt15 pb15 fs13" style="color: #3b3937" ms-click="gotoDetail(thread.threadId)">{{thread.threadContent}}</div>
+		<div class="preview_img_layer" >
+			<div ms-repeat-previewurl="thread.previewLink">
+				<div class="sub_img_layer" ms-click="viewSrcImg(thread.threadId, $index);" ><img class="preview_img" ms-src="{{previewurl}}" /></div>
+			</div>
+		</div>
+		<div class="fs13" style="color: #a6937c; line-height: 23px; width: 100%;">
+			<img style="width: 13px; height: 13px;" src="../static/images/community/icon_time_gray.png"/>&nbsp;{{thread.formattedDateTime}}
+			<div class="fr pr15 comment" style="text-align: right;" ms-click="gotoComment(thread.threadId)" ><img style="width: 13px; height: 13px;" src="../static/images/community/icon_comment_gray.png"/>&nbsp;{{thread.commentsCount}}</div>
+		</div>
+	</div>
+	<div style="width: 100%; height: 80px;">&nbsp;</div>
+	<div style="position: fixed; bottom:0.5px; width: 100%; color: white;" >
+		<div class="submit-btn-black fs14 fl" ms-click="gotoindex" style="width: 25%">返回</div>
+		<div class="submit-btn-orange2 fs14 fl" ms-click="publicnew" style="width: 73%">我要发布</div>
+		<!-- 
+		<div class="submit-btn-black2 fs14 fl" ms-click="filtersect" style="width: 33%"><img id="circle" class="fl" style="padding-top: 11px; margin-left: 15%; height: 12px;width: 12px; display: block;" src="../static/images/community/circle.png"><img id="solid_circle" class="fl" style=" padding-top: 11px; margin-left: 15%; height: 12px;width: 12px; display: none;" src="../static/images/community/solid_circle.png"><span class="fl">小区及周边</span></div>
+		 -->
+	</div>
+<script type="text/javascript">
+	
+	/*
+	var url = location.href;
+	var index = url.substring(url.indexOf("=")+1, url.length);
+	var img = $(".category_img").eq(index-1);
+	var img_src = img.attr("src");
+	var path = img_src.substring(0, img_src.indexOf(".png"));
+	path += "_selected.png";
+	img.attr("src", path);
+	alert(img.css("width"));
+	*/
+	
+	var url = location.href;
+	var index = url.substring(url.indexOf("=")+1, url.length);
+	var img = $(".category_img").eq(index-1);
+	img.hide();
+	$(".category_img_hide").eq(index-1).show();
+</script>
+</body>
+</html>

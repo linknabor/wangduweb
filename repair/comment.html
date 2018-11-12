@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>评论</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../static/js/jquery.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="comment.js?v=1"></script>
+ 	<style type="text/css">
+        .content:before {
+            content: "亲，您的评价对师傅有很大的鼓励哦 ~";
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            left: 50%;
+            margin-left: -120px;
+        }
+        .grade{
+            padding-left: 15px;
+            padding-right: 15px;        	
+        }
+        .checkbox {
+            vertical-align: sub;
+        }
+        img{
+        	height: 20px;
+        	width: 20px;
+        }
+        .title_area{
+        	padding: 45px 0;
+            background:#f7f7f1;
+        }
+        .brand-tip-1 {
+            text-align: center;
+            font-size: 30px;
+            background: url("../static/images/group/icon_successful.png") no-repeat #f7f7f1;
+            background-position: 25% center;
+            background-size: 28px;
+            color: #FF8A00;
+        }
+        .brand-tip-2 {
+            text-align: center;
+            background:#f7f7f1;
+            margin-top:25px;
+            font-size: 20px;
+            color: #FF8A00;
+        }
+        .star{
+        	background: url(images/icon_xingxing_weixuanzhong_03.png) no-repeat;
+        	background-size: 100%;
+        	width:20px;
+        	height:20px;
+        	float:left;
+        	margin: 6px 6px 2px 6px;
+        }
+        .star.checked{
+        	background: url(images/icon_xingxing_xuanzhong_03.png) no-repeat;
+        	background-size: 100%;
+        }
+        .photo_area{
+			font-size: 15px;
+			color: #7e6b5a;
+			padding-left: 10px;
+		}
+		.photo_wrap{
+		    width: 33%;
+		    text-align: center;
+    		display: inline-block;
+	    }
+	    
+		.photo{
+		    margin: 3px;
+		    width: 90%;
+		    outline: #e5e2dd solid 1px;
+		}
+		.addicon{
+			background: url(images/add_photo.png) no-repeat;
+			background-size:40px;
+			background-position: 50%;
+		}
+		.add_icon{
+			background:url(../static/images/community/bg.png) no-repeat;
+			background-size: 70px;
+		}
+ 	</style>
+</head>
+
+<body ms-controller="root">
+	<div class="title_area">
+	    <div class="brand-tip-1">支付成功</div>
+	    <div class="brand-tip-2">维修工师傅很辛苦，给个好评呗</div>
+    </div>
+    <div style="line-height: 35px;">
+    	<span class="grade fs15">维修质量：</span>
+    	<span style="float: right; margin-right: 10px;">
+			<div ms-mouseover="qualityClick(1)" class="star" ms-class-checked="commentQuality>0"></div>
+			<div ms-mouseover="qualityClick(2)" class="star" ms-class-checked="commentQuality>1"></div>
+			<div ms-mouseover="qualityClick(3)" class="star" ms-class-checked="commentQuality>2"></div>
+			<div ms-mouseover="qualityClick(4)" class="star" ms-class-checked="commentQuality>3"></div>
+			<div ms-mouseover="qualityClick(5)" class="star" ms-class-checked="commentQuality>4"></div>
+		</span>
+	</div>
+    <div style="line-height: 35px;">
+    	<span class="grade fs15">服务态度：</span>
+    	<span style="float: right; margin-right: 10px;">
+			<div ms-mouseover="attitudeClick(1)" class="star" ms-class-checked="commentAttitude>0"></div>
+			<div ms-mouseover="attitudeClick(2)" class="star" ms-class-checked="commentAttitude>1"></div>
+			<div ms-mouseover="attitudeClick(3)" class="star" ms-class-checked="commentAttitude>2"></div>
+			<div ms-mouseover="attitudeClick(4)" class="star" ms-class-checked="commentAttitude>3"></div>
+			<div ms-mouseover="attitudeClick(5)" class="star" ms-class-checked="commentAttitude>4"></div>
+		</span>
+	</div>
+	<div style="line-height: 35px;">
+    	<span class="grade fs15">服务效率：</span>
+    	<span style="float: right; margin-right: 10px;">
+			<div ms-mouseover="serviceClick(1)" class="star" ms-class-checked="commentService>0"></div>
+			<div ms-mouseover="serviceClick(2)" class="star" ms-class-checked="commentService>1"></div>
+			<div ms-mouseover="serviceClick(3)" class="star" ms-class-checked="commentService>2"></div>
+			<div ms-mouseover="serviceClick(4)" class="star" ms-class-checked="commentService>3"></div>
+			<div ms-mouseover="serviceClick(5)" class="star" ms-class-checked="commentService>4"></div>
+		</span>
+	</div>
+	
+    <div contenteditable class="content p15 fs15" style="line-height: 20px;" ms-class-has-value="comment" ms-click="focus" ms-blur="storeComment"></div>
+    
+    <div class="photo_area">
+		<div style="margin-top:15px;width:100%;height:35px">
+			<div style="float: left;padding-left: 5px;">上传照片</div>
+			<div style="float: right;padding-right: 15px;color: #999">{{photos.length}}/6</div>
+		</div>
+	    <div ms-repeat-photo="photos"  class="photo_wrap a_third_m20_height" >
+			<img ms-src="photo.imgUrl" class="photo a_third_m22_height"/>
+		</div>
+		
+		<div class="photo_wrap a_third_m20_height" style="" ms-click="addPic" ms-visible="photos.length<6">
+			<div class="photo addicon a_third_m22_height" />
+	  	</div>
+  	</div>
+  	
+	<div style="width: 100%;height: 80px;">&nbsp;</div>
+  	<div class="btn-fixed">
+		<a href="#" class="btn" ms-click="submit">发表评论</a>
+	</div>
+</body>
+</html>

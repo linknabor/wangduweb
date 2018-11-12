@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta content="telephone=no" name="format-detection" />
+<meta charset="UTF-8">
+<title>我的预约</title>
+<link rel="stylesheet" href="static/css/common.css?v=20151217">
+<link rel="stylesheet" href="static/css/header.css?v=20151217">
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+<script src="static/js/zepto.min.js?v=20151217"></script>
+<script src="static/js/avalon.js"></script>
+<script src="static/js/common_v3.js?v=20151217"></script>
+<script src="homeorders.js?v=20160121"></script>
+<style type="text/css">
+.avatar-wrap {
+	height: 42rem;
+	text-align: center;
+}
+
+.creator-wrap {
+	margin-bottom: 10px;
+	height: 30px;
+	line-height: 30px;
+}
+
+.avatar {
+	height: 30px;
+	width: 30px;
+	margin: 0;
+	margin-right: 15px;
+}
+
+.order-bottom {
+	color: #a6937c;
+	line-height: 23px;
+	min-height: 23px;
+}
+</style>
+</head>
+<body ms-controller="root">
+	<!--没有订单式时显示背景图 -->
+	<div class="avatar-wrap rel ov" ms-visible="groupsNum == 0">
+		<div class="filter-img avatar-wrap center-bg"
+			ms-css-background-image="url('{{bg_img}}')"></div>
+	</div>
+	<!-- 隐藏需要在线支付，但是没有生成订单的 -->
+	<div ms-repeat-item="orders">
+		<div class="orders-item p15 divider" ms-visible="!(item.paymentType==1 && item.serviceOrderId==0)">
+			<div ms-click="gotoDetail(item)">
+				<img class="fl order-picture"
+					ms-src="{{pictureSrc(item.productName)}}" />
+				<div class="ov pb10 fs14">服务类型：{{item.productName}}</div>
+				<div class="ov pb10 fs14">
+					<span class="fl">服务费用：{{item.price}}</span> <span
+						class="fr highlight" ms-visible="item.status==5">已取消</span> <span
+						class="fr highlight" ms-visible="item.status==1">预约成功</span> <span
+						class="fr highlight" ms-visible="item.status==0">未付款</span>
+				</div>
+			</div>
+			<div class="lite-divider" style="margin-top: 20px"></div>
+			<div class="pt15 fs13 group-bottom"
+				style="margin-top: 5px; height: 28px">
+				<div class="fl">&nbsp; {{getDateStr($index)}}</div>
+				<!--unpaid-->
+				<div ms-visible="item.status==0" class="fr">
+					<a href="#" class="lite-btn fs13 fr" ms-click="orderPay(item)"
+						ms-visible="item.payStatus==0">付款</a> <a href="#"
+						class="btn-plain fr"
+						style="height: 24px; line-height: 24px; margin-right: 10px;"
+						ms-click="orderCancel(item)" ms-visible="item.payStatus==0">取消</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+	    <meta content="telephone=no" name="format-detection" />
+	    <meta charset="UTF-8">
+	    <title>通知</title>
+	    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+	    <link rel="stylesheet" href="../static/css/common.css?v=20151217">
+	    <script src="../static/js/jquery.js?v=20151217"></script>
+		<script src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+		<script src="../static/js/avalon.js"></script>
+		<script src="../static/js/common_v3.js?v=20151217"></script>
+		<script src="notices.js?v=20151217"></script>
+		<style>
+		[ms-controller]{display:none} 
+			.item{
+				border-bottom: solid 1px #D4CFC8;
+			}
+			.notice-type{
+				color:#666666
+			}
+			.unread{
+				border:#D07100 1px solid;
+				border-radius: 2px;
+				font-size:12px;
+				margin-top: 2px;
+				color:#D07100
+			}
+			.icon {
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				background-repeat: no-repeat;
+				background-size: 12px;
+				
+				margin:5px 2px 0px 0;
+			}
+			.time-icon {
+				background-image: url("../static/images/group/icon_time_gray.png");
+			}
+			.menu-link-arrow {
+		 		background-position-y: 15px;
+		 		padding-right: 10px;
+		 		color: #3b3937;
+		 		display: block;
+		 		background: url("../static/images/group/icon_arrow.png") no-repeat;
+		 		background-size: 7px 12px;
+		 		background-position: right center;
+		 	}
+		 	.notice-content{
+	  			text-overflow:ellipsis;
+		  		overflow: hidden;
+		  		white-space:nowrap;
+		 	}
+		</style>
+	</head>
+	<body ms-controller="root">
+	<!-- 不同的加载效果 -->
+		<div class="load6" id="LoadingBar">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+		        
+		<div id="fade" class="black_overlay">
+<!-- 			<div class="spinner" id="LoadingBar"> -->
+<!-- 	            <div class="spinner-container container1"> -->
+<!-- 	                <div class="circle1"></div> -->
+<!-- 	                <div class="circle2"></div> -->
+<!-- 	                <div class="circle3"></div> -->
+<!-- 	                <div class="circle4"></div> -->
+<!-- 	            </div> -->
+<!-- 	            <div class="spinner-container container2"> -->
+<!-- 	                <div class="circle1"></div> -->
+<!-- 	                <div class="circle2"></div> -->
+<!-- 	                <div class="circle3"></div> -->
+<!-- 	                <div class="circle4"></div> -->
+<!-- 	            </div> -->
+<!-- 	            <div class="spinner-container container3"> -->
+<!-- 	                <div class="circle1"></div> -->
+<!-- 	                <div class="circle2"></div> -->
+<!-- 	                <div class="circle3"></div> -->
+<!-- 	                <div class="circle4"></div> -->
+<!-- 	            </div> -->
+<!-- 	        </div> -->
+		</div>
+		
+		<div id="phoneErro"></div>
+		
+		<div id="phoneAjax" class="hidden">
+			<img src="http://7xlem4.com2.z0.glb.qiniucdn.com/backed/images/load2.gif" style="width:40px;height40px;vertical-align: middle;">
+		</div>
+	
+		<div id="indexDiv">
+			<div class="mlr15 ptb15 item" ms-repeat-notice="notices" ms-click="gotoDetail(notice)">
+				<div style="height:35px">
+					<div class="fl fs15 notice-type">{{notice.noticeTypeStr}}</div>
+					<div class="fl unread mlr10 plr10" ms-visible="!notice.readed">未读</div>
+					<span class="fr fs12" style="color:#888888"><i class="icon time-icon"></i>{{notice.timeStr}}</span>
+				</div>
+				<div>
+					<div class="menu-link-arrow fs14 notice-content">{{notice.title}}</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <meta content="telephone=no" name="format-detection" />
+        <meta charset="UTF-8">
+        <title>我的发布</title>
+        <link rel="stylesheet" type="text/css" href="../static/css_fornew/common_fornew.css"/>
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/avalon.js"></script>
+        <script src="../static/js/common_v3.js"></script>
+        <script src="release_used.js"></script>
+        <style type="text/css">
+        	body{
+        		background-color: #eee;
+        		color:#676e74;
+        	}
+        	.used_info{
+        		background-color: #fff;
+        		padding-left:20px ;
+        	}
+        	.used_info>p{
+        		font-size: 1.3em;
+        		line-height: 40px;
+        		border-bottom: 1px solid #ddd;
+        		padding-right: 20px;
+        	}
+        	.used_info>p b{
+        		width:6px;
+        		margin-left: 5px;
+        	}
+        	.deion{
+        		margin: 15px 0;
+        		background-color: #fff;
+        		padding :20px 0px 0px 20px;
+        	}
+        	.deion>div{
+        		font-size: 1.3em;
+        		padding-right: 20px;
+        	}
+        	textarea{
+        		border: none;
+        		width: 100%;
+        		resize:none;
+        	}
+        	.deion_img{
+        		padding: 5px 20px;
+        		padding-left: 0px;
+        	}
+        	.deion_img img{
+        		width:25%;
+        	}
+        	.btns{
+        		margin:20% 20px 0px;
+        	}
+        	.btns>img{
+        		width:50px;
+        		margin-bottom: 15px;
+        	}
+        	.btns>a{
+        		color:#fff;
+        		background-color: #ff7e00;
+        		line-height: 40px;
+        		font-size: 1.5em;
+        		border-radius: 5px;
+        		margin-top: 10px;
+        	}
+        </style>
+	</head>
+	<body ms-controller="root">
+		<div class="used_info w100">
+			<p>物品：<span class="fr">iphne6s <b class="ib"><img src="../static/images/arrow_right.png" /></b></span></p>
+			<p>成新：<span class="fr">9成新 <b class="ib"><img src="../static/images/arrow_right.png" /></b></span></p>
+			<p style="border-bottom: none;">价格：<span class="fr">5000元 <b class="ib"><img src="../static/images/arrow_right.png" /></b></span></p>
+		</div>
+		<div class="deion">
+			<div>
+				<textarea name="content" rows="5"  placeholder="描述下...."></textarea>
+				<p class="tr" style="color: #AAAAAA;">200个字</p>
+				<div class="deion_img"><img src="../static/images/add_img.png" /></div>
+			</div>
+		</div>
+		<div class="btns tc">
+			<img src="../static/images/release_smile.png" alt="" />
+			<p style="line-height: 20px;color:#aaa">请使用文明用语 <br />发布违法信息将承担法律责任！</p>
+			<a class="ib w100" href="#">发布</a>
+		</div>
+	</body>
+</html>

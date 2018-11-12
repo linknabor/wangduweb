@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    	<meta content="telephone=no" name="format-detection" />
+		<meta charset="UTF-8">
+		<title>订单</title>
+		<link rel="stylesheet" href="static/css/common_v2.css">
+   		<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+   		<script src="static/js/fastclick.min-1.0.6.js"></script>
+		<script src="static/js/jquery.js"></script>
+		<script src="static/js/avalon.js"></script>
+		<script src="static/js/common_v3.js?v=3"></script>
+		<script src="xiyi_list.js?v=3"></script>
+		<style type="text/css">
+		[ms-controller]:{display: none;}
+			body{
+				font-size: 1em;
+				background-color: #f4f5f7;
+			}
+			
+			.list_body{
+				margin-bottom: 15px;
+				box-sizing: border-box;
+				clear: both;
+				background-color: #fff;
+				font-size:15px;
+				border-bottom: 10px solid #f4f5f7;
+			}
+			.borderline{
+				height:1px;
+				background-image: url("static/images/home/wash/line3.png");
+			}
+			.time_desc{
+				color:#666666;
+				padding:15px 0 0 15px;
+			}
+			.list_main{
+				padding:15px;
+				height:90px;
+				clear:right;
+			}
+			.item_logo{
+				width:84px;
+				height:84px;
+				float:left;
+				margin-right: 15px;
+			}
+			.item_desc{
+				height:26px;
+				line-height: 26px;
+			}
+			.highlight{
+				color:#ff8a00;
+			}
+			.status_bar{
+				height: 40px;
+				line-height: 40px;
+				padding: 0px 15px;
+				border-top:1px solid #f4f5f7;
+			}
+			.btns>span{
+				display: inline-block;
+				height: 28px;
+				width:70px;
+				line-height: 28px;
+				text-align: center;
+				border-radius: 5px;
+				margin-left: 10px;
+			}
+			.cancel{
+				border:1px solid #aaa;
+			}
+			.pay,.ems{
+				background-color: #ff8a00;
+				color:#fff;
+			}
+			.nopage{
+				position: fixed;
+				height: 100%;
+				width: 100%;
+				background-color: #eeeeee;
+				text-align: center;
+			}
+			.nopage_img{
+				margin-top: 30%;
+				width: 50%;
+			}
+			.nopage_desc{
+				margin-top: 15px;
+				font-size:16px;
+			}
+			.btn_desc{
+				position: fixed;
+				bottom: 50px;
+				font-size:16px;
+				width:100%;
+			}
+			.order_btn{
+				position: fixed;
+				bottom: 0px;
+				font-size:22px;
+				width:100%;
+				background-color:#ff8a00 ;
+				color:white;
+				padding: 8px;
+			}
+		</style>
+	</head>
+	<body ms-controller="root">
+		<section ms-visible="orderList.length==0&&inited">
+			<div class="nopage">
+				<img class="nopage_img" src="static/images/home/noorder.png"/>
+				<div class="nopage_desc">您还没有订单哦！</div>
+				<div class="btn_desc">点击下方按钮立即预约</div>
+				<div class="order_btn" onclick="gotoPage('home/xiyi/index.html')">立即预约</div>
+			</div>
+		</section>
+		<section ms-visible="orderList.length>0">
+			<div class="list_body" ms-repeat-order="orderList" ms-click="gotoDetail($index)">
+				<p class="borderline"></p>
+				<div class="time_desc">下单时间: {{order.createDateStr}}</div>
+				<div class="list_main">
+					<img class="item_logo" ms-src="{{order.billLogo}}" alt="" />
+					<div class="item_desc">订单编号: </div><div class="item_desc">{{order.orderNo}}</div>
+					<div class="item_desc">取件时间: {{order.serviceDateStr}}</div>
+					<div  class="item_desc highlight">{{order.statusStr}}</div>
+				</div>
+				<div class="status_bar">
+					<span>实际支付: <span style="color: #ff8a00;">{{order.realAmount}}元</span></span>
+					<p class="fr btns">
+						<span class="cancel" ms-click="cancel($index,event)" ms-visible="order.status==1">取消订单</span>
+						<span class="pay" ms-click="pay($index,event)" ms-visible="order.status==1">付款</span>
+					</p>
+				</div>
+			</div>
+		</section>
+		
+	</body>
+</html>

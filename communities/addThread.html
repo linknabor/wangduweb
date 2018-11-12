@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>发布</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    <link rel="stylesheet" href="../static/css/community/common.css?o=1222">
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/jscript" src="../static/js/zepto.min.js"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js"></script>
+	<script src="addThread.js"></script>
+ 	<style type="text/css">
+        .icon {
+            background-size: 13px;
+            width: 13px;
+            height: 13px;
+            margin-right: 5px;
+            vertical-align: bottom;
+        }
+       
+        .input-btn-wrap {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        
+        .btn-fixed {
+			color: #fff;
+		  	left: 3%;
+		  	right: 3%;
+		  	bottom: 10px;
+		}
+		
+		.submit-btn {
+			height: 44px;
+			line-height: 44px;
+			background: #ff8a00;
+			text-align: center;
+		}
+		
+		.content_main{
+		
+			width: 94%;
+			margin: 5% 0% 5% 6%;
+		}
+		
+		.content_title{
+		
+			width: 98%;
+			margin: 0px 0% 0px 0%;
+			
+		}
+		
+		.content_info{
+		
+			width: 98%;
+			margin: 30px 0% 0px 0%;
+		}
+		
+		.content_input{
+		
+			height: 120px;
+		}
+		
+		.content_limmit{
+		
+			width: 89%;
+			margin: 0px 0% 0px 5%;
+			text-align: right;
+			color: gray;
+		}
+		
+		.pic_frame {
+		
+			width: 94%;
+			margin: 0px 0% 0px 6%;
+		}
+		.category_main{
+	     	width: 92%;
+	     	margin: 0px 0% 0px 4%;
+	     	overflow-x: hidden;
+    	}
+		.category{
+	 		background-color: #f7f7f1;
+	 		height: 90px;
+	 		overflow-x: hidden;
+ 		}
+ 		.category_img{
+	     	width: 50%;
+	     	height: 30px;
+    	}
+    	.category_img_hide{
+	     	width: 50%;
+	     	height: 30px;
+	     	display: none;
+    	}
+    	.category_txt{
+			padding: 7px 0px 0px 0px;
+			font-size: 12px;
+			color: :#999;
+		}
+		.category_sub_main{
+	    	margin: 15px 0% 15px 15%;
+	    	text-align: center;
+	    	width: 25%
+   	 	}
+   	 	.category a{
+			text-decoration: none;
+			color: #333;
+			font-size: 14px;
+    	}
+ 	</style>
+</head>
+
+<body ms-controller="root">
+	<div class="category lite-divider" ms-visible="threadCategory>=2">
+		<div class="category_main">
+		
+			<div class="category_sub_main fl">
+				<a href="addThread.html?category=2">
+					<img class="category_img" src="../static/images/community/img_repair_60x60.png" ms-visible="threadCategory!=2"/>
+					<img class="category_img_hide" src="../static/images/community/img_repair_60x60_selected.png" ms-visible="threadCategory==2"/>
+					<div class="category_txt">家庭维修</div>
+				</a>
+			</div>
+			
+			<div class="category_sub_main fl">
+				<a href="addThread.html?category=3">
+					<img class="category_img" src="../static/images/community/img_education_60x60.png" ms-visible="threadCategory!=3"/>
+					<img class="category_img_hide" src="../static/images/community/img_education_60x60_selected.png" ms-visible="threadCategory==3"/>
+					<div class="category_txt">公共部位维修</div>
+				</a>
+			</div>
+		</div>
+	</div>
+  	<div class="content_main">
+  <!-- 
+	<div id="phoneAjax" class="">
+		<img src="http://7xlem4.com2.z0.glb.qiniucdn.com/backed/images/load2.gif" style="width:40px;height40px;vertical-align: middle;">
+	</div>
+ -->
+  	<div id="zzmb" class="zzmb" style="display:none;position:fixed;"></div>
+  	<!-- 
+	  	<div class="inner-input-wrap content_title">
+			<input class="inner-input" placeholder="填写发布标题..." ms-duplex-string="threadTitle"></input>
+		</div>
+	 -->
+		<div class="inner-input-wrap content_info">
+			<textarea class="inner-input content_input" placeholder="填写发布信息..." ms-duplex-string="threadContent"></textarea>
+		</div>
+		<div>
+			<div class="content_limmit" >（限200字）</div>
+		</div>
+	</div>
+	<div>
+		<div id="pic" class="pic_frame">
+			
+		</div>
+		<div class="pl15 pr15">
+	  		<div id="add" ms-click="addPic"  class="add-pic-bg fl pl5"></div>
+	  	</div>
+  	</div>
+    <div class="input-btn-wrap pl5" >
+        <div style="height: 50px; width: 90%">&nbsp;</div>
+        <div class="pl5 pr5" style="position: fixed; bottom: 2%; background-color: #ererer; width: 90%; color: white;">
+			<div class="submit-btn ov fs14" ms-click="addThread">发布</div>
+		</div>
+    </div>
+</body>
+</html>

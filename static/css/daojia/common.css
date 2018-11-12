@@ -1,0 +1,139 @@
+.content {
+			position: relative;
+			height: 100px;
+			background-color: #fffff8;
+			border: 1px solid #d4cfc8;
+			outline: none;
+		}
+		.content:focus:before, 
+		.content:focus:after,
+		.content.has-value:before, 
+		.content.has-value:after {
+			display: none;
+		}
+		.content:before, .content:after {
+			font-size: 13px;
+			color: #bfbfbf;
+		}
+		.content:before {
+/*			content: "请填写你的需求...";*/
+		}
+		.content:after {
+/*			content: "例如：对阿姨的要求、家庭情况等...";*/
+			position: absolute;
+			left: 15px;
+    		top: 36px;
+		}
+		.tip {
+			padding: 15px 0;
+			margin: 0;
+			color: #888;
+			line-height: 19px;
+		}
+		.title {
+			padding-top: 0;
+			padding-bottom: 10px;
+			border-bottom: 1px solid #d4cfc8;
+			color: #7e6b5a;
+		}
+		.requirement-item {
+			color: #ff8a00;
+			padding: 7px 15px;
+			border: 1px solid #ffd095;
+			border-radius: 3px;
+		}
+		.requirement-item.active {
+			background-color: #ffe7c8;
+		}
+		
+		.icon.align-right {
+	background-position: right 5px;
+}
+
+
+.rule-items {
+	list-style: initial;
+	list-style-type: decimal;
+	margin: 15px;
+	font-size: 12px;
+}
+
+.rule-items li {
+	margin-bottom: 11px;
+}
+
+.menu-link {
+	background-position-y: 2px;
+}
+
+.submit-btn {
+	height: 44px;
+	line-height: 44px;
+	background: #ff8a00;
+	text-align: center;
+}
+
+.btn-fixed {
+	color: #fff;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.title {
+	padding: 20px 15px;
+}
+
+.address_icon {
+	background-size: 14px 15px;
+	width: 18px;
+}
+
+.address-wrap {
+	background-position-y: center;
+}
+
+.content:before {
+/*	content: "给商家留言...";*/
+}
+
+.total-wrap {
+	padding: 25px 15px 30px 0;
+	font-size: #3b3937;
+}
+
+.total {
+	padding: 0 10px;
+}
+.limitwidth{
+	overflow:hidden;white-space: nowrap;width:70%;
+}
+
+	.btn-fixed {
+	color: #fff;
+	left: 3%;
+	right: 0;
+	bottom: 0;
+}
+
+.useless {
+	background-color: #D7D5D4;
+}
+
+.date_pppp{
+  position: fixed;
+  width: 0px;
+  height: 0px;
+  color: #fccc;
+  z-index: -1;
+  top: 200px;
+  left: 50px;
+  border: 0px;
+}
+
+.btn-home-fixed {
+	color: white;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}

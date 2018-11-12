@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <meta content="telephone=no" name="format-detection" />
+        <meta charset="UTF-8">
+        <title>社区叽歪</title>
+        <link rel="stylesheet" type="text/css" href="../static/css_fornew/common_fornew.css"/>
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/avalon.js"></script>
+        <script src="../static/js/common_v3.js"></script>
+        <script src="bbs_feed.js"></script>
+        <style type="text/css">
+        	body{
+        		background-color: #eee;
+        		color:#676e74;
+        	}
+        	.head_icon{
+        		background-color: #fff;
+        	}
+        	.head_icon li{
+        		overflow: hidden;
+        		float: left;
+        		width:25%;
+        		text-align: center;
+        		margin:20px 0px;
+        	}
+        	.head_icon li p{
+        		width: 30px;
+        		height: 30px;
+        		margin: 0px auto 10px;
+        	}
+        	.feed_info{
+        		margin-top: 10px;
+        		background-color: #fff;
+        		padding: 20px 0px 20px 20px;
+        	}
+        	.userinfo{
+        		line-height: 25px;
+        		padding:0px 20px 10px 0px;
+        		border-bottom: 1px solid #ddd;
+        		font-size: 1.3em;
+        	}
+        	.userinfo img{
+        		width:50px;
+        		height:50px;
+        		border-radius: 50%;
+        		margin-right: 15px;
+        	}
+        	.fc_title{
+        		font-size: 1.3em;
+        		padding: 10px 0px;
+        		position: relative;
+        	}
+        	.price{
+        		position: absolute;
+        		right: 0px;
+        		color:#ff7e00;
+        		font-size: 1.2em;
+        		background-color: #eee;
+        		line-height: 20px;
+        	}
+        	.fc_title_logo{
+        		width:55px;
+        		font-size: 0.8em;
+        		padding:2px 3px;
+        		color:#fff;
+        		background-color: #ff8a00;
+        		border-radius: 3px;
+        		margin-right: 5px;
+        	}
+        	.fc_img,.fc_content,.fc_btns{
+        		padding:0px 20px 15px 0px;
+        	}
+        	.fc_btns>span{
+        		margin-left: 10px;
+        	}
+        	.fc_btns>span>img{
+        		display: inline-block;
+        		height:15px;
+        		width:18px;
+        		vertical-align: middle;
+        	}
+        	.model_line{
+        		margin-top: 15px;
+        	}
+        	.toall,.toxiaoqu{
+        		padding: 5px 20px;
+        		border-radius: 20px;
+        		border:1px solid #ff7e00;
+        		margin:30px 5px;
+        	}
+        	.toall{
+        		background-color: #ff7e00;
+        		color:#fff;
+        	}
+        	.toxiaoqu{
+        		color:#ff7e00;
+        	}
+        	.si_img{
+        		margin:15px 7px;
+        		font-size: 0.7em;
+        		color:#ff7e00;
+        	}
+        	.si_img img{
+        		width:50px;
+        	}
+        	.foot{
+        		background-color: #676e74;
+        	}
+        	.foot p{
+        		padding:0px 20px;
+        	}
+        	.w33{
+        		float: left;
+        		width:33%;
+        	}
+        </style>
+	</head>
+	<body ms-controller="root">
+		<div class="head_icon">
+			<ul class="hidden w100">
+				<li><p><img src="../static/images/bbsfeed1-1.png"/></p>全部</li>
+				<li><p><img src="../static/images/bbsfeed2-2.png"/></p>鲜花晒图</li>
+				<li><p><img src="../static/images/bbsfeed2-3.png"/></p>邻里叽歪</li>
+				<li><p><img src="../static/images/bbsfeed2-4.png"/></p>二手市场</li>
+			</ul>
+		</div>
+		<div class="feed_info w100 hidden" ms-repeat-feed="model">
+			<div class="userinfo hidden">
+				<img class="fl" ms-src="feed.headimg" />
+				<p class="fl hidden"><span style="color: #000;">{{feed.username}}</span><br /><span>{{feed.xiaoquname}}</span></p>
+				<p class="fr" style="margin-top: 25px;">{{feed.time}}</p>
+			</div>
+			<div class="feed_content hidden">
+				<div class="fc_title">
+					<span class="fc_title_logo ib" ms-visible="xianhua=='show'">鲜花晒图</span>
+					<span class="fc_title_logo ib" ms-visible="ershou=='show'">二手市场</span>
+					<span class="fc_title_logo ib" ms-visible="linli=='show'">邻里叽歪</span>
+					<span style="color:#000">【{{feed.title}}】</span>
+					<span class="ib price">{{feed.price}}</span>
+				</div>
+				<div class="fc_img hidden" ms-repeat-imgs="feed.imglist" ms-class-w33="feed.imglist.length>1">
+					<img ms-src={{imgs}} ms-click="bigimg($index)"/>
+				</div>
+				<div class="fc_content clear">
+					{{feed.content}}
+				</div>
+				<div class="fc_btns tr" style="padding-bottom: 0px;">
+					<span class="ib"><img src="#" />{{feed.pinglun}}个评论</span>
+					<span class="ib"><img src="#" />{{feed.liulan}}次浏览</span>
+					<span class="ib"><img src="#" />{{feed.dianzan}}次赞</span>
+				</div>
+			</div>
+		</div>
+		<br />
+		<br />
+		<br />
+		<!--筛选模态框-->
+		<div class="model" ms-visible="modelBox1=='show'">
+			<div class="model_content">
+				<span class="model_close" ms-click="closebox"><img src="../static/images/btn_close.png" /></span>
+				<p class="model_line"><img src="../static/images/bbs_model.png" /></p>
+				<div class="w100">
+					<span class="ib toall" ms-click="toall">查看全部</span>
+					<span class="ib toxiaoqu" ms-click="toxiaoqu">查看小区</span>
+				</div>
+			</div>
+		</div>
+		<!--发布模态框-->
+		<div class="model" ms-visible="modelBox2=='show'">
+			<div class="model_content">
+				<span class="model_close" ms-click="closebox"><img src="../static/images/btn_close.png" /></span>
+				<p class="model_line"><img src="../static/images/bbs_model.png" /></p>
+				<div class="w100">
+					<span class="ib si_img" ms-click="toall"><img src="../static/images/release1.png" /><br />邻里叽歪</span>
+					<span class="ib si_img" ms-click="toxiaoqu"><img src="../static/images/release2.png" /><br />鲜花晒图</span>
+					<span class="ib si_img" ms-click="toxiaoqu"><img src="../static/images/release3.png" /><br />二手市场</span>
+				</div>
+			</div>
+		</div>
+		<div class="foot tc">
+			<p class="fl" ms-click="screeninfo">筛&nbsp;选</p>
+			<p class="ib">我的发布</p>
+			<p class="fr" ms-click="releaseinfo">发&nbsp;布</p>
+		</div>
+	</body>
+</html>

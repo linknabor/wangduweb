@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!--<meta name="viewport" content="width=device-width">-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+<style>
+	.arrow-margin{
+		background-position:98% center;
+	}
+	
+	.location-wrap {
+		position: relative;
+		padding: 0 10px;
+		height: 49px;
+		line-height: 49px;
+		border-bottom: 1px solid #d4cfc8;
+	}
+	.location-input-wrap {
+		position: relative;
+		padding: 5px 10px ;
+		margin-right: 80px;
+		left:0px;
+	}
+	.location-input {
+		display: block;
+		height: 36px;
+		width: 100%;
+		outline: none;
+		border: 1px solid #d4cfc8;
+		border-radius: 4px;
+		vertical-align: middle;
+		font-size: 15px;
+	}
+	.location-btn-cancel {
+		position: absolute;
+		top: 5px;
+		right: 4px;
+		display: inline-block;
+		height: 36px;
+		width: 36px;
+		background: url("static/images/group/icon_cancel.png") no-repeat;
+		background-size: 15px;
+		background-position: center;
+	}
+	.location-btn-ensure {
+		position: absolute;
+		display: block;
+		top: 0;
+		height: 36px;
+		line-height:36px;
+		margin-top:5px;
+		right: 15px;
+		color: #3b3937;
+		border-radius: 4px;
+		font-size: 15px;
+		width: 65px;
+		text-align:center;
+		border:1px solid #d4cfc8;
+	}
+	.location-empty-tip {
+		margin: 0 auto;
+		margin-top: 105px;
+		font-size: 12px;
+		color: #888;
+		width: 165px;
+		text-align: center;
+		line-height: 18px;
+	}
+	.location-location {
+		margin: 0 15px;
+		padding: 15px 0;
+		border-bottom: 1px solid #d4cfc8;
+	}
+	
+	.city,.city2 {
+		 font-size: 14px;
+		 color: #000;
+		 width: 25%;
+		 height:30px;
+		 line-height: 30px;
+		 text-align: center;
+	}
+	.city{
+		background-color: #FFF;
+	}
+	.city2{
+		 background-color: #E0E0E0;
+	}
+</style>
+</head>
+<body>
+	<div ms-visible="control.currentPage=='addrlist'" >
+		<div class="divider"></div>
+		<div class="plr15 arrow-margin menu-link mt1 fs14 address-wrap lite-divider" ms-click="addr.check(item)" ms-repeat-item="addr.addresses">
+			<i class="checkbox fl mt1" ms-class-checked="addr.isChecked(item)"></i>
+			<div>
+				<span style="margin-left:20px">{{item.receiveName}}</span>
+				<span style="margin-left:15px">{{item.tel}}</span>
+				<span style="margin-left:15px" ms-visible="item.main">默认</span>
+			</div>
+			<div class="location" style="margin-left:35px" >{{item.province}}{{item.city}}{{item.county}}{{item.locationAddr}}({{item.xiaoquName}}){{item.detailAddress}}</div>
+		</div>
+		<div class="tc mt2"><a class="btn-plain" ms-click="addr.toAddAddress">新增收货地址</a><br/></div>
+	</div>
+
+	<div style="padding:0 15px"  ms-visible="control.currentPage=='addAddressForm'">
+			<div class="input-wrap lite-divider">
+				<span class="fl fs15">联系人</span>
+				<input placeholder="请输入联系人姓名" class="fr fs14 hidden-input" ms-duplex-string="addr.receiveName"/>
+			</div>
+			<div class="input-wrap lite-divider">
+				<span class="fl fs15">手机号</span>
+				<input type="tel" placeholder="请输入手机号码" class="fr fs14 hidden-input" ms-duplex-number="addr.tel"/>
+			</div>
+			<div ms-click="addr.chooseRegion" style="color: #3b3937"  class="input-wrap lite-divider menu-link">
+				<span class="fl fs15">所在地区</span>
+				<span class="fr fs14" style="color: #aeaeae" ms-visible="!addr.distinct">请选择所在地区</span>
+				<span class="fr fs14" ms-visible="distinct">{{addr.distinct}}</span>
+			</div>
+			<div ms-visible="addr.selectRegion==true">
+				<div class="tc">
+					<div class="region fl" ms-class-check="addr.currentRegionType==1" ms-click="addr.backRegion(1)">选择省</div>
+					<div class="region fl" ms-class-check="addr.currentRegionType==2" ms-click="addr.backRegion(2)">市</div>
+					<div class="region fl" ms-class-check="addr.currentRegionType==3">区县</div>
+				</div>
+				<div ms-css-height="addr.regionAreaHeight(addr.regions.length)" style="width:100%;clear:both;background-color: #e0dede;">
+					<div class="fs14 fl" ms-class-city="Math.floor(($index/4)%2)==0" ms-class-city2="Math.floor(($index/4)%2)==1" ms-repeat-region="addr.regions"  ms-click="addr.updateRegion(region)">{{region.name}}</div>
+				</div>
+				<div> &nbsp;</div>
+			</div>
+			<div style="clear: both;" ms-visible="addr.selectRegion==false">
+				<div class="input-wrap lite-divider  menu-link"  style="color: #3b3937" ms-click="addr.showLocation" >
+					<span class="fl fs15">小区或大厦</span>
+					<span class="fr fs14"  style="color: #aeaeae" ms-visible="addr.xiaoquName==''">请输入小区或大厦</span>
+					<span class="fr fs14" ms-visible="addr.xiaoquName!=''">{{addr.xiaoquName}}</span>
+				</div>
+				<div class="input-wrap lite-divider">
+					<span class="fl fs15">小区地址</span>
+					<input placeholder="例如：三林路128弄" class="fr fs14 hidden-input" ms-duplex-string="addr.xiaoquAddress"/>
+				</div>
+				<div class="input-wrap lite-divider">
+					<span class="fl fs15">楼栋门牌号</span>
+					<input placeholder="例如：1号楼402室" class="fr fs14 hidden-input" ms-duplex-string="addr.homeAddress"/>
+				</div>
+				<a href="#" class="btn" ms-click="addr.addAddress">保存</a>
+			</div>
+		</div>	
+		
+		<!--	使用高德地图搜索-->
+		<div style="background-color: #fffff8" ms-visible="control.currentPage=='location'">
+			<div class="location-wrap">
+				<div class="location-input-wrap">
+					<input placeholder="请输入小区名称" class="location-input" ms-duplex-string="location" />
+					<i class="location-btn-cancel" ms-click="addr.cancelLocation" ms-visible="addr.suggestion"></i>
+				</div>
+				<span class="location-btn-ensure" ms-click="addr.submitLocation">确定</span>
+			</div>
+			<div class="location-empty-tip" ms-visible="!addr.suggestions.length">
+				准确的小区、街道或大厦名称能加快送货速度
+			</div>
+			<div class="location-location" ms-click="addr.chooseLocation(suggestion)" ms-repeat-suggestion="addr.suggestions" ms-visible="addr.suggestions.length">
+				<span style="position:relative;font-color:#cccccc">{{suggestion._name}} - {{suggestion._address}}</span>
+			</div>
+		</div>
+	</body>
+</html>

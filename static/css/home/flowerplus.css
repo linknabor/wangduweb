@@ -1,0 +1,49 @@
+.table-b table{width: 100%; }
+.table-b a{text-decoration: none; color: #3B3937;}
+.table-b table td{border:1px solid #EEE9E9; text-align: center;}  
+.pincipicker {
+	padding: 15px;
+	font-size: 16px;
+}
+.flower-address-ul{
+	border-bottom: 1px solid #d4cfc8;
+	padding: 10px 15px;
+}
+.flower-address-li{
+	line-height: 25px;
+}
+.left10{
+	padding-left: 10px;
+}
+.left35{
+	padding-top:5px;
+	padding-left: 35px;
+	text-align: left;
+}
+.price{
+	padding-top:11px;
+	padding-bottom: 4px;
+	font-size: 16px;
+	font-weight:bold; 
+}
+.title{
+	border-bottom: none;
+	padding-bottom: 0px;
+}
+.disc li{
+	list-style-type: disc ;
+}
+.menu-link {
+	background-position: right 70%;
+	min-height: 19px;
+}
+.modal-mask{
+	position: fixed;
+}
+.lh40{
+	line-height: 40px;
+}
+.lh20{
+	line-height: 20px;
+}
+

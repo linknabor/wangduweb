@@ -1,0 +1,150 @@
+.product-item{
+ 		display: block;
+ 		position: relative;
+ 		margin-top: 2px;
+ 		border: 1px solid #f4eff8;
+	}
+	
+	.pleft{
+		margin-left:1px;
+	}
+	.pright{
+		margin-right:1px;
+	}
+	.product-image{
+		height:auto
+	}
+	.product-name{
+		font-size: 12px;
+		height:30px;
+		color: #000000;
+  		line-height: 15px;
+  		text-overflow:ellipsis;
+  		overflow: hidden;
+  		/**white-space:nowrap;**/
+	}
+	.product-detail-name{
+		font-size: 14px;
+		height: 40px;
+		  color: #000000;
+		  line-height: 20px;
+		  text-overflow: ellipsis;
+		  overflow: hidden;
+		  /**white-space:nowrap;**/
+	}
+	.product-price{
+		font-size:2.0rem;
+		color:#ffc69c;
+	}
+	.ori-price{
+		font-size:11px;
+		color:#999999;
+	}
+	.ori-price2{
+		font-size:14px;
+		color:#999999;
+	}
+	.product-discountbanner{
+		  background: url("../../images/img_tag.png") no-repeat;
+		  background-size: 20px 20px;
+		  width: 20px;
+		  height: 20px;
+		  display: block;
+		  float: left;
+	}
+	
+	.product-discount{
+		  background-color: #ff8a00;
+		  padding-right: 4px;
+		  margin-right: 4px;
+		  height: 16px;
+		  font-size: 12px;
+		  line-height: 16px;
+		  display: block;
+		  color: white;
+		  border: #ff8a00 1px solid;
+		  border-radius: 4px;
+		  padding-left: 4px;
+		  float:right;
+	}
+	
+	.tuangou-item{
+ 		display: block;
+ 		position: relative;
+ 		margin-top: 6px;
+    	/*float:left;*/
+ 		border: 1px solid #d4cfc8;
+	}
+	.product-lefttime{
+		color:#666666;
+		padding-left: 10px;
+	}
+	.pic_container{
+	    width:100%;
+	    position:relative;
+	    display: inline-block;
+	}
+	.pic_dummy{
+	    margin-top: 100%;
+	}
+	.pic_content{
+	    position:absolute;
+	    left:0;
+	    right:0;
+	    top:0;
+	    bottom: 0;
+	}
+	.product-tag{
+	    position:absolute;
+	    left:0;
+	    top:0;
+	    width:40px;
+	    height:40px;
+	}
+.process-left-border{
+	border-left:#e5e2dd 1px solid; z-index: 1;position: absolute;right: 0px;
+}
+
+.product-info{
+	clear: both;
+	background-color: #E2E2E2;
+}
+.bb3{
+	border-bottom: 5px solid #f7f7f1;
+}
+
+
+.detail-item {
+	width:100%;
+	margin-top: 12px;
+	font-size:12px;
+	color:#323937;
+}
+
+.more_btn{
+	color: #996c33;
+	border: #cfa972 solid 1px;
+	padding: 8px 30px;
+	font-size: 14px;
+	margin-top:25px;
+	margin-bottom:25px;
+	border-radius: 6px;
+}
+
+.useless {
+	background-color: #D7D5D4;
+}
+.process-img{
+	
+}
+
+.btn-fixed {
+  color: #fff;
+  bottom: 0;
+}
+.submit-btn {
+	height: 44px;
+	line-height: 44px;
+	background: #ff8a00;
+	text-align: center;
+}

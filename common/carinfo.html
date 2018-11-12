@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!--<meta name="viewport" content="width=device-width">-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+<style>
+	.arrow-margin{
+		background-position:98% center;
+	}
+	.li-height li{
+	  height: 30px !important;
+	}
+	span {
+	font-size: 15px;
+   }
+ .imgs{
+ 	float: left; 
+ 	height: 20px; 
+ 	width: 25px; 
+ 	background-repeat: no-repeat; 
+ 	background-size: 70%;
+ 	margin-left: 5px; 
+ 	margin-top: 5px;
+ }
+</style>
+</head>
+<body>
+	<!--车辆信息列表-->
+	<div ms-visible="control.currentPage=='usercarinfolist'" >
+		<div class="divider"></div>
+		<div class="plr15 arrow-margin menu-link mt1 fs14 address-wrap lite-divider" ms-click="car.check(item)" ms-repeat-item="car.usercarinfos">
+			<i class="checkbox fl " ms-class-checked="car.isChecked(item)"></i>
+			<div>
+				<span style="margin-left:15px" ms-visible="item.main">默认</span>
+			</div>
+			<div class="location" style="margin-left:35px" >{{item.brandName}}&nbsp;{{item.modelName}}&nbsp;{{item.colour}}&nbsp;{{item.plateProvince}}{{item.plateNumber}}</div>
+		</div>
+		<div class="tc mt2"><a class="btn-plain" ms-click="car.toAddUserCarInfo">新增车辆</a><br/></div>
+	</div>
+	<!--新增车辆信息-->
+	<div ms-visible="control.currentPage=='addusercarinfoform'" class="li-height" >
+		<label class="title fs13 order-title">新增车辆信息</label>
+		<ul class="list block-menu">
+			<li ms-click="car.chooseCarBrand" >
+				<label class="icon-label" style="padding-left: 2px;">车辆信息</label>
+				<span  class="fr"  style="filter:alpha(opacity=50);" ms-visible="car.modelName == ''">请选择</span>
+				<span  class="fr" ms-visible="car.modelName != ''">{{car.brandName}}{{car.modelName}}</span>
+			</li>
+			<li  ms-click="car.chooseCarColour">
+				<label class="icon-label" style="padding-left: 2px;">车辆颜色</label>
+				<span style="filter:alpha(opacity=50); color: #201201201;" class="fr" ms-visible="car.colour ==''">请选择</span>
+				<span class="fr" ms-visible="car.colour !=''">{{car.colour}}</span>
+			</li>
+			<li>
+				<div ms-click="car.chooseCarPlateProvince" >
+				  <label class="icon-label" style="padding-left: 2px;float: left;width: 60px; text-align: center;" >{{car.plateProvince}}</label>
+				  <span class="imgs" style="background-image: url(&quot;../static/images/group/icon_bottom.png&quot;); "></span>
+				</div>
+				<input placeholder="车牌号" class="fr fs14 hidden-input" style="margin-top: -5px;" ms-duplex-string="car.plateNumber"/>
+			</li>
+		</ul>
+		<div ms-visible="car.showPlateProvince==true">
+			<div style="width:100%;clear:both">
+				<div class="fs14 fl city" ms-class-city="Math.floor(($index/4)%2)==0" ms-class-city2="Math.floor(($index/4)%2)==1" ms-repeat-plateprovince="car.plateProvinces"  ms-click="car.updatePlateProvince($index)">{{plateprovince.province}}</div>
+				</div>
+			<div> &nbsp;</div>
+		</div>
+		<div ms-visible="car.showColour==true">
+			<div style="width:100%;clear:both">
+				<div class="fs14 fl city" ms-class-city="Math.floor(($index/4)%2)==0" ms-class-city2="Math.floor(($index/4)%2)==1" ms-repeat-carcolour="car.carColours"  ms-click="car.updateColour($index)">{{carcolour.colour}}</div>
+				</div>
+			<div> &nbsp;</div>
+		</div>
+		<a href="#" class="btn" ms-click="car.addCarInfo"  ms-visible="car.saveCarInfo==true">确认选择</a>
+	</div>
+	<!--选择汽车品牌-->
+	<div ms-visible="control.currentPage == 'carbrandinfo'">
+		<label class="title fs14 order-title">请选择汽车品牌</label>
+		<div class="table-b fs14">
+				<table >
+					<tr ms-repeat-item="car.firstLetters">
+						<td ms-repeat="item"><a ms-attr-href="#{{el}}">{{el}}</a></td>
+					</tr>
+				</table>	
+		</div>
+		<div ms-repeat-item="car.carBrandNames" ms-attr-id="{{item.key}}">
+			
+			<ul class="list block-menu fs14" >
+	            <li style="padding: 10px; background: #F5F5F5;">{{item.key}}</li>
+				<li ms-click="car.chooseCarModel(el)" ms-repeat="item.brandNames">{{el}}</li>
+			</ul>
+		</div>
+	</div>
+	<!--选择汽车型号-->
+	<div ms-visible="control.currentPage == 'carmodelinfo'">
+		<label class="title fs13 order-title">请选择车型</label>
+		<ul class="list block-menu" ms-repeat-modelname="car.carModelNames">
+			<li  ms-click="car.updateCarModel(modelname)">
+				<label class="icon-label ">{{modelname}}</label>
+			</li>
+		</ul>
+	</div>
+
+</body>
+</html>

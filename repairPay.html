@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <meta content="telephone=no" name="format-detection" />
+        <meta charset="UTF-8">
+        <title>维修支付</title>
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="static/js/jquery.js"></script>
+        <script src="static/js/avalon.js"></script>
+        <script src="static/js/common_v3.js"></script>
+        <script src="repairPay.js?v=1"></script>
+        <style type="text/css">
+            body{
+                background: #F9F9E9;
+                margin: 0;
+                height: auto;
+                text-align: center;
+            }
+            .title-top{
+                padding: 15px;
+                font-size: 15px;
+                height: 30px;
+                line-height: 30px;;
+                color: #f06060;
+                background: #fff1e7;;
+            }
+            .title-mid-top{
+                padding: 50px 0 26px 0;
+                font-size: 17px;
+                color: #7e6b5a;
+            }
+            .title-mid{
+                margin-bottom: 50px;;
+            }
+            .title-mid-bottom{
+                padding-bottom: 13px;
+                font-size: 50px;
+                color: #3b3937;
+                outline: none;
+            }
+            .title-mid-bottom:focus:before,
+            .title-mid-bottom.has-value:before {
+                display: none;
+            }
+            .title-mid-bottom:before {
+                content:"|";
+                font-size: 50px;
+                color: #7e6b5a;
+            }
+            .lite-divider {
+                border-bottom: 1px solid #d4cfc8;
+            }
+            .btn {
+                display: block;
+                margin: 10px;
+                height: 44px;
+                line-height: 44px;
+                color: #fff!important;
+                font-size: 15px;
+                text-align: center;
+                background-color: #ff8a00;
+                border-radius: 3px;
+                outline: none;
+                border: none;
+                text-decoration: none;
+            }
+            .main_btn{
+                width: 90%;
+                height: 60px;
+                margin:0 auto;
+            }
+            .useless {
+                background-color: #e6e3df;
+            }
+        </style>
+    </head>
+    <body ms-controller="root">
+    <div class="title-top">维修已完工，请支付费用</div>
+    <div class="title-mid lite-divider">
+        <div class="title-mid-top">请输入维修费用（元）</div>
+        <div contenteditable="true" class="title-mid-bottom" ms-class-has-value="amount!=''" ms-blur="storeMemo"></div>
+    </div>
+    <div class="main_btn">
+        <a href="#" class="btn" ms-click="onlinePay" ms-class-useless="paying">立即微信支付</a>
+        <a href="#" class="btn" ms-click="offlinePay" ms-class-useless="paying">我已现金支付</a>
+    </div>
+    </body>
+</html>

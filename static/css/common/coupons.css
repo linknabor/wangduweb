@@ -1,0 +1,103 @@
+.coupon_item{
+		padding:0px 15px 20px 15px;
+		height:80px;
+		margin-bottom: 15px;
+	}
+	.coupon_desc{
+		float:left;
+		width: 74%;
+		background:url("../../img/bg_courtesy_card.png") no-repeat;
+		  font-size: 20px;
+	  background-size: 138% 100px;
+	  background-position: 0px 0px;
+	  height:100px;
+	  
+	}
+	.coupon_value{
+		float:right;
+		width:26%;
+	  height:100px;
+		background:url("../../img/bg_courtesy_card.png") no-repeat;
+		  font-size: 20px;
+	  background-size: 358% 100%;
+	  background-position: 100% 0px;
+	}
+	.coupon_line_1{
+		width: 100%;
+	  	padding: 20px 20px 0 20px;
+	}
+	.coupon-name{
+		font-size: 20px;
+		color:#ff8a00;
+	}
+	.coupon-time{
+		border: 1px #b28850 solid;
+		color:#b28850;
+		border-radius: 20px;
+		padding: 0px 10px;
+		font-size: 12px;
+	}
+	.coupon-limit{
+		position: absolute;
+		font-size:11px;
+		color:#666666;
+		padding:10px 0 0px 20px;
+		width: 60%;
+	}
+	.coupon-amount{
+		color:white;
+		text-align: center;
+		padding: 20px 0 0 0;
+		font-size: 24px;
+	}
+	.coupon-dyq{
+		color:white;
+		text-align: center;
+		padding: 10px 0 0 0;
+		font-size: 13px;
+	}
+	.title-line{
+		margin:15px;
+		border-bottom: 1px solid #888888;
+		height: 35px;
+	}
+	.title_text{
+		float:left;
+		font-size:13px;
+		color:#666666;
+	}
+	.title_count{
+		float:right;
+		font-size:13px;
+		color:#666666;
+	}
+	.btn_area{
+		text-align: center;
+		width:100%;
+		position: fixed;
+		bottom: 10px;
+	}
+	.more_btn{
+		margin-left: 20px;
+		margin-right: 20px;
+		color: white;
+		background: #ff8a00;
+		padding: 8px 30px;
+		font-size: 14px;
+		border-radius: 6px;
+	}
+	.icon_se{
+        background:url('../../img/icon_select.png') no-repeat;
+        background-size: 20px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        z-index: 110;
+        margin-left: -10px;
+        position:absolute;
+        margin-top: 38px;
+	}
+	.selected .icon_se{
+        background:url('../../img/icon_selectted.png') no-repeat;
+        background-size: 20px;
+	}

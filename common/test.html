@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>购买页面</title>
+    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/common.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/common/coupons.css?v=20151217"></link>
+    <link rel="stylesheet" href="../static/css/common/address.css?v=20151217"></link>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="test.js"></script>
+	<script src="address.js?v=20151217"></script>
+	<script src="coupons.js?v=20151217"></script>
+ <style>
+</style>
+</head>
+
+<body ms-controller="root">
+<section ms-visible="currentPage=='main'">
+	<div class="addr_area" ms-click="showAddress">
+		<div style="text-align:center;background-color: #f7f7f1;">
+			<a href="#" class="btn-plain add_btn_style" ms-visible="!checkedAddress.receiveName" style="">选择收货地址</a>
+		</div>
+		<a  href="#" class="menu-link fs14 addr_detail" ms-visible="checkedAddress.receiveName">
+			<span style="color:#3b3937;">{{checkedAddress.receiveName}}</span>
+			<span style="margin-left:15px;color:#3b3937;">{{checkedAddress.tel}}</span>
+			<div class="addr_location">{{checkedAddress.province}}{{checkedAddress.city}}{{checkedAddress.county}}（{{checkedAddress.xiaoquName}}）{{checkedAddress.detailAddress}}</div>
+		</a>
+	</div>
+	
+	<div class="line p15 fs15" style="height:20px" ms-click="showCoupons">
+		<span class="fl">现金券</span> 
+		<span class="fl baoyou_desc" >&nbsp;&nbsp;{{couponNum}}张可用</span>
+		<div class="fr right_menu">{{couponDesc}}  </div>
+	</div>
+	
+</section>
+<section ms-visible="currentPage=='addresses'">
+	<div ms-include-src="'address.html'"></div>
+</section>
+
+
+<section ms-visible="currentPage=='coupons'">
+	<div ms-include-src="'coupons.html'"></div>
+</section>
+	<!-- 地址编辑 -->
+</body>
+</html>

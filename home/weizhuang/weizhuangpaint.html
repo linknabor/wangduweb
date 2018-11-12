@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>全屋涂料刷新服务(不铲墙)</title>
+<link rel="stylesheet" href="../../static/css/header.css">
+<link rel="stylesheet"
+	href="../../static/css/onsite/common.css?v=20150822010144">
+<link rel="stylesheet"
+	href="../../static/css/daojia/common.css?v=20150822010144">
+<link rel="stylesheet"
+	href="../../static/css/common.css?v=20150822010144">
+<link rel="stylesheet" href="../../static/css/onsite/selection.css">
+<script src="../../static/js/jquery.js"></script>
+<script src="../../static/js/avalon.js"></script>
+<script type="text/jscript"
+	src="../../static/plugin/jquery.datetimepicker.js"></script>
+<link rel="stylesheet"
+	href="../../static/plugin/jquery.datetimepicker.css">
+<script type="text/jscript" src="../../static/js/common_v3.js"></script>
+<script src="../../common/commonaddress.js"></script>
+<script src="weizhuangpaint.js"></script>
+<link rel="stylesheet"
+	href="../../static/css/address.css?v=20150822010144">
+<link rel="stylesheet"
+	href="../../static/css/home/flowerplus.css?v=20150822010144">
+
+
+</head>
+<body ms-controller="root">
+	<section ms-visible="control.currentPage=='main'">
+		<img class="banner"
+			src="../../static/images/home/weizhuang/pic_weizhuang_paint.jpg">
+		<div class="info-wrap divider">
+			<div class="clearfix">
+				<label class="title fs15 fl">服务费用</label> <input class="date_pppp"
+					id="datetimepicker2" ms-duplex="servicedate"> <span
+					class="fs15 price fr">39元/平米</span>
+			</div>
+			<div class="desc-wrap fs13">
+				<div class="fs15">
+					您只需要一个电话，其他的什么都不需要做，其他的就交给微装哥就好！<br/>
+					居家涂料刷新如果不需要铲除墙面39元/平米！只需要轻松拨打一个电话，微装哥就会上门为您定制墙面改造计划和具体施工方案。<br/>
+					您不必担心日常生活会因为施工而受到影响，微装换涂料贴心周到的服务能为你免去一切家装施工带来的后顾之忧，只需要一天就焕然一新。
+				</div>
+			</div>
+			<label class="title fs13 order-title">预约需求</label>
+			<ul class="list block-menu">
+				<li class="rel" id="timetaker"><span class="fs14">服务时间</span>
+					<span class="date-picker-value" ms-visible="!servicedate">请选择时间</span>
+					<span class="date-picker-value"
+					ms-class-value-color="!form.date.isEmpty">{{servicedate}}</span></li>
+			</ul>
+			<ul ms-click="addr.showAddress" class="list flower-address-ul">
+				<li><span class="fs14 flower-address-li">服务地址</span></li>
+				<li><a class="menu-link fr left10"ms-class-value-color="addressAdded">{{o.addr.checkedAddress.city}}{{o.addr.checkedAddress.county}}{{o.addr.checkedAddress.xiaoquName}}{{o.addr.checkedAddress.detailAddress}}</a></li>
+            </ul>
+			<ul ms-click="editRequire" class="list flower-address-ul">
+				<li><span class="fs14 flower-address-li">其他需求</span></li>
+				<li><a class="menu-link fr left10"
+					ms-class-value-color="addressAdded">{{requirement}}</a></li>
+			</ul>
+			<!--	<a href="#" class="btn" ms-click="submit" ms-class-useless="submiting">立即下单</a>-->
+			<div class="divider"></div>
+		</div>
+		<div class="btn-home-fixed">
+			<span class="fl"
+				style="height: 40px; line-height: 40px; width: 36%; background-color: #444; text-align: center; font-size: 15px;"
+				ms-click="golist"> 更多服务 </span> <span class="fl"
+				style="height: 40px; line-height: 40px; width: 64%; background-color: #ff8a00; text-align: center; font-size: 15px;"
+				ms-click="submit" ms-class-useless="submiting"> 立即下单 </span>
+		</div>
+
+	</section>
+	<section>
+		<div ms-include-src="'../../common/commonaddress.html'"></div>
+	</section>
+	<section ms-visible="control.currentPage=='requirement'" >
+		<div class="p15 divider">
+			<div contenteditable class="content p15" ms-class-has-value="requirement" ms-click="focus" ms-blur="storeContent">{{requirement}}</div>
+			<p class="tip fs12">提示：若您有特殊的服务要求，请在此处填写，让我们有更充分的准备，为您带来更满意的服务。</p>
+		</div>
+		<div class="btn-fixed">
+		<a href="#" class="btn" ms-click="backtoform">保存</a></div>
+	</section>
+</body>
+</html>

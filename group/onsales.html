@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>社区集市</title>
+    <link rel="stylesheet" href="../static/css/swiper.css?v=20160229">
+    <link rel="stylesheet" href="../static/css/common.css?v=20160229">
+    <link rel="stylesheet" href="../static/css/header.css?v=20160229">
+    <link rel="stylesheet" href="../static/css/group/product.css?v=201602291">
+	<script src="../static/js/jquery.js?v=20160229"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20160229"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20160229"></script>
+	<script src="onsales.js?v=20160229"></script>
+    <script src="../static/js/swiper.js"></script>
+ <style>
+ 	[ms-controller]{display:none}
+ 	.onsale_nav{
+ 		height:65px;
+ 		margin: -4px 0px 15px 0px;
+ 		/*margin-top: -4px;
+ 		margin-bottom: ;*/
+ 		background-color: #ffdfb9;
+ 	}
+ 	.onsale_nav li{
+ 		float: left;
+ 		height:70%;
+ 		width:20%;
+		text-align: center;
+		background-color: #ffdfb9;
+ 	}
+ 	.onsale_nav li i{
+		  display: block;
+		  margin-bottom: 0px;
+		  height: 30px;
+		  margin:15px 0px 4px 0px
+ 	}
+ 	.onsale_nav a{
+ 		width: 98%;
+ 		color: #6F6E6B;
+        font-size: 12px;
+        margin:1px 0px 1px 1px;
+ 		background-color: #fff8ee;
+ 		padding-bottom: 8px;
+  	}
+  	.onsale_nav a.last{
+        margin:1px 1px 1px 1px;
+        width: 96%;
+  	}
+  	.onsale_nav a.choosed{
+		background-color: #eecea8;
+ 	}
+
+
+	.onsale_nav_text{
+ 		height:40px;
+ 		background-color: #fff8ee;
+		position: fixed;
+        width: 100%;
+        z-index: 99;
+        top: 0px;
+ 	}
+ 	.onsale_nav_text li{
+ 		float: left;
+ 		line-height:40px;
+        font-size: 14px;
+ 		width:20%;
+		text-align: center;
+	    border-bottom: 1px solid #fff8ee;
+	    color:#6F6E6B;
+ 	}
+  	.onsale_nav_text li.choosed{
+	  border-bottom: 1px solid #ff8a00;
+	  color:#ff8a00;
+ 	}
+
+ 	.nav_logo{
+		background-position: 50% 0;
+	    background-size: 30px;
+	    background-repeat: no-repeat;
+	}
+	.nav_featured{
+		background-image: url('../static/images/group/onsales/icon_tutechan_03.png');
+	}
+	.nav_carstact{
+		background-image: url('../static/images/group/onsales/icon_lingshipu_03.png');
+	}
+	.nav_life{
+		background-image: url('../static/images/group/onsales/icon_tutechan_03.png');
+	}
+	.nav_food{
+		background-image: url('../static/images/group/onsales/icon_meishidian_03.png');
+	}
+	.nav_fruit{
+		background-image: url('../static/images/group/onsales/icon_shengxianguan_03.png');
+	}
+	.nav_apple{
+		background-image: url('../static/images/group/onsales/icon_shuiguotan_03.png');
+	}
+	.banner{
+ 	    /*padding:8px 5px 0 5px;*/
+ 		text-align: center;
+ 	}
+ </style>
+</head>
+
+<body>
+	<!-- load -->
+		<div class="load6" id="LoadingBar">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+
+		<div id="fade" class="black_overlay">
+		</div>
+
+		<div id="phoneErro"></div>
+
+		<div id="phoneAjax" class="hidden">
+			<img src="http://7xlem4.com2.z0.glb.qiniucdn.com/backed/images/load2.gif" style="width:40px;height40px;vertical-align: middle;">
+		</div>
+	<!-- load -->
+
+	<div ms-controller="root" class="mb_6"  id="indexDiv">
+		<div class="device" ms-visible="currentType==100">
+		    <div class="swiper-container">
+		        <div class="swiper-wrapper">
+		           <div class="swiper-slide"  ms-repeat-banner="banners">
+			           <a ms-href="{{banner.bannerUrl}}">
+						    <img ms-src="{{banner.picture}}">
+			           </a>
+		           </div>
+				</div>
+		    </div>
+		    <div class="pagination"></div>
+		</div>
+
+
+		<div class="banner"><a href="onsalesindex.html?v=20160229"><img alt="" src="../static/images/img_shopping_banner.png" style="width:100%"></a></div>
+		<div class="onsale_nav">
+			<ul>
+                <!--<li ms-click="queryProducts(1)"><a href="#" ms-class-choosed="currentType==1"><i class="nav_logo nav_life" ></i>特色馆</a></li>
+                <li ms-click="queryProducts(2)"><a href="#" ms-class-choosed="currentType==2"><i class="nav_logo nav_food" ></i>美食铺</a></li>
+                <li ms-click="queryProducts(4)"><a href="#" ms-class-choosed="currentType==4"><i class="nav_logo nav_apple" ></i>水果摊</a></li>
+                <li ms-click="queryProducts(3)"><a href="#" ms-class-choosed="currentType==3"><i class="nav_logo nav_fruit" ></i>生鲜店</a></li>
+            	<li ms-click="queryProducts(5)"><a href="#" ms-class-choosed="currentType==5" class="last"><i class="nav_logo nav_carstact"></i>零食店</a></li>-->
+                <li><a href="onsales.html?type=1" ms-class-choosed="currentType==1"><i class="nav_logo nav_life" ></i>土特产</a></li>
+                <li><a href="onsales.html?type=2" ms-class-choosed="currentType==2"><i class="nav_logo nav_food" ></i>美食店</a></li>
+                <li><a href="onsales.html?type=4" ms-class-choosed="currentType==4"><i class="nav_logo nav_apple" ></i>水果摊</a></li>
+                <li><a href="onsales.html?type=3" ms-class-choosed="currentType==3"><i class="nav_logo nav_fruit" ></i>生鲜馆</a></li>
+            	<li><a href="onsales.html?type=5" ms-class-choosed="currentType==5" class="last"><i class="nav_logo nav_carstact"></i>粮食铺</a></li>
+<!--            	<li ms-click="queryProducts(100)"><a href="#" ms-class-choosed="currentType==100" ><i class="nav_logo nav_featured"></i>汽车栈</a></li>-->
+            </ul>
+		</div>
+		<div class="mlr5" style="margin-bottom:" >
+			<div style="width: 50%;float:left;" ms-repeat-product="temais" >
+				<a class="product-item" ms-class-pleft="$index%2==1" ms-class-pright="$index%2==0" ms-href="onsaledetail.html?ruleId={{product.ruleId}}&type={{currentType}}">
+					<div class="pic_container">
+						<div class="pic_dummy"></div>
+						<img alt="" class="product-image pic_content" ms-src="{{product.productPic}}"/>
+						<img ms-visible="product.tagUrl!=null&&product.tagUrl!=''" class="product-tag" ms-src="{{product.tagUrl}}"/>
+					</div>
+					<div class="product-name pl05">{{product.ruleName}}</div>
+					<div class="mt1 pl05">
+						<span class="highlight fs20">¥&nbsp;{{product.price}}&nbsp;</span>
+						<span class="ori-price"><del>¥&nbsp;{{product.oriPrice}}&nbsp;</del></span>
+						<span  class="product-discount">{{product.discount}}</span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div style="height:82px;clear:both">&nbsp;</div>
+	</div>
+    <footer class="footer">
+        <nav>
+            <ul>
+                <li><a href="../home/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_home"></i>服务</a></li>
+                <li><a href="../group/onsalesindex.html?v=20160229" class="nav-controller active"><i class="footer_logo footer_temai_selected"></i>集市</a></li>
+                <li><a href="../wuye/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_wuye"></i>社区</a></li>
+                <li><a href="../person/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_person"></i>我的</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+<script type="text/javascript">
+	function initSwiper(){
+	    //头部展示图适应屏幕
+	    window.onload=function(){
+	        var a2=parseInt($('.swiper-slide img').css('width') );
+	        var a3=a2*0.4;
+	        $('.swiper-container').css({height:a3 + 'px'});
+	        $('.swiper-slide img').css({height:a3 + 'px'});
+			$('.hideloadingpage').hide();
+
+			//顶部图片滑动代码↓
+		    var mySwiper = new Swiper('.swiper-container',{
+		        speed:750,
+		        autoplay:3000,	//
+		        autoplayDisableOnInteraction: false,
+		        autoplayStopOnLast:true,
+		        pagination: '.pagination',
+		        loop:true
+		    })
+	    }
+	}
+	initSwiper();
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+var o;
+avalon.ready(function(){
+	o = avalon.define({
+		$id:"root",
+		model:{
+			id:1,
+			headimg:"../static/images/coupon_share_icon.jpg",
+			username:"向某某",
+			time:"2016.03.30",
+			infotype:2,
+			title:"今晚打1老虎",
+			price:"￥1200",
+			imglist:["../static/images/coupon_share_icon.jpg"],
+			content:"这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，这里是文案内容，而且会很长，",
+			pinglun:125,
+			liulan:653,
+			dianzan:485,
+			replylist:[
+				{
+					headimg:"../static/images/coupon_share_icon.jpg",
+					username:"徐某某",
+					replyname:null,
+					hasreply:0,
+					xiaoquname:"某某小区",
+					time:"17分钟前",
+					content:"这里是文案内容，而且会很长，这",
+				},
+				{
+					headimg:"../static/images/coupon_share_icon.jpg",
+					username:"向某某",
+					replyname:"陈某某",
+					hasreply:1,
+					xiaoquname:"某某小区",
+					time:"17分钟前",
+					content:"这里是文案内容，而且会很长，这且会很长，这且会很长，这且会很长，这且会很长，这且会很长，这且会很长，这且会很长，这",
+				},
+				{
+					headimg:"../static/images/coupon_share_icon.jpg",
+					username:"某某某",
+					replyname:null,
+					hasreply:0,
+					xiaoquname:"某某小区",
+					time:"17分钟前",
+					content:"这里是文案内容，而且会很长，这",
+				},
+			]
+		},
+			
+		xianhua:"list",
+		ershou:"list",
+		linli:"show",
+	})
+	
+	avalon.scan(document.body)
+})

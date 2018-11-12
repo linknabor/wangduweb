@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>我的东湖e家园</title>
+<link rel="stylesheet" href="static/css/common.css?v=20151217">
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/jscript" src="static/js/zepto.min.js?v=20151217"></script>
+<script type="text/jscript" src="static/js/avalon.js"></script>
+<script type="text/jscript" src="static/js/common_v3.js?v=20151217"></script>
+<script src="coupons.js?v=2"></script>
+ <style>
+ 	[ms-controller]{display:none} 
+ 	
+ 	.copons-img{
+ 		width: 100%;
+ 		background: url("static/images/icon_quan.png") no-repeat;
+ 		background-size:100%  70px;
+ 		height: 70px;
+ 	}
+ 	div p{
+ 		margin: 0px;
+ 	}
+ 	img {
+    max-width: 100%;
+    height: auto;
+   }
+   .coupon_amount_ar{
+   	float: left; padding-left: 25px; bottom: 0px; color: #dd0e18; float: left;
+   }
+   .coupon_amount_ic{
+   	height: 70px;line-height: 70px; float: left; font-size: 15px;
+   }
+ </style>
+</head>
+
+<body style="background-color: #fee4ed; margin: 0px;">
+	
+	<div ms-controller="root" class="mb_6"  id="indexDiv">
+	    <img ms-src="banner">
+		<div style="padding: 8px 10px;" ms-repeat-coupon="coupons" ms-click="gotoCouponDetail($index)">
+			<div  class="copons-img" style=" margin-top: 10px">
+			    <div class="coupon_amount_ar">
+			    	<p class="coupon_amount_ic">￥</p><p class="coupon_amount_ic " style="font-size: 35px;">{{coupon.amount}}</p>
+			    </div>
+			    <div style="padding-left: 12px; float: left;" >
+			    	<p style="color: #dd0e18; font-size: 12px; padding-top: 10px; padding-left: 14px;">{{coupon.title}}</p>
+			    	<ul style="margin: 0px; padding-left: 10px; font-size: 10px; color: #d2d2d2; line-height: 16px;">
+			    		<li>{{coupon.desc1}}</li>
+			    		<li>{{coupon.desc2}}</li>
+			    	</ul>
+			    </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>我的拼单</title>
+    <link rel="stylesheet" href="../static/css/common.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+	<script src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="rgroups.js?v=20151217"></script>
+ 	<style type="text/css">
+ 	.basic_info{
+ 		height:90px
+ 	}
+ 	.product_name{
+ 		height:30px
+ 	}
+ 	.group-bottom{
+ 		height:30px;
+ 		line-height: 30px;
+ 	}
+ 	</style>
+</head>
+
+<body ms-controller="root">
+	<div class="load6" id="LoadingBar">
+		<div class="bounce1"></div>
+		<div class="bounce2"></div>
+		<div class="bounce3"></div>
+	</div>
+	        
+	<div id="fade" class="black_overlay">
+	</div>
+    <div class="group-item p15 divider" ms-repeat-group="groups">
+        <div class="basic_info">
+        	<img class="fl order-picture" ms-src="{{group.productPic}}"/>
+        	<div class="ov pb15 fs14 product_name">{{group.productName}}</div>
+        	<div class="ov pb15 lite-divider" style="color:#3b3937">
+            	<span class="fl fs13">
+                	¥{{group.price}}
+                	<!-- <span style="color:#888">（共{{group.count}}个商品）</span> -->
+            	</span>
+            	<span class="fr fs13 highlight">{{statusStrs($index)}}</span>
+        	</div>
+        </div>
+        <div class="pt15 fs13 group-bottom">
+            <span>&nbsp;{{leftTimeStrs($index)}}</span>
+            <!--应该跳转到ordersdetail.html-->
+            <a ms-click="gotoOrderDetail($index)" class="btn-plain fr" style="margin-right:0">订单详情</a>
+        </div>
+    </div>
+</body>
+</html>

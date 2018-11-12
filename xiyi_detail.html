@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    	<meta content="telephone=no" name="format-detection" />
+		<meta charset="UTF-8">
+		<title>订单详情</title>
+		<link rel="stylesheet" href="static/css/common_v2.css">
+   		<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+   		<script src="static/js/fastclick.min-1.0.6.js"></script>
+		<script src="static/js/jquery.js"></script>
+		<script src="static/js/avalon.js"></script>
+		<script src="static/js/common_v3.js"></script>
+		<script src="xiyi_detail.js"></script>
+		<style type="text/css">
+			body{
+				box-sizing: border-box;
+				background-color: #f4f5f7;
+				font-size: 1em;
+			}
+			.block_area{
+				background-color: #fff;
+				overflow: hidden;
+				padding:15px;
+			}
+			.head_line{
+				border-bottom: 10px #f4f5f7 solid ;
+				height:84px;
+			}
+			.product_img{
+				float: left;
+				width:84px;
+				height:84px;
+				margin-right: 15px;
+			}
+			.product_info{
+				height:26px;
+				line-height: 26px;
+				font-size:15px;
+			}
+			#foot{
+				padding: 12px 0px;
+				width:100%;
+				position: fixed;
+				bottom:0px;
+				background: white;
+				border-top:1px solid #dcdde2;
+			}
+			#foot span{
+				display: inline-block;
+				border:1px solid #dcdde2;
+				padding: 5px 15px;
+				border-radius: 5px;
+				color:#aaa;
+				float: right;
+				margin-right: 12px;
+			}
+			.step_area{
+				height:130px;
+				padding: 0 10px;
+				background: white;
+			}
+			.title_line{
+				font:15px black;
+				padding: 15px 0;
+				border-bottom: 1px solid #f4f5f7;
+			}
+			.step{
+				width:20%;
+				float:left;
+				text-align: center;
+				padding: 15px 0;
+			}
+			.step_text{
+				font-size:15px;
+				color:#d7d7d7;
+			}
+			
+			.step-pay-gray{background-image: url("static/images/home/wash/pay_gray.png");}
+			.step-get-gray{background-image: url("static/images/home/wash/get_gray.png");}
+			.step-wash-gray{background-image: url("static/images/home/wash/wash_gray.png");}
+			.step-send-gray{background-image: url("static/images/home/wash/send_gray.png");}
+			.step-finish-gray{background-image: url("static/images/home/wash/finish_gray.png");}
+			
+			.step-pay{background-image: url("static/images/home/wash/pay.png");}
+			.step-get{background-image: url("static/images/home/wash/get.png");}
+			.step-wash{background-image: url("static/images/home/wash/wash.png");}
+			.step-send{background-image: url("static/images/home/wash/send.png");}
+			.step-finish{background-image: url("static/images/home/wash/finish.png");}
+			
+			.step-icon{
+				width:30px;
+				height:30px;
+				display: inline-block;
+				background-size: 100%;
+				background-position: 50%;
+			}
+			
+			.address_area{
+				margin-top: 15px;
+			}
+			.address_info{
+				padding: 15px;
+				font-size: 16px;
+			}
+			.memo_area{
+				background: #ffffff;
+				padding: 15px;
+				font-size:15px;
+			}
+			.memo_title{
+				float:left;
+				display:inline-block;
+				color:#3b3937;
+				width:20%;
+			}
+			.memo_content{
+				width:80%;
+				color:#3b3937;
+				display:inline-block;
+			}
+			
+			.order_area{
+				margin: 15px 0 70px 0;
+				background: white;
+			}
+			.order_item{
+				width: 100%;
+				margin:15px 0 ;
+				font-size:13px;
+				height:30px;
+				line-height:30px;
+				color;#666666;
+				padding-left: 15px;
+				box-sizing: border-box;
+			}
+			.w60{
+				width: 60%;
+			}
+			.w20{
+				width: 20%;
+			}
+			.payinfo{
+				color:#ff8a00;
+				font-size:15px;
+				text-align: right;
+				padding-right: 15px;
+				height:50px;
+				line-height:50px;
+				border-top: 1px solid #cccccc;
+			}
+			.operator_area{
+				padding: 0 15px;
+				background: white;
+				height:76px;
+			}
+			.operator_name{
+				border-top:1px solid #cccccc;
+				float: left;
+				width: 70%;
+				font-size: 16px;
+				line-height:36px;
+			}
+			.phone{
+				border-top:1px solid #cccccc;
+				float: left;
+				width: 30%;
+			}
+			.phone_icon{
+				display: inline-block;
+				height:70px;
+				width: 100%;
+				background-image: url("static/images/home/phone_icon.png");
+				background-size: 50px 50px;
+				background-position: 50%;
+				background-repeat: no-repeat;
+			}
+		</style>
+	</head>
+	<body ms-controller="root">
+		<div class="head_line block_area">
+			<img class="product_img" ms-src="bill.billLogo" alt=""/>
+			<div class="order_desc">
+				<div class="product_info">订单编号: {{bill.orderNo}}</div>
+				<div class="product_info">取件日期: {{bill.serviceDateStr}}</div>
+				<div class="product_info">下单日期: {{bill.createDateStr}}</div>
+			</div>
+		</div>
+		<div class="step_area">
+			<p class="title_line">订单状态:</p>
+			<div class="step">
+				<i class="step-icon step-pay-gray" ms-class-step-pay="bill.status>1"></i>
+				<div class="step_text">支付</div>
+			</div>
+			<div class="step">
+				<i class="step-icon step-get-gray" ms-class-step-get="bill.status>=2"></i>
+				<div class="step_text">取件</div>
+			</div>
+			<div class="step">
+				<i class="step-icon step-wash-gray" ms-class-step-wash="bill.status>=4"></i>
+				<div class="step_text">洗衣</div>
+			</div>
+			<div class="step">
+				<i class="step-icon step-send-gray" ms-class-step-send="bill.status>=5"></i>
+				<div class="step_text">派送</div>
+			</div>
+			<div class="step">
+				<i class="step-icon step-finish-gray" ms-class-step-finish="bill.status>=6"></i>
+				<div class="step_text">完成</div>
+			</div>
+		</div>
+		<div class="operator_area"  ms-visible="bill.receiveOperator&&!bill.sendOperatorName">
+			<div class="operator_name">
+				<div>配送人员: {{bill.receiveOperator}}</div>
+				<div>联系方式: {{bill.receiveOperatorTel}}</div>
+			</div>
+			<div class="phone" ><a ms-href="tel:{{bill.receiveOperatorTel}}"><i class="phone_icon"></i></a></div>
+		</div>
+		<div class="operator_area"  ms-visible="bill.sendOperatorName">
+			<div class="operator_name">
+				<div>配送人员: {{bill.sendOperatorName}}</div>
+				<div>联系方式: {{bill.sendOperatorTel}}</div>
+			</div>
+			<div class="phone" ><a ms-href="tel:{{bill.sendOperatorTel}}"><i class="phone_icon"></i></a></div>
+		</div>
+		<div class="address_area">
+			<div style="background:url(static/img/bg_line_location_top.png) repeat-x;height:5px;background-size: 100% 5px;">&nbsp;</div>
+			<div class="address_info">
+				<span style="color:#3b3937;" >{{bill.receiverName}}</span>
+				<span style="margin-left:20px;color:#3b3937;">{{bill.tel}}</span>
+				<div style="color:#666666;margin-top:15px">{{bill.address}}</div>
+			</div>
+			<div style="background:url(static/img/bg_line_location_bottom.png) repeat-x;height:5px;background-size: 100% 5px;">&nbsp;</div>
+		</div>
+		<div class="memo_area">
+			<span class="memo_title">备注:</span>
+			<span class="memo_content">
+				{{bill.memo}}
+			</span>
+		</div>
+		<div class="order_area">
+			<div ms-repeat-order="bill.items" class="order_item">
+				<p class="fl w60">{{order.title}}</p>
+				<p class="fl w20 fontr">×{{order.count}}</p>
+				<p class="fl w20 fontr">￥{{order.price}}</p>
+			</div>
+			<div class="order_item" ms-visible="bill.discountAmount">优惠:<span class="fr w20">￥{{bill.discountAmount}}</span></div>
+			<div class="payinfo">实际支付: ￥{{bill.realAmount}} </div>
+		</div>
+		
+		<div id="foot" ms-visible="bill.status==5||bill.status==6||bill.status==1">
+			<span ms-click="cancelOrder" ms-visible="bill.status==1">取消订单</span>
+			<span ms-click="sign" ms-visible="bill.status==5||bill.status==6">确认完成</span>
+			<span ms-click="pay" ms-visible="bill.status==1">支付</span>
+		</div>
+	</body>
+</html>

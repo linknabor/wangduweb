@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>特卖</title>
+    <link rel="stylesheet" href="../static/css/swiper.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/common.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/group/product.css?v=20151217">
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="onsaledetail.js?v=20151219"></script>
+    <script src="../static/js/swiper.js"></script>
+ <style>
+[ms-controller]{display:none} 
+.activityTitleLine {
+	text-align: center;
+	font-size: 16px;
+}
+
+.time-wrap{
+	text-align:center;widht:100%;height:48px;inline-height:48px
+}
+.time-text{
+	font-size:18px;color:#996c33;margin-left:5px;margin-right:5px;
+}
+.three_div{
+	width:33%;
+	float: left;
+}
+.time-number{
+  font-size: 20px;
+  padding: 4px 6px;
+  color: white;
+  background: url(../static/images/img_time.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+.collocation_item_pic{
+	width:29%;
+	padding: 15px 2%;
+	float: left;
+	display: inline-block;
+}
+
+.banner .swiper-container {
+	width: 100%;
+}
+.banner .content-slide {
+    padding: 20px;
+    color: #fff;
+}
+.banner .swiper-slide a {
+    display: block;
+}
+.banner .swiper-slide img {
+    width: 100%;
+}
+
+
+.coll .swiper-container {
+	width: 100%;
+}
+.coll .content-slide {
+    padding: 20px;
+    color: #fff;
+}
+.coll .swiper-slide a {
+    display: block;
+}
+.coll .swiper-slide img {
+    width: 100%;
+}
+.coll_title{
+	position: absolute;
+	opacity: 0.7;
+	bottom: 0px;
+	width: 29%;
+	font-size: 14px;
+	padding-top: 2px;
+	margin-bottom: 0px;
+	text-align: center;
+	background-color: #ff8a00;
+	color: white;
+	display:block;
+}
+.collocation_desc{
+	padding:2px 15px;
+	border: 1px solid #ff8a00;
+	border-radius: 2px;
+	margin-left: 10px;
+	color:#ff8a00;
+}
+</style>
+</head>
+
+<body ms-controller="root">
+	<div class="device banner">
+	    <div class="swiper-container">
+	        <div class="swiper-wrapper">
+	           <div class="swiper-slide" ms-repeat-picture="product.pictureList"> 
+		           	<img  ms-src="{{picture}}">
+	           </div>
+			</div>
+	    </div>
+	    <div class="pagination"></div>
+	</div>
+	<div class="product-info p15">
+		<div class="product-detail-name fs16">{{rule.name}}</div>
+		<div style="width: 100%;height:30px;">
+			<div class="highlight fs22 fl three_div">¥&nbsp;{{rule.price}}&nbsp;</div>
+			<div class="highlight fl fs14 three_div" style="padding-top:8px;">{{rule.discount}}&nbsp;</div>
+			<div class="ori-price2 three_div"  style="padding-top:8px">运费&nbsp;&nbsp;<span class="highlight">¥{{rule.postageFee}}</span></div>
+		</div>
+		<div style="width: 100%;height:20px">
+			<div class="ori-price2 fl three_div">市场价<del>¥&nbsp;{{product.oriPrice}}</del></div>
+			<div class="ori-price2 fl three_div">库存<span class="highlight">{{product.canSaleNum}}</span>件</div>
+			<div class="ori-price2 three_div" ms-visible="rule.freeShippingNum<999"><span class="highlight">{{rule.freeShippingNum}}</span>件包邮</div>
+		</div>
+		<div style="width:100%;height:1px">&nbsp;</div>
+	</div>
+	
+	<!--只有活动的分类才显示倒计时-->
+	<div ms-visible="rule.productType==6">
+		<div class="mt2 time-wrap bb3" ms-visible="!finished">
+			<span class="time-text">剩余</span>
+			<span ><span class="time-number">{{left.days}}</span>天</span>
+			<span class="time-number">{{left.hours}}</span><span>时</span>
+			<span class="time-number">{{left.minitus}}</span><span left.days=='0'>分</span>
+			<span ><span class="time-number" >{{left.seconds}}</span>秒</span>
+			<span class="time-text">结束</span>
+		</div>
+		<div class="mt2 time-wrap bb3 fs18" ms-visible="finished">
+			已结束
+		</div>
+	</div>
+
+	<div class="p15 bb3 fs18 coll" ms-visible="o.collocation.id!=null" > 
+		<div class="section-title" style="padding-left:0px;padding-top:0px;" ms-click="gotoCollocation">
+		优惠搭配<span class="collocation_desc">{{collocation.title}}</span>
+		<i class="icon menu-link align-right fr" style="margin-top: -3px;"></i>
+		<span class="fr">点击这里</span>
+		</div>
+		<div class="swiper-container" style="margin: 0px -2%;width: 104%;height:115px;">
+	        <div class="swiper-wrapper">
+	           <div class="swiper-slide" ms-repeat-items="formatedItems">
+					<div class="collocation_item_pic" ms-repeat-item="items">
+						<a ms-href="onsaledetail.html?ruleId={{item.salePlanId}}">
+							<img ms-src="{{item.productPic}}" ms-click="gotoDetail(item.salePlanId)"/>
+							<div class="title" style="display:none">￥{{item.price}}元</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	    <div class="pagination" style="margin-bottom:110px"></div>
+	</div>
+	<div class="p15 mb15">
+		<div class="section-title" style="padding-left:0px;padding-top:0px;"  ms-click="toggleDetail">商品详情<i class="icon more-icon align-right fr" ms-class-top-icon="showDetail"></i></div>
+		<ul  style="padding-top: 3px">
+			<li class="detail-item" ms-html="product.serviceDesc"></li>
+		</ul>
+		<ul ms-visible="showDetail" style="padding-top: 3px">
+			<li class="detail-item" ms-html="product.serviceDescMore"></li>
+		</ul>
+		
+	</div>
+	<div class="activityTitleLine" style="margin-bottom: 85px;" style="display: block;">
+	<span class="more_btn" ms-click="goclassify">点击查看更多商品</span>
+	</div>
+	<!--<div class="btn-fixed">
+		<div class="submit-btn ov fs16"  ms-class-useless="rule.leftSeconds < 0"  ms-click="buy" >立即购买</div>
+	</div>-->
+	<div style="color: white; position: fixed;bottom: 0; width: 100%;z-index:1100 "class="btn-home-fixed" >
+		<span  class="fl" 
+			style="height:40px;line-height:40px;width:36%;background-color:#444;text-align:center;font-size:15px;" ms-click="goclassify">
+			更多商品
+		</span>
+		<span  class="fl" 
+			style="height:40px;line-height:40px;width:64%;background-color:#ff8a00;text-align: center;font-size:15px;"  ms-click="buy" ms-class-useless="rule.leftSeconds < 0">
+			立即购买
+		</span>
+	</div>
+<script>
+	function initColl(){
+		//coll
+	    var a12=parseInt($('.coll .swiper-slide img').css('width') );
+	    var a13=a12*1.1;
+	    $('.coll .swiper-container').css({height:a13 + 'px'});
+	    $('.coll .swiper-slide img').css({height:a13 + 'px'});
+
+	    $('.coll .swiper-slide .title').css({display:'block'});
+	    $('.coll .swiper-slide .title').addClass("coll_title");
+		$('.coll .hideloadingpage').hide();
+		var collSwiper = new Swiper('.coll .swiper-container', {
+			speed : 1050,
+			autoplay : 8000,
+			autoplayDisableOnInteraction : false,
+			autoplayStopOnLast : true,
+			pagination : '.coll .pagination',
+			loop : true
+		});
+	}
+	function initSwipe(){
+		//头部展示图适应屏幕
+    	//banner
+        var a2=parseInt($('.banner .swiper-slide img').css('width') );
+        var a3=a2*0.75;
+        $('.banner .swiper-container').css({height:a3 + 'px'});
+        $('.banner .swiper-slide img').css({height:a3 + 'px'});
+		$('.banner .hideloadingpage').hide();
+		
+		//顶部图片滑动代码↓
+		var bannerSwiper = new Swiper('.banner .swiper-container', {
+			speed : 750,
+			autoplay : 6000,
+			autoplayDisableOnInteraction : false,
+			autoplayStopOnLast : true,
+			pagination : '.banner .pagination',
+			loop : true
+		});
+	}
+    
+</script>
+</body>
+</html>

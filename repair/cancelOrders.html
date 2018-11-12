@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>取消维修</title>
+	<script src="../static/js/jquery.js"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js"></script>
+    <script src="cancelOrders.js?v=2"></script>
+    <style>
+        body{
+            background: white;
+            margin: 0;
+            height: auto;
+        }
+        .memo_area{
+            font-size: 15px;
+            color: #7e6b5a;
+        }
+        .content {
+            position: relative;
+            height: 100px;
+            margin: 0 15px;
+            background-color: #F9F9E9;
+            border: 1px solid #d4cfc8;
+            outline: none;
+            padding:15px
+        }
+        .content:before {
+            content:"输入问题描述内容...";
+            font-size: 15px;
+            color: #bfbfbf;
+        }
+        .content:focus:before, 
+		.content.has-value:before {
+			display: none;
+		}
+        .menu-link {
+            display: block;
+            background: url("../static/images/person/icon_arrow.png") no-repeat;
+            background-size: 8px 12px;
+            background-position:right center;
+            margin:0 15px;
+            color: #3b3937;
+            line-height: 30px;
+            padding: 5px 4px;
+            overflow: hidden;
+        }
+        .line-divider {
+            border-bottom: 1px solid #d4cfc8;
+        }
+        .block-divider{
+            width: 100%;
+            height: 20px;
+            background: #F7F7F1;
+        }
+        .modal {
+            color: #666;
+            margin: 0 auto;
+            width: 100%;
+            background: white;
+        }
+        .modal-select{
+            line-height: 30px;
+            padding: 10px 15px;
+            background: url("images/icon_unselect.png") no-repeat;
+            background-position: 98% center;
+            background-size: 18px;
+        }
+        .checked {
+            background: url("images/icon_selected.png") no-repeat;
+            background-position: 98% center;
+            background-size: 18px;
+        }
+        .btn {
+            display: block;
+            margin: 15px auto auto 15px;
+            height: 44px;
+            line-height: 44px;
+            color: #fff!important;
+            font-size: 15px;
+            text-align: center;
+            background-color: #ff8a00;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            width: 45%;
+        }
+        .btn2{
+            display: block;
+            margin: 15px auto auto 15px;
+            height: 44px;
+            line-height: 44px;
+            color: #fff!important;
+            font-size: 15px;
+            text-align: center;
+            background-color: #afaaa3;
+            border-radius: 3px;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            width: 45%;
+        }
+        .btn:active {
+            background-color: #d07100;
+        }
+    </style>
+</head>
+
+<body ms-controller="root">
+<div class="modal">
+    <div class="modal-select ptb15" ms-repeat-item="reasonPicker" 
+    ms-class-checked="item.checked" 
+    ms-class-line-divider="!$last" 
+    ms-click="selectTeam($index)">{{item.name}}</div>
+</div>
+<div class="block-divider"></div>
+<div class="memo_area">
+    <div style="padding:15px;">具体原因</div>
+    <div contenteditable="true" class="content" ms-class-has-value="cancelReason" ms-click="focus" ms-blur="storeMemo"></div>
+</div>
+<div class="btn-fixed">
+       <a href="#" class="btn2" style="float: left;" ms-click="backPage">取消</a>
+       <a href="#" class="btn" style="float: left;" ms-click="confirm">确定</a>
+</div>
+</body>
+</html>

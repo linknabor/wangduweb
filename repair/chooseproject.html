@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+	    <meta content="telephone=no" name="format-detection" />
+	    <meta charset="UTF-8">
+		<title>选择项目</title>
+		<script src="../static/js/jquery.js"></script>
+		<script src="../static/js/avalon.js"></script>
+        <script src="../static/js/common_v3.js"></script>
+		<script src="chooseproject.js"></script>
+	</head>
+<style type="text/css">
+		body{
+			margin: 0;
+		}
+.lite-divider {
+    border-bottom: 1px solid #d4cfc8;
+}
+.menu-link {
+    display: block;
+    background: url("../static/images/person/icon_arrow.png") no-repeat;
+    background-size: 8px 12px;
+    background-position:right center;
+    margin:0px 15px;
+    color: #3b3937;
+    line-height: 44px;
+    padding: 0px 4px;
+	overflow: hidden;
+}
+a {
+    text-decoration: none;
+    display: inline-block;
+}
+.input-info{
+	font-size:16px;
+}
+
+.top-title{
+    height: 120px;
+    color:#3b3937;
+    background: #F7F7F1;
+    margin: 15px auto;
+    border-top: 1px solid #d4cfc8;
+    border-bottom: 1px solid #d4cfc8;
+}
+.icon-repair {
+    height: 60px;
+    width: 60px;
+    margin: 15px;
+    padding: 3%;
+    border: 1px solid #31a8e6;
+    border-radius: 3px;
+    background: #fff;
+    float:left;
+}
+.project_name{
+	
+    height: 120px;
+    line-height: 120px;
+    color:#31A8E6;
+    font-size:16px;
+}
+</style>
+	<body ms-controller="root">
+		<div class="ov top-title pr15">
+		    <img class="icon-repair" ms-src="{{typeImg}}" />
+		    <div class="ov ptb15">
+		        <span class="project_name">{{typeName}}</span>
+		    </div>
+		</div>
+		<div class="" ms-repeat-project="projects">
+			<a ms-href="repairSubmit.html?projectId={{project.id}}" class="menu-link lite-divider">
+	            <span class="input-info">{{project.name}}</span>
+	        </a>
+		</div>
+		
+	</body>
+</html>

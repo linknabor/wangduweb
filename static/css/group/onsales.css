@@ -1,0 +1,159 @@
+    .onsale_nav{
+ 		height:100px;
+ 		margin: -4px 5px 0px 5px;
+ 		/*background-color: #ffdfb9;*/
+ 	}
+ 	.onsale_nav li{
+ 		float: left;
+ 		height:70%;
+ 		width:20%;
+		text-align: center;
+		/*background-color: #ffdfb9;*/
+ 	}
+ 	.onsale_nav li i{
+		  display: block;
+		  margin-bottom: 0px;
+		  height: 55px;
+		  margin:10px 0px 10px 0px
+ 	}
+ 	.onsale_nav a{
+ 		width: 98%;
+ 		color: #6F6E6B;
+        font-size: 12px;
+        margin:5px 0px 1px 1px;
+ 		/*background-color: #fff8ee;*/
+ 		/*padding-bottom: 10px;*/
+  	}
+  	.onsale_nav a.last{
+        width: 96%;
+  	}
+  	.onsale_nav a.choosed{
+		background-color: #eecea8;
+ 	}
+ 		
+    .nav_logo{
+		background-position: 50% 0;
+	    background-size: 55px;
+	    background-repeat: no-repeat;
+	}
+	
+	.nav_img{
+	    width:31.5% ;
+	    float: left; 
+	    text-align: center;
+	   
+	}
+	.product_circle{
+		border-radius: 4px 4px 0 0;
+	}
+	.nav_good{
+	    width:32% ;
+	    border-left: 2px solid #F7F3EB;
+   	    border-right:2px solid #F7F3EB;
+	    float: left; 
+	    border-radius:4px ;
+	    background-color: white;
+	}
+	.m5{
+		padding: 0px 4px 10px;
+	}
+	.product-imgs{
+	  padding: 0 10px 10px 10px;
+	}
+	.pic_content{
+	    position: relative;
+	}
+    .product-discount1{
+		  background-color: #ff8a00;
+		  height: 40px;
+		  width: 40px;
+		  display: block;
+		  color: white;
+		  border-radius: 40px 0 0 0;
+		  float:right;
+	}
+	.store-div{
+		background-color: #f7f3eb; 
+		width: 100%;
+		padding-top: 15px; 
+		color: #905f13;
+		clear: both;
+	}
+	.store-title{
+		text-align: center; 
+		padding-top:30px;
+	}
+   .store-icon{
+   	height:15px ; 
+   	width: 15px; 
+  /* 	padding-right: 10px;*/
+   }
+   .menu-onsalse-link{
+   	display: block;
+   	padding-right: 1rem;
+    background: url("../../images/community/left_arrow.png") no-repeat;
+    background-size: 12px 12px;
+    background-position: right center
+   }
+   
+   .store-sector{
+   	display: block;
+/*   	padding-right: 1rem;*/
+    background: url("../../images/group/onsalesindex/img_sector.png") no-repeat;
+    background-size: 2.5rem;
+    background-position: right;
+   }
+   .products-item{
+    display: block;
+    position: relative;
+   	color: #ffffff;
+   }
+   
+   .products-name{
+    font-size:13px;
+    height: 20px;
+    color: #000000;
+    line-height: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+   
+   }
+   
+   .product-t-d{
+    margin-top:15px;
+   	float: right;
+   	 width: 2.5rem;
+   	 height: 2.5rem; 
+   	 
+   }
+   .product-text{
+   	margin: 1rem 0px 0px 0.6rem; 
+   	float: right;
+   	width: 1.8rem;
+   	height: 2.6rem; 
+   	color: white; 
+   	font-size: 0.8rem;
+   }
+   .product-l{
+   	height:1px; 
+   	background-color:#d3d3d3; 
+   	bottom: -28px; 
+   	position:relative; 
+   	width:80%; 
+   	margin-left: 10px;
+   }
+   .product-d{
+   	margin-left: 10px; 
+   	padding-right: 10px; 
+   	margin-left: 5rem;
+   }
+   .product-d-d{
+   	position: relative; 
+   	text-align: center;
+   	width: 100%; 
+   	padding: 15px 0;
+   }
+   .product-d-d-s{
+   	background-color: #f7f3eb ; 
+   	padding: 0 10px;
+   }

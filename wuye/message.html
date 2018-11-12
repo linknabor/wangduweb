@@ -1,0 +1,87 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+<title>资讯信息</title>
+<link href="../static/css/header.css?v=20151217" rel="stylesheet" type="text/css" />
+<link href="../static/css/common.css?v=20151217" rel="stylesheet" type="text/css" />
+<script type="text/jscript" src="../static/js/jquery.js?v=20151217"></script>
+<script type="text/jscript" src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+<script type="text/jscript" src="../static/js/avalon.js"></script>
+<script type="text/jscript" src="../static/js/common_v3.js?v=20151217"></script>
+<script type="text/jscript" src="message.js?v=20151217"></script>
+ 	<style type="text/css">
+        .icon {
+            background-size: 13px;
+            width: 13px;
+            height: 13px;
+            margin-right: 5px;
+            vertical-align: bottom;
+        }
+        .title{
+        width: 100%;
+		  clear: both;
+		  height: 2rem;
+		  font-size: 22px;
+		  text-align: center;
+		  
+		  }
+		  .msg_content{
+		  	margin-left:5%;
+        	width: 90%;
+		  	clear: both;
+		  	font-size: 14px;
+		  	
+		  }
+        .comment {
+            margin-top: 5px;
+            line-height: 20px;
+        }
+        .input-btn-wrap {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+ 	</style>
+</head>
+<body ms-controller="root">
+	<div>
+		<div class="ov" style="color:#3b3937;">
+			<div class="comment ov p15 fs20">{{message.title}}</div>
+	        <div class="ov pb15 lite-divider" style="  margin-left: 15px;margin-right:15px">
+	            <span class="fl fs12" style="color:#888"><i class="icon time-icon"></i>{{message.publishDate}}</span>
+	            <span class="fr fs12"><i class="icon" ms-visible="fromSite!=''"></i>{{message.fromSite}}</span>
+	        </div>
+	    </div>
+	    
+		 <div class="msg_content"  ms-html="message.content"></div>
+	</div>
+	
+<!-- 	<div style="width:90%;clear: both;height:3rem;" ms-visible="message.msgType==1" class="input-wrap lite-divider menu-link">
+		<span class="fl fs15" style="color: #3b3937">评论</span>
+		<span class="fr fs15" style="color: #3b3937">{{feedbacks.length}}条评论</span>
+	</div>
+	<div style="margin-bottom:40px" ms-visible="message.msgType==1" >
+		<div class="ov pr15" style="color:#3b3937" ms-repeat-item="feedbacks">
+	        <img class="avatar fl" style="width:45px;height:45px" ms-src="{{item.userHeader}}"/>
+	        <div class="ov ptb15">
+	            <span class="fl fs15">{{item.userName}}</span>
+	            <span class="fr fs12" style="color:#888"><i class="icon time-icon"></i>{{getDateStr(item.createDate)}}</span>
+	        </div>
+	        <div class="comment ov lite-divider pb15 fs13">{{item.content}}</div>
+	    </div>
+	</div>
+	
+    <div class="input-btn-wrap" ms-visible="message.msgType==1" >
+        <div class="inner-input-wrap">
+            <input class="inner-input" placeholder="我也说两句" ms-duplex-string="content"/>
+        </div>
+        <span class="btn-ensure" ms-click="pinlun">发送</span>
+    </div> -->
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>停车费支付</title>
+	<link rel="stylesheet" href="../static/css/swiper.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/common.css?v=20151217">
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="backScanPayOk.js?v=201603011"></script>
+	
+	<style type="text/css">
+		.backDiv{
+			background:url(../static/images/scancode/img_card.png) no-repeat center;
+			background-size:65% 100% ;
+			}
+		.backpay{
+			background:url(../static/images/scancode/icon_complete.png) no-repeat center;
+			background-size:50% 50% ;
+			}
+		.font1{
+			font-size: 13px;
+			color:#7e6b5a;
+			font-family : 'Microsoft YaHei';
+			font:'Microsoft YaHei'; 
+		}
+		.font2{
+			font-size:16px; 
+			color:#3b3937;
+			font-family : 'Microsoft YaHei';
+			font:'Microsoft YaHei'; 
+		}
+		.font3{
+			font-size: 29px;
+			color: #ff8a00;
+			font-family : 'Microsoft YaHei';
+			font:'Microsoft YaHei'; 
+		}
+		.font4{
+			font-size: 15px;
+			color: #7e6b5a;
+			font-family : 'Microsoft YaHei';
+			font:'Microsoft YaHei'; 
+		}
+		.font5{
+			font-size: 24px;
+			color: #ff8a00;
+			font-family : 'Microsoft YaHei';
+			font:'Microsoft YaHei'; 
+		}
+	</style>
+	
+	<body ms-controller="root" style="background: #37414a;">
+		
+		<div style="height: 50px;"></div>
+		<div>
+			<div style="height: 15%;width: 15%;padding-left: 25%;float: left;"><img src="../static/images/scancode/icon_complete.png"></div>
+			<div style="width: 70%;padding-left: 45%;padding-top: 8px;">
+				<font class="font3">支付成功</font>
+			</div>
+		</div>
+		
+		<div style="height: 50px;"></div>
+		<div class="backDiv" style="height: 320px;">
+			<div style="height: 30px;"></div>
+			<div style="height: 12px;padding-left: 22%"><font class="font1">车牌</font></div>
+			<div style="height: 10px;"></div>
+			<div style="height: 16px;padding-left: 22%"><font class="font2">{{car_no}}</font></div>
+			<div style="height: 30px;"></div>
+			<div style="height: 12px;padding-left: 22%"><font class="font1">入小区时间</font></div>
+			<div style="height: 10px;"></div>
+			<div style="height: 16px;padding-left: 22%"><font class="font2">{{car_in_date}}</font></div>
+			<div style="height: 30px;"></div>
+			<div style="height: 12px;padding-left: 22%"><font class="font1">出小区时间</font></div>
+			<div style="height: 10px;"></div>
+			<div style="height: 16px;padding-left: 22%"><font class="font2">{{car_out_date}}</font></div>
+			<div style="width: 43%;float: left;padding-left: 22%;">
+				<div style="height: 64px;"></div>
+				<div style="height: 15px;"><font class="font4">临时停车费：</font></div>
+			</div>
+			<div style="float: left;">
+				<div style="height: 55px;"></div>
+				<div style="height: 20px;"><font class="font5" >￥{{fee_price}}</font></div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="email=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+	<title>98元鲜花包月</title>
+	<link rel="stylesheet" href="../static/css/header.css">
+	<link rel="stylesheet" href="../static/css/onsite/common.css?v=20150822010144">
+	<link rel="stylesheet" href="../static/css/daojia/common.css?v=20150822010144">
+    <link rel="stylesheet" href="../static/css/common.css?v=20150822010144">
+	<link rel="stylesheet" href="../static/css/onsite/selection.css">
+	<script src="../static/js/jquery.js"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script type="text/jscript" src="../static/plugin/jquery.datetimepicker.js"></script>
+	<link rel="stylesheet" href="../static/plugin/jquery.datetimepicker.css">
+	<script type="text/jscript" src="../static/js/common_v3.js"></script>
+	<script src="../common/commonaddress.js"></script>
+	<script src="flowerplus.js"></script>
+    <link rel="stylesheet" href="../static/css/address.css?v=20150822010144">
+    <link rel="stylesheet" href="../static/css/home/flowerplus.css?v=20150822010144">
+	
+
+</head>
+<body ms-controller="root">
+<section ms-visible="control.currentPage=='main'" >
+	<img class="banner" src="../static/images/home/flowerplus/flowerplus.png">
+	<div class="info-wrap divider">
+		<div class="clearfix">
+			<label class="title fs15 fl">服务费用</label>
+			<input class="date_pppp"  id="datetimepicker2" ms-duplex="servicedate">
+		    <span class="fs15 price fr">￥98元</span>	
+		</div>
+		<div class="desc-wrap fs13">
+			<div class="fs15">本商品由鲜花宅配品牌FlowerPlus(花+)倾力特惠及配送</div>
+			<ul class="desc-items">
+				<li>每周一束不同鲜花，随机发送(一月内，4次不重复)，每次都有惊喜!</li>
+				<li>单个品种，简洁环保包装，无任何装饰，回归生活本来</li>
+				<li>优选当季品种，源自中国7大鲜花产区，拥有很多普通花店不会有的品种</li>
+				<li>可以备注忌讳的花哦（菊花，白色花，黄色花，绣球，百合，孕妇不宜）</li>
+				<li>可选择周一或周六送达，请在下单时注明首次发货时间(节假日暂停一周)</li>
+				<li>每单用户只可修改一次收货人和收货地址</li>
+			</ul><br />
+			<div class="fs15">
+				周三10点之前下单，本周六能及时发货<br/>
+				周五10点之前下单，下周一能及时发货<br />
+				其他时间发货顺延一周<br />
+				目前商品支持上海、杭州、北京、成都、南京、宁波、无锡、苏州、深圳、广州<br />
+				注：鲜花属于时令产品，不支持退换货哦！<br />
+			</div>
+	</div>
+	<label class="title fs13 order-title">预约需求</label>
+	<ul class="list block-menu">
+		<li ms-click="showModal">
+			<span class="fs14">配送周期</span>
+			<span class="fs15 fr">{{pinci}}</span>
+		</li>
+		<li class="rel" id="timetaker">
+			<span class="fs14">首次配送时间</span>
+			<span class="date-picker-value" ms-visible="!servicedate">请选择时间</span>
+			<span class="date-picker-value" ms-class-value-color="!form.date.isEmpty">{{servicedate}}</span>
+		</li>
+	</ul>
+    <ul ms-click="addr.showAddress" class="list flower-address-ul">
+		       <li><span class="fs14 flower-address-li"  >配送地址</span></li>
+		       <li><a class="menu-link fr left10" ms-class-value-color="addressAdded" >{{o.addr.checkedAddress.city}}{{o.addr.checkedAddress.county}}{{o.addr.checkedAddress.xiaoquName}}{{o.addr.checkedAddress.detailAddress}}</a></li>
+   </ul>
+			
+<!--	<a href="#" class="btn" ms-click="submit" ms-class-useless="submiting">立即下单</a>-->
+	<div class="divider"></div></div>
+	<div class="btn-home-fixed">
+		<span  class="fl" 
+			style="height:40px;line-height:40px;width:36%;background-color:#444;text-align:center;font-size:15px;" ms-click="golist">
+			更多服务
+		</span>
+		<span  class="fl" 
+			style="height:40px;line-height:40px;width:64%;background-color:#ff8a00;text-align: center;font-size:15px;"  ms-click="submit" ms-class-useless="submiting">
+			立即下单
+		</span>
+	</div>
+
+</section>
+
+	<!-- 地址编辑 -->
+<section  >
+<div ms-include-src="'../common/commonaddress.html'"></div>
+</section>
+
+<div class="modal-mask" ms-visible="modalShown" >
+      <div class="modal" style="margin-top: 100px;">
+          <div class="ptb15 pincipicker" ms-repeat-item="pinciPicker" ms-class-lite-divider="!$last" ms-click="confirmPinci($index)">{{item.name}}</div>
+      </div>
+</div>
+</body>
+</html>

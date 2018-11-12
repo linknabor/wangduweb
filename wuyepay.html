@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>我要缴费</title>
+    <link rel="stylesheet" href="../static/css/common.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+    
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	
+	<script type="text/jscript" src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="wuyepay.js?v=20151217"></script>
+ 	<style type="text/css">
+        .tab-title {
+            display: inline-block;
+            width: 50%;
+            color: #a6937c;
+            font-size: 15px;
+            text-align: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #d4cfc8;
+        }
+        .tab-title.active {
+            color: #ff8a00;
+            border-color: #ff8a00;
+        }
+        .hidden-input {
+            margin: 15px 0;
+            text-align: left;
+            width: 250px;
+        }
+        .scan-icon {
+            display: inline-block;
+            height: 50px;
+            width: 50px;
+            background: url('../static/images/group/icon_scan.png') no-repeat;
+            background-size: 20px;
+            background-position: center;
+        }
+        .dropdown-wrap {
+            position: relative;
+            padding: 15px 0;
+            border-bottom: 1px solid #d4cfc8;
+            background: url('../static/images/group/icon_top.png') no-repeat;
+            background-size: 12px 7px;
+            background-position: center right;
+        }
+        .dropdown-wrap.collapsed {
+            background-image: url('../static/images/group/icon_bottom.png');
+        }
+        .dropdown {
+            position: absolute;
+            top: 42px;
+            width: 100%;
+            border: 1px solid #d4cfc8;
+            background-color: #fffff8;
+            z-index: 1;
+        }
+        .dropdown-item {
+            padding: 15px 0;
+            margin: 0 15px;
+            border-bottom: 1px solid #d4cfc8;
+        }
+        .select-item {
+            margin-top: 15px;
+            background: url('../static/images/group/icon_unselect.png') no-repeat;
+            background-size: 16px;
+            background-position: 10px center;
+            padding-left: 35px;
+            border: 1px solid #d4cfc8;
+            border-radius: 3px;
+            color: #666;
+            font-size: 13px;
+        }
+        .select-item.selected {
+            background-image: url('../static/images/group/icon_selected.png');
+        }
+        .select-item:before {
+            position: absolute;
+            display: block;
+            content: "";
+            height: 100px;
+            width: 1px;
+            background: #d4cfc8;
+        }
+        .icon {
+            width: 13px;
+            height: 13px;
+            background-size: 13px;
+            vertical-align: top;
+        }
+        .btn-fixed {
+            color: #fff;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .select-btn {
+            padding-left: 36px;
+            background: url('../static/images/group/icon_unselect_white.png') no-repeat;
+            background-color: rgba(0,0,0,0.6);
+            background-size: 16px;
+            background-position: 15px center;
+            height: 46px;
+            line-height: 46px;
+        }
+        .select-btn.selected {
+            background-image: url('../static/images/group/icon_selected_white.png');
+        }
+        .submit-btn {
+            height: 44px;
+            line-height: 44px;
+            background: #ff8a00;
+            text-align: center;
+        }
+ 	</style>
+</head>
+
+<body class="plr15" ms-controller="root">
+    <div class="tab">
+        <span class="tab-title" ms-repeat-tab="tabs" ms-class-active="tab.active" ms-click="changeTab($index)">{{tab.name}}</span>
+    </div>
+    <!--Tab pane 1-->
+    <div ms-visible="tabs[0].active">
+        <div class="lite-divider ov" style="margin-top:35px">
+            <input placeholder="输入账单编号快速缴费" class="fs15 hidden-input" ms-duplex-string="stmtId">
+            <i class="fr scan-icon" ms-click="scan"></i>
+        </div>
+        <a href="#" class="btn" style="margin-top: 20px" ms-click="submit">提交</a>
+        <div class="select-item" ms-repeat-item="quickbills" ms-class-selected="item.selected" ms-click="select($index)">
+            <div class="ov fs15" style="padding:21px 15px;color:#3b3937">
+                {{item.service_fee_name}}
+                <span class="fs18 fr highlight">¥{{item.fee_price}}</span>
+            </div>
+            <div class="ov" style="padding:0 15px 21px 15px">
+                <i class="icon location-icon"></i>
+                <span class="ib text-el" style="width:150px">{{item.pay_cell_addr}}</span>
+                <span class="fr">
+                    <i class="icon time-icon"></i>
+                    <span>帐期{{item.service_fee_cycle}}</span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!--Tab pane 2-->
+    <div ms-visible="tabs[1].active">
+        <div class="dropdown-wrap" ms-class-collapsed="dropdownCollapsed" ms-click="toggleDropdown">
+            <span ms-visible="selectedDropdown==''">账单筛选</span>
+            {{selectedDropdown.name}}
+            <div class="dropdown" ms-visible="!dropdownCollapsed">
+                <div class="dropdown-item" ms-repeat-item="dropdowns" ms-class-no-border="$last" ms-click="selectDropdown($index)">{{item.name}}</div>
+            </div>
+        </div>
+        <div style="margin-bottom: 8rem;">
+        
+	        <div class="select-item" ms-repeat-item="bills" ms-class-selected="item.selected" ms-click="select($index)">
+	            <div class="ov fs15" style="padding:21px 15px;color:#3b3937">
+	                {{item.service_fee_name}}
+	                <span class="fs18 fr highlight">¥{{item.fee_price}}</span>
+	            </div>
+	            <div class="ov" style="padding:0 15px 21px 15px">
+	                <i class="icon location-icon"></i>
+	                <span class="ib text-el" style="width:150px">{{item.pay_cell_addr}}</span>
+	                <span class="fr">
+	                    <i class="icon time-icon"></i>
+	                    <span>帐期{{item.service_fee_cycle}}</span>
+	                </span>
+	            </div>
+	        </div>
+        
+        </div>
+        
+        <div class="btn-fixed">
+            <div class="select-btn fl fs14 plr15" ms-class-selected="selectedAll" ms-click="toggleSelectedAll">全选</div>
+            <div class="submit-btn ov fs16" ms-click="pay">我要缴费
+                <span style="margin-left:10px">¥{{totalPrice}}</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

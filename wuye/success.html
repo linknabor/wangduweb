@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>交易成功</title>
+    <link rel="stylesheet" href="../static/css/common.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="success.js?v=20151217"></script>
+	<style>
+		.brand-tip {
+			padding: 30px 0;
+			padding-left: 145px;
+			font-size: 30px;
+			background: url("../static/images/group/icon_successful.png") no-repeat;
+			background-position: 35px center;
+			background-size: 35px;
+		}
+		.top-info {
+			padding-top: 20px;
+			padding-bottom: 5px;
+			margin: 0 10px;
+		}
+		.bottom-info {
+			padding: 20px 15px 5px 15px;
+		}
+		.item {
+			overflow: hidden;
+			margin-bottom: 15px;
+			font-size: 13px;
+			color: #666;
+		}
+		label {
+			display: inline-block;
+			width: 60px;
+		}
+		label:after {
+			content: " :";
+		}
+		.value {
+			float: right;
+			display: block;
+			margin-left: 15px;
+			color: #a6937c;
+			width:70%;
+		}
+		.btn {
+		    display: block;
+		    margin: 10px;
+		    height: 44px;
+		    line-height: 44px;
+		    color: #fff!important;
+		    font-size: 15px;
+		    text-align: center;
+		    background-color: #ff8a00;
+		    border-radius: 3px;
+		    outline: none;
+		    border: none;
+		    text-decoration: none;
+		}
+		
+		.main_btn{
+		
+			width: 100%;
+			height: 60px;
+		}
+		
+		.sub_btn1{
+			
+			float: left;
+			width: 46%;
+			margin-left: 4%
+		}
+		
+		.sub_btn2{
+			
+			float: left;
+			width: 46%;
+			margin-right: 4%
+		}
+		
+	</style>
+</head>
+
+<body ms-controller="root">
+	<div class="brand-tip highlight" style="padding-left: 35%">支付成功！</div>
+	
+	<div class="top-info lite-divider">
+		<div id="content" class="item">
+		</div>
+	</div>
+	
+	<div class="top-info lite-divider">
+		<div class="item">
+			<label>房屋地址</label><span class="value">{{payAddr}}</span>
+		</div>
+		<div class="item">
+			<label>支付金额</label><span class="value">¥&nbsp;{{totalPrice}}</span>
+		</div>
+	</div>
+	
+	<div style="height: 12rem;"></div>
+	<div class="main_btn">
+		<div class="sub_btn1">
+			<a href="#" class="btn" ms-click="viewAnnoucement">查看活动公告</a>
+		</div>
+		<div class="sub_btn2">
+			<a href="#" class="btn" ms-click="goback">返回</a>
+		</div>
+	</div>
+</body>
+</html>

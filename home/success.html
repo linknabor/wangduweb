@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>预约成功</title>
+    <link rel="stylesheet" href="../static/css/common.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+	<script src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="success.js?v=20151217"></script>
+	<style>
+		.brand-tip {
+			padding: 50px 0;
+			padding-left: 85px;
+			font-size: 30px;
+			background: url("../static/images/group/icon_successful.png") no-repeat;
+			background-position: 35px center;
+			background-size: 35px;
+		}
+		.top-info {
+			padding-top: 20px;
+			padding-bottom: 5px;
+			margin: 0 15px;
+		}
+		.bottom-info {
+			padding: 20px 15px 5px 15px;
+		}
+		.item {
+			overflow: hidden;
+			margin-bottom: 15px;
+			font-size: 13px;
+			color: #666;
+		}
+		label {
+			display: inline-block;
+			width: 60px;
+		}
+		label:after {
+			content: " :";
+		}
+		.value {
+			float: right;
+			display: block;
+			margin-left: 15px;
+			color: #a6937c;
+			width: 250px;
+		}
+	</style>
+</head>
+
+<body ms-controller="root">
+	<div class="brand-tip divider highlight">预约成功!</div>
+	<div class="top-info lite-divider">
+		<div class="item">
+			<label>预约单号</label><span class="value">{{order.orderNo}}</span>
+		</div>
+		<div class="item">
+			<label>服务类型</label><span class="value">{{order.productName}}</span>
+		</div>
+		<div class="item">
+			<label>服务费用</label><span class="value">{{order.price}}</span>
+		</div>
+	</div>
+	<div class="bottom-info divider">
+		<div class="item">
+			<label>用工时间</label><span class="value">{{order.workTime}}</span>
+		</div>
+		<div class="item" ms-visible="!order.strWorkFrequency==null">
+			<label>用工频次</label><span class="value">{{order.strPlanStarTimeMimute}}</span>
+		</div>
+		
+		<div class="item">
+			<label>服务地址</label><span class="value">{{order.address}}</span>
+		</div>
+		<div class="item">
+			<label>其他需求</label><span class="value">{{order.memo}}</span>
+		</div>
+		<div class="item">
+			<label>手机号</label><span class="value">{{order.tel}}</span>
+		</div>
+	</div>
+	
+	<div class="btn-fixed">
+		<a href="index.html" class="btn" >返回首页</a>
+	</div>
+</body>
+</html>

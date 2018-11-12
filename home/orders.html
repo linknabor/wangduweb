@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>我的预约</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+	<script src="../static/js/fastclick.min-1.0.6.js"></script>
+	<script src="../static/js/zepto.min.js?v=4"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js"></script>
+	<script src="orders.js?v=20150822010144"></script>
+ 	<style type="text/css">
+ 	 	.avatar-wrap {
+            height: 42rem;
+            text-align: center;
+        }
+        .creator-wrap {
+            margin-bottom: 10px;
+            height: 30px;
+            line-height: 30px;
+        }
+        .avatar {
+            height: 30px;
+            width: 30px;
+            margin: 0;
+            margin-right: 15px;
+        }
+        .order-bottom {
+            color: #a6937c;
+            line-height: 23px;
+            min-height: 23px;
+        }
+ 	</style>
+</head>
+<body ms-controller="root">
+	<div class="avatar-wrap rel ov" ms-visible="groupsNum == 0">
+        <div class="filter-img avatar-wrap center-bg" ms-css-background-image="url('{{bg_img}}')"></div>
+    </div>
+    <div class="orders-item p15 divider" ms-repeat-item="orders">
+    	<img class="fl order-picture" ms-src="{{pictureSrc(item.productName)}}"/>
+    	<div class="ov pb10 fs14">服务类型：{{item.productName}}</div>
+    	<div class="ov pb10 fs14">
+        	<span class="fl">服务费用：{{item.price}}</span>
+			<span class="fr highlight" ms-visible="item.status==5">已取消预约</span>
+			<span class="fr highlight" ms-visible="item.status==1">预约成功</span>
+			<span class="fr highlight" ms-visible="item.status==0">未付款</span>
+    	</div>
+    	<div class="lite-divider" style="margin-top:20px"></div>
+        <div class="pt15 fs13 group-bottom" style="margin-top: 5px;">
+            <span>&nbsp; {{getDateStr($index)}}</span>
+            <!--应该跳转到ordersdetail.html-->
+            <a ms-href="orderdetail.html?orderId={{item.id}}&productType={{item.productType}}" class="btn-plain fr" style="margin-right:0">查看详情</a>
+        </div>
+    </div>
+</body>
+</html>

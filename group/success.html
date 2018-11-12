@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>交易成功</title>
+    <link rel="stylesheet" href="../static/css/common.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="success.js?v=20151217"></script>
+	<style>
+		.brand-tip {
+			padding: 30px 0;
+			padding-left: 20px;
+			font-size: 30px;
+			background: url("../static/images/group/icon_successful.png") no-repeat;
+			background-position: 35px center;
+			background-size: 35px;
+			text-align:center
+		}
+		.top-info {
+			padding-top: 20px;
+			padding-bottom: 5px;
+			margin: 0 15px;
+		}
+		.bottom-info {
+			padding: 20px 15px 5px 15px;
+			margin:0px 15px;
+		}
+		.item {
+			overflow: hidden;
+			margin-bottom: 15px;
+			font-size: 13px;
+			color: #666;
+		}
+		label {
+			display: inline-block;
+			width: 60px;
+		}
+		label:after {
+			content: " :";
+		}
+		.value {
+			float: right;
+			display: block;
+			margin-left: 15px;
+			color: #a6937c;
+			width:70%;
+		}
+		
+		.coupon-overlay{
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #333333;
+			z-index: 1001;
+			-moz-opacity: .6;
+			opacity: .60;
+			filter: alpha(opacity=60)
+		}
+		.coupon_detail{
+			position: fixed;
+			top: 120px;
+			left: 20px;
+			right: 20px;
+			z-index: 1002;
+			border-radius: 5px;
+		}
+		.coupon_arrow{
+			position: fixed;
+			top: 6px;
+			right: 10px;
+			z-index: 1002;
+		}
+	</style>
+</head>
+
+<body ms-controller="root">
+	<div class="brand-tip highlight" style="font-size: 24px;">恭喜你！交易成功</div>
+	<div class="highlight fs16 divider p15" style="text-align:center;" >点击右上角将链接分享给您的朋友和邻居吧！</div>
+	<div class="top-info lite-divider">
+		<div class="item">
+			<label>订单编号</label><span class="value">{{order.orderNo}}</span>
+		</div>
+		<div class="item">
+			<label>商品信息</label><span class="value">{{order.productName}}（{{order.count}}件）</span>
+		</div>
+		<div class="item">
+			<label>支付金额</label><span class="value">¥&nbsp;{{order.price}}</span>
+		</div>
+	</div>
+	<div class="bottom-info divider">
+		<div class="item">
+			<label>收货地址</label><span class="value">{{order.address}}</span>
+		</div>
+		<div class="item">
+			<label>联系人</label><span class="value">{{order.receiverName}}</span>
+		</div>
+		<div class="item">
+			<label>手机号</label><span class="value">{{order.tel}}</span>
+		</div>
+	</div>
+	
+	<div class="bottom-info divider pb30" style="text-align: center;">
+		<div class="divider highlight" style="text-align: center;width:100%;font-size:16px">长按关注东湖e家园，尊享更多特卖产品</div>
+		<img style="width: 200px;" src="http://7xkdq7.com1.z0.glb.clouddn.com/hexieshequ.jpg">
+	</div>
+	
+	<div style="height: 6rem;"></div>
+	<div class="btn-fixed">
+		<a href="#" class="btn" ms-click="goback">返回选择更多商品</a>
+	</div>
+	
+<div class="coupon-overlay" ms-visible="order.seedStr!=null&&order.seedStr!=''">
+	
+</div>
+<div class="coupon_arrow" ms-visible="order.seedStr!=null&&order.seedStr!=''">
+	<img src="../static/images/coupon_arrow.png" style="height:110px;width: 70px;"/>
+</div>
+<div class="coupon_detail" ms-visible="order.seedStr!=null&&order.seedStr!=''">
+	<img src="../static/images/coupon_success.png" />
+</div>
+</body>
+</html>

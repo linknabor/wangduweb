@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>购买页面</title>
+    <link rel="stylesheet" href="../static/css/common_v2.css">
+    <link rel="stylesheet" href="../static/css/swiper.css">
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../static/js/jquery.js"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=335"></script>
+	<script type="text/jscript" src="idxlist.js"></script>
+ <style>
+ 	.product-item{
+ 		display: block;
+ 		position: relative;
+ 		margin-top: 2px;
+ 		border: 1px solid #f4eff8;
+	}
+ 	.title {
+ 		background: rgba(255,255,255,.05);
+ 		padding: 0 10px;
+ 		height: 32px;
+ 		line-height: 32px;
+ 		font-size: 14px;
+ 		color: #000;
+ 	}
+ </style>
+</head>
+
+<body  ms-controller="root">
+	<div class="divider"></div>
+	<div class="wrap" style="box-sizing: border-box">
+		<a class="product-item divider" ms-repeat-service="services" ms-href="{{service.serviceUrl}}">
+			<img alt="" style="height:auto" ms-src="{{service.picture}}"/>
+			<div class="title text-el">{{service.serviceName}}</div>
+		</a>
+	</div>
+	<div style="height: 60px;position: relative;">&nbsp;</div>
+
+	<footer class="footer">
+	    <nav>
+	    	<ul>
+	            <li><a href="../home/index.html?v=20160229" class="nav-controller active"><i class="footer_logo footer_home_selected"></i>服务</a></li>
+                <li><a href="../group/onsalesindex.html?v=20160229" class="nav-controller"><i class="footer_logo footer_temai"></i>集市</a></li>
+	            <li><a href="../wuye/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_wuye"></i>社区</a></li>
+	            <li><a href="../person/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_person"></i>我的</a></li>
+	        </ul>
+	    </nav>
+	</footer>
+</body>
+</html>

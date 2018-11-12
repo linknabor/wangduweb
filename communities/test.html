@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Init Session</title>
+	<script src="../static/js/jquery.js?v=20151217"></script>
+	<script type="text/jscript" src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=201511217"></script>
+<script>
+
+avalon.ready(function() {
+	
+function initSession(){
+    	
+   	var n = "GET",
+       a = "initSession4Test/40002",
+       i = null,
+       e = function(n) {
+   		console.log(JSON.stringify(n));
+		alert(n.result);
+       },
+       r = function() {
+       	alert("init failed...");
+       };
+       common.invokeApi(n, a, i, null, e, r)
+}
+
+initSession();
+	
+})
+
+
+
+
+/* $(document).ready(function(){
+	
+	$.ajax({
+	   type: "GET",
+	   url: "/wechat/hexie/wechat/initSession4Test?userId=14292",
+	   success: function(msg){
+	     alert( msg );
+	   }
+	});
+	
+}) */
+</script>
+</head>
+<body>
+
+Init Session 4 Test ...
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>评论</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+	<script src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="comment.js?v=20151217"></script>
+ 	<style type="text/css">
+        .title {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .content:before {
+            content: "亲，您的评价对其他朋友有很大的帮助哦 ~";
+            position: absolute;
+            top: 50%;
+            margin-top: -10px;
+            left: 50%;
+            margin-left: -120px;
+        }
+        .grade{
+            padding-left: 15px;
+            padding-right: 15px;        	
+        }
+        .checkbox {
+            vertical-align: sub;
+        }
+        img{
+        	height: 20px;
+        	width: 20px;
+        }
+ 	</style>
+</head>
+
+<body ms-controller="root">
+    <div class="order-number fs13 plr15">订单编号&nbsp;{{order.orderNo}}</div>
+    <div class="p15">
+        <img class="fl order-picture" ms-src="{{order.productThumbPic}}"/>
+        <div class="ov pb15 fs14">{{order.productName}}</div>
+        <div class="ov pb15" style="color:#3b3937">
+            <span class="fl fs15">
+                总计&nbsp;¥{{order.price}}
+            </span>
+            <span class="fr fs15 highlight">共{{order.count}}个商品</span>
+        </div>
+    </div>
+    <div class="title fs18">评论内容</div>
+    <div style="line-height: 35px;">
+    	<span class="grade fs15">服务评价：</span>
+    	<span style="float: right; margin-right: 15px;">
+		<a ms-click="serverClick(1)" style="padding-left: 10px;"><img ms-src="getServerStar(1)"></a>
+		<a ms-click="serverClick(2)" style="padding-left: 10px;"><img ms-src="getServerStar(2)"></a>
+		<a ms-click="serverClick(3)" style="padding-left: 10px;"><img ms-src="getServerStar(3)"></a>
+		<a ms-click="serverClick(4)" style="padding-left: 10px;"><img ms-src="getServerStar(4)"></a>
+		<a ms-click="serverClick(5)" style="padding-left: 10px;"><img ms-src="getServerStar(5)"></a>
+		</span>
+	</div>
+    <div style="line-height: 35px;">
+    	<span class="grade fs15">商品评价：</span>
+    	<span style="float: right; margin-right: 15px;">
+		<a ms-click="productClick(1)" style="padding-left: 10px;"><img ms-src="getProductStar(1)"></a>
+		<a ms-click="productClick(2)" style="padding-left: 10px;"><img ms-src="getProductStar(2)"></a>
+		<a ms-click="productClick(3)" style="padding-left: 10px;"><img ms-src="getProductStar(3)"></a>
+		<a ms-click="productClick(4)" style="padding-left: 10px;"><img ms-src="getProductStar(4)"></a>
+		<a ms-click="productClick(5)" style="padding-left: 10px;"><img ms-src="getProductStar(5)"></a>
+		</span>
+	</div>
+	<div style="line-height: 35px;">
+    	<span class="grade fs15">物流评价：</span>
+    	<span style="float: right; margin-right: 15px;">
+		<a ms-click="logisticClick(1)"><img ms-src="getLogisticStar(1)"></a>
+		<a ms-click="logisticClick(2)" style="padding-left: 10px;"><img ms-src="getLogisticStar(2)"></a>
+		<a ms-click="logisticClick(3)" style="padding-left: 10px;"><img ms-src="getLogisticStar(3)"></a>
+		<a ms-click="logisticClick(4)" style="padding-left: 10px;"><img ms-src="getLogisticStar(4)"></a>
+		<a ms-click="logisticClick(5)" style="padding-left: 10px;"><img ms-src="getLogisticStar(5)"></a>
+		</span>
+	</div>
+    <div contenteditable class="content p15 fs15" style="line-height: 20px;" ms-class-has-value="comment" ms-click="focus" ms-blur="storeComment"></div>
+    <div class="fr pr15 fs15" style="margin-top:15px" ms-click="toggleCheckbox">
+        <i class="checkbox" ms-class-checked="anonymous" style="margin-right:5px"></i>
+        我要匿名评论
+    </div>
+    <a href="#" class="btn" style="margin-top:190px" ms-click="submit">发表评论</a>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>优惠组合</title>
+    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/address.css?v=20151217">
+    <link rel="stylesheet" href="../static/css/common.css?v=20151217">
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../static/js/zepto.min.js?v=20151217"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js?v=20151217"></script>
+	<script src="collocation.js?v=201512173"></script>
+ <style>
+ 
+ 	[ms-controller]{display:none} 
+ body{
+ 	background: #F7F7F1;
+ }
+ .notice_line{
+ 	background: #ffe1d3;
+ 	height:35px;
+ 	line-height: 35px;
+ 	text-align: center;
+ 	font-size: 14px;
+ 	color:#ff6600
+ }
+.line {
+  padding: 15px 15px;
+  background: #f7f7f1;
+  border-bottom: 1px solid #c2c2c2;
+  margin-left: 10px;
+}
+.custom-menu-link {
+  padding-top: 15px;
+  padding-left: 15px;
+  color: #3b3937;
+  background-position-y: 15px;
+}
+	
+	.product_detail{
+		height:90px;
+	}
+	.product_picture{
+		margin:15px 15px 0 15px;
+		width:70px;
+		height:70px;
+		float:left;
+		border:1px solid #e7e7e1;
+	}
+	.product_pri_area{
+		width: 100%;
+		height:30px;
+	}
+	.product_content{
+		margin-right: 10px;
+		margin-left: 110px;
+		padding-top: 15px;
+	}
+	.product_name{
+		font-size:12px;
+		color:#3b3937;
+		line-height: 16px;
+		height:32px;
+		overflow:hidden
+	}
+	
+	.coll_detail{
+		height:95px;
+		background-color:white;
+	}
+	.coll_picture{
+		margin:10px;
+		width:70px;
+		height:70px;
+		float:left;
+		border:1px solid #e7e7e1;
+	}
+	.coll_content{
+		margin-right: 10px;
+		margin-left: 120px;
+		padding-top: 10px;
+	}
+	.coll_name{
+		font-size:12px;
+		color:#3b3937;
+		line-height: 16px;
+		height:32px;
+		overflow-y: hidden;
+	}
+	.coll_pri_area{
+		border-bottom: 2px solid #f7f7f1;
+		width: 100%;
+		height:40px;
+	}
+	.minus-btn-size{
+		width:18px;
+		height:18px;
+		background-size:18px;
+	}
+	.baoyou_desc{
+		padding:2px 15px;
+		border: 1px solid #ff8a00;
+		border-radius: 2px;
+		margin-left: 10px;
+		color:#ff8a00;
+	}
+	.right_menu{
+	    padding-left: 15px;
+	    padding-right: 15px;
+	    display: block;
+	    background: url("static/images/group/icon_arrow.png") no-repeat;
+	    background-size: 7px 12px;
+	    background-position: right center;
+	}
+	.discount_title{
+		background-color:#ff8a00;
+		color:white;
+		text-align:center;
+		width:100%;
+		height:30px;
+		line-height:30px;
+		font-size:16px;
+		position:fixed;
+		z-index:1000;
+		top:-30px;
+		display:block;
+	}
+</style>
+</head>
+
+<body ms-controller="root">
+	<div class="notice_line" id="notice_line">{{collocation.title}}活动火热进行中</div>
+	<div class="discount_title" id="discount_title">满{{collocation.satisfyAmount}}减{{collocation.discountAmount}}&nbsp;&nbsp;&nbsp;合计￥{{needPayPrice}}<span ms-visible="disCountAmount>0">(已优惠{{disCountAmount}}元)</span></div>
+	<div class="product_detail" >
+		<img class="product_picture" ms-src="{{mainItem.productPic}}" />
+		<div class="product_content">
+			<div class="product_name">{{mainItem.ruleName}}</div>
+			<div class="product_pri_area">
+				<div class="fl fs14 highlight" style="margin-left: 10px;padding-top: 20px"> ¥{{mainItem.price}} </div>
+				<div class="fl fs14" style="margin-left: 10px;padding-top: 20px;color:#888888"> <del>¥{{mainItem.oriPrice}}</del> </div>
+				<div class="fr"  style="margin-top:8px;" >
+					<span class="sbtn btn-minus minus-btn-size" ms-class-active="mainItem.count>1" ms-click="minusMainCount"></span>
+					<span class="number fs16">{{mainItem.count}}</span>
+					<span class="sbtn btn-add active minus-btn-size" ms-click="addMainCount"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="coll_detail" style="margin-top: 5px;" ms-repeat-item="otherItems">
+		<i class="checkbox fl" style="margin-top:40px;margin-left: 15px;" ms-class-checked="item.selected" ms-click="selectItem($index)"></i>
+		<img class="coll_picture" ms-src="{{item.productPic}}" ms-click="gotoDetail($index)"/>
+		<div class="coll_content">
+			<div class="coll_name" ms-click="gotoDetail($index)">{{item.ruleName}}</div>
+			<div class="coll_pri_area">
+				<div class="fl fs14 highlight" style="margin-left: 10px;padding-top: 12px"> ¥{{item.price}} </div>
+				<div class="fl fs14" style="margin-left: 10px;padding-top: 12px;color:#888888"> <del>¥{{item.oriPrice}}</del> </div>
+				<div class="fr" style="margin-top:8px;">
+					<span class="sbtn btn-minus minus-btn-size" ms-class-active="minusAble($index)" ms-click="minusCount($index)"></span>
+					<span class="number fs16">{{item.count}}</span>
+					<span class="sbtn btn-add active minus-btn-size" ms-click="addCount($index)"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="line p15 fs15" style="height:30px">
+		<span class="fr">
+			<span class="fs12">共{{totalCount}}个商品</span>
+			<span class="total fs15">合计</span>
+			<span class="fs20" style="margin-right: 5px;">¥&nbsp;{{totalAmount}}</span>
+		</span>
+	</div>
+<!--	当满减底价为0或者为0.0时不显示活动信息-->
+	<div class="line p15 fs15" style="height:20px;text-align:center" ms-visible="collocation.satisfyAmount>0">
+		<span class="fl">活动优惠</span> 
+		<span class="baoyou_desc" >满{{collocation.satisfyAmount}}减{{collocation.discountAmount}}</span>
+		<span class="fr highlight">&nbsp; -¥{{disCountAmount}}  </span>
+	</div>
+	<div class="p15  " style="height:24px">
+		<span class="fr">
+			<span class="highlight fs14 ml10">优惠后金额 </span> 
+			<span class="fs10 mr10">（不含邮费）</span> 
+			<span class="highlight fs22">¥&nbsp;{{needPayPrice}}  </span>
+		</span>
+	</div>
+<!--	当满免邮费价为0或者为0.0时不显示包邮信息-->
+	<div class="p15  " style="height:20px" >
+		<span class=" fs15"><span class=" fs20 highlight">●</span>  快递费 {{collocation.shipAmount}}元</span> 
+		<span class="fs14" ms-visible="collocation.freeShipAmount > 0&&collocation.shipAmount>0">，<span class="highlight">优惠后金额满{{collocation.freeShipAmount}}元包邮</span></span> 
+	</div>
+	<div style="height: 80px;position: relative;">&nbsp;</div>
+	<div class="btn-fixed" style="z-index:1003">
+		<a href="#" class="btn" ms-click="pay">
+			立即购买
+		</a>
+	</div>
+</body>
+</html>

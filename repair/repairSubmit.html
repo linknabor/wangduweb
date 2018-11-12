@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	    <meta content="telephone=no" name="format-detection"/>
+	    <meta charset="UTF-8">
+		<title>选择项目</title>
+		
+		<link rel="stylesheet" href="../static/css/common.css?v=20151217">
+	    <link rel="stylesheet" href="../static/css/header.css?v=20151217">
+    	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script src="../static/js/jquery.js"></script>
+		<script src="../static/js/avalon.js"></script>
+		<script src="../static/js/common_v3.js"></script>
+		<script type="text/jscript" src="../static/plugin/jquery.datetimepicker.js"></script>
+		<link rel="stylesheet" href="../static/plugin/jquery.datetimepicker.css">
+	    <link rel="stylesheet" href="../static/css/common/address.css">
+		<script src="../common/address.js"></script>
+		<script src="repairSubmit.js?v=3"></script>
+	</head>
+	<style type="text/css">
+	 	[ms-controller]{display:none}
+		body{
+			background: #ffffff;
+			margin: 0;
+			height: auto;
+		}
+		a {
+		    text-decoration: none;
+		    display: inline-block;
+		}
+		.topLine{
+			margin: 15px auto;
+			background: #fff8ee;
+			border-top: 1px solid #e5e2dd;
+			border-bottom: 1px solid #e5e2dd ;
+			padding: 10px 15px;
+			line-height: 16px;
+			height:16px;
+			font-size:16px
+		}
+		.topLineLeft{
+			float:left;
+			color:#7e6b5a;
+		}
+		.topLineRight{
+			text-align: right;
+			float: right;
+		    width: 70%;
+		    overflow: hidden;
+		    height: 16px;
+		    color: #ff8a00;
+		}
+		.addr_area{
+			background: #F7F7F1;
+		}
+		.add_btn_style{
+			display: inline-block;
+			height: 30px;
+			line-height: 30px;
+			border-radius: 3px;
+			border: 1px solid #cfa972;
+			padding:4px 30px;
+			margin:20px 0;
+			color:#cfa972;
+			background-color:white;
+		}
+		.new_address{
+			color:#996c33;
+			font-size: 15px;
+			margin-top: 20px;
+			padding: 12px 40px;
+			border: 2px solid #eee5d3;
+			border-radius:5%;
+			background: #fffff8;
+		}
+		.addr_location{
+		    color: #888;
+		    line-height: 20px;
+		    margin-top: 6px;
+		}
+		.addr_detail{
+			text-align:left;
+		}
+		.value2 {
+            display: block;
+            color:#3b3937;
+            width:100%;
+            line-height: 25px;
+            font-size: 15px;
+        }
+        .value2_right{
+        	float: right;padding-right: 10px;
+        }
+		.lite-divider {
+		    border-bottom: 1px solid #d4cfc8;
+		}
+		.custom-menu-link {
+		    display: block;
+		    background: url("../static/images/person/icon_arrow.png") no-repeat;
+		    background-size: 8px 12px;
+		    background-position:right center;
+		    margin:0 15px;
+		    color: #3b3937;
+		    line-height: 30px;
+		    padding: 5px 4px;
+			overflow: hidden;
+		}
+		.custom-menu{
+		    display: block;
+			margin:0 15px;
+		    color: #3b3937;
+		    line-height: 30px;
+		    padding: 5px 4px;
+			overflow: hidden;
+		}
+		.bottomLine{
+			border-bottom: 5px #eeeeee solid;
+			background:#fff;
+		}
+		.input-info{
+			font-size: 15px;;
+		}
+		.memo_area{
+			font-size: 15px;
+			color: #7e6b5a;
+		}
+		.content {
+			position: relative;
+			height: 100px;
+			margin: 0 15px;
+			background-color: #F9F9E9;
+			border: 1px solid #d4cfc8;
+			outline: none;
+			padding:15px
+		}
+		.content:focus:before, 
+		.content.has-value:before {
+			display: none;
+		}
+		.content:before { 
+			content:"输入问题描述内容...";
+			font-size: 15px;
+			color: #bfbfbf;
+		}
+		.photo_area{
+			font-size: 15px;
+			color: #7e6b5a;
+			padding-left: 10px;
+		}
+		.photo_wrap{
+		    width: 33%;
+		    text-align: center;
+    		display: inline-block;
+	    }
+	    
+		.photo{
+		    margin: 3px;
+		    width: 90%;
+		    outline: #e5e2dd solid 1px;
+		}
+		.addicon{
+			background: url(images/add_photo.png) no-repeat;
+			background-size:40px;
+			background-position: 50%;
+		}
+		.add_icon{
+			background:url(../static/images/community/bg.png) no-repeat;
+			background-size: 70px;
+		}
+		.btn-fixed {
+			position: fixed;
+			bottom: 0;
+			left:0;
+			right: 0;
+		}
+		.btn {
+			display: block;
+			height: 40px;
+			line-height: 40px;
+			color: #fff!important;
+			font-size: 15px;
+			text-align: center;
+			background-color: #ff8a00;
+			outline: none;
+			border: none;
+			text-decoration: none;
+		}
+		.btn:active {
+			background-color: #d07100;
+		}
+		.modal-mask {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(0,0,0,0.5);
+		}
+		.modal {
+			background: #fff;
+			border-radius: 5px;
+			margin: 200px auto;
+			padding: 10px 15px;
+			width: 60%;
+		}
+		.modal-select{
+			line-height: 40px;
+		}
+		.checked-item {
+			background: url("images/icon_selected.png") no-repeat;
+			background-position: right center;
+			background-size: 16px;
+		}
+		.date_pppp{
+		  position: fixed;
+		  width: 0px;
+		  height: 0px;
+		  color: #fccc;
+		  z-index: -1;
+		  top: 200px;
+		  left: 50px;
+		  border: 0px;
+		}
+		.date-picker-value {
+		    position: relative;
+		    right: 15px;
+		    float: right;
+			color: #4f4f4f;
+			font-size: 14px;
+			pointer-events: none;
+		}
+	</style>
+	<body  ms-controller="root">
+		<section ms-visible="currentPage=='main'">
+			<div class="topLine">
+				<div class="topLineLeft">维修项目</div>
+				<div class="topLineRight">{{projectName}}</div>
+			</div>
+			<div class="addr_area" ms-click="showAddress">
+				<div style="background:url(../static/img/bg_line_location_top.png) repeat-x;height:5px;background-size: 100% 5px;">&nbsp;</div>
+				<div style="text-align:center;background-color: #f7f7f1;">
+					<a href="#" class="fs14 add_btn_style" ms-visible="!address.receiveName" style="">选择收货地址</a>
+				</div>
+				<div class="custom-menu-link" style="text-align: center;" ms-visible="address.receiveName">
+					<a  href="#" class="fs14 addr_detail">
+						<span style="color:#3b3937;" >{{address.receiveName}}</span>
+						<span style="margin-left:15px;color:#3b3937;">{{address.tel}}</span>
+						<div class="addr_location">{{address.province}}{{address.city}}{{address.county}}{{address.xiaoquName}}{{address.detailAddress}}</div>
+					</a>
+				</div>
+				<div style="background:url(../static/img/bg_line_location_bottom.png) repeat-x;height:5px;background-size: 100% 5px;">&nbsp;</div>
+			</div>
+			<div class="bottomLine">
+				<a href="#" ms-click="showAddress" class="custom-menu lite-divider">
+					<p class="value2">所在小区<span class="value2_right">{{address.xiaoquName}}</span></p>
+			    </a>
+				<div class="custom-menu-link" id="timetaker">
+					<p class="value2">预约上门时间
+						<input class="date_pppp" id="datetimepicker2" ms-duplex="requireDate">
+						<span class="value2_right" ms-visible="!requireDate">请选择时间</span>
+						<span class="value2_right">{{requireDate}}</span>
+					</p>
+				</div>
+			</div>
+			
+			<div class="bottomLine">
+			        <a href="#" class="custom-menu-link"  ms-click="teamChooser.showModal">
+			        	<p class="value2">
+						优先服务团队<span class="value2_right">{{assignTitle}}</span>
+						</p>
+					</a>
+			</div>
+			<div class="memo_area">
+				<div style="padding:15px;">问题描述</div>
+				<div contenteditable="true" class="content" ms-class-has-value="memo" ms-click="focus" ms-blur="storeMemo"></div>
+			</div>
+			<div class="photo_area">
+				<div style="margin-top:15px;width:100%;height:40px">
+					<div style="float: left;padding-left: 5px;">上传照片</div>
+					<div style="float: right;padding-right: 15px;color: #999">{{photos.length}}/6</div>
+				</div>
+				
+				<div ms-repeat-photo="photos"  class="photo_wrap a_third_m20_height" >
+					<img ms-src="photo.imgUrl" class="photo a_third_m22_height"/>
+				</div>
+				
+				<div class="photo_wrap" style="margin: -2px;" ms-click="addPic" ms-visible="photos.length<6">
+					<div class="photo addicon a_third_m22_height" />
+			  	</div>
+		  	</div>
+		  	<div style="width: 100%;height: 80px;">&nbsp;</div>
+		  	<div class="btn-fixed">
+				<a href="#" class="btn" ms-click="submit">提交报修</a>
+			</div>
+			<div class="modal-mask" ms-visible="teamChooser.modalShown" ms-click="teamChooser.hideModal">
+				<div class="modal">
+					<div class="modal-select ptb15" ms-repeat-item="teamChooser.teamPicker" ms-class-checked-item="item.checked" ms-class-lite-divider="!$last" ms-click="teamChooser.selectTeam($index)">{{item.name}}</div>
+				</div>
+			</div>
+		</section>
+				
+		<section ms-visible="currentPage=='addresses'">
+			<div ms-include-src="'../common/address.html'"></div>
+		</section>
+	</body>
+</html>

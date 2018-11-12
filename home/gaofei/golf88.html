@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="format-detection" content="email=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+	<title>畅打月卡不限次数88元</title>
+	<link rel="stylesheet" href="../../static/css/onsite/common.css?v=20150822010144">
+	<link rel="stylesheet" href="../../static/css/daojia/common.css?v=20150822010144">
+    <link rel="stylesheet" href="../../static/css/header.css">
+    <link rel="stylesheet" href="../../static/css/common.css?v=20150822010144">
+	<link rel="stylesheet" href="../../static/css/onsite/selection.css">
+	<script src="../../static/js/jquery.js"></script>
+	<script src="../../static/js/avalon.js"></script>
+	<script type="text/jscript" src="../../static/plugin/jquery.datetimepicker.js"></script>
+	<link rel="stylesheet" href="../../static/plugin/jquery.datetimepicker.css">
+	<script type="text/jscript" src="../../static/js/common_v3.js"></script>
+	<script src="golf88.js"></script>
+    <link rel="stylesheet" href="../../static/css/address.css?v=20150822010144">
+	<link rel="stylesheet" href="../../static/css/home/flowerplus.css?v=20150822010144">
+	<style type="text/css">
+	    .table-b table{width: 100%;}
+	    .table-b a{text-decoration: none; color: #3B3937;}
+	    .table-b table td{border:1px solid #EEE9E9; text-align: center; font-size: 14px;}  
+         li{
+	         height: auto  !important;
+	    } 
+	    .pl5{
+	      padding-left: 5px;
+	    }
+	    .pt5{
+	      padding-top: 5px;
+	    } 
+	</style>
+</head>
+<body ms-controller="root">
+<section ms-visible="currentPage=='main'" >
+	<img class="banner" src="../../static/images/home/golf/golf88.jpg">
+	<div class="info-wrap divider">
+		<div class="clearfix">
+			<label class="title fs14 fl">服务费用</label>
+			<input class="date_pppp"  id="datetimepicker2" ms-duplex="servicedate">
+		    <span class="fs15 price fr">88元</span>	
+		</div>
+		<div class="desc-wrap fs13 disc" >
+			<div class="fs15">服务内容</div>
+			<ul class="desc-items">
+				<li>不限时 不限次 不限球数畅打</li>
+				<li>.有效期一个月，每人限购一份</li>
+				<li>以首次开打计算有效期</li>
+				<li>免费停车,需自备球杆</li>
+				<li>联系电话:021-65670902/13122712160</li>
+			</ul>
+		<div class="fs15">教学场景</div>
+		<img src="../../static/images/home/golf/baoyue.jpg" />
+		<div class="fs15">休息室</div>
+		<img src="../../static/images/home/golf/golfaddress.jpg" />
+		<div class="fs15">教官</div>
+		<img src="../../static/images/home/golf/jiaoguan.jpg" />
+		<div class="fs15">教学特点：</div>
+			<ul class="desc-items">
+				<li>辛教练：风趣幽默，深入潜出，擅于用易学易懂的方式教授运动要领</li>
+				<li>孙教练：单身美女，教学态度严谨认真，执教经历丰富，始终坚持高标准、严要求，使学员获得最佳学习效果</li>
+				<li>刘教练：踏实认真，勤勉负责，善于发现问题纠正错误动作</li>
+				<li>施教练：认真严谨，教学理念新颖，擅于结合学员特点因材施教</li>
+			</ul>
+		</div>
+		</div>
+	</div>
+	<label class="title fs13 order-title">预约需求</label>
+	<ul class="list " style="border-top: 1px solid #d4cfc8">
+		       <li><label class="icon-label pt5" >地址</label></li>
+		       <li><a class="menu-link fr left35" ms-class-value-color="addressAdded" style="background: none;" >杨浦区 国顺东路 410号 黄兴公园 高尔夫练习场 2楼158室 高飞体育</a></li>
+    </ul>
+    <ul class="list block-menu">
+		<li class="rel" id="timetaker" style="border-bottom: none;">
+			<label class="icon-label pl5" class="date-picker-value">首次体验时间</label>
+			<span class="date-picker-value" ms-visible="!servicedate">请选择时间</span>
+			<span class="date-picker-value" ms-class-value-color="!form.date.isEmpty">{{servicedate}}</span>
+		</li>
+	</ul>
+	<ul class="list block-menu">
+		<li ms-click="selectRegister">
+			<label class="icon-label pl5">姓名</label>
+			<input placeholder="真实姓名" class="fr fs14 hidden-input" style="margin-top: 0px;" ms-duplex-string="customerName"/>
+		</li>
+		<li>
+			<label class="icon-label pl5" >手机号</label>
+			<input placeholder="手机号" class="fr fs14 hidden-input" style="margin-top: 0px;" ms-duplex-string="customerTel"/>
+		</li>
+	</ul>
+	<div class="divider"></div>
+	<div class="btn-home-fixed">
+		<span  class="fl" 
+			style="height:40px;line-height:40px;width:36%;background-color:#444;text-align:center;font-size:15px;" ms-click="golist">
+			更多服务
+		</span>
+		<span  class="fl" 
+			style="height:40px;line-height:40px;width:64%;background-color:#ff8a00;text-align: center;font-size:15px;"  ms-click="submit" ms-class-useless="submiting">
+			立即下单
+		</span>
+	</div>
+</section>
+</body>
+</html>

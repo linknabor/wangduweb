@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>订单详情</title>
+		<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script src="static/js/avalon.js"></script>
+		<script src="static/js/jquery.js"></script>
+		<script src="static/js/common_v3.js?v=20151217"></script>
+		<script src="baojie_order_list.js?v=5"></script>
+		<style type="text/css">
+			body{
+				margin:0;
+				background-color: #f4f5f6;
+			}
+			.avatar-wrap {
+            	height: 42rem;
+            	text-align: center;
+        	}
+        	.center-bg {
+				background-size: cover;
+				background-position: center;
+			}
+			.ov {overflow: hidden;padding: 1px;}
+			.rel {position: relative;}
+			.background_picture{
+				background:url(static/img/baojie/icon_line_06.png)
+				repeat-x;
+				height:2px;
+				background-size: 100%;
+			}
+			.order_num{
+				padding: 14px 15px 15px 15px;
+				background-color: #FFFFFF;
+				border-bottom: 1px solid #f3f5f7;
+			}
+			.span1{
+				font-family: "微软雅黑";
+				font-size: 15px;
+				color: #AAAAAA;
+			}
+			.span2{
+				float: right;
+				font-family: "微软雅黑";
+				font-size: 15px;
+				color: #FF8A00;
+			}
+			.product{
+				padding: 14px;
+				background-color: #FFFFFF;
+				border-bottom: 1px solid #f3f5f7;
+			}
+			.icon1{
+				float: left;
+				width: 86px;
+				height: 86px;
+				margin-right: 14px;
+			}
+			.item,.time_long{
+				font-family: "微软雅黑";
+				font-size: 14px;
+				color: #000000;
+				margin-top:0 ;
+				margin-bottom: 14px;
+			}
+			.time{
+				font-family: "微软雅黑";
+				font-size: 14px;
+				color: #000000;
+				margin-bottom: 0;
+				margin-top: 0;
+			}
+			.order_time{
+				padding: 14px;
+				background-color: #FFFFFF;
+				margin-bottom: 10px;
+			}
+			.span3{
+				font-family: "微软雅黑";
+				font-size: 15px;
+				color: #AAAAAA;
+			}
+			.span4{
+				border: 1px solid #AAAAAA;
+				border-radius: 3px;
+				display: inline-block;
+				font-family: "微软雅黑";
+				font-size: 13px;
+				color: #AAAAAA;
+				height: 15px;
+				line-height: 15px;
+				text-align: center;
+				float: right;
+				margin-top: -2px;
+				padding: 4px 15px;
+			}
+			.yellow_btn{
+			    background: #FF8A00;
+			    color:white;
+			    border:none;
+			}
+			.mr10{
+			    margin-right:10px
+			}
+			.span5{
+				border: 1px solid #FF8A00;
+				border-radius: 3px;
+				display: inline-block;
+				font-family: "微软雅黑";
+				font-size: 13px;
+				color: #ffffff;
+				background-color: #FF8A00;
+				width: 70px;
+				height: 15px;
+				line-height: 15px;
+				text-align: center;
+				float: right;
+				margin-top: -2px;
+				padding: 4px 6px;
+			}
+		</style>
+	</head>
+	<body ms-controller="root">
+		<div class="avatar-wrap rel ov" ms-visible="bills.length == 0">
+        	<div class="filter-img avatar-wrap center-bg" ms-css-background-image="url('{{bg_img}}')"></div>
+    	</div>
+	    <div ms-repeat-bill="bills" ms-click="gotoDetail($index)">
+	        <div class="background_picture"></div>
+            <div class="order_num">
+                <span class="span1">订单编号：{{bill.orderNo}}</span>
+                <span class="span2">{{bill.statusStr}}</span>
+            </div>
+            <div class="product">
+                <img ms-src="bill.billLogo" class="icon1"/>
+                <p class="item">项目：{{bill.typeName}}</p>
+                <p class="time_long">时长：{{bill.itemCount}}小时</p>
+                <p class="time">预约时间：{{bill.requireDateStr}}</p>
+            </div>
+            <div class="order_time">
+                <span class="span3">下单时间：{{bill.createDateStr}}</span>
+                <span class="span4 yellow_btn" ms-visible="bill.status==1" ms-click="gotoPay($index,event)">支付</span>
+                <span class="span4 mr10" ms-visible="bill.status==1" ms-click="cancel($index,event)">取消</span>
+                <a href="tel:021-50876295"><span class="span4" ms-visible="bill.status==2" ms-click="contact(event)">联系客服</span></a>
+			</div>
+	    </div>
+	</body>
+</html>

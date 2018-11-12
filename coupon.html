@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>我的东湖e家园</title>
+<link rel="stylesheet" href="static/css/common.css?v=20151217">
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/jscript" src="static/js/zepto.min.js?v=20151217"></script>
+<script type="text/jscript" src="static/js/avalon.js"></script>
+<script type="text/jscript" src="static/js/common_v3.js?v=20160315"></script>
+<script type="text/jscript" src="coupon.js?v=20160315"></script>
+<style>
+body{
+margin:0px
+}
+	.outter_container{
+		background: -webkit-gradient(linear, 0 0, 0 100%, from(#d7363a), to(#fb5737));
+		/*background:-moz-linear-gradient(10 10 90deg,rgb(25,0,0) 14%,rgb(255,255,0) 50%,rgb(0,0,255) 100%);
+		background:-webkit-gradient(linear ,0 0,100% 100%,
+		color-stop(0.14,rgb(255,0,0)),color-stop(0.5,rgb(255,255,0)),color-stop(1,rgb(0,0,255)) );*/
+		padding: 0px;
+		height:100%
+	}
+	.top_area{
+		background: url("static/img/bg_share_courtesy card.png") no-repeat ;
+		background-size: 100% 110px;
+		text-align: center;
+	}
+	.header_line{
+		padding-top: 20px;
+	}
+	.header_line_title{
+		background: url("static/img/bg_user.png") no-repeat;
+		background-size: 100% 100%;
+		padding: 12px 30px 18px 30px;
+		color:#c3272b;
+		font-style: bold;
+		font-size:18px bold;
+	}
+	.header_icon_line{
+		width: 100%;
+		height:100px;
+		margin-top: 20px;
+		text-align: center;
+	}
+	.center-bg {
+    	margin:0 auto;
+		background-size: cover;
+		background-position: center;
+	}
+	.avatar{
+	    height: 50px;
+	    width: 50px;
+	    border-radius: 50%;
+    	border:1px #ffffff solid;
+    	background-size: 100%;
+    }
+    .avatar.bolda{
+	    height: 70px;
+	    width: 70px;
+    	border:3px #fff661 solid;
+    }
+    
+    .content_area{
+		margin: 10px 25px 0px 25px;
+    }
+    .product_pic{
+	    width: 100%;
+	    border-radius: 10px;
+	    height: 160px;
+	    background-size: 100% 100%;
+    }
+    
+    .coupon_item{
+		margin-top: 10px;
+	}
+	.outter_bg{
+		background:url("static/img/bg_courtesy_card.png") no-repeat;
+		background-size: 100% 110px;
+		height:115px;
+	}
+	.coupon_desc{
+		float:left;
+		width: 74%;
+		font-size: 20px;
+		height:100px;
+	}
+	
+	.received .outter_bg{
+		background:url("static/img/bg_courtesy_card_gray.png") no-repeat;
+		background-size: 100% 110px;
+	}
+	.coupon_value{
+		float:right;
+		width:26%;
+	    height:100px;
+	    font-size: 20px;
+	}
+	.coupon_line_1{
+		width: 100%;
+	  	padding: 20px 20px 0 20px;
+	}
+	.coupon-name{
+		font-size: 20px;
+		color:#ff8a00;
+		display: block;
+	}
+	.received .coupon-name{
+		color:#aaaaaa;
+	}
+	.coupon-time{
+		border: 1px #b28850 solid;
+		color:#b28850;
+		border-radius: 20px;
+		padding: 0px 10px;
+		font-size: 12px;
+		white-space:nowrap; 
+	}
+	.coupon-limit{
+		position: absolute;
+		font-size:11px;
+		color:#666666;
+		padding:10px 0 0px 20px;
+		width: 60%;
+	}
+	.received coupon-limit{
+		color:#999999;
+	}
+	.coupon-amount{
+		color:white;
+		text-align: center;
+		padding: 20px 0 0 0;
+		font-size: 24px;
+	}
+	.coupon-msg{
+		color:white;
+		text-align: center;
+		padding: 20px 0 0 0;
+		font-size: 18px;
+	}
+	.coupon-dyq{
+		color:white;
+		text-align: center;
+		padding: 10px 0 0 0;
+		font-size: 13px;
+	}
+	
+	.psq{
+		color: #ffff00;
+		font-size:17px;
+		width: 100%;
+		text-align: center;
+		padding-top: 15px;
+		font-weight:bold;
+		background: url("static/img/bg_line.png") no-repeat;
+		background-size:28px;
+		background-position:center 54px;
+		padding-bottom: 12px;
+		border-bottom: 1px solid #ffff00;
+	}
+	
+	.inviter{
+		width: 100%;
+		margin: 15px 0 0 0;
+		height:64px;
+	}
+	.inviter_desc{
+		margin: 6px 0 0 0;
+		float:left;
+		height:50px
+	}
+	.inviter_txt{
+		font-size:13px;
+		color:white;
+		margin-left: 10px;
+		height:25px;
+		line-height: 25px;
+	}
+	.inviter_amount{
+		margin: 6px;
+		float:right;
+		color:#ffff00;
+		font-size:21px;
+		height:50px;
+		line-height: 50px;
+	}
+	
+	.rule_area{
+		border: 1px solid white;
+		margin:30px 0;
+		border-radius: 4px;
+		padding:15px;
+		color:white
+	}
+	.rule_title{
+		text-align: center;
+		padding:5px 0 15px 0;
+		border-bottom: 1px solid white;
+	}
+	.rule_desc{
+		padding:15px 0 5px 0;
+	}
+	.bottom_title{
+		border-radius: 15px;
+		border: 1px solid #FFFF00;
+		padding: 4px 15px;
+		color:#ffff00;
+		font-size:12px;
+	}
+	.chai_area{
+		text-align: center;
+	}
+	.chai_layout{
+		background: #e13737;
+		margin: 10px 30px 0 30px;
+		border-radius: 10px;
+		-webkit-box-shadow: -3px 3px 3px;  
+		-moz-box-shadow: -3px 3px 3px;  
+		box-shadow: -3px 3px 3px;  
+	}
+	.chai_header_img{
+		width: 100%;
+	}
+	.chai_bottom_img{
+		width: 100%;
+		margin-top: 40px;
+	}
+	.coupon_detail_btn_area{
+		clear:both;
+		height:44px;
+		text-align: center;
+	}
+	.coupon_detail_btn_2{
+		font-size:15px;
+		color:#fff;
+		border:1px solid #cfa972;
+		padding: 6px 20px;
+		background: #ff8a00;
+		border-radius: 3px;
+		display: inline-block;
+		margin-top: 10px;
+	}
+</style>
+</head>
+	<body>
+		<div class="load6" id="LoadingBar">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+		        
+		<div id="fade" class="black_overlay">
+		</div>
+		<div class="outter_container" ms-controller="root">
+			<div class="top_area">
+				<div class="header_line">
+					<span class="header_line_title">我来发福利啦</span>
+				</div>
+				<div class="header_icon_line">
+					<div class="avatar bolda center-bg" ms-css-background-image="url('{{seed.userImgUrl}}')" style="background-image: url('static/img/banner/banner_market_shuiguo.jpg');"></div>
+				</div>
+			</div>
+			<div class="chai_area" ms-visible="covered" ms-click="fetchCoupon">
+				<div class="chai_layout">
+						<img  class="chai_header_img" src="static/images/coupon_chai.png" />
+						<img  class="chai_bottom_img" src="static/images/coupon_pin.png" />
+				</div>
+			</div>
+			<div class="content_area" ms-visible="!covered">
+				<div class="product_pic"  ms-css-background-image="url('{{seed.seedImg}}')" style="width: 100%;border-radius: 10px;"/></div>
+				<div class="coupon_item" ms-class-received="fetched">
+					<div class="outter_bg">
+						<div class="coupon_desc">
+							<div class="coupon_line_1">
+								<span class="coupon-name">{{coupon.title}}</span>
+								<span class="coupon-time" ms-visible="!coupon.empty">{{coupon.leftDayDes}}</span>
+						    </div>
+						    <div class="coupon-limit" ms-visible="coupon.empty">使用期限（7天）</div>
+							<div class="coupon-limit" ms-visible="!coupon.empty">使用期限{{coupon.useStartDateStr}}至{{coupon.useEndDateStr}}</div>
+						</div>
+						<div class="coupon_value">
+							<div class="coupon-msg" ms-visible="coupon.empty">{{couponMsg}}</div>
+							<div class="coupon-amount" ms-visible="!coupon.empty">{{coupon.amount}}元</div>
+							<div class="coupon-dyq">现金券</div>
+						</div>
+					</div>
+				</div>
+				<div class="coupon_detail_btn_area">
+					<span class="coupon_detail_btn_2" ms-click="gotoSales">立即使用</span>
+				</div>
+				&nbsp;
+				<div class="psq">拼手气</div>
+				<div class="inviter" ms-repeat-item="coupons">
+					<div class="avatar"  ms-css-background-image="url('{{item.userHeadImg}}')" style="float:left;margin: 6px 6px;"></div>
+					<div class="inviter_desc">
+						<div class="inviter_txt">{{item.userName}}</div>
+						<div class="inviter_txt">{{item.createDateStr}}</div>
+					</div>
+					
+					<div class="inviter_amount">￥{{item.amount}}</div>
+					&nbsp;
+				</div>
+				<div class="rule_area">
+					<div class="rule_title">使用规则</div>
+					<div class="rule_desc" ms-html="seed.description">
+					</div>
+				</div>
+				<div>
+				<img src="static/images/hexie_ewm.png" style="width:100%"/>
+				</div>
+				<div style="text-align: center;margin-top: 30px;"><span class="bottom_title">微信公众号:e-shequ</span></div>
+			</div>
+			&nbsp;
+		</div>
+		
+	</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+<meta content="telephone=no" name="format-detection" />
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../static/css/swiper.css">
+<link rel="stylesheet" href="../static/css/common.css">
+<link rel="stylesheet" href="../static/css/header.css">
+<script src="../static/js/jquery.js"></script>
+<script src="../static/js/fastclick.min-1.0.6.js"></script>
+<script src="../static/js/common_v3.js?v=20160720"></script>
+<script src="cdd_car_service.js?v=23"></script>
+<style type="text/css">
+._banner{position:relative ;width: 100%;height: 100%;}
+._content{
+position: relative;width: 100%;height: 100%;top:0;background-color: #619547;
+}
+._content ._center{
+position: relative;left:5.33%;width: 89.34%;height: 100%;
+}
+._content ._center ._center_img{
+position: relative;height: 100%;width: 100%;padding-top:30px;
+}
+
+._content ._center ._center_button_carinfo{
+position: relative;height: 100%;width: 100%;margin-top:30px;
+}
+
+._content ._center ._select_div{
+	position: relative;height: 100%;width: 98%;margin-top:30px;margin-bottom:30px;
+	background-color: #FFFFFF;border:2px solid #32CD32;border-radius:3px;height: 30px;
+	line-height: 30px;font-size: 15px;
+}
+._content ._center ._select_div div:nth-child(1){
+	position: relative;width: 18%;float: left;
+}
+._content ._center ._select_div div:nth-child(2){
+	position: relative;width: 82%;float: left;
+}
+._content ._center ._select_div div:nth-child(2) select{
+	border:0; width: 95%;background-color: #FFFFFF;
+}
+
+._content ._center ._select_div div:nth-child(2) select option{
+}
+
+._content ._center ._select_div [name='requireDate']{
+	float: left;width:100%;height: 30px; line-height: 30px;border: 0;background-color: #FFFFFF;
+}
+._content ._center ._select_div [name='inputCarStyle']{
+	float: left;width:100%;height: 30px; line-height: 30px;border: 0;background-color: #FFFFFF;
+}
+._content ._center ._select_div [name='licensePlateProvince']{
+	float: left;height: 30px; line-height: 30px;
+}
+
+._content ._center ._select_div [name='licensePlate']{
+	float: left;width:80%;height: 30px; line-height: 30px;border: 0;background-color: #FFFFFF;
+}
+._content ._center ._baocun{
+	position: relative;height: 100%;width: 100%;margin-top:50px;margin-bottom:50px;
+}
+
+img{width: 100%;display:block;}
+</style>
+</head>
+<body>
+<form action="">
+<!-- banner图片，一张 -->
+<div class="_banner">
+	<img src="../static/images/group/cdd_car_service/1.1_img_banner.png">
+</div>
+<!-- banner图片以下的部分，统一背景色 -->
+<div class="_content">
+	<!-- 统一两边留空隙，内容都放到中间 -->
+	<div class="_center">
+		<!-- 说明内容图片 -->
+		<div class="_center_img">
+			<img src="../static/images/group/cdd_car_service/1.2_img_huodongshuoming.png">
+		</div>
+		<!-- “车辆信息”图标 -->
+		<div class="_center_button_carinfo">
+			<img src="../static/images/group/cdd_car_service/1.3_img_cheliangxinxi.png">
+		</div>
+		
+		<!-- input 列表 -->
+		<!-- 品牌 -->
+		<div class="_select_div">
+				<div>品牌：</div>
+				<div>
+					<select name="carBrandId">
+		            </select>
+				</div>
+		</div>
+		<!-- 车型 -->
+		<div class="_select_div">
+				<div>车型：</div>
+				<div>
+					<select name="carStyleId">
+					</select>
+				</div>
+		</div>
+		<!-- 年款 -->
+		<div class="_select_div">
+				<div>年款：</div>
+				<div>
+					<select name="carYearId">
+					</select>
+				</div>
+		</div>
+		
+		<!-- 其他车型 -->
+		<div class="_select_div">
+				<div style="width: 28%;">其他车型：</div>
+				<div style="width: 72%;">
+					<input name="inputCarStyle" style=""  maxlength="30" value="" placeholder="没有我的车型，手动输入"/>
+				</div>
+		</div>
+		<!-- 车牌 -->
+		<div class="_select_div">
+				<div>车牌：</div>
+				<div>
+					<select style="width:20%;" name="licensePlateProvince">
+						<option value="">选择</option>
+						<option value="沪">沪</option>
+						<option value="苏">苏</option>
+						<option value="浙">浙</option>
+						<option value="皖">皖</option>
+						<option value="京">京</option>
+						<option value="津">津</option>
+						<option value="渝">渝</option>
+						<option value="冀">冀</option>
+						<option value="豫">豫</option>
+						<option value="云">云</option>
+						<option value="辽">辽</option>
+						<option value="黑">黑</option>
+						<option value="湘">湘</option>
+						<option value="鲁">鲁</option>
+						<option value="新">新</option>
+						<option value="赣">赣</option>
+						<option value="桂">桂</option>
+						<option value="甘">甘</option>
+						<option value="晋">晋</option>
+						<option value="蒙">蒙</option>
+						<option value="陕">陕</option>
+						<option value="吉">吉</option>
+						<option value="闽">闽</option>
+						<option value="贵">贵</option>
+						<option value="粤">粤</option>
+						<option value="青">青</option>
+						<option value="藏">藏</option>
+						<option value="琼">琼</option>
+						<option value="鄂">鄂</option>
+						<option value="川">川</option>
+						<option value="宁">宁</option>
+					</select>
+					<input name="licensePlate" style="width:79%;" maxlength="15" value="" placeholder="输入车牌"/>
+				</div>
+		</div>
+		<!-- 其他车型 -->
+		<div class="_select_div">
+				<div style="width: 38%;">预约服务时间：</div>
+				<div style="width: 62%;">
+					<input name="requireDate" type="date" value="" placeholder="选择时间"/>
+				</div>
+		</div>
+		<!-- “保存”图标 -->
+		<div class="_baocun">
+			<img src="../static/images/group/cdd_car_service/1.4_img_baocun.png">
+		</div>
+		
+	</div>
+</div>
+</form>
+</body>
+</html>

@@ -1,0 +1,197 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+<title>我的东湖e家园</title>
+<link href="../static/css/common.css?v=20160229" rel="stylesheet" type="text/css" />
+<link href="../static/css/header.css?v=20160229" rel="stylesheet" type="text/css" />
+<link href="../static/css/person.css?v=20160229" rel="stylesheet" type="text/css" />
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/jscript" src="../static/js/zepto.min.js?v=20160229"></script>
+<script type="text/jscript" src="../static/js/fastclick.min-1.0.6.js?v=20160229"></script>
+<script type="text/jscript" src="../static/js/avalon.js"></script>
+<script type="text/jscript" src="../static/js/common_v3.js?v=20160229"></script>
+<script type="text/jscript" src="index.js"></script>
+<style type="text/css">
+ 	[ms-controller]{display:none} 
+ 	    .avatar{
+ 	    	margin: 15px;
+ 	    }
+        .avatar-wrap {
+            height: 9rem;
+            background-color: #FF8A00;
+        }
+        .avatar-wrap span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .avatar-info {
+            color: #fff;
+        }
+        .score-wrap {
+            height: 6rem;
+            background-color: white;
+            border-bottom: 10px solid #eeeeee;
+        }
+        .input-wrap {
+            overflow: hidden;
+            line-height: 4.5rem;
+        }
+        .menu-person-link {
+            padding-right: 1rem;
+            color: #3b3937;
+        }
+        .info-wrap {
+            padding-left:8px;
+        	padding-right: 10px;
+            color: #3b3937;
+            padding-bottom: 0;
+            border-bottom: 10px solid #eeeeee;
+        }
+        .bottom-info {
+        	text-align: center;
+ 		 	display: block;
+ 		 	padding: 20px 15px 5px 15px;
+  		}
+  		.input-logo {
+  			margin-left: -18%;
+  			margin-top: 0.5rem;
+			float:left;
+			display:block;
+			width:50%;
+			height:42px;
+			background-position:50% 0;
+			background-size:35px;
+			background-repeat:no-repeat		
+  		}
+  		.input-info {
+  			margin-left:-18% ;
+  		}
+  		.special-link {
+            padding-right: 0;
+            background: none;
+        }
+        .lf30{
+        	margin-left: 0px;
+        }
+        .left_color{
+        	color: #999999;
+        	
+        }
+        .section-title, .lite-divider{
+        	border-bottom: 1px solid #f2f2f2;
+        }
+        .div_bottom{
+        	 position: absolute; 
+        	 bottom: 0;
+        }
+        .name{
+        	margin-top: 25px;
+        	margin-bottom: 10px;
+        }
+ 	</style>
+</head>
+<body ms-controller="root" style="color: white; overflow-x: hidden;">
+	<div class="avatar-wrap rel ov">
+	<div  ms-click="gotoEdit" class="menu-person-link-white" >
+        <span class="avatar center-bg" ms-css-background-image="url('{{user.headimgurl}}')" style="border: 2px solid white; float: left;"></span>
+        <span class=" avatar-info" style="float: left;overflow: hidden;
+    width: 60%;">
+           <span class="name fs16">{{user.name}}</span><br />
+            <span class="fs14">常住小区&nbsp;{{user.city}}&nbsp;{{user.xiaoquName}} </span>
+        </span>
+    </div>
+    </div>
+    <div class="score-wrap rel ov">
+		<div id="point-list" style="border-bottom: none;top: 0rem;" class="div_bottom">
+			<div class="point-item-wrap" >
+				<div class="point-item">
+					<div class="point-info fs16">{{user.zhima}}</div>
+					<div class="point-title fs14">我的芝麻</div>
+				</div>
+			</div>
+			<div class="point-item-wrap" >
+				<div class="point-item">
+					<div class="point-info fs16">{{user.lvdou}}</div>
+					<div class="point-title fs14">我的绿豆</div>
+				</div>
+			</div>
+			<div class="point-item-wrap">
+	            <div class="point-item" ms-click="coupons">
+					<div class="point-info fs16">{{user.couponCount}}</div>
+					<div class="point-title fs14">我的现金劵</div>
+				</div>
+			</div>
+		</div>
+ 	</div >
+    <div class="info-wrap" style="overflow:hidden; clear: both; border-bottom:none ;">
+        <a href="../orders.html" class="input-wrap menu-person-link lite-divider ">
+            <span class="input-info lf30 fs16">全部订单</span>
+             <span class="fr fs14 left_color">查看全部订单&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </a>
+    </div>
+<!--    <div class="divider"></div>-->
+	<div id="module-list" >
+		<div class="module-item-wrap">
+			<a href="../grouporders.html" class="module-item">
+				<div class="module-logo" style="background-image: url(&quot;../static/images/person/icon_person_tuangou.png&quot;);">
+					<div class="module-title fs14">团购订单</div>
+				</div>
+				<div></div>
+			</a>
+		</div>
+		<div class="module-item-wrap" >
+			<a href="../homeorders.html" class="module-item">
+				<div class="module-logo" style="background-image: url(&quot;../static/images/person/icon_person_yuyue.png&quot;);">
+					<div class="module-title fs14">服务订单</div>
+				</div>
+			</a>
+		</div>	
+	</div>
+	
+    <div class="info-wrap" style="overflow:hidden; clear: both;">
+    	<a href="../communities/index.html?category=2" class="input-wrap menu-person-link lite-divider">
+            <span class="input-info lf30 fs16">报修</span>
+            <span class="fr fs14 left_color">查看消息&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </a>
+    	<a href="../repair/operatorOrders.html" class="input-wrap menu-person-link lite-divider" ms-visible="user.repairOperator">
+            <span class="input-info lf30 fs16">我是维修工</span>
+            <span class="fr fs14 left_color">查看维修单&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </a>
+    	<a href="../communities/index.html?category=0" class="input-wrap menu-person-link lite-divider">
+            <span class="input-info lf30 fs16">服务需求</span>
+            <span class="fr fs14 left_color">查看消息&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </a>
+        <a href="../communities/index.html?category=1" class="input-wrap menu-person-link lite-divider">
+            <span class="input-info lf30 fs16">意见建议</span>
+            <span class="fr fs14 left_color"><span id="mypublic"></span>查看消息&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </a>
+
+    </div>
+     <div class="info-wrap" style="border-bottom: none;">
+	<a ms-href="tel:{{user.officeTel}} " ms-visible="user.officeTel!==null && user.officeTel!==''"  class="input-wrap menu-person-link lite-divider special-link ">
+            <span class="input-info lf30 fs16">小区电话</span>
+            <span class="fr fs14 left_color">{{user.officeTel}}</span>
+        </a>
+        <a href="tel:021-50876295" class="input-wrap menu-person-link lite-divider special-link ">
+
+            <span class="input-info lf30 fs16">平台咨询电话</span>
+            <span class="fr fs14 left_color">021-50876295</span>
+        </a>
+    </div>
+    <div style="height: 6rem;"></div>
+    <footer class="footer">
+        <nav>
+         	<ul>
+         		<li><a href="../wuye/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_wuye"></i>社区</a></li>
+                <li><a href="../home/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_home"></i>增值</a></li>
+                <li><a href="../person/index.html?v=20160229" class="nav-controller active"><i class="footer_logo footer_person_selected"></i>我的</a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>

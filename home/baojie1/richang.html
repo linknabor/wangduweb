@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>洗衣</title>
+		<link rel="stylesheet" href="../../static/css/swiper.css">
+		<script src="../../static/js/avalon.js"></script>
+		<script src="../../static/js/jquery.js"></script>
+		<script src="../../static/js/common_v3.js"></script>
+		<script src="../../static/js/swiper.js"></script>
+		<script src="richang.js?v=12222"></script>
+		<style type="text/css">
+			body{
+				margin:0;
+				background-color: #f4f5f6;
+			}
+			.banner{
+                width: 100%;
+                height: 40%;
+                margin: 0px auto;
+                position: relative;
+			}
+			.swiper-container{
+				width: 100%;
+				height: 100%;
+			}
+			.swiper-wrapper img{
+				width: 100%;
+				height: 100%;
+			}
+			.pagination {
+                position: absolute;
+                left: 0;
+                text-align: center;
+                bottom: 10px;
+                z-index: 10;
+                width: 100%;
+            }
+            .swiper-pagination-bullet {
+                width: 6px;
+                height: 6px;
+                margin: 0 3px;
+                background: transparent;
+                border: 1px solid #fff;
+            }
+            .swiper-pagination-bullet-active {
+                background-color: #fff;
+            }
+			.reserve{
+				background-color: #FFFFFF;
+				padding: 15px;
+				border-bottom:1px solid #d7d7d7;
+				overflow: hidden;
+			}
+			.s1{
+				font-family: "微软雅黑";
+				font-size: 17px;
+				color: #FF8A00;
+			}
+			.s2{
+				font-family: "微软雅黑";
+				font-size: 28px;
+				color: #FF8A00;
+			}
+			.s3{
+				font-family: "微软雅黑";
+				font-size: 17px;
+				color: #AAAAAA;
+			}
+			.btn {
+				float: right;
+				width: 26%;
+				height: 40px;
+				line-height: 40px;
+				color: #fff!important;
+				font-family: "微软雅黑";
+				font-size: 17px;
+				text-align: center;
+				background-color: #ff8a00;
+				border-radius: 6px;
+				outline: none;
+				border: none;
+				text-decoration: none;
+			}
+			.suggest{
+				background-color: #FFFFFF;
+				padding: 15px;
+				border-bottom:1px solid #D7D7D7;
+			}
+			.span1{
+				width: 50%;
+				font-family: "微软雅黑";
+				font-size: 16px;
+				color: #272727;
+			}
+			/*.span2{
+				width: 50%;
+				font-family: "微软雅黑";
+				font-size: 12px;
+				color: #ff1600;
+				float: right;
+				text-align: right;
+			}
+			.span2 img{
+				width: 12px;
+				height: 12px;
+				padding-right: 5px;
+			}*/
+			.example{
+				width: 100%;
+                padding: 15px 0;
+                box-sizing: border-box;
+                overflow: hidden;
+			}
+			.example>img{
+			    width: 100%;
+            }
+			.div1{
+				width: 25%;
+				float: left;
+			}
+			.div_a,.div_b{
+				margin: 1px;
+				padding: 7px;
+				line-height: 20px;
+				text-align: center;
+				font-family: "微软雅黑";
+			}
+			.div_a{
+				background-color: #D7D5D5;
+				font-size: 12px;
+				color: #FFFFFF;
+			}
+			.div_b{
+				background-color: #F4F5F7;
+				font-size: 12px;
+				color: #666666;
+			}
+			.service{
+  				margin-top: 10px;
+  				padding: 15px;
+  				background-color: #FFFFFF;
+  				border-bottom:1px solid #D7D7D7;
+  				border-top:1px solid #D7D7D7;
+  			}
+  			.title1{
+  				margin-bottom: 15px;
+  				padding-bottom: 15px;
+  				border-bottom:1px solid #D7D7D7;
+  				font-family: "微软雅黑";
+  				font-size: 15px;
+  				color: #272727;
+  			}
+  			.introduce{
+  				font-family: "微软雅黑";
+  				font-size: 14px;
+  				color: #666666;
+  				margin: 5px;
+  			}
+  			.introduce>img{
+  				width: 10px;
+  				height: 10px;
+  				margin-right: 10px;
+  			}
+			.remind{
+  				margin-top: 15px;
+  				padding: 15px;
+  			}
+  			.title2{
+  				margin-bottom: 15px!important;
+  				border-bottom:1px solid #D7D7D7;
+  				padding-bottom: 15px;
+  			}
+  			.title2>span>img{
+  				width: 15px;
+  				height: 15px;
+  				padding-right: 6px;
+  			}
+  			.title2>span{
+  				font-family: '微软雅黑';
+  				font-size: 15px;
+  				color: #666666;
+  				}
+  			.detail{
+  				font-family: "微软雅黑";
+  				font-size: 13PX;
+  				color: #AAAAAA;
+  				margin: 5px;
+  			}
+		</style>
+	</head>
+	<body ms-controller="root">
+		<div class="banner">
+        	<div class="swiper-container">
+                <div class="swiper-wrapper">
+                   <div class="swiper-slide"  ms-repeat-banner="banners">
+                       <a ms-href="{{banner.bannerUrl}}">
+                            <img ms-src="{{banner.picture}}">
+                       </a>
+                   </div>
+                </div>
+            </div>
+            <div class="pagination"></div>
+    	</div>
+    	<div class="reserve">
+    		<span class="s1">￥</span>
+    		<span class="s2">{{item.price}}</span>
+    		<span class="s1">/小时</span>
+    		<span class="s3">（2小时起）</span>
+    		<span ms-click="gotoPay" class="btn">立即预约</a>
+    	</div>
+    	<div class="suggest">
+    		<span class="span1">建议时长：</span>
+    		<!--<span class="span2"><img src="../../static/img/baojie/icon_fuwufanwei_03.png" />服务范围</span>-->
+    		<div class="example">
+    			<img src="../../static/images/xiyidesc.png" />
+    		</div>
+    	</div>
+    	<div class="service">
+    		<div class="title1">服务内容</div>
+    		<div class="introduce" ms-html="item.extraDesc1"></div>
+    		<!--<div class="introduce"><img src="../../static/img/baojie/point.png" />客餐厅：电视柜、茶几、沙发、桌面、垃圾桶、地面...</div>
+    		<div class="introduce"><img src="../../static/img/baojie/point.png" />卧室和衣帽间：家具表面、储物柜表面、地面...</div>
+    		<div class="introduce"><img src="../../static/img/baojie/point.png" />厨房：油烟机表面、灶面、台面、洗菜池、墙面...</div>
+    		<div class="introduce"><img src="../../static/img/baojie/point.png" />卫生间：洗漱台、淋浴房、马桶、垃圾桶、地面...</div>-->
+    	</div>
+    	<div class="remind">
+			<div class="title2">
+				<span><img src="../../static/img/baojie/icon_wenxintishi_07.png" />温馨提示</span>
+			</div>
+			<div class="detail" ms-html="item.extraDesc2"></div>
+			<!--<div class="detail">1.清洁工具和清洁用品需要亲提前准备.</div>
+    		<div class="detail">2.预约服务请提前1天进行预约上门服务.</div>
+        	<div class="detail">3.家政保洁服务时间为每日8：00-18：00.</div>
+        	<div class="detail">4.预约后如需更改服务时间或取消服务，请至少提前4小时联系克服.</div>
+        	<div class="detail">5.超出服务时间不足半小时按半小时收费，超出半小时按1小时收费，超出费用需亲下单补拍.</div>-->
+		</div>
+		<script type="text/javascript">
+		
+            var a2=parseInt($('.swiper-slide img').css('width') );
+            var a3=a2*0.4;
+            $('.swiper-container').css({height:a3 + 'px'});
+            $('.swiper-slide img').css({height:a3 + 'px'});
+			function initSwiper(){
+                //顶部图片滑动代码↓
+                var mySwiper = new Swiper('.swiper-container',{
+                    speed:750,
+                    autoplay:3000,  //
+                    autoplayDisableOnInteraction: false,
+                    autoplayStopOnLast:true,
+                    pagination: '.pagination',
+                    loop:true
+                })
+            }
+		</script>
+	</body>
+</html>

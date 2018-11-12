@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>购买页面</title>
+    <link rel="stylesheet" href="static/css/header.css?v=20151217">
+    <link rel="stylesheet" href="static/css/address.css?v=20151217">
+    <link rel="stylesheet" href="static/css/common.css?v=20151217">
+    <link rel="stylesheet" href="static/css/common/coupons.css?v=20151217"></link>
+	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="static/js/jquery.js?v=20151217"></script>
+	<script src="static/js/avalon.js"></script>
+	<script src="static/js/common_v3.js?v=20151217"></script>
+	<script src="multibuy.js?v=201512171"></script>
+	<script src="common/commonaddress.js?v=20151217"></script>
+	<script src="common/coupons.js?v=20151217"></script>
+ <style>[ms-controller]{display:none} 
+ body{
+ 	background: #F7F7F1;
+ }
+ .bgwhite{
+ 	background: #ffffff;
+ }
+.line {
+  padding: 15px 15px;
+  background: #f7f7f1;
+  border-bottom: 1px solid #c2c2c2;
+  margin-left: 10px;
+}
+.custom-menu-link {
+  padding-top: 15px;
+  padding-left: 15px;
+  color: #3b3937;
+  background-position-y: 15px;
+}
+.useless {
+	background-color: #D7D5D4;
+}
+
+.rule_intro{
+	    position: fixed;
+	    top: 0;
+	    z-index: 10;
+		width:100%;
+	}
+	.rule_item_noback,.rule_item,.rule_item_default,.rule_title{
+		height:60px;
+		line-height:60px;
+		width:20%;
+		float:left;
+		text-align:left;
+		font-size:14px;
+	}
+	.rule_item{
+		background:url(static/images/img_arrow_selected.png);
+		background-size:10px 60px;
+		background-repeat:no-repeat;
+		background-position:left;
+	}
+	.rule_item_default{
+		background:url(static/images/img_arrow_default.png);
+		background-size:10px 60px;
+		background-repeat:no-repeat;
+		background-position:left;
+	}
+	.rule_title{
+		background-color:#ffa030;
+		color:#fff;
+	}
+	
+	.rule_item_line{
+		height:18px;
+		padding-left:15px;
+		line-height:18px;
+		text-align:left;
+		font-size:14px;
+	}
+	
+	.addr_area{
+ 		background: #F7F7F1;
+		/**border-bottom: 5px solid #f9f9e9;**/
+	}
+	.add_btn_style{
+		margin:20px 0;
+		color:#cfa972;
+		background-color:white;
+		padding:4px 30px;
+		border-color: #cfa972;
+	}
+	.addr_location{
+	    color: #888;
+	    line-height: 20px;
+	    margin-top: 6px;
+	}
+	.addr_detail{
+		padding:15px;
+		margin-right: 15px;
+	}
+	.product_detail{
+		width:100%;
+		height:80px;
+		background-color:white;
+	}
+	.product_picture{
+		margin:10px 15px 0 15px;
+		width:52px;
+		height:52px;
+		float:left;
+		border:1px solid #cecece;
+	}
+	
+	.product_content{
+		margin-right: 10px;
+		margin-left: 80px;
+		padding-top: 10px;
+	}
+	.product_name{
+		font-size:12px;
+		color:#3b3937;
+		line-height: 16px;
+		height:32px
+	}
+	.product_pri_area{
+		border-bottom: 2px solid #f7f7f1;
+		width: 100%;
+		height:35px;
+	}
+	.minus-btn-size{
+		width:20px;
+		height:20px;
+		background-size:20px;
+		margin-top: 10px;
+	}
+	.baoyou_desc{
+		padding:2px 13px;
+		border: 1px solid #ff8a00;
+		border-radius: 2px;
+		margin-left: 10px;
+		margin-top: -2px;
+		font-size:13px;
+		color:#ff8a00;
+	}
+	.right_menu{
+	    padding-left: 15px;
+	    padding-right: 15px;
+	    display: block;
+	    background: url("static/images/group/icon_arrow.png") no-repeat;
+	    background-size: 7px 12px;
+	    background-position: right center;
+	}
+</style>
+</head>
+
+<body ms-controller="root">
+	<!-- load -->
+		<div class="load6" id="LoadingBar">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+		<div id="fade" class="black_overlay">
+		</div>
+		
+		<div id="phoneErro"></div>
+		
+		<div id="phoneAjax" class="hidden">
+			<img src="http://7xlem4.com2.z0.glb.qiniucdn.com/backed/images/load2.gif" style="width:40px;height40px;vertical-align: middle;">
+		</div>
+		
+<section ms-visible="control.currentPage=='main'">
+
+    <div class="rule_intro" ms-click="gotosgrouprulr" ms-visible="o.model.type==4">
+		<img alt="" src="static/images/group/img_tuangou_zhifu.png" style="100%;">
+	</div>
+	<div style="width:100%;" ms-visible="o.model.type==4">
+		<img src="static/images/group/img_tuangou_zhifu.png" style="width: 100%;"/>
+	</div>
+	
+	<div style="background: white;height: 15px;width:100%;">&nbsp;</div>
+	<div class="addr_area" ms-click="op.showAddress">
+		<div style="background:url(static/img/bg_line_location_top.png) repeat-x;height:2px;background-size: 100% 2px;">&nbsp;</div>
+		<div style="text-align:center;background-color: #f7f7f1;">
+			<a href="#" class="btn-plain add_btn_style" ms-visible="!addr.checkedAddress.receiveName" style="">选择收货地址</a>
+		</div>
+		<a  href="#" class="menu-link fs14 addr_detail" ms-visible="addr.checkedAddress.receiveName">
+			<span style="color:#3b3937;">{{addr.checkedAddress.receiveName}}</span>
+			<span style="margin-left:15px;color:#3b3937;">{{addr.checkedAddress.tel}}</span>
+			<div class="addr_location">{{addr.checkedAddress.province}}{{addr.checkedAddress.city}}{{addr.checkedAddress.county}}（{{addr.checkedAddress.xiaoquName}}）{{addr.checkedAddress.detailAddress}}</div>
+		</a>
+		<div style="background:url(static/img/bg_line_location_bottom.png) repeat-x;height:2px;background-size: 100% 2px;">&nbsp;</div>
+	</div>
+	<div class="product_detail" ms-repeat-item="model.items" >
+		<img class="product_picture" ms-src="{{item.productThumbPic}}" />
+		<div class="product_content">
+			<div class="product_name">{{item.ruleName}}</div>
+			<div class="product_pri_area">
+				<div class="fl fs16 highlight pt5"> ¥{{item.price}} </div>
+				<div class="fl fs13" style="margin-left: 10px;padding-top: 7px;color:#888888"> <del>¥{{item.oriPrice}}</del> </div>
+				<div class="fr fs13" style="padding-top: 7px;color:#888888">X {{item.count}}</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="line p15 fs15" style="height:30px">
+		<span class="fl">
+			<span class="total fs15">商品总额</span>
+			<span class="fs10">共{{model.totalCount}}个商品</span>
+		</span>
+		<span class="fr fs20" style="margin-right: 5px;">¥&nbsp;{{model.totalAmount}}</span>
+	</div>
+<!--	当满减底价为0或者为0.0时不显示活动信息-->
+	<div class="line p15 fs15" style="height:20px" ms-visible="model.collocation.discountAmount>0">
+		<span class="fl">活动优惠</span> 
+		<span class="fl baoyou_desc" >满{{model.collocation.satisfyAmount}}减{{model.collocation.discountAmount}}</span>
+		<span class="fr highlight">&nbsp; -¥{{disCountAmount}}  </span>
+	</div>
+<!--	当满免邮费价为0或者为0.0时不显示包邮信息-->
+	<div class="line p15 fs15" style="height:20px">
+		<span class="fl">快递费</span> 
+		<span class="fl baoyou_desc" ms-visible="model.collocation.freeShipAmount>0">满{{model.collocation.freeShipAmount}}包邮</span>
+		<span class="fr"> ¥&nbsp;{{model.logisticsFee}}  </span>
+	</div>
+	
+	<div class="line p15 fs15" style="height:20px" ms-click="op.showCoupons">
+		<span class="fl">现金券</span> 
+		<span class="fl baoyou_desc" >{{model.couponNum}}张可用</span>
+		<div class="fr right_menu">{{model.couponDesc}}  </div>
+	</div>
+	<div class="p15  " style="height:36px">
+			<span class="fl highlight fs15">支付金额</span> 
+			<span class="fr highlight fs20 mlr10"> ¥&nbsp;{{model.realAmount}}  </span>
+	</div>
+	<div class="info-wrap bgwhite">
+		<div class="section-title">收货时间</div>
+		<a href="#" class="menu-link custom-menu-link fs14" style="height:30px" ms-click="datechoooser.showModal"><i class="address_icon time-icon fl"></i>{{datechoooser.time}}</a>
+	</div>
+	<div  class=" bgwhite">
+		<div class="fs15" style="height:30px;padding:15px 0 5px 15px;">备注</div>
+		<div contenteditable class="content p15" ms-class-has-value="o.model.comment" ms-click="op.focus" ms-blur="op.storeMemo" style="font-size: 15px;"></div>
+		<div style="height: 80px;position: relative;">&nbsp;</div>
+	</div>
+	
+	<div class="btn-fixed">
+	<a href="#" class="btn" ms-click="op.pay" ms-class-useless="paying">立即微信支付</a>
+	</div>
+	<div class="modal-mask" ms-visible="datechoooser.modalShown" ms-click="datechoooser.hideModal">
+		<div class="modal">
+			<div class="ptb15" ms-repeat-item="datechoooser.timePicker" ms-class-checked-item="item.checked" ms-class-lite-divider="!$last" ms-click="datechoooser.selectTime($index)">{{item.name}}</div>
+		</div>
+	</div>
+</section>
+
+<div ms-include-src="'common/commonaddress.html?v=20151217'"></div>
+
+<section ms-visible="control.currentPage=='coupons'">
+	<div ms-include-src="'common/coupons.html'"></div>
+</section>
+	<!-- 地址编辑 -->
+</body>
+</html>

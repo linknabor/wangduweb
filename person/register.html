@@ -1,0 +1,230 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+<title>我的东湖e家园</title>
+<link href="../static/css/header.css?v=20151217" rel="stylesheet" type="text/css" />
+<link href="../static/css/common.css?v=20151217" rel="stylesheet" type="text/css" />
+<script type="text/jscript" src="../static/js/jquery.js?v=20151217"></script>
+<script type="text/jscript" src="../static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+<script type="text/jscript" src="../static/js/avalon.js"></script>
+<script type="text/jscript" src="../static/js/common_v3.js?v=20160321"></script>
+<script type="text/jscript" src="register.js?v=20160321"></script>
+<style>
+[ms-controller]{display:none} 
+	.menu-link {
+		position: relative;
+		background-image: url("../static/images/group/icon_cancel.png");
+		background-size: 18px;
+		padding-top: 20px;
+		color: #3b3937;
+		margin: 0 15px;
+	}
+	.menu-link-arrow {
+ 		background-position-y: 15px;
+ 		padding-right: 10px;
+ 		color: #3b3937;
+ 		display: block;
+ 		background: url("../static/images/group/icon_arrow.png") no-repeat;
+ 		background-size: 7px 12px;
+ 		background-position: right center;
+ 	}
+	
+	.xiaoqu {
+		margin-left: 25px;
+	}
+	.btn-eidt-mask {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		margin-top: -12px;
+		width: 24px;
+		height: 24px;
+	}
+	
+	.input-wrap {
+ 		overflow: hidden;
+ 		line-height: 45px;
+ 	}
+ 	.title {
+ 	    padding: 15px 0;
+ 	}
+ 	.tip {
+ 		margin-left: 15px;
+ 		font-size: 10px;
+ 	}
+ 	.btn {
+ 		margin: 0;
+ 		margin-top: 190px;
+ 	}
+ 	.btn-switch {
+ 		display: block;
+	    width: 60px;
+	    height: 20px;
+	    margin-top: 12px;
+ 		background: url("../static/images/group/btn_close.png") no-repeat;
+		background-size: 60px 20px;
+		transition: background-image .5s ease-in-out;
+		-webkit-transition: background-image .5s ease-in-out;
+ 	}
+ 	.btn-switch.active {
+ 		background-image: url("../static/images/group/btn_open.png");
+ 	}
+ 	
+ 	.area {
+		margin: 0 15px;
+		padding: 15px 0;
+		border-bottom: 1px solid #d4cfc8;
+	}
+	.area.active:after {
+		/**content: "GPS定位";**/
+		margin-left: 10px;
+		font-size: 12px;
+		color: #a6937c;
+	}
+	
+	.location_wrap {
+		position: relative;
+		padding: 0 15px;
+		height: 49px;
+		line-height: 49px;
+		border-bottom: 1px solid #d4cfc8;
+	}
+	.location_input-wrap {
+		position: relative;
+		width: 76%;
+		padding: 5px 0;
+	}
+	.location_input {
+		display: block;
+		height: 36px;
+		width: 90%;
+		outline: none;
+		border: 1px solid #d4cfc8;
+		border-radius: 4px;
+		padding: 0 10px;
+		vertical-align: middle;
+		font-size: 15px;
+	}
+	.location_btn-cancel {
+		position: absolute;
+		top: 5px;
+		right: 10px;
+		display: inline-block;
+		height: 36px;
+		width: 36px;
+		background: url("../static/images/group/icon_cancel.png") no-repeat;
+		background-size: 15px;
+		background-position: center;
+	}
+	.location_btn-ensure {
+		position: absolute;
+		display: block;
+		top: 0;
+		right: 15px;
+		color: #3b3937;
+		font-size: 15px;
+		width: 35px;
+	}
+	.location_empty-tip {
+		margin: 0 auto;
+		margin-top: 105px;
+		font-size: 12px;
+		color: #888;
+		width: 165px;
+		text-align: center;
+		line-height: 18px;
+	}
+	.location_location {
+		margin: 0 15px;
+		padding: 15px 0;
+		border-bottom: 1px solid #d4cfc8;
+	}
+	.region{
+		  font-size: 1.2rem;
+		  width: 32%;
+		  text-align: center;
+		  height: 3.5rem;
+		  line-height: 3.5rem;
+	}
+	.check{
+		color: #f60;
+		  border-right: 1px solid #ddd;
+		  border-left: 1px solid #ddd;
+		  border-top: 2px solid #f60;
+		  background: #fff;
+	}
+	.city{
+		 font-size: 1.4rem;
+		 color: #000;
+		 background-color: #FFF;
+		 width: 25%;
+		 height:40px;
+		 padding-top:10px;
+		 text-align: center;
+	}
+	.city2{
+		 font-size: 1.4rem;
+		 color: #000;
+		 background-color: #E0E0E0;
+		 width: 25%;
+		 height:40px;
+		 padding-top:10px;
+		 text-align: center;
+	}
+	.useless {
+	  background-color: #D7D5D4;
+	}
+	.submit-btn {
+		height: 44px;
+		line-height: 44px;
+		background: #ff8a00;
+		text-align: center;
+	}
+	.btn-fixed {
+		color: #fff;
+		  left: 3%;
+		  right: 3%;
+		  bottom: 10px;
+	}
+	
+	.zzmb{z-index:100000; position: absolute; top:0; left:0; -moz-opacity:0.65; opacity:0.65; filter: alpha(opacity=65); background:#000; width:100%; height:100%;display:block}
+</style>
+</head>
+<body ms-controller="root">
+	<div id="zzmb" class="zzmb" style="display:none;position:fixed;"></div>
+    <div id="phoneErro"></div>
+	
+	<div id="phoneAjax" class="hidden">
+		<img src="http://7xlem4.com2.z0.glb.qiniucdn.com/backed/images/load2.gif" style="width:40px;height40px;vertical-align: middle;">
+	</div>
+
+	<div class="divider"></div>
+		<div class="info-wrap">
+	        <div class="input-wrap lite-divider">
+	            <span class="fl fs15">用户名</span>
+	            <input placeholder="请输入用户名" class="fr fs14 hidden-input pr15" ms-duplex-string="user.name"/>
+	        </div>
+	        <div class="input-wrap lite-divider">
+				<span class="fl fs15">手机号</span>
+				<input type="tel" placeholder="请输入手机号码" class="fr fs14 hidden-input pr15" ms-duplex-number="user.tel"/>
+			</div>
+	        <div class="input-wrap lite-divider">
+	            <input placeholder="输入验证码" class="fl fs14 hidden-input" style="padding-bottom: 15px;text-align: left;margin-bottom: 6px;" ms-duplex-string="captcha"/>
+	            <span class="fr btn-plain" style="margin-top: 10px;" ms-class-useless="o.yzmstr!='获取验证码'&&o.yzmstr!='重新获取'" ms-click="getCaptcha">{{yzmstr}}</span>
+		   </div>
+			    <div style="width:100%;height:90px;clear:both">
+					&nbsp;
+				</div>
+				<div class="btn-fixed">
+					<div class="submit-btn ov fs16" ms-click="save">保存</div>
+				</div>
+			</div>
+ 		</div>
+	</div>	
+</body>
+</html>

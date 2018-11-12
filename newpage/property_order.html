@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <meta content="telephone=no" name="format-detection" />
+        <meta charset="UTF-8">
+        <title>物业缴费</title>
+        <link rel="stylesheet" href="../static/css/common.css">
+    	<link rel="stylesheet" href="../static/css/header.css">
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/avalon.js"></script>
+        <script src="../static/js/common_v3.js"></script>
+        <script src="property_order.js"></script>
+        <style type="text/css">
+        	body{
+        		box-sizing: border-box;
+        		background-color: #eee;
+        		color: #676e74;
+        	}
+        	.head{
+        		padding-top: 30px;
+        		height:120px;
+        		background-color: #467096;
+        		position: relative;
+        	}
+        	.head>div{
+        		width:50%;
+        		text-align: center;
+        		color:#fff;
+        		font-size: 1.5em;
+        	}
+        	.head_img{
+        		height:50px;
+        		width:50px;
+        		margin:10px auto;
+        	}
+        	.line{
+        		position: absolute;
+        		height:60px;
+        		width:2px;
+        		background-color: #fff;
+        		top:50px;
+        		left:50%;
+        	}
+        	.address{
+        		padding: 10px 20px;
+        		line-height: 30px;
+        		
+        		font-size: 1.2em;
+        		background-color: #fff;
+        	}
+        	.order_list{
+        		padding: 20px 20px 0px 20px;
+        	}
+        	.order_list>div{
+        		overflow: hidden;
+        		background-color: #fff;
+        		border:1px solid #ffa73f;
+        		border-radius: 6px;
+        	}
+        	.check_icon,.check_price{
+        		width:20%;
+        		text-align: center;
+        		line-height: 60px;
+        	}
+        	.check_icon img{
+        		width:40%;
+        		margin-top: 15px;
+        	}
+        	.check_content{
+        		width:45%;
+        		margin:10px 0;
+        		padding-left: 10%;
+        		line-height: 20px;
+        		border-left: 1px solid #ffa73f;
+        	}
+        	.check_price{
+        		color:#ffa73f;
+        		font-size: 1.6em;
+        	}
+        	.foot{
+        		overflow: hidden;
+        		width:100%;
+        		height:50px;
+        		text-align: center;
+        		line-height: 50px;
+        		background-color: #5e5e5e;
+        		font-size: 1.5em;
+        		color:#fff;
+        		position: fixed;
+        		bottom: 0px;
+        	}
+        	.foot .check_all{
+        		width:25%;
+        		
+        	}
+        	.check_all img{
+        		width:30%;
+        		vertical-align: middle;
+        		margin-right: 10px;
+        	}
+        	.foot .pay{
+        		width:75%;
+        	}
+        	.foot .pay a{
+        		display: inline-block;
+        		color: #fff;
+        		width:100%;
+        		height:50px;
+        		background-color: #ff8a00;
+        	}
+        </style>
+	</head>
+	<body ms-controller="root">
+		<div class="head">
+			<div class="fl">
+				<p class="head_img"><img src="../static/images/property_order1.png" /></p>
+				我的房屋
+			</div>
+			<div class="fl">
+				<p class="head_img"><img src="../static/images/property_order2.png" /></p>
+				缴费记录
+			</div>
+			<b class="line"></b>
+		</div>
+		<div class="address">
+			小区：{{model.addname}} <br />
+			地址：{{model.address}}
+		</div>
+		<p style="width: 100%;height: 2px;background-image: url('static/images/border_line_down.png');"></p>
+		<div class="order_list" ms-repeat-list="model.orderlist">
+			<div>
+				<div class="fl check_icon"><img src="../static/images/circle_check.png"/></div>
+				<div class="fl check_content">
+					{{list.name}} <br />账期：{{list.time}}
+				</div>
+				<span class="fl check_price">￥{{list.price}}</span>
+			</div>
+		</div>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<div class="foot">
+			<div class="fl check_all">
+				<img src="../static/images/circle_check.png" />全选
+			</div>
+			<div class="fl pay">
+				<a href="#">立即支付</a>
+			</div>
+		</div>
+	</body>
+</html>

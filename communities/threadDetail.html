@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>东湖e家园服务</title>
+    <link rel="stylesheet" href="../static/css/swiper.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    
+    <script type="text/jscript" src="../static/js/zepto.min.js"></script>
+	<script type="text/jscript" src="../static/js/fastclick.min-1.0.6.js"></script>
+	<script type="text/jscript" src="../static/js/avalon.js"></script>
+	<script type="text/jscript" src="../static/js/common_v3.js"></script>
+	<script type="text/jscript" src="threadDetail.js?v=1"></script>
+	<link rel="stylesheet" href="../static/css/community/common.css">
+ <style>
+ 	
+ 	.thread_user_head{
+ 		
+ 		float: left;
+ 		margin-top: 10.5px;
+ 		font-size: 14px;
+ 		color: #393b37;
+ 	}
+ 	
+ 	.comments_title{
+ 		
+ 		margin: 15px 4% 0px 4%;
+ 		height: 15px;
+ 	}
+ 	
+ 	.comments_user_name{
+ 	
+ 		font-size: 14px;
+ 		color: #3b3937;
+ 		margin: 5px 0px 15px 0px;
+ 	}
+ 	
+ 	.comment_input{
+ 		
+ 		text-align: left; 
+ 		float: left; 
+ 		overflow: hidden;
+ 		width: 70%;
+	
+ 	}
+ 	
+ </style>
+</head>
+
+<body  ms-controller="root">
+	<div id="zzmb" class="zzmb" style="display:none;position:fixed;" ms-click="hideImg"></div>
+	<div id="divconf" class="divconf" style="display:block; position:fixed; z-index: 2147483647;" ms-click="hideImg"></div>
+	<div style="padding-top: 15px" class="ov pl15 pb15 fs14">
+		<div class="fl"><img class="fl comment-post-picture" ms-src="{{thread.userHead}}" /></div>
+		<div class="thread_user_head">{{thread.userName}}</div>
+	</div>
+	<!-- 
+	<div class="ov pl15 pb15 fs14" style="color: #3b3937">{{thread.threadTitle}}</div>
+	 -->
+	<div class="ov pl15 pr15">
+		<div class="" ms-repeat-thumbnailurl="thumbnailurls" >
+			<div class="ov pb15 fs14" ms-click="viewSrcImg(thread.threadId,$index)"><img class="fl attach-picture" ms-src="{{thumbnailurl}}" /></div>
+		</div>
+	</div>
+	<div class="ov pl15 pb15 fs13" style="color: #3b3937">{{thread.threadContent}}</div>
+	<div class="ov pl15 pb15 fs13 fl" style="color: #a6937c; line-height: 23px">
+		<img style="width: 13px; height: 13px;" src="../static/images/community/icon_time_gray.png"/>&nbsp;{{thread.formattedDateTime}}
+	</div>
+	<div class="avatar-wrap rel ov fr" ms-visible="thread.isThreadOwner == 'true'">
+		<div class="fs13 pr15" style="color: #a6937c; text-align: right; line-height: 23px" ms-click="delThread">删除</div>
+	</div>	
+	<div class="pt15 divider">&nbsp;</div>
+	<div id="total_comments" class="comments_title comment-lite-divider">
+		<div class="fl" style="line-height: 15px; color: #888">评论</div>
+		<!-- <div class="fr" style="line-height: 15px; color: #888"">共{{thread.commentsCount}}条 > </div> -->
+	</div>
+	<div class="comment-item p15 " ms-repeat-comment="comments" >
+		<div style="width: 100%; min-height: 100px; float: left; overflow: hidden;" class="pt15" >
+			<div class="pb15 fs14 fl" style="width: 20%;">
+				<img class="fl comment-reply-picture" ms-src="{{comment.commentUserHead}}" />
+			</div>
+			<div style="width: 80%" class="fl">
+				<div class="comments_user_name" >{{comment.commentUserName}}</div>
+				<div style="color: #3b3937; word-wrap:break-word;overflow:hidden;" class="fs13">{{comment.commentContent}}</div>
+				<div style="color: #888;" class="fl15 fs12 pt15 fl"><img style="width: 12px; " src="../static/images/community/icon_time_gray.png"/>&nbsp;{{comment.fmtCommentDateTime}}</div>
+				<div class="pt15 fs12" style="color: #a6937c; ">
+					<div class="fr" ms-visible="comment.isCommentOwner == 'true'">
+       					<div class="fs12 pr15" style="color: grey;" text-align: right"  ms-click="delComment(comment)">删除</div>
+  					</div>
+				</div>
+				<div class="fl">&nbsp;</div>
+			</div>
+			<div style="width: 100%;" class="comment-lite-divider fl">&nbsp;</div>
+		</div>
+	</div>
+	<div id="input" class="fl" style="top:10px; background-color: white; width: 98%; text-align: center; border:1px;margin-left:2%;"  >
+		<textarea name="comment_content" class="comment_input inner-input "  ms-focus="showInput"  oninput="autoHeight(this);" onkeydown="autoHeight(this);"  placeholder="回复" ms-duplex-string="commentContent"></textarea>	
+		<div class="submit-btn ov fs14 fl" ms-click="saveComment" style="width:20%; color: white;">发送</div>
+	</div>
+</body>
+
+<script type="text/javascript">
+function autoHeight(obj){
+		
+	var $this = $(obj).closest("textarea");
+	var tmp = $(window).height();
+	tmp = tmp/100*20;
+	if(($this.val().length%20==0)&&($this.val().length/20>1)){
+		var height = $this.css("height");
+		var adjHeight = parseInt(height)+parseInt(20);
+		$this.css("height",adjHeight+"px");
+	}
+}
+</script>
+</html>

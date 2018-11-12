@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>东湖e家园服务</title>
+    <link rel="stylesheet" href="../static/css/swiper.css">
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+    
+    <script type="text/jscript" src="../static/js/zepto.min.js"></script>
+	<script type="text/jscript" src="../static/js/fastclick.min-1.0.6.js"></script>
+	<script type="text/jscript" src="../static/js/avalon.js"></script>
+	<script type="text/jscript" src="../static/js/common_v3.js"></script>
+	<script type="text/jscript" src="annoucement.js"></script>
+	<link rel="stylesheet" href="../static/css/community/common.css">
+ <style>
+ 	
+	.main{
+		
+		margin-top: 30px;
+		width: 100%;
+	}
+	
+	.title_img{
+	
+		height: 75px;
+		width: 75px;
+		border: 1px;
+		border-color: d4
+	}
+	
+	.title_left{
+		
+		margin: 0px 0px 15px 4%;
+		width: 75px;
+		float: left;
+		height: 75px;
+		
+	}
+	
+	.title_right{
+		
+		margin-top: 0px;
+		margin-left:5%;
+		width: 65%;
+		float: left;
+		height: 75px;
+	}
+	
+	.sub_main{
+	
+		height: 75px;
+		width: 100%
+	}
+	
+ </style>
+</head>
+
+<body  ms-controller="root">
+ 	<div ms-visible="annoucement_count==0">
+		<img src="../static/images/community/bg_publish.jpg"/>
+	</div>
+	<div class="main">
+		<div class="thread-item pb15" ms-repeat-annoucement="annoucements" >
+			<div ms-click="gotoDetail(annoucement.annoucementId)" class="sub_main">
+				<div class="title_left">
+					<img class="title_img" ms-src="{{annoucement.titleImg}}" >
+				</div>
+				<div class="title_right">
+					<div class="ov fs14 fl" style="color: #3b3937; width: 100%; margin-top: 5px;" ms-click="gotoDetail(annoucement.annoucementId)">{{annoucement.title}}</div>			
+					<div class="ov fs12" style="color: #888888; width: 100%; margin-top: 54px;"><img style="width: 12px; " src="../static/images/community/icon_time_gray.png"/>&nbsp;{{annoucement.createDate}} </div>
+					<div class="lite-divider" style="margin-top: 2px;" ></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="position: fixed; bottom:1px; width: 100%; color: white; margin-left: 2px;" >
+		<div class="submit-btn-orange2 fs14 " ms-click="gotoindex" style="width: 99%">返回</div>
+	</div>
+</body>
+</html>

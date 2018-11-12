@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <meta content="telephone=no" name="format-detection" />
+        <meta charset="UTF-8">
+        <title>我的房屋</title>
+        <link rel="stylesheet" type="text/css" href="../static/css_fornew/common_fornew.css"/>
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/avalon.js"></script>
+        <script src="../static/js/common_v3.js"></script>
+        <script src="user_address.js"></script>
+        <style type="text/css">
+        	
+        	.addinfo{
+        		margin: 5% 0% 5% 5%;
+        		width:90%;
+        		color:#808c9a;
+        		border:1px solid #ddd;
+        		background-color: #fff;
+        		border-radius: 6px;
+        		padding:5%;
+        		line-height: 25px;
+        	}
+        	.check{
+        		margin: 5% 0%;
+        		width:5%;
+        		
+        	}
+        	.check img{
+        		width: 140%;
+        		margin: 40px 0px 0px 5px;
+        	}
+        	.foot{
+        		background-color: #676e74;
+        	}
+        	.foot>div{
+        		padding: 0px 20px;
+        		font-size: 1.3em;
+        	}
+        	.foot img{
+        		height:20px;
+        		width:20px;
+        		vertical-align: middle;
+        	}
+        </style>
+	</head>
+	<body ms-controller="root">
+		<!--房屋信息列表-->
+		<div class="hidden" ms-repeat-address="model">
+			<div class="fl check" ms-visible="checkicon=='show'">
+				<img src="../static/images/circle_check.png" />
+			</div>
+			<div class="fl addinfo">
+				小区：{{address.xiaoquname}}<br />
+				地址：{{address.xiaoquadd}}<br />
+				建筑面积：{{address.sqm}}
+			</div>
+		</div>
+		<br />
+		<br />
+		<br />
+		<!--模态确认框-->
+		<div class="model" ms-visible="modelBox=='show'">
+			<div class="model_content">
+				<div class="model_title">确认删除该地址!</div>
+				<div class="model_btns">
+					<span class="model_yes" ms-click="cancelyes">确定</span>
+					<span class="model_no" ms-click="cancelno">取消</span>
+				</div>
+			</div>
+		</div>
+		<!--底部功能按钮-->
+		<div class="foot">
+			<div class="fl" ms-click="add" ms-visible="addhouse=='show'">
+				<img src="../static/images/add_house.png" />
+				添加房屋
+			</div>
+			<div class="fl" ms-click="delhouse" ms-visible="deletehouse=='show'">删除</div>
+			<div class="fr" ms-click="edit" ms-visible="edithouse=='show'">编辑房屋</div>
+			<div class="fr" ms-click="cancel" ms-visible="canceledit=='show'">取消</div>
+		</div>
+	</body>
+</html>

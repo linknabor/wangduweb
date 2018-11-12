@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+        <meta content="telephone=no" name="format-detection" />
+        <meta charset="UTF-8">
+        <title>缴费记录</title>
+        <link rel="stylesheet" type="text/css" href="../static/css_fornew/common_fornew.css"/>
+        <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+        <script src="../static/js/jquery.js"></script>
+        <script src="../static/js/avalon.js"></script>
+        <script src="../static/js/common_v3.js"></script>
+        <script src="payment_index.js"></script>
+        <style type="text/css">
+        	body{
+        		background-color: #eee;
+        		color:#676e74;
+        	}
+        	.userinfo{
+        		background-color: #fff;
+        		padding: 20px 20px 0px 20px;
+        		position: relative;
+        		font-size: 1.3em;
+        	}
+        	.userinfo li{
+        		float: left;
+        		width:75%;
+        	}
+        	.userinfo>ul{
+        		margin-bottom: 20px;
+        	}
+        	.userinfo>ul>li:first-child{
+        		width:15%;
+        	}
+        	.arrow{
+        		position: absolute;
+        		height:20px;
+        		width:11px;
+        		top:50%;
+        		right:20px;
+        		margin-top: -10px;
+        		background-image: url(../static/images/arrow_right.png);
+        	}
+        	.borderimg{
+        		width:100%;
+        		height: 4px;
+        		background-image: url(../static/images/border_line_up.png);
+        		background-color: #fff;
+        	}
+        	.listinfo{
+        		margin:20px 10px;
+        		background-color: #fff;
+        		border-radius: 6px;
+        		position: relative;
+        		font-size: 1.3em;
+        		line-height: 26px;
+        		padding: 13px 0px;
+        		padding-left: 20px;
+        	}
+        </style>
+	</head>
+	<body ms-controller="root">
+		<div class="userinfo hidden">
+			<ul class="w100 hidden">
+				<li>小区：</li>
+				<li>{{model.xiaoquname}}</li>
+			</ul>
+			<ul class="w100 hidden">
+				<li>地址：</li>
+				<li>{{model.xiaoquadd}}</li>
+			</ul>
+			<b class="arrow"></b>
+		</div>
+		<p class="borderimg"></p>
+		<div class="listinfo" ms-repeat-list="model.paylist">
+			<p>流水号：{{list.code}}</p>
+			<p>支付时间：{{list.time}}</p>
+			<b class="arrow"></b>
+		</div>
+	</body>
+</html>

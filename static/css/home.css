@@ -1,0 +1,108 @@
+#service-list {
+	padding:10px 6px 6px 10px;
+	width:100%
+}
+#service-list .service-item-wrap {
+	width:33.3%;
+	float:left;
+	position:relative
+}
+#service-list .service-item-wrap .service-item .info {
+	display:none
+}
+#service-list .service-item-wrap:first-child {
+	width:66.6%
+}
+#service-list .service-item-wrap:first-child .service-item {
+	height:90px;
+	padding-left:0px;
+	padding-top:30px;
+	background-position:80% 0
+}
+#service-list .service-item-wrap:first-child .service-item i {
+	  margin-top: 10px;
+	  width:32%;
+	  margin-left: 20px;
+	  float: left;
+	  text-align: right;
+}
+#service-list .service-item-wrap:first-child .service-item .title {
+	padding-top:15px;
+	text-align:center;
+}
+#service-list .service-item-wrap:first-child .service-item .info {
+	display:block;
+	color:#fff;
+	margin-top:-10px;
+	text-align:center;
+	line-height:14px;
+}
+#service-list .service-item-wrap:first-child .service-item .promo-desc {
+	display:none
+}
+
+/*#service-list .service-item-wrap:last-child {
+	width:66.6%
+}
+#service-list .service-item-wrap:last-child .service-item {
+	height:90px;
+	padding-left:4px;
+	padding-top:30px;
+	background-position:80% 0
+}
+#service-list .service-item-wrap:last-child .service-item i {
+	  margin-top: 10px;
+	  width: 30%;
+	  margin-left: 28px;
+	  text-align: right;
+}
+#service-list .service-item-wrap:last-child .service-item .title {
+	padding-top:20px;
+	text-align:center;
+	margin-right: 8px;
+}
+#service-list .service-item-wrap:last-child .service-item .info {
+	display:block;
+	color:#fff;
+	margin-top:-10px;
+	text-align:center;
+	line-height:14px;
+	margin-right: 8px;
+}
+#service-list .service-item-wrap:last-child .service-item .promo-desc {
+	display:none
+}*/
+
+.service-item {
+	border-radius:2px;
+	-webkit-border-radius:2px;
+	height:120px;
+	margin:0 4px 4px 0;
+	display:block;
+	background-color:#f63
+}
+.service-item .logo {
+	margin-top:20px;
+	float:left;
+	display:block;
+	width:100%;
+	height:42px;
+	background-position:50% 0;
+	background-size:42px;
+	background-repeat:no-repeat
+}
+.service-item .title {
+	padding-top:80px;
+	font-size:16px;
+	line-height:16px;
+	font-weight:700;
+	color:#fff;
+	text-align:center
+}
+.service-item .promo-desc {
+	color:#fff;
+	font-size:10px;
+	line-height:10px;
+	opacity:.8;
+	text-align:center
+}

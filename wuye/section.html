@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>东湖e家园</title>
+    <link rel="stylesheet" href="../static/css/common.css?v=20160426">
+    <link rel="stylesheet" href="../static/css/swiper.css">
+    <link rel="stylesheet" href="../static/css/header.css?v=20160229">
+    <script src="../static/js/jquery.js?v=20160229"></script>
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script type="text/jscript" src="../static/js/zepto.min.js?v=20160229"></script>
+    <script type="text/jscript" src="../static/js/fastclick.min-1.0.6.js?v=20160229"></script>
+    <script type="text/jscript" src="../static/js/avalon.js"></script>
+    <script type="text/jscript" src="../static/js/common_v3.js?v=20160229"></script>
+    <script type="text/jscript" src="section.js?v=2017121114"></script>
+ <style>
+ 
+        .main{
+        
+            width: 100%;
+            background-color: #ffffff;
+        } 
+        .address{
+            padding: 14px;
+            background-color: #f7f7f9;
+            font-family: "微软雅黑";
+            font-size: 14px;
+            color: #000000;
+            text-align: center;
+        }
+        .city{
+            float: left;
+        }
+        .xiaoqu{
+            padding-right: 32px;
+            font-size:16px;
+            font-weight: bold;
+        }
+        .section1{
+        
+            width: 100%;
+            text-align: center;
+            height: 220px;
+            
+        }
+        .advertisement{
+            width: 100%;
+            height: 100px;
+        }
+        .ad{
+            width: 100%;
+            height: 100%;
+        }
+        .section1_sub1{
+        
+            float: left;
+            width: 33%;
+            height: 109px;
+            border-width: 1px 1px 1px 0px;
+            border-color: #e5e2dd;
+            border-style: solid;
+        }
+        
+        .section1_sub2{
+        
+            float: left;
+            width: 33%;
+            height: 109px;
+            border-width: 1px 0px 1px 0px;
+            border-color: #e5e2dd;
+            border-style: solid;
+        
+        }
+        
+        .section1_sub3{
+        
+            float: left;
+            width: 33%;
+            height: 109px;
+            border-width: 0px 1px 1px 0px;
+            border-color: #e5e2dd;
+            border-style: solid;
+        
+        }
+        
+        .section1_sub4{
+        
+            float: left;
+            width: 33%;
+            height: 109px;
+            border-width: 0px 0px 1px 0px;
+            border-color: #e5e2dd;
+            border-style: solid;
+        
+        }
+        
+        .section1_img{
+            
+            margin: 20px 0px 0px 10px;
+            display:block;
+            height: 40px;
+            width: 40px;
+            
+        }
+        
+        
+        .section1_sub_txt{
+        
+            margin:12px 0px;
+            font-size: 15px;
+            color: #3b3937;
+            
+        }
+        
+        .section2{
+            
+            width: 100%;
+            background-color: #f7f6f1;
+            height: 53px;
+            overflow:hidden;
+            vertical-align: middle;
+        }
+        
+        .section2_sub{
+        
+            
+            
+        }
+        
+        .section2_sub_img{
+            
+            width: 28px;
+            height: 23px;
+            margin: 15px 4% 15px 4%;
+            float: left;
+        }
+        
+        .section2_sub_txt1{
+            
+            float: left;
+            margin: 18px 4% 12px 0px;
+            font-size: 15px;
+            color: #ff0000;
+        }
+        
+        .section2_sub_txt2{
+            
+            margin: 18px 0px 12px 0px;
+            float: left;
+            font-size: 14px;
+            
+        }
+        
+        .section2_sub_txt2 a{
+            
+            text-decoration: none;
+            color: #a6937c;
+            font-size: 14px;
+            
+        }
+        
+       
+        
+        #marquee div{
+            
+            height:56px;
+            line-height: 56px; 
+        }
+        
+        .section2 a{
+        
+            text-decoration: none;
+        }
+        
+        .section2_sub_type{
+        
+            float: left;
+            padding-right: 10px;
+            color: #ff0000;
+            font-size: 14px;
+        }
+        
+        .section2_sub_title{
+        
+            float: left;
+            color: #000000;
+            font-size: 14px;
+        }
+        
+        .section3{
+            width: 100%;
+        }
+        
+        .section3_notice{
+        
+        	margin: 10px 0px 10px 4%;
+            font-size: 15px;
+            color: #000000;
+        }
+        
+        .section3_title_divide{
+        
+        	width: 100%;
+        	border-bottom: 1px solid #e5e2dd;
+        }
+        
+        .section3_title{
+        
+            margin: 15px 0px 0px 4%;
+            font-size: 15px;
+            color: #000000;
+            
+        }
+        
+        .section3_main{
+        
+            margin: 0px 4% 0px 4%;
+            overflow: hidden;
+        }
+        
+        .section3_zixuns{
+        
+            height: 105px;
+            border-bottom: 1px solid #d4cfc8;
+        }
+        
+        .section3_sub_main_left{
+        
+            height: 105px;
+            float: left;
+        }
+        
+        .section3_sub_main_right{
+        
+            height: 105px;
+            float: left;
+            width: 60%;
+            margin-left: 6%;
+        }
+        
+        .section3_sub_img{
+        
+            width: 100px;
+            height: 75px;
+            margin: 15px 0px 15px 0px;
+            float: left;
+        }
+        
+        .section3_sub_title{
+        
+            height: 16px;
+            margin: 16px 0px 0px 0px;
+            font-size: 15px;
+            color: #000000;
+                
+        }
+        
+        .section3_sub_content{
+        
+            height: 59px;
+            margin: 10px 0px 0px 0px;
+            font-size: 13px;
+            color: #a1a1a1;
+        }
+        
+        .section_divider{
+        	border-bottom: 10px solid #e5e2dd;
+        }
+        
+        .section3_divider{
+        	border-bottom: 1px solid #e5e2dd;
+        }
+        
+ </style>
+</head>
+
+<body  ms-controller="root">
+            <div class="section3">
+        	<div class="section3_divider"></div>
+        	<div class="tab">
+        		<span class="notice-tab-title" ms-repeat-tab="tabs" ms-class-active="tab.active" ms-click="changeTab($index)">{{tab.name}}</span>
+    		</div>
+        	<div ms-visible="tabs[0].active">
+				<div class="section3_zixuns" ms-repeat-zixun="zixuns1" ms-click="jumpToDetail(zixun.id)">
+					<div class="section3_sub_main_left"><img class="section3_sub_img" ms-src="{{zixun.smallImage}}"/></div>
+					<div class="section3_sub_main_right">
+						<div class="section3_sub_title">{{zixun.title}}</div>
+						<div class="section3_sub_content">{{zixun.summary}}</div>
+					</div>
+				</div>
+			</div>
+        	</div>
+        	<div ms-visible="tabs[1].active">
+        		<div class="section3_zixuns" ms-repeat-zixun="zixuns2" ms-click="jumpToDetail(zixun.id)">
+					<div class="section3_sub_main_left"><img class="section3_sub_img" ms-src="{{zixun.smallImage}}"/></div>
+					<div class="section3_sub_main_right">
+						<div class="section3_sub_title">{{zixun.title}}</div>
+						<div class="section3_sub_content">{{zixun.summary}}</div>
+					</div>
+				</div>
+			</div>
+			<!-- ms-repeat-zixun="zixuns" -->
+        	<div ms-visible="tabs[2].active">
+        		<div class="section3_zixuns" ms-repeat-zixun="zixuns3" ms-click="jumpToDetail(zixun.id)">
+					<div class="section3_sub_main_left"><img class="section3_sub_img" ms-src="{{zixun.smallImage}}"/></div>
+					<div class="section3_sub_main_right">
+						<div class="section3_sub_title">{{zixun.title}}</div>
+						<div class="section3_sub_content">{{zixun.summary}}</div>
+					</div>
+				</div>
+        	</div>
+    	</div>
+    
+</script>
+</body>
+</html>

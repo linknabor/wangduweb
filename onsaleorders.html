@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="format-detection" content="telephone=no" />
+<meta name="format-detection" content="email=no" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>我的东湖e家园</title>
+<link href="static/css/header.css?v=20151217" rel="stylesheet" />
+<link href="static/css/common.css?v=20151217" rel="stylesheet" />
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/jscript" src="static/js/zepto.min.js?v=20151217"></script>
+<script type="text/jscript" src="static/js/fastclick.min-1.0.6.js?v=20151217"></script>
+<script type="text/jscript" src="static/js/avalon.js"></script>
+<script type="text/jscript" src="static/js/common_v3.js?v=20151217"></script>
+<script type="text/jscript" src="onsaleorders.js?v=20151218"></script>
+
+ 	<style type="text/css">
+ 	[ms-controller]{display:none} 
+ 	     .avatar-wrap {
+            height: 42rem;
+            text-align: center;
+        }
+ 	</style>
+
+</head>
+<body  ms-controller="root">
+		<div class="dropdown-wrap" style="margin: 0 15px"
+			ms-class-collapsed="dropdownCollapsed" ms-click="toggleDropdown">
+			<span ms-visible="selectedDropdown==''">订单筛选</span>
+			{{selectedDropdown.name}}
+			<div class="dropdown" ms-visible="!dropdownCollapsed">
+				<div class="dropdown-item" ms-repeat-item="dropdowns"
+					ms-class-no-border="$last" ms-click="selectDropdown($index)">{{item.name}}</div>
+			</div>
+		</div>
+		<div class="avatar-wrap rel ov" ms-visible="groupsNum == 0">
+        	<div class="filter-img avatar-wrap center-bg" ms-css-background-image="url('{{bg_img}}')"></div>
+    	</div>	
+		<div class="order-item p15 divider" ms-repeat-order="orders">
+			<div  ms-click="gotoDetail(order.id)">
+				<img class="fl order-picture" ms-src="{{order.productThumbPic}}" />
+				<div class="ov pb10 fs14">{{order.productName}}</div>
+				<div class="ov pb10" style="color: #3b3937">
+					<span class="fl fs13"> ¥{{order.price}} 
+	<!--					<span style="color: #888">（共{{order.count}}件商品）</span>-->
+					</span> <span class="fr fs13 highlight">{{order.statusStr}}</span>
+				</div>
+			</div>
+			<div class="lite-divider" style="margin-top: 22px;margin-bottom: 2px;"></div>
+			<div class="pt15 fs13" style="color: #a6937c; line-height: 23px">
+				{{order.createDateStr}}
+				<!--unpaid-->
+				<a href="#"
+					class="lite-btn fs13 fr" ms-click="orderPay($index)"
+					ms-visible="order.status==0">付款</a> <a href="#"
+					class="btn-plain fr" ms-click="orderCancel($index)"
+					ms-visible="order.status==0">取消订单</a>
+				<!--unsent-->
+				<!--<a href="#"
+					class="lite-btn fs13 fr" ms-click="notify(order.id)"
+					ms-visible="order.status==9">提醒发货</a>-->
+				<!--unrecieved-->
+				 <a href="#"
+					class="lite-btn fs13 fr" ms-click="orderConfirm($index)"
+					ms-visible="order.status==5">确认收货</a> 
+			    <a href="#" class="lite-btn fs13 fr" style="margin-right: 5px;"  ms-click="checkLogisics(order)" ms-visible="order.status==5">查看物流</a>	
+			<!-- <a href="#" class="btn-plain fr" ms-visible="order.status==5" ms-click="viewFreight(order)">查看物流</a> -->
+				<!--recieved-->
+				<span ms-visible="order.status==6&&order.pingjiaStatus!=1"> <a href="#"
+					class="lite-btn fs13 fr" ms-click="comment(order)"
+					>评价商品</a>
+				</span>
+			</div>
+		</div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+	<head><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+		<meta charset="UTF-8">
+<!--		<title></title>
+        <script src="../static/js/zepto.min.js"></script>
+        <script src="../static/js/common_v3.js"></script>
+-->		<style>
+.w-modal-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+.w-modal {
+    position: relative;
+    background: #fff;
+    border-radius: 5px;
+    margin: 20% auto;
+    padding: 10px 15px;
+    overflow: scroll;
+    width: 60%;
+    max-height: 80%;
+}
+
+.w-option {
+    background-image: url("http://image.birdiefun.com/hexie/icon/icon_unselect.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 16px;
+    padding: 15px 0 15px 25px;
+}
+.w-checked-item {
+    background-image: url("http://image.birdiefun.com/hexie/icon/icon_selected.png");
+}
+.w-lite-divider {
+    border-bottom: 1px solid #d4cfc8;
+}
+
+
+
+/***************小区********************/
+
+    .addr-location-wrap {
+        position: relative;
+        padding: 0px;
+        height: 49px;
+        line-height: 49px;
+        border-bottom: 1px solid #d4cfc8;
+    }
+    
+    .addr-location-input-wrap {
+        position: relative;
+        padding: 5px 10px 0 0;
+        margin-right: 80px;
+        left:0px;
+    }
+    .addr-location-input-wrap>input {
+        display: block;
+        height: 36px;
+        width: 100%;
+        outline: none;
+        border: 1px solid #d4cfc8;
+        border-radius: 4px;
+        vertical-align: middle;
+        font-size: 15px;
+    }
+    .addr-location-input-wrap>i {
+        position: absolute;
+        top: 5px;
+        right: 4px;
+        display: inline-block;
+        height: 36px;
+        width: 36px;
+        background: url("http://image.birdiefun.com/hexie/icon/icon_cancel.png") no-repeat;
+        background-size: 15px;
+        background-position: center;
+    }
+    .addr-location-wrap>span {
+        position: absolute;
+        display: block;
+        top: 0;
+        height: 36px;
+        line-height:36px;
+        margin-top:5px;
+        right: 15px;
+        color: #3b3937;
+        border-radius: 4px;
+        font-size: 15px;
+        width: 65px;
+        text-align:center;
+        border:1px solid #d4cfc8;
+    }
+    #addr-location-empty-tip {
+        margin: 0 auto;
+        margin-top: 105px;
+        font-size: 12px;
+        color: #888;
+        width: 165px;
+        text-align: center;
+        line-height: 18px;
+    }
+    .addr-location-location {
+        margin: 0 15px;
+        padding: 15px 0;
+        border-bottom: 1px solid #d4cfc8;
+    }
+    .addr-location-location>span{
+        position:relative;font-color:#cccccc;
+    }
+    
+		</style>
+	</head>
+	<body>
+	<div id="widget"></div>
+	    <!-- 列表项选择[BEGIN] -->
+	    <script id="select-model" type="text/html">
+	        <div class="w-modal-mask">
+                <div class="w-modal" id="w-options">
+                </div>
+            </div>
+	    </script>
+	    <script type="text/javascript">
+	        var widget={};
+	        widget.showOptions=function(list, chosedValue, callback) {
+                var outter = $("#select-model").html();
+                $("#widget").append(outter);
+                
+	            $rows = $("#w-options");
+	            $.each(list, function(n,item) {
+	                var chosedClass = chosedValue == item.value ? "w-checked-item" : "";
+	                var divider = n == list.length-1 ? "" : "w-lite-divider";
+	            	var row = "<div class=\"w-option\" id='w-op-"+n+"'>"+item.name+"</div>";
+	            	$row = $(row).addClass(chosedClass).addClass(divider).click(function(){
+	            	    $("#widget").html("");
+	            	    callback(n);
+	            	});
+	            	$rows.append($row);
+	            });
+	        }
+	    </script>
+	    <!-- 列表项选择[END] -->
+	    <!-- 小区根据名称查询[BEGIN] -->
+	    <script id="select-xiaoqu" type="text/html">
+    	    <div class="addr-location-wrap">
+                <div class="addr-location-input-wrap">
+                    <input placeholder="请输入小区名称" id="xiaoquNameInput" />
+                    <i onclick="widget.cancleXiaoquInput()"></i>
+                </div>
+                <span onclick="widget.confirmXiaoqu()">确定</span>
+            </div>
+            <div id="addr-location-empty-tip">
+                准确的小区、街道或大厦名称能加快送货速度
+            </div>
+            <div id="xiaoquDropdown">
+            </div>
+	    </script>
+	    <script type="text/javascript">
+            widget.xiaoquCallback=function(){}
+            widget.xiaoquCity="上海";
+            widget.chosedXiaoqu={
+                xiaoquName:"",
+                amapId:0,
+                amapDetailAddr:""
+            }
+            widget.confirmXiaoqu=function(){
+                if(widget.chosedXiaoqu.xiaoquName==$('#xiaoquNameInput').val()){
+                    widget.xiaoquCallback(widget.chosedXiaoqu);
+                } else {
+                    var xiaoqu={xiaoquName:$('#xiaoquNameInput').val(),
+                        amapId:0,
+                        amapDetailAddr:""};
+                    widget.xiaoquCallback(xiaoqu);
+                }
+                $("#widget").html("");
+            }
+            widget.showXiaoqu=function(city,callback) {
+                //查询小区列表
+                var xiaoqus = [];
+                var outter = $("#select-xiaoqu").html();
+                $("#widget").append(outter);
+                $('#xiaoquNameInput').bind('input propertychange', function() {
+                    widget.updateXiaoqus($(this).val());
+                });
+                if(callback){
+                    widget.xiaoquCallback=callback;
+                }
+                if(city) {
+                    widget.xiaoquCity=city;
+                }
+            }
+            widget.cancleXiaoquInput=function(){
+                $("#xiaoquNameInput").val("");
+                widget.renderXiaoqu([]);
+            }
+            widget.updateXiaoqus=function(currentValue){
+                if(!widget.refreshXiaoqus(currentValue)) {
+                    setTimeout(function(){
+                        widget.refreshXiaoqus(currentValue)
+                    },500);
+                }
+            }
+            widget.refreshXiaoqus=function(currentValue){
+                if(currentValue!=$('#xiaoquNameInput').val()) {
+                    return;
+                }
+                if((new Date().getTime()-widget.lastQueryTime)>500) {
+                    widget.lastQueryTime = new Date().getTime();
+                    if(currentValue.length>2) {
+                        console.log("查询新的小区列表---Y-" + currentValue);
+                        common.invokeApi("GET", "amap/"+widget.xiaoquCity+"/"+currentValue, null, null, function(n) {
+                            xiaoqus =n.result;
+                            widget.renderXiaoqu(xiaoqus);
+                        }, function() {
+                            xiaoqus=[];
+                            widget.renderXiaoqu(xiaoqus);
+                        });
+                    } else {
+                        xiaoqus = [];
+                        widget.renderXiaoqu(xiaoqus);
+                    }
+                    return true;
+                }
+                
+                return false;
+            }
+            widget.lastQueryTime = 0;
+            widget.renderXiaoqu=function(xiaoqus){
+                $("#xiaoquDropdown").html("");
+                if(xiaoqus&&xiaoqus.length>0){
+                    $("#addr-location-empty-tip").hide();
+                } else {
+                    $("#addr-location-empty-tip").show();
+                }
+                $.each(xiaoqus, function(n,item) {
+                    var row = "<div class=\"addr-location-location\"><span>"+item._name+"-"+item.detailaddress+"</span></div>";
+                    $row = $(row).click(function(){
+                        widget.chosedXiaoqu.xiaoquName=item._name;
+                        widget.chosedXiaoqu.amapId=item._id;
+                        widget.chosedXiaoqu.amapDetailAddr=item.detailaddress;
+                        $("#xiaoquNameInput").val(widget.chosedXiaoqu.xiaoquName);
+                        widget.renderXiaoqu([]);
+                    });
+                    $("#xiaoquDropdown").append($row);
+                });
+            }
+            
+        </script>
+        <!-- 小区根据名称查询[END] -->
+	</body>
+</html>

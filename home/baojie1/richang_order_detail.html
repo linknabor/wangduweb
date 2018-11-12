@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta content="telephone=no" name="format-detection" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>订单详情</title>
+		<link rel="stylesheet" href="../../static/css/swiper.css">
+		<!--<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+   		<script src="static/js/fastclick.min-1.0.6.js"></script>-->
+		<script src="../../static/js/avalon.js"></script>
+		<script src="../../static/js/jquery.js"></script>
+		<script src="../../static/js/common_v3.js"></script>
+		<script src="richang_order_detail.js"></script>
+		<style type="text/css">
+			body{
+				margin:0;
+				background-color: #f4f5f6;
+			}
+			.product{
+				padding: 14px;
+				background-color: #FFFFFF;
+			}
+			.icon1{
+				float: left;
+				width: 86px;
+				height: 86px;
+				margin-right: 14px;
+				margin-top: -1px;
+			}
+			.item,.time_long{
+				font-family: "微软雅黑";
+				font-size: 14px;
+				color: #000000;
+				margin-top:0 ;
+				margin-bottom: 14px;
+			}
+			.state{
+				font-family: "微软雅黑";
+				font-size: 14px;
+				color: #FF8A00;
+				margin-bottom: 0;
+				margin-top: 0;
+				
+			}
+            .addr_area{
+                background: #F7F7F1;
+            }
+            .add_address{
+                display: inline-block;
+                font-size: 14px;
+                height: 30px;
+                line-height: 30px;
+                border-radius: 3px;
+                border: 1px solid #cfa972;
+                padding:4px 30px;
+                margin:20px 0;
+                color:#cfa972;
+                background-color:white;
+                text-decoration: none;
+            }
+			.address{
+				margin-top: 15px;
+				background: #F7F7F1;
+			}
+			.custom-menu-link {
+                font-size:16px;
+                padding:6px 15px;
+                color: #3b3937;
+                background-position-y: 15px;
+            }
+            .custom-menu-link>a{
+                padding:15px;
+                margin-right: 15px;
+            }
+            .addr_location{
+                color: #888;
+                line-height: 20px;
+                margin-top: 6px;
+            }
+			.order_detail{
+				padding: 0 14px;
+				background-color: #FFFFFF;
+			}
+			.div1{
+				padding: 14px 0;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				color: #666666;
+				border-bottom: 1px solid #EEEEEE;
+			}
+			.div2{
+				padding: 14px 0;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				color: #666666;
+			}
+			.money{
+				margin-top: 10px;
+				padding: 14px;
+				background-color: #FFFFFF;
+				border-bottom:1px solid #EEEEEE;
+			}
+			.money p{
+				font-family: "微软雅黑";
+				font-size: 12px;
+				color: #666666;
+			}
+			.money_pay{
+				float: right;
+			}
+			.total_pay{
+				padding: 14px;
+				background-color: #FFFFFF;
+				font-family: "微软雅黑";
+				font-size: 14px;
+				color: #666666;
+				text-align: right;
+			}
+			.get_help{
+				padding: 14px;
+				width: 100%;
+				background-color: #FFFFFF;
+				border-top: 1px solid #EEEEEE;
+				position: fixed;
+				bottom: 0;
+				/*text-align: right;*/
+			}
+			.connect{
+				border: 1px solid #FF8A00;
+				border-radius: 3px;
+				display: block;
+				font-family: "微软雅黑";
+				font-size: 13px;
+				color: #ffffff;
+				background-color: #FF8A00;
+				width: 70px;
+				height: 15px;
+				line-height: 15px;
+				text-align: center;
+				margin-right: 30px;
+				margin-top: -2px;
+				padding: 4px 6px;
+				float: right;
+			}
+		</style>
+	</head>
+	<body ms-controller="root">
+		<div class="product">
+			<img src="../../static/img/baojie/icon_richangbaojie_03.png" class="icon1"/>
+			<p class="item">项目：{{bill.typeName}}</p>
+			<p class="time_long">时长：{{bill.itemCount}}小时</p>
+			<p class="state">{{bill.statusStr}}</p>
+		</div>
+		<div class="address">
+            <div class="addr_area" ms-click="choseAddress">
+                <div style="background:url(../../static/img/baojie/icon_address_top_02.png) repeat-x;height:5px;background-size: 100% 5px;">&nbsp;</div>
+                <div class="custom-menu-link">
+                    <span>{{bill.receiverName}}</span>
+                    <span style="margin-left:15px;">{{bill.tel}}</span>
+                    <div class="addr_location">{{bill.address}}</div>
+                </div>
+                <div style="background:url(../../static/img/baojie/icon_address_bottom_04.png) repeat-x;height:5px;background-size: 100% 5px;">&nbsp;</div>
+            </div>  
+        </div>
+		<div class="order_detail">
+			<div class="div1">订单编号：{{bill.orderNo}}</div>
+			<div class="div1">下单时间：{{bill.createDateStr}}</div>
+			<div class="div1">预约时间：{{bill.requireDateStr}}</div>
+			<div class="div2">备注：{{bill.memo}}</div>
+		</div>
+		<div class="money">
+			<p style="margin: 0px;"><span>总额</span><span class="money_pay">￥{{bill.totalAmount}}</span></p>
+			<p style="margin: 14px 0px 0px 0px;" ms-visible="bill.discountAmount"><span>优惠</span><span class="money_pay">-￥{{bill.discountAmount}}</span></p>
+		</div>
+		<div class="total_pay">
+			<span>合计：￥{{bill.realAmount}}</span>
+			<span style="color: #CCCCCC;display: block;">({{bill.statusStr}})</span>
+		</div>
+		<div class="get_help">
+			<a href="tel:021-50876295"><span class="connect"  ms-click="contact(event)">联系客服</span></a>
+		</div>
+	</body>
+</html>

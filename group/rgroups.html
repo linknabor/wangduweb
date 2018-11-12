@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>社区团购</title>
+    <link rel="stylesheet" href="../static/css/common.css?v=20160229">
+    <link rel="stylesheet" href="../static/css/header.css?v=20160229">
+    <link rel="stylesheet" href="../static/css/group/product.css?v=20160229">
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="../static/js/jquery.js?v=20160229"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js?v=20160229"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/group.js?v=20160229"></script>
+	<script src="../static/js/common_v3.js?v=20160229"></script>
+	<script src="rgroups.js?v=20160229"></script>
+ <style>
+ 	[ms-controller]{display:none} 
+	.rule_intro{
+	    position: fixed;
+	    top: 0;
+	    z-index: 10;
+		background:#f7f7f1;
+		width:100%;
+	}
+	.rule_item_noback,.rule_item,.rule_item_default,.rule_title{
+		height:60px;
+		line-height:60px;
+		width:20%;
+		float:left;
+		text-align:left;
+		font-size:14px;
+	}
+	.rule_item{
+		background:url(../static/images/img_arrow_selected.png);
+		background-size:10px 60px;
+		background-repeat:no-repeat;
+		background-position:left;
+	}
+	.rule_item_default{
+		background:url(../static/images/img_arrow_default.png);
+		background-size:10px 60px;
+		background-repeat:no-repeat;
+		background-position:left;
+	}
+	.rule_title{
+		background-color:#ffa030;
+		color:#fff;
+	}
+	
+	.rule_item_line{
+		height:18px;
+		padding-left:15px;
+		line-height:18px;
+		text-align:left;
+		font-size:14px;
+	}
+	.rgroup_nav_text{
+ 		height:40px;
+ 		background-color: #fff8ee;  
+/*		position: fixed;*/
+        width: 100%;
+        z-index: 99;
+        top: 0px;
+ 	}
+  	.rgroup_nav_text li{
+ 		float: left;
+ 		line-height:40px;
+        font-size: 14px;
+ 		width:20%;
+		text-align: center;
+	    border-bottom: 1px solid #fff8ee;
+	    color:#6F6E6B;
+ 	}
+  	.rgroup_nav_text li.choosed{
+	  border-bottom: 1px solid #ff8a00;
+	  color:#ff8a00;
+ 	}
+
+ </style>
+</head>
+
+<body>
+	<!-- load -->
+		<div class="load6" id="LoadingBar">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+		        
+		<div id="fade" class="black_overlay">
+		</div>
+		
+		<div id="phoneErro"></div>
+		
+		<div id="phoneAjax" class="hidden">
+			<img src="http://7xlem4.com2.z0.glb.qiniucdn.com/backed/images/load2.gif" style="width:40px;height40px;vertical-align: middle;">
+		</div>
+	<!-- load -->
+	
+	<div ms-controller="root" class="mb_6" id="indexDiv">
+		<div class="banner"><img alt="" src="../static/images/img_shopping_rgroup.png" style="width:100%"></div>
+		<div id="products" class="mlr1">
+			<a class="tuangou-item" ms-repeat-rgroup="rgroups" style="padding-bottom:75px;width:100%"  ms-href="rgroupdetail.html?ruleId={{rgroup.ruleId}}">
+				<img alt="" class="product-image" ms-src="{{rgroup.productPic}}"/>
+				<div style="width:100%">
+					<div class="fl pt5" style="height:70px;width: 100%;">
+						<div class="product-name pl05 fs20 pt" style="margin-right: 75px;line-height: 15px;">{{rgroup.ruleName}}</div>
+						<div class="mt1 ml1" >
+							<span class="highlight fs20">¥&nbsp;{{rgroup.price}}&nbsp;</span>
+							<span class="ori-price"><del>¥&nbsp;{{rgroup.oriPrice}}&nbsp;</del></span>
+							<span class="ml1 product-lefttime">{{leftTimeStrs($index)}}</span>
+						</div>
+					</div>
+					<div class="fr process-left-border" id="processImg">
+						<canvas style="z-index:10; background-color: white;" width="70px" height="70px" ms-class-product-name="drawP($index,rgroup.process)"></canvas>
+					</div>
+				</div>
+			</a>
+		</div>
+		<div style="height:8rem;clear:both">&nbsp;</div>
+	</div>
+    <footer class="footer" style="z-index:21">
+        <nav>
+            <ul>
+                <li><a href="../home/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_home"></i>服务</a></li>
+                <li><a href="../group/onsalesindex.html?v=20160229" class="nav-controller"><i class="footer_logo footer_temai"></i>集市</a></li>
+                <li><a href="../wuye/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_wuye"></i>社区</a></li>
+                <li><a href="../person/index.html?v=20160229" class="nav-controller"><i class="footer_logo footer_person"></i>我的</a></li>
+            </ul>
+        </nav>
+    </footer>
+    
+</body>
+</html>

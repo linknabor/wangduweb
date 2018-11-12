@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"  />
+    <meta content="telephone=no" name="format-detection" />
+    <meta charset="UTF-8">
+    <title>缴费查询</title>
+    <link rel="stylesheet" href="../static/css/common.css">
+    <link rel="stylesheet" href="../static/css/header.css">
+	<script type="text/jscript" src="../static/js/zepto.min.js"></script>
+	<script src="../static/js/fastclick.min-1.0.6.js"></script>
+	<script src="../static/js/avalon.js"></script>
+	<script src="../static/js/common_v3.js"></script>
+	<script src="paymentquery.js"></script>
+ 	<style type="text/css">
+        .card-header {
+            border-bottom: 1px solid #d4cfc8;
+            padding: 20px 10px;
+        }
+        .card-content {
+            border-bottom: 1px solid #d4cfc8;
+            padding: 20px 10px 5px 10px;
+            background: #fdfdef;
+        }
+        .card {
+		    margin-bottom: 15px;
+		    border: 1px solid #d4cfc8;
+		    border-radius: 3px;
+		    color: #666;
+		}
+        .icon-item {
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+        .icon {
+            height: 13px;
+            width: 13px;
+            background-size: 13px;
+            vertical-align: top;
+        }
+        .fold-btn {
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+        }
+        .fold-btn i {
+            display: inline-block;
+        }
+        .more-icon {
+            width: 15px;
+            height: 3px;
+        }
+        .top-icon {
+            width: 12px;
+            height: 7px;
+        }
+                .info-wrap {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .input-wrap {
+            overflow: hidden;
+            line-height: 45px;
+        }
+        .card-title {
+            font-size: 15px;
+            color: #3b3937;
+        }
+        .item {
+            padding:20px 10px;
+            border-top: 1px solid #d4cfc8;
+        }
+        .emptytip{
+          padding: 50px 0;
+		  text-align: center;
+		  font-size: 30px;
+		  background-position: 35px center;
+		  background-size: 35px;
+		  color: #ff8a00;
+        }
+ 	</style>
+</head>
+
+<body class="p15" ms-controller="root">
+<section ms-visible="currentpage=='list'">
+	<div class="dropdown-wrap" ms-class-collapsed="dropdownCollapsed" ms-click="toggleDropdown">
+        <span ms-visible="selectedDropdown==''">账单筛选</span>
+        {{selectedDropdown.name}}
+        <div class="dropdown" ms-visible="!dropdownCollapsed">
+            <div class="dropdown-item" ms-repeat-item="dropdowns" ms-class-no-border="$last" ms-click="selectDropdown($index)">{{item.name}}</div>
+        </div>
+    </div>
+    <div class="card" ms-repeat-item="paymentHises">
+        <div class="card-header">
+            <div class="ov" style="margin-bottom:25px">
+                <span class="fs15" style="color:#3b3937">{{item.tran_time}}</span>
+                <span class="fr fs18 highlight">¥&nbsp;{{item.bill_tran_amt}}</span>
+            </div>
+            <div class="ov fs13">
+                流水号：{{item.trade_water_id}}
+                <span class="fr">{{item.paymethodStr}}</span>
+            </div>
+        </div>
+        <div class="fold-btn" ms-click="showDetail($index)">
+            <i ms-class-more-icon="!item.folded" ms-class-top-icon="item.folded"></i>
+        </div>
+    </div>
+</section>
+<section ms-visible="currentpage=='empty'">
+<div class="emptytip">没有缴费记录，快用微信进行缴费吧！</div>
+</section>
+<section ms-visible="currentpage=='detail'">
+	 <div class="info-wrap">
+        <div class="input-wrap lite-divider">
+            <span class="fl fs15">交易时间</span>
+            <span class="fr fs14">{{payInfo.tran_time}}</span>
+        </div>
+        <div class="input-wrap lite-divider">
+            <span class="fl fs15">支付类型</span>
+            <span class="fr fs14">{{payInfo.paymethodStr}}</span>
+        </div>
+        <div class="input-wrap">
+            <span class="fl fs15">账单总金额</span>
+            <span class="fr fs14 highlight">¥&nbsp;{{payInfo.bill_tran_amt}}</span>
+        </div>
+    </div>
+    <div class="p15" style="padding-bottom:50px"  ms-repeat-data="payInfofee_data">
+        <div class="card" style="padding:21px 10px">
+            <span class="card-title">户号&nbsp;{{data.ver_no}}</span>
+            <div class="ov fs13" style="margin-top:20px">
+                <span class="ib text-el" style="width:250px">{{data.cell_addr}}</span>
+                <span class="fr">{{data.cnst_area}}m</span>
+            </div>
+        </div>
+        <div class="card fs15" ms-repeat-feename="data.fee_name">
+            <div class="ov item" style="border:none">
+                <span class="card-title">{{feename.service_fee_name}}</span>
+                <span class="fs15 fr highlight">¥{{feename.totalFee}}</span>
+            </div>
+            <div class="ov fs13 item" ms-repeat-detail="feename.fee_detail">
+                {{detail.service_fee_cycle}}
+                <span class="fr">{{detail.fee_price}}</span>
+            </div>
+        </div>      
+    </div>
+    <a href="#" class="btn btn-fixed" ms-click="back">返回到列表</a>
+</section>
+</body>
+</html>
