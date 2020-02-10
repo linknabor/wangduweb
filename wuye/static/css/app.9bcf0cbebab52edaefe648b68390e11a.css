@@ -1172,81 +1172,81 @@ img[data-v-24801e22] {
     display: inline-block
 } 
 
-.ov[data-v-7d1b31a1] {
+.ov[data-v-2942ec44] {
     overflow: hidden;
     padding: 1px;
 }
-.fs14[data-v-7d1b31a1] {
+.fs14[data-v-2942ec44] {
     font-size: 14px;
 }
-.pl15[data-v-7d1b31a1] {
+.pl15[data-v-2942ec44] {
     padding-left: 15px;
 }
-.pb15[data-v-7d1b31a1] {
+.pb15[data-v-2942ec44] {
     padding-bottom: 15px;
 }
-.comment-post-picture[data-v-7d1b31a1] {
+.comment-post-picture[data-v-2942ec44] {
     width: 42px;
     height: 42px;
     margin-right: 15px;
     border: 1px solid #d4cfc8;
     border-radius: 42px;
 }
-.thread_user_head[data-v-7d1b31a1] {
+.thread_user_head[data-v-2942ec44] {
     float: left;
     margin-top: 10.5px;
     font-size: 14px;
     color: #393b37;
 }
-.fs13[data-v-7d1b31a1] {
+.fs13[data-v-2942ec44] {
     font-size: 13px;
 }
-.fs12[data-v-7d1b31a1] {
+.fs12[data-v-2942ec44] {
     font-size: 12px;
 }
-.rel[data-v-7d1b31a1] {
+.rel[data-v-2942ec44] {
     position: relative;
 }
-.pr15[data-v-7d1b31a1] {
+.pr15[data-v-2942ec44] {
     padding-right: 25px;
 }
-.pt15[data-v-7d1b31a1] {
+.pt15[data-v-2942ec44] {
     padding-top: 15px;
 }
-.divider[data-v-7d1b31a1] {
+.divider[data-v-2942ec44] {
     border-bottom: 5px solid #f9f9e9;
 }
-.comments_title[data-v-7d1b31a1]{
+.comments_title[data-v-2942ec44]{
     margin: 15px 4% 0px 4%;
     height: 15px;
 }
-.comment-lite-divider[data-v-7d1b31a1] {
+.comment-lite-divider[data-v-2942ec44] {
     border-bottom: 1px solid #d4cfc8;
     /* margin-left: 20%; */
 }
-p15[data-v-7d1b31a1] {
+p15[data-v-2942ec44] {
     padding: 15px;
     font-size: 13px;
 }
-.comment-reply-picture[data-v-7d1b31a1] {
+.comment-reply-picture[data-v-2942ec44] {
     width: 35px;
     height: 35px;
     margin-right: 15px;
     border: 1px solid #d4cfc8;
     border-radius: 35px;
 }
-.comments_user_name[data-v-7d1b31a1] {
+.comments_user_name[data-v-2942ec44] {
     font-size: 14px;
     color: #3b3937;
     margin: 5px 0px 15px 0px;
 }
-.comment_input[data-v-7d1b31a1] {
+.comment_input[data-v-2942ec44] {
     text-align: left;
     float: left;
     overflow: hidden;
     width: 70%;
 }
-.inner-input[data-v-7d1b31a1] {
+.inner-input[data-v-2942ec44] {
     display: block;
     height: 35px;
     line-height: 35px;
@@ -1257,14 +1257,14 @@ p15[data-v-7d1b31a1] {
     vertical-align: middle;
     font-size: 15px;
 }
-.submit-btn[data-v-7d1b31a1] {
+.submit-btn[data-v-2942ec44] {
     height: 35px;
     margin-left: 1%;
     line-height: 35px;
     background: #D01120;
     text-align: center;
 }
-.zzmb[data-v-7d1b31a1] {
+.zzmb[data-v-2942ec44] {
     z-index: 100000;
     position: absolute;
     top: 0;
@@ -1277,36 +1277,40 @@ p15[data-v-7d1b31a1] {
     height: 100%;
     display: block;
 }
-.comment-item[data-v-7d1b31a1] {
+.comment-item[data-v-2942ec44] {
     overflow: hidden;
 }
-.butt[data-v-7d1b31a1] {
+.butt[data-v-2942ec44] {
      overflow: hidden;
 }
-.add-pic-bg[data-v-7d1b31a1] {
+.add-pic-bg[data-v-2942ec44] {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA59YAAIElAACFAQAA6BMAADvtAAAYBnfKEhIAAAFsSURBVHja7NoxDsIwEERRjHJpGhA0HNu0CCnISbxgr94viUnBz2zsEaXWelrjcbu8Xywfl9e/aP3q+uv9Wb7d5HzCUCyN60rjZ1vvYb2EjA0hk42s4ieSkKzUhp0aIRKCQ0KaYgYJIQSEEILxD4boR5EQIwvRI0uXJSFp0WVJyOBPXwYhuiwJIQSEgJAkB0P0Q5dlZCF8ZOmyJCQtuiwJQbgQXZaEEAJCQEiSgyH6ocsyshA+snRZEpIWXZaEIFyILktCCAEh2HsO2bu9++fW8teU0YXggLhl9CdmYzKmbxa8QyZ7h+iyJCQtuiwJQbgQXZaEEAJCQEiSgyH64X9ZRhbCR5YuS0LSosuSEIQL0WVJCCEgBIQkORiiH7osIwvhI0uXJSFp0WXZZQ2+g8kwsnRZ3iGEgBAQYpeFPTtBCTGycGRk6bIkJC26LAlBuBBdloQQAkJASJKD4dqLfsth0noJmZcXAAAA//8DAIghOuIxjAeLAAAAAElFTkSuQmCC);
     height: 100px;
     width: 95px;
 }
-.pic_frame[data-v-7d1b31a1] {
+.pic_frame[data-v-2942ec44] {
     width: 94%;
     margin: 0px 0% 0px 6%;
 }
-.preview_img_layer[data-v-7d1b31a1] {
+.preview_img_layer[data-v-2942ec44] {
     float: left;
     width: 100%;
 }
-.sub_img_layer[data-v-7d1b31a1]{
+.sub_img_layer[data-v-2942ec44]{
     float:left;
     padding-bottom:15px;
     width: 32%;
     margin-right: 1%;
 }
-.preview_img[data-v-7d1b31a1]{
+.preview_img[data-v-2942ec44]{
     width: 100%;
     height: 94px;
 }
-.bottoms[data-v-7d1b31a1] {
+.bottoms[data-v-2942ec44] {
+    position: fixed;
+    bottom:0.3rem;
+    left:10%;
+    right: 10%;
     width: 80%;
     background-color: #D01120;
     height: 50px;
