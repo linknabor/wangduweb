@@ -1172,81 +1172,84 @@ img[data-v-24801e22] {
     display: inline-block
 } 
 
-.ov[data-v-c8da8c2a] {
+.content[data-v-b0bc3e3e]{
+    position:relative;
+}
+.ov[data-v-b0bc3e3e] {
     overflow: hidden;
     padding: 1px;
 }
-.fs14[data-v-c8da8c2a] {
+.fs14[data-v-b0bc3e3e] {
     font-size: 14px;
 }
-.pl15[data-v-c8da8c2a] {
+.pl15[data-v-b0bc3e3e] {
     padding-left: 15px;
 }
-.pb15[data-v-c8da8c2a] {
+.pb15[data-v-b0bc3e3e] {
     padding-bottom: 15px;
 }
-.comment-post-picture[data-v-c8da8c2a] {
+.comment-post-picture[data-v-b0bc3e3e] {
     width: 42px;
     height: 42px;
     margin-right: 15px;
     border: 1px solid #d4cfc8;
     border-radius: 42px;
 }
-.thread_user_head[data-v-c8da8c2a] {
+.thread_user_head[data-v-b0bc3e3e] {
     float: left;
     margin-top: 10.5px;
     font-size: 14px;
     color: #393b37;
 }
-.fs13[data-v-c8da8c2a] {
+.fs13[data-v-b0bc3e3e] {
     font-size: 13px;
 }
-.fs12[data-v-c8da8c2a] {
+.fs12[data-v-b0bc3e3e] {
     font-size: 12px;
 }
-.rel[data-v-c8da8c2a] {
+.rel[data-v-b0bc3e3e] {
     position: relative;
 }
-.pr15[data-v-c8da8c2a] {
+.pr15[data-v-b0bc3e3e] {
     padding-right: 25px;
 }
-.pt15[data-v-c8da8c2a] {
+.pt15[data-v-b0bc3e3e] {
     padding-top: 15px;
 }
-.divider[data-v-c8da8c2a] {
+.divider[data-v-b0bc3e3e] {
     border-bottom: 5px solid #f9f9e9;
 }
-.comments_title[data-v-c8da8c2a]{
+.comments_title[data-v-b0bc3e3e]{
     margin: 15px 4% 0px 4%;
     height: 15px;
 }
-.comment-lite-divider[data-v-c8da8c2a] {
+.comment-lite-divider[data-v-b0bc3e3e] {
     border-bottom: 1px solid #d4cfc8;
     /* margin-left: 20%; */
 }
-p15[data-v-c8da8c2a] {
+p15[data-v-b0bc3e3e] {
     padding: 15px;
     font-size: 13px;
 }
-.comment-reply-picture[data-v-c8da8c2a] {
+.comment-reply-picture[data-v-b0bc3e3e] {
     width: 35px;
     height: 35px;
     margin-right: 15px;
     border: 1px solid #d4cfc8;
     border-radius: 35px;
 }
-.comments_user_name[data-v-c8da8c2a] {
+.comments_user_name[data-v-b0bc3e3e] {
     font-size: 14px;
     color: #3b3937;
     margin: 5px 0px 15px 0px;
 }
-.comment_input[data-v-c8da8c2a] {
+.comment_input[data-v-b0bc3e3e] {
     text-align: left;
     float: left;
     overflow: hidden;
     width: 70%;
 }
-.inner-input[data-v-c8da8c2a] {
+.inner-input[data-v-b0bc3e3e] {
     display: block;
     height: 35px;
     line-height: 35px;
@@ -1257,14 +1260,14 @@ p15[data-v-c8da8c2a] {
     vertical-align: middle;
     font-size: 15px;
 }
-.submit-btn[data-v-c8da8c2a] {
+.submit-btn[data-v-b0bc3e3e] {
     height: 35px;
     margin-left: 1%;
     line-height: 35px;
     background: #D01120;
     text-align: center;
 }
-.zzmb[data-v-c8da8c2a] {
+.zzmb[data-v-b0bc3e3e] {
     z-index: 100000;
     position: absolute;
     top: 0;
@@ -1277,37 +1280,37 @@ p15[data-v-c8da8c2a] {
     height: 100%;
     display: block;
 }
-.comment-item[data-v-c8da8c2a] {
+.comment-item[data-v-b0bc3e3e] {
     overflow: hidden;
 }
-.butt[data-v-c8da8c2a] {
+.butt[data-v-b0bc3e3e] {
      overflow: hidden;
 }
-.add-pic-bg[data-v-c8da8c2a] {
+.add-pic-bg[data-v-b0bc3e3e] {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA59YAAIElAACFAQAA6BMAADvtAAAYBnfKEhIAAAFsSURBVHja7NoxDsIwEERRjHJpGhA0HNu0CCnISbxgr94viUnBz2zsEaXWelrjcbu8Xywfl9e/aP3q+uv9Wb7d5HzCUCyN60rjZ1vvYb2EjA0hk42s4ieSkKzUhp0aIRKCQ0KaYgYJIQSEEILxD4boR5EQIwvRI0uXJSFp0WVJyOBPXwYhuiwJIQSEgJAkB0P0Q5dlZCF8ZOmyJCQtuiwJQbgQXZaEEAJCQEiSgyH6ocsyshA+snRZEpIWXZaEIFyILktCCAEh2HsO2bu9++fW8teU0YXggLhl9CdmYzKmbxa8QyZ7h+iyJCQtuiwJQbgQXZaEEAJCQEiSgyH64X9ZRhbCR5YuS0LSosuSEIQL0WVJCCEgBIQkORiiH7osIwvhI0uXJSFp0WXZZQ2+g8kwsnRZ3iGEgBAQYpeFPTtBCTGycGRk6bIkJC26LAlBuBBdloQQAkJASJKD4dqLfsth0noJmZcXAAAA//8DAIghOuIxjAeLAAAAAElFTkSuQmCC);
     height: 100px;
     width: 95px;
 }
-.pic_frame[data-v-c8da8c2a] {
+.pic_frame[data-v-b0bc3e3e] {
     width: 94%;
     margin: 0px 0% 0px 6%;
 }
-.preview_img_layer[data-v-c8da8c2a] {
+.preview_img_layer[data-v-b0bc3e3e] {
     float: left;
     width: 100%;
 }
-.sub_img_layer[data-v-c8da8c2a]{
+.sub_img_layer[data-v-b0bc3e3e]{
     float:left;
     padding-bottom:15px;
     width: 32%;
     margin-right: 1%;
 }
-.preview_img[data-v-c8da8c2a]{
+.preview_img[data-v-b0bc3e3e]{
     width: 100%;
     height: 94px;
 }
-.bottoms[data-v-c8da8c2a] {
-    position: fixed;
+.bottoms[data-v-b0bc3e3e] {
+    position: absolute;
     bottom:0.3rem;
     left:10%;
     right: 10%;
@@ -1322,7 +1325,9 @@ p15[data-v-c8da8c2a] {
     text-align: center;
     font-size:31px;
     font-family: PingFangSC-Regular, sans-serif;
+    z-index:999;
 }
+
 
 .addt[data-v-f02badd8] {
     background-color: #fffff8;
