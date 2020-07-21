@@ -1,9 +1,19 @@
 var MasterConfig = function() {
     var t = {
-                
-       baseUrl: "https://test.e-shequ.com/wechat/hexie/wechat/",
-        basePageUrl:"https://test.e-shequ.com/weixin/",
-        appId:'wx95f46f41ca5e570e',
+        baseUrl: /127|test|localhost/.test(location.origin)?'https://test.e-shequ.com/wangdu/wechat/hexie/wechat/':
+        /uat/.test(location.origin)?'https://uat.e-shequ.com/wangdu/wechat/hexie/wechat/':
+        'http://wuye.gm4life.cn/wangdu/wechat/hexie/wechat/',
+        
+        basePageUrl:/127|test/.test(location.origin)?'https://test.e-shequ.com/wangdu/weixin/':
+        /uat/.test(location.origin)?'https://uat.e-shequ.com/wangdu/weixin/':
+        'http://wuye.gm4life.cn/wangdu/weixin/',
+         
+        appId: /127|test/.test(location.origin)?'wx95f46f41ca5e570e':
+        /uat/.test(location.origin)?'wx9ffe0a2b5a64a285':
+        'wxf59c6eb8ecb825ff',
+    //    baseUrl: "https://test.e-shequ.com/wechat/hexie/wechat/",
+    //     basePageUrl:"https://test.e-shequ.com/weixin/",
+    //     appId:'wx95f46f41ca5e570e',
         //appId: "wx89c743b2fa762a2c",
         
         //baseUrl: "https://test.e-shequ.cn/wechat-sit/hexie/wechat/",
