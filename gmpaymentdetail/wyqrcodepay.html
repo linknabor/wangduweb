@@ -97,16 +97,12 @@
             appId = /127|test/.test(location.origin)?'wx95f46f41ca5e570e':
               /uat/.test(location.origin)?'wx9ffe0a2b5a64a285' : 'wxf59c6eb8ecb825ff';
 
-            let componentAppId = /127|test/.test(location.origin) ? 'wx4d706a1a7a139d1f' :
-                /uat/.test(location.origin) ? 'wxc65085912aca5444' : 'wx0d408844b35d85e2';
-
-            let authorize_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_base&state=123&component_appid=COMPONENT_APPID#wechat_redirect";
-
+            let authorize_url ="http://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_base&state=123#wechat_redirect";
             let o = gercode().code;
             console.log("o:" + o);
 
             if (o === undefined) {
-                let authorize = authorize_url.replace("APPID", appId).replace("REDIRECT_URI", encodeURIComponent(requrl)).replace("COMPONENT_APPID", componentAppId);
+                let authorize = authorize_url.replace("APPID", appId).replace("REDIRECT_URI", encodeURIComponent(requrl));
                 console.log("author:" + authorize);
                 location.href = authorize;
             } else {
