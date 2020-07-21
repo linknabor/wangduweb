@@ -52,9 +52,10 @@
 </style>
 
 <script>    
-    var baseurl = /127|test/.test(location.origin)?'https://test.e-shequ.com/wangdu/weixin/':
-        /uat/.test(location.origin)?'https://uat.e-shequ.com/wangdu/weixin/':
-        'http://wuye.gm4life.cn/wangdu/weixin/';
+    var baseurl = /127|test/.test(location.origin)?'https://test.e-shequ.com/weixin/':
+        /uat/.test(location.origin)?'https://uat.e-shequ.com/weixin/':
+        'https://www.e-shequ.cn/weixin/';
+
     var trade_water_id;
     //获取参数方法
     function getUrlParam(name) {
@@ -76,6 +77,7 @@
         return "false";
     }
 
+    //不同环境不同图片
     function query() {
         let checkclient = IsWeixinOrAlipay();
         if ("Alipay" === checkclient) { //支付宝
